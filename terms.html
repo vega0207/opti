@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — OptiCodeStudio</title>
+  <meta name="description" content="Terms of Service for OptiCodeStudio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #06131C;
+      --surface: rgba(8, 27, 40, .78);
+      --line: rgba(145, 215, 225, .20);
+      --line-strong: rgba(145, 215, 225, .34);
+      --text: #ECF9FA;
+      --muted: #9CB8BE;
+      --accent: #66E3E5;
+      --accent-ink: #062025;
+      --font-d: "Space Grotesk", sans-serif;
+      --font-m: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 18, 29, .83) 0%,
+          rgba(5, 24, 35, .88) 50%,
+          rgba(4, 15, 24, .95) 100%
+        ),
+        url("sea-bg.jpg") center top / cover fixed no-repeat;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-d);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(110px);
+      opacity: .16;
+    }
+
+    body::before {
+      top: 10%;
+      left: -180px;
+      background: #00C8D7;
+    }
+
+    body::after {
+      right: -180px;
+      bottom: 5%;
+      background: #087A9A;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(860px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 19, 29, .76);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-in {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font: 700 11px/1 var(--font-m);
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font: 500 9px/1 var(--font-m);
+      letter-spacing: .22em;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .back:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    main {
+      padding: 76px 0 94px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      font: 500 11px/1 var(--font-m);
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .kicker::after {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    h1,
+    h2 {
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin-top: 20px;
+      font-size: clamp(38px, 6vw, 62px);
+    }
+
+    .intro {
+      max-width: 680px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .terms {
+      margin-top: 48px;
+      padding: 38px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: 0 24px 60px rgba(0, 12, 20, .25);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .updated {
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font: 400 11px/1.5 var(--font-m);
+      letter-spacing: .04em;
+    }
+
+    section + section {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    p + p {
+      margin-top: 13px;
+    }
+
+    ul {
+      display: grid;
+      gap: 9px;
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    li::marker {
+      color: var(--accent);
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 17px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(102, 227, 229, .06);
+    }
+
+    .notice p {
+      color: var(--muted);
+    }
+
+    .notice a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 620px) {
+      .wrap {
+        width: min(100% - 32px, 860px);
+      }
+
+      .terms {
+        padding: 27px 20px;
+      }
+
+      main {
+        padding: 56px 0 70px;
+      }
+
+      body {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="wrap nav-in">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">O</span>
+        <span>
+          OptiCodeStudio
+          <small>DIGITAL SOLUTIONS</small>
+        </span>
+      </a>
+
+      <a class="back" href="index.html">← Back to website</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="kicker">Legal</div>
+    <h1>Terms of Service</h1>
+    <p class="intro">
+      These terms explain the general basis on which OptiCodeStudio discusses, scopes and delivers website and digital services.
+    </p>
+
+    <article class="terms">
+      <div class="updated">LAST UPDATED: SEPTEMBER 2026</div>
+
+      <section>
+        <h2>General information</h2>
+        <p>
+          OptiCodeStudio provides website design, development and related digital services. Information on this website is for general information only and does not create a client relationship by itself.
+        </p>
+        <p>
+          A project begins only after scope, deliverables, timeline, price and other relevant terms have been agreed in writing.
+        </p>
+      </section>
+
+      <section>
+        <h2>Quotes and scope</h2>
+        <p>
+          Quotes are based on the information available at the time of discussion. Changes to the agreed scope, content, features, integrations, pages, revisions or timeline may require a revised quote and delivery schedule.
+        </p>
+        <p>
+          Estimates and example timelines are not guarantees. Delivery timing depends on scope, content readiness, approvals, third-party services and client responsiveness.
+        </p>
+      </section>
+
+      <section>
+        <h2>Client responsibilities</h2>
+        <p>Clients are responsible for providing accurate and lawful materials needed for a project, including where applicable:</p>
+        <ul>
+          <li>Text, images, logos, product information and brand assets</li>
+          <li>Required approvals, feedback and access to relevant accounts</li>
+          <li>Rights or licences for content supplied to OptiCodeStudio</li>
+          <li>Business, legal, privacy, tax, shipping and policy information</li>
+          <li>Verification and approval of final content before launch</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Third-party services</h2>
+        <p>
+          Websites may rely on third-party services such as hosting providers, domain registrars, payment providers, e-commerce platforms, plugins, analytics tools, email platforms, APIs or social networks.
+        </p>
+        <p>
+          OptiCodeStudio is not responsible for outages, policy changes, fees, account suspensions, security issues or changes made by third-party providers. Third-party costs are not included unless explicitly stated in a written proposal.
+        </p>
+      </section>
+
+      <section>
+        <h2>E-commerce and integrations</h2>
+        <p>
+          E-commerce, payments, shipping, tax, inventory, customer accounts and integrations depend on the selected platform, country, provider availability and client accounts. Clients remain responsible for business verification, payment-provider approval, product data, tax settings, shipping rules and legal store policies.
+        </p>
+        <p>
+          Custom checkout systems, advanced inventory, marketplace synchronisation, subscriptions, ERP connections and custom backend functionality require separate technical evaluation and pricing.
+        </p>
+      </section>
+
+      <section>
+        <h2>Reviews and website feedback</h2>
+        <p>
+          A quick website review is a general first-look observation based on publicly available information and the details you provide. It is not a complete technical, security, accessibility, legal, SEO or performance audit, and should not be treated as professional legal, financial or compliance advice.
+        </p>
+      </section>
+
+      <section>
+        <h2>Intellectual property</h2>
+        <p>
+          Unless otherwise agreed in writing, final approved website assets created specifically for a paid client project are transferred or licensed as described in the project agreement after all agreed payments have been received.
+        </p>
+        <p>
+          OptiCodeStudio may retain ownership of pre-existing tools, reusable code, methods, templates, libraries and general know-how. Portfolio display rights may be discussed in the project agreement.
+        </p>
+      </section>
+
+      <section>
+        <h2>Limitation of liability</h2>
+        <p>
+          OptiCodeStudio aims to deliver work with reasonable care and professionalism. However, no website, third-party platform or digital service can be guaranteed to be error-free, uninterrupted, secure, ranked on search engines or to produce a specific commercial result.
+        </p>
+        <p>
+          To the extent permitted by applicable law, OptiCodeStudio is not responsible for indirect loss, lost profits, business interruption, data loss, third-party failures or outcomes outside the agreed project scope.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <div class="notice">
+          <p>
+            Questions about these terms can be sent to
+            <a href="mailto:opticodestudio@gmail.com">opticodestudio@gmail.com</a>.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Changes to these terms</h2>
+        <p>
+          These terms may be updated as services, processes or legal requirements change. The latest version will always be available on this page.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 OptiCodeStudio. All rights reserved.</span>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+</body>
+</html>

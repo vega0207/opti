@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Northform Training Club — Strength for Real Life</title>
+<meta name="description" content="Northform Training Club is a fictional fitness concept focused on strength, conditioning and better movement.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='4' fill='%23101615'/><path d='M5 15h14M8 10v10M16 10v10M3 12v6M21 12v6' stroke='%238CCFC9' stroke-width='1.5'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#101615;
+  --panel:#18201E;
+  --panel-2:#23302D;
+  --paper:#EFF5F1;
+  --muted:#A7B5AF;
+  --line:#31403B;
+  --accent:#E36D4C;
+  --accent-2:#8CCFC9;
+  --accent-pale:#C9E5E0;
+  --black:#0A0E0D;
+  --font-display:"Archivo Black", Impact, sans-serif;
+  --font-main:"DM Sans", Arial, sans-serif;
+  --font-mono:"DM Mono", monospace;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  overflow-x:hidden;
+  background:var(--bg);
+  color:var(--paper);
+  font-family:var(--font-main);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  border:0;
+}
+
+.wrap{
+  width:min(1240px, calc(100% - 48px));
+  margin:0 auto;
+}
+
+.label{
+  color:var(--accent-2);
+  font:500 10px/1 var(--font-mono);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.label::before{
+  content:"//";
+  margin-right:8px;
+  color:var(--accent);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+
+.reveal.in{
+  opacity:1;
+  transform:none;
+}
+
+/* ================= HEADER ================= */
+
+.concept{
+  padding:8px 18px;
+  background:var(--accent);
+  color:var(--black);
+  text-align:center;
+  font:500 10px/1.4 var(--font-mono);
+  letter-spacing:.05em;
+}
+
+.concept b{
+  font-weight:700;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:30;
+  border-bottom:1px solid var(--line);
+  background:rgba(16,22,21,.90);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+.nav{
+  min-height:72px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+}
+
+.brand{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  width:max-content;
+  font-family:var(--font-display);
+  font-size:17px;
+  letter-spacing:-.05em;
+}
+
+.brand-mark{
+  position:relative;
+  width:28px;
+  height:28px;
+  border:1px solid var(--accent-2);
+}
+
+.brand-mark::before,
+.brand-mark::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  height:10px;
+  transform:translateY(-50%);
+  border-top:2px solid var(--accent-2);
+  border-bottom:2px solid var(--accent-2);
+}
+
+.brand-mark::before{
+  left:2px;
+  width:7px;
+}
+
+.brand-mark::after{
+  right:2px;
+  width:7px;
+}
+
+.brand-dot{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:7px;
+  height:7px;
+  transform:translate(-50%,-50%);
+  background:var(--accent);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:26px;
+  list-style:none;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+
+.nav-links a:hover{
+  color:var(--accent-2);
+}
+
+.nav-cta{
+  justify-self:end;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--paper);
+  border-bottom:1px solid var(--paper);
+  font:500 10px/1.5 var(--font-mono);
+  letter-spacing:.08em;
+}
+
+.nav-cta:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+}
+
+.burger{
+  display:none;
+  justify-self:end;
+  width:40px;
+  height:40px;
+  border:1px solid var(--line);
+  color:var(--paper);
+  background:transparent;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.mobile-menu{
+  display:none;
+  padding:8px 24px 20px;
+  border-top:1px solid var(--line);
+  background:var(--bg);
+}
+
+.mobile-menu.open{
+  display:flex;
+  flex-direction:column;
+}
+
+.mobile-menu a{
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--paper);
+  font-weight:700;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  opacity:.23;
+  background-image:
+    linear-gradient(rgba(140,207,201,.20) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140,207,201,.20) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to right, #000 0%, #000 58%, transparent 100%);
+}
+
+.hero-layout{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.07fr .93fr;
+  gap:54px;
+  min-height:650px;
+  align-items:stretch;
+}
+
+.hero-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:93px 0 54px;
+}
+
+.hero-title{
+  margin-top:22px;
+  max-width:720px;
+  font-family:var(--font-display);
+  font-size:clamp(48px, 7vw, 91px);
+  line-height:.91;
+  letter-spacing:-.075em;
+  text-transform:uppercase;
+}
+
+.hero-title span{
+  display:block;
+  color:var(--accent);
+}
+
+.hero-copy p{
+  max-width:465px;
+  margin-top:25px;
+  color:var(--muted);
+  font-size:16px;
+}
+
+.hero-action{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  width:max-content;
+  margin-top:31px;
+  padding:13px 16px;
+  background:var(--accent);
+  color:var(--black);
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  transition:transform .2s ease, background .2s ease;
+}
+
+.hero-action:hover{
+  background:var(--paper);
+  transform:translateY(-3px);
+}
+
+.hero-action span{
+  font-size:19px;
+  line-height:0;
+}
+
+.hero-foot{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:25px;
+  padding-top:29px;
+  border-top:1px solid var(--line);
+}
+
+.hero-foot p{
+  max-width:270px;
+  margin:0;
+  color:var(--muted);
+  font:400 10px/1.55 var(--font-mono);
+  letter-spacing:.04em;
+}
+
+.hero-count{
+  text-align:right;
+  color:var(--accent-2);
+  font:500 10px/1.45 var(--font-mono);
+  letter-spacing:.10em;
+}
+
+/* Training board */
+
+.board{
+  position:relative;
+  min-height:100%;
+  overflow:hidden;
+  border-left:1px solid var(--line);
+  background:var(--panel);
+}
+
+.board::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:430px;
+  height:430px;
+  right:-210px;
+  top:51%;
+  transform:translateY(-50%);
+  border:1px solid rgba(140,207,201,.28);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 31px rgba(140,207,201,.05),
+    0 0 0 62px rgba(140,207,201,.035);
+}
+
+.board-top{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:19px 20px;
+  border-bottom:1px solid var(--line);
+  color:var(--muted);
+  font:500 10px/1 var(--font-mono);
+  letter-spacing:.10em;
+}
+
+.board-live{
+  color:var(--accent-2);
+}
+
+.board-live::before{
+  content:"";
+  display:inline-block;
+  width:6px;
+  height:6px;
+  margin:0 7px 1px 0;
+  border-radius:50%;
+  background:var(--accent-2);
+  box-shadow:0 0 0 4px rgba(140,207,201,.10);
+}
+
+.program{
+  position:relative;
+  z-index:2;
+  padding:23px 20px 35px;
+}
+
+.program-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:15px;
+  padding-bottom:17px;
+  border-bottom:1px solid var(--line);
+}
+
+.program-head h2{
+  font-family:var(--font-display);
+  font-size:28px;
+  letter-spacing:-.06em;
+  text-transform:uppercase;
+}
+
+.program-head span{
+  color:var(--muted);
+  font:400 9px/1.4 var(--font-mono);
+  letter-spacing:.08em;
+}
+
+.program-row{
+  display:grid;
+  grid-template-columns:40px 1fr auto;
+  gap:13px;
+  align-items:center;
+  padding:19px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.program-day{
+  color:var(--accent);
+  font:500 11px/1 var(--font-mono);
+  letter-spacing:.08em;
+}
+
+.program-row b{
+  display:block;
+  color:var(--paper);
+  font-size:14px;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+
+.program-row small{
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.program-mark{
+  width:11px;
+  height:11px;
+  border:1px solid var(--accent-2);
+  border-radius:50%;
+}
+
+.program-row:nth-child(3) .program-mark{
+  background:var(--accent);
+  border-color:var(--accent);
+}
+
+.program-row:nth-child(4) .program-mark{
+  background:var(--accent-2);
+}
+
+.board-bottom{
+  position:absolute;
+  z-index:2;
+  left:20px;
+  right:20px;
+  bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  color:var(--muted);
+  font:400 9px/1.4 var(--font-mono);
+  letter-spacing:.06em;
+}
+
+/* ================= RUNNING STRIP ================= */
+
+.strip{
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:var(--paper);
+  color:var(--black);
+}
+
+.strip-track{
+  display:flex;
+  width:max-content;
+  min-width:100%;
+  animation:move 24s linear infinite;
+}
+
+.strip span{
+  display:flex;
+  align-items:center;
+  gap:21px;
+  padding:16px 21px 16px 0;
+  font-family:var(--font-display);
+  font-size:19px;
+  letter-spacing:-.05em;
+  text-transform:uppercase;
+}
+
+.strip span::after{
+  content:"+";
+  color:var(--accent);
+  font-family:var(--font-mono);
+  font-size:17px;
+}
+
+@keyframes move{
+  to{transform:translateX(-50%)}
+}
+
+/* ================= MANIFESTO ================= */
+
+.manifesto{
+  padding:110px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.manifesto-grid{
+  display:grid;
+  grid-template-columns:.73fr 1.27fr;
+  gap:74px;
+}
+
+.manifesto h2{
+  max-width:830px;
+  font-family:var(--font-display);
+  font-size:clamp(32px, 4.2vw, 60px);
+  line-height:.98;
+  letter-spacing:-.075em;
+  text-transform:uppercase;
+}
+
+.manifesto h2 em{
+  color:var(--accent-2);
+  font-style:normal;
+}
+
+.manifesto-copy{
+  align-self:end;
+}
+
+.manifesto-copy p{
+  max-width:410px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.manifesto-meta{
+  display:flex;
+  gap:0;
+  margin-top:31px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.manifesto-meta div{
+  flex:1;
+  padding:14px 13px 14px 0;
+  border-right:1px solid var(--line);
+}
+
+.manifesto-meta div:not(:first-child){
+  padding-left:13px;
+}
+
+.manifesto-meta div:last-child{
+  border-right:0;
+}
+
+.manifesto-meta b{
+  display:block;
+  color:var(--accent);
+  font:500 14px/1.2 var(--font-mono);
+}
+
+.manifesto-meta span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* ================= TRAINING LOG ================= */
+
+.log-section{
+  padding:98px 0;
+  background:var(--panel);
+}
+
+.log-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:35px;
+  margin-bottom:42px;
+}
+
+.log-header h2{
+  margin-top:17px;
+  font-family:var(--font-display);
+  font-size:clamp(36px, 4.5vw, 62px);
+  line-height:.95;
+  letter-spacing:-.075em;
+  text-transform:uppercase;
+}
+
+.log-header p{
+  max-width:300px;
+  color:var(--muted);
+  font:400 11px/1.65 var(--font-mono);
+}
+
+.training-log{
+  border-top:1px solid var(--line);
+}
+
+.log-row{
+  display:grid;
+  grid-template-columns:120px .72fr 1.1fr 42px;
+  gap:28px;
+  align-items:center;
+  min-height:117px;
+  padding:20px 0;
+  border-bottom:1px solid var(--line);
+  transition:padding .25s ease, background .25s ease;
+}
+
+.log-row:hover{
+  padding-left:15px;
+  padding-right:15px;
+  background:rgba(255,255,255,.025);
+}
+
+.log-code{
+  color:var(--accent-2);
+  font:500 10px/1.4 var(--font-mono);
+  letter-spacing:.10em;
+}
+
+.log-row h3{
+  color:var(--paper);
+  font-family:var(--font-display);
+  font-size:23px;
+  letter-spacing:-.06em;
+  text-transform:uppercase;
+}
+
+.log-row p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.log-arrow{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  color:var(--paper);
+  border:1px solid var(--line);
+  border-radius:50%;
+  font-size:17px;
+  transition:background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.log-row:hover .log-arrow{
+  color:var(--black);
+  background:var(--accent);
+  border-color:var(--accent);
+  transform:rotate(-40deg);
+}
+
+/* ================= QUOTE BLOCK ================= */
+
+.quote-block{
+  position:relative;
+  overflow:hidden;
+  padding:126px 0;
+  background:var(--accent);
+  color:var(--black);
+}
+
+.quote-block::before{
+  content:"";
+  position:absolute;
+  width:550px;
+  height:550px;
+  top:-340px;
+  right:-65px;
+  border:1px solid rgba(10,14,13,.22);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 35px rgba(255,255,255,.09),
+    0 0 0 70px rgba(10,14,13,.04);
+}
+
+.quote-block .wrap{
+  position:relative;
+  z-index:1;
+}
+
+.quote-block p{
+  max-width:1010px;
+  font-family:var(--font-display);
+  font-size:clamp(36px, 5.6vw, 78px);
+  line-height:.95;
+  letter-spacing:-.08em;
+  text-transform:uppercase;
+}
+
+.quote-block em{
+  color:var(--paper);
+  font-style:normal;
+}
+
+.quote-block small{
+  display:block;
+  margin-top:28px;
+  font:500 10px/1.5 var(--font-mono);
+  letter-spacing:.10em;
+}
+
+/* ================= START FORM ================= */
+
+.start{
+  padding:110px 0;
+}
+
+.start-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  border:1px solid var(--line);
+}
+
+.start-copy{
+  position:relative;
+  overflow:hidden;
+  min-height:530px;
+  padding:53px 51px;
+  background:var(--paper);
+  color:var(--black);
+}
+
+.start-copy::after{
+  content:"N";
+  position:absolute;
+  right:-28px;
+  bottom:-81px;
+  color:rgba(16,22,21,.055);
+  font-family:var(--font-display);
+  font-size:420px;
+  line-height:1;
+  letter-spacing:-.15em;
+}
+
+.start-copy > *{
+  position:relative;
+  z-index:1;
+}
+
+.start-copy h2{
+  max-width:450px;
+  margin-top:20px;
+  font-family:var(--font-display);
+  font-size:clamp(38px,4vw,58px);
+  line-height:.94;
+  letter-spacing:-.075em;
+  text-transform:uppercase;
+}
+
+.start-copy p{
+  max-width:385px;
+  margin-top:20px;
+  color:#52615D;
+  font-size:15px;
+}
+
+.start-points{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:41px;
+  color:#50615D;
+  font:500 11px/1.4 var(--font-mono);
+  letter-spacing:.04em;
+}
+
+.start-points span::before{
+  content:"✓";
+  display:inline-block;
+  width:18px;
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+}
+
+.start-form{
+  padding:53px 51px;
+  background:var(--panel-2);
+}
+
+.start-form h3{
+  color:var(--paper);
+  font-family:var(--font-display);
+  font-size:28px;
+  letter-spacing:-.06em;
+  text-transform:uppercase;
+}
+
+.start-form > p{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:30px;
+}
+
+.field{
+  margin-bottom:19px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--accent-2);
+  font:500 9px/1.2 var(--font-mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  outline:0;
+  border:0;
+  border-bottom:1px solid #46554F;
+  background:transparent;
+  color:var(--paper);
+  padding:12px 0;
+  font-size:14px;
+  transition:border-color .2s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder{
+  color:#71817A;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:var(--accent-2);
+}
+
+.field textarea{
+  min-height:88px;
+  resize:vertical;
+}
+
+.submit{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:6px;
+  padding:13px 15px;
+  color:var(--black);
+  background:var(--accent-2);
+  cursor:pointer;
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  transition:background .2s ease, transform .2s ease;
+}
+
+.submit:hover{
+  background:var(--paper);
+  transform:translateY(-2px);
+}
+
+.disclaimer{
+  margin-top:17px;
+  color:var(--muted);
+  font-size:10.5px;
+  line-height:1.55;
+}
+
+.success{
+  display:grid;
+  min-height:360px;
+  place-items:center;
+  text-align:center;
+}
+
+.success div{
+  max-width:350px;
+}
+
+.success h3{
+  color:var(--paper);
+  font-family:var(--font-display);
+  font-size:31px;
+  letter-spacing:-.06em;
+  text-transform:uppercase;
+}
+
+.success p{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  padding:36px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:11px;
+}
+
+.footer-in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.footer-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--paper);
+  font-family:var(--font-display);
+  font-size:14px;
+  letter-spacing:-.05em;
+  text-transform:uppercase;
+}
+
+.footer-brand .brand-mark{
+  width:22px;
+  height:22px;
+}
+
+.footer-brand .brand-mark::before,
+.footer-brand .brand-mark::after{
+  transform:translateY(-50%) scale(.72);
+}
+
+footer a{
+  color:var(--paper);
+  font-weight:700;
+}
+
+footer a:hover{
+  color:var(--accent-2);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:960px){
+  .nav{
+    grid-template-columns:1fr auto;
+  }
+
+  .nav-links,
+  .nav-cta{
+    display:none;
+  }
+
+  .burger{
+    display:block;
+  }
+
+  .hero-layout,
+  .manifesto-grid,
+  .start-layout{
+    grid-template-columns:1fr;
+  }
+
+  .hero-layout{
+    gap:0;
+  }
+
+  .hero-copy{
+    min-height:570px;
+    padding:80px 0 46px;
+  }
+
+  .board{
+    min-height:510px;
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+
+  .manifesto-grid{
+    gap:33px;
+  }
+
+  .log-row{
+    grid-template-columns:100px .8fr 1fr 42px;
+    gap:18px;
+  }
+
+  .start-copy{
+    min-height:390px;
+  }
+}
+
+@media(max-width:650px){
+  .wrap{
+    width:min(100% - 32px, 1240px);
+  }
+
+  .concept{
+    font-size:9px;
+  }
+
+  .hero-copy{
+    min-height:530px;
+    padding-top:65px;
+  }
+
+  .hero-title{
+    font-size:clamp(47px, 15vw, 68px);
+  }
+
+  .hero-foot{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .hero-count{
+    text-align:left;
+  }
+
+  .board{
+    min-height:475px;
+  }
+
+  .manifesto{
+    padding:77px 0;
+  }
+
+  .manifesto-meta{
+    flex-direction:column;
+  }
+
+  .manifesto-meta div,
+  .manifesto-meta div:not(:first-child){
+    padding:13px 0;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .manifesto-meta div:last-child{
+    border-bottom:0;
+  }
+
+  .log-section{
+    padding:74px 0;
+  }
+
+  .log-header{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .log-row{
+    grid-template-columns:78px 1fr 34px;
+    gap:11px;
+    padding:22px 0;
+  }
+
+  .log-row p{
+    grid-column:2 / 4;
+  }
+
+  .log-arrow{
+    grid-column:3;
+    grid-row:1;
+  }
+
+  .quote-block{
+    padding:84px 0;
+  }
+
+  .start{
+    padding:74px 0;
+  }
+
+  .start-copy,
+  .start-form{
+    padding:38px 22px;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .footer-in{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="concept">
+  NORTHFORM TRAINING CLUB / <b>FICTIONAL CONCEPT WEBSITE — NOT A REAL GYM OR COACHING SERVICE</b>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Northform Training Club home">
+      <span class="brand-mark"><span class="brand-dot"></span></span>
+      NORTHFORM
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#training">Training</a></li>
+      <li><a href="#approach">Method</a></li>
+      <li><a href="#start">Start here</a></li>
+    </ul>
+
+    <a class="nav-cta" href="#start">START A SESSION ↗</a>
+
+    <button class="burger" id="burger" aria-label="Open menu">☰</button>
+  </div>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#training">Training</a>
+    <a href="#approach">Method</a>
+    <a href="#start">Start here</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero" id="top">
+    <div class="wrap hero-layout">
+      <div class="hero-copy">
+        <div>
+          <div class="label">Training club / Concept 001</div>
+
+          <h1 class="hero-title">
+            Build<br>
+            <span>strength</span>
+            that stays.
+          </h1>
+
+          <p>
+            Northform is a fictional training-club concept for people who want a clearer, steadier approach to strength, conditioning and movement.
+          </p>
+
+          <a class="hero-action" href="#start">
+            Start with a plan <span>→</span>
+          </a>
+        </div>
+
+        <div class="hero-foot">
+          <p>
+            No fake transformations. No real members. No pressure — just a design study for a more focused fitness experience.
+          </p>
+
+          <span class="hero-count">
+            SYSTEM / 01<br>
+            STRENGTH + CONDITIONING
+          </span>
+        </div>
+      </div>
+
+      <aside class="board reveal" aria-label="Northform weekly training board">
+        <div class="board-top">
+          <span>WEEKLY TRAINING BOARD</span>
+          <span class="board-live">ACTIVE</span>
+        </div>
+
+        <div class="program">
+          <div class="program-head">
+            <h2>Week 01</h2>
+            <span>FOUNDATION BLOCK</span>
+          </div>
+
+          <div class="program-row">
+            <span class="program-day">MON</span>
+            <div>
+              <b>Strength base</b>
+              <small>Build the patterns</small>
+            </div>
+            <span class="program-mark"></span>
+          </div>
+
+          <div class="program-row">
+            <span class="program-day">WED</span>
+            <div>
+              <b>Conditioning</b>
+              <small>Work capacity, paced</small>
+            </div>
+            <span class="program-mark"></span>
+          </div>
+
+          <div class="program-row">
+            <span class="program-day">SAT</span>
+            <div>
+              <b>Move better</b>
+              <small>Mobility + control</small>
+            </div>
+            <span class="program-mark"></span>
+          </div>
+        </div>
+
+        <div class="board-bottom">
+          <span>CONSISTENCY &gt; INTENSITY</span>
+          <span>LOG 01.26</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Northform values">
+    <div class="strip-track">
+      <span>Strength</span>
+      <span>Conditioning</span>
+      <span>Mobility</span>
+      <span>Coaching</span>
+      <span>Consistency</span>
+      <span>Strength</span>
+      <span>Conditioning</span>
+      <span>Mobility</span>
+      <span>Coaching</span>
+      <span>Consistency</span>
+    </div>
+  </section>
+
+  <section class="manifesto" id="approach">
+    <div class="wrap manifesto-grid">
+      <div class="reveal">
+        <div class="label">The Northform method</div>
+      </div>
+
+      <div class="manifesto-copy reveal">
+        <h2>
+          Train for the life you have — not the highlight reel you <em>don't.</em>
+        </h2>
+
+        <p>
+          Northform is imagined as a club where training has a purpose. You build useful strength, move with more control and keep returning because the plan makes sense.
+        </p>
+
+        <div class="manifesto-meta">
+          <div>
+            <b>01</b>
+            <span>clear starting point</span>
+          </div>
+          <div>
+            <b>02</b>
+            <span>progressive sessions</span>
+          </div>
+          <div>
+            <b>03</b>
+            <span>repeatable habits</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="log-section" id="training">
+    <div class="wrap">
+      <div class="log-header reveal">
+        <div>
+          <div class="label">Training log</div>
+          <h2>Pick your<br>starting point.</h2>
+        </div>
+
+        <p>
+          Four imagined paths for different starting points. These are concept descriptions, not professional training or health advice.
+        </p>
+      </div>
+
+      <div class="training-log">
+        <article class="log-row reveal">
+          <span class="log-code">TRACK / 01</span>
+          <h3>Foundation</h3>
+          <p>Learn the core patterns and build a steady relationship with training.</p>
+          <span class="log-arrow">↗</span>
+        </article>
+
+        <article class="log-row reveal" style="transition-delay:.07s">
+          <span class="log-code">TRACK / 02</span>
+          <h3>Strength</h3>
+          <p>Develop confidence around progressive lifts, carries and loaded movement.</p>
+          <span class="log-arrow">↗</span>
+        </article>
+
+        <article class="log-row reveal" style="transition-delay:.14s">
+          <span class="log-code">TRACK / 03</span>
+          <h3>Conditioning</h3>
+          <p>Build capacity through repeatable, scalable work that respects your pace.</p>
+          <span class="log-arrow">↗</span>
+        </article>
+
+        <article class="log-row reveal" style="transition-delay:.21s">
+          <span class="log-code">TRACK / 04</span>
+          <h3>Movement</h3>
+          <p>Create more range, control and awareness around the way your body moves.</p>
+          <span class="log-arrow">↗</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-block">
+    <div class="wrap reveal">
+      <p>
+        <em>Train well.</em><br>
+        Keep showing up.<br>
+        Let the work add up.
+      </p>
+      <small>NORTHFORM PRINCIPLE / CONCEPTUAL TRAINING LANGUAGE</small>
+    </div>
+  </section>
+
+  <section class="start" id="start">
+    <div class="wrap start-layout">
+      <div class="start-copy">
+        <div class="label">Start here</div>
+        <h2>Your next session can begin with a question.</h2>
+        <p>
+          This is a fictional enquiry flow created for the demo. It does not connect to a real gym, trainer or class booking system.
+        </p>
+
+        <div class="start-points">
+          <span>Tell us your imagined starting point</span>
+          <span>Choose an area to explore</span>
+          <span>See a simple confirmation state</span>
+        </div>
+      </div>
+
+      <div class="start-form">
+        <h3>Build your starting point.</h3>
+        <p>Demo form — nothing is sent or stored.</p>
+
+        <form id="startForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name">
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@email.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="focus">Main focus</label>
+              <select id="focus">
+                <option>Build strength</option>
+                <option>Improve conditioning</option>
+                <option>Move better</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="experience">Experience</label>
+              <select id="experience">
+                <option>Starting fresh</option>
+                <option>Returning to training</option>
+                <option>Already training</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="note">A short note</label>
+            <textarea id="note" placeholder="What would you like to work on?"></textarea>
+          </div>
+
+          <button class="submit" type="submit">
+            Send concept enquiry →
+          </button>
+
+          <p class="disclaimer">
+            Fictional concept site only. No coaching, training advice, booking or data collection is provided here.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-in">
+    <span class="footer-brand">
+      <span class="brand-mark"><span class="brand-dot"></span></span>
+      NORTHFORM
+    </span>
+
+    <span>Fictional concept website · Not a real gym or coaching service</span>
+
+    <span>Concept by <a href="index.html">OptiCodeStudio</a></span>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+burger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+  });
+});
+
+document.getElementById('startForm').addEventListener('submit', function(event){
+  event.preventDefault();
+
+  this.innerHTML = `
+    <div class="success">
+      <div>
+        <h3>LOG RECEIVED.</h3>
+        <p>This is a demo confirmation state. No message was sent and no information was stored.</p>
+      </div>
+    </div>
+  `;
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold:.12 });
+
+document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+</script>
+
+</body>
+</html>

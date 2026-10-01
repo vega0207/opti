@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OptiCodeStudio — Websites Built to Win Customers</title>
+<meta name="description" content="OptiCodeStudio designs and builds fast, conversion-focused, hand-coded websites. Essential, Growth and Premium packages plus custom e-commerce. Get a custom quote.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* ============================================================
+   ANA RENK AYARI
+   Vurgu rengini değiştirmek istersen sadece --accent satırını
+   değiştir (örnek: #FFD166 sarı, #7DF9FF mavi).
+   ============================================================ */
+:root {
+  --bg: #06131C;
+  --surface: rgba(10, 29, 42, .72);
+  --surface-2: rgba(15, 45, 58, .78);
+  --line: rgba(145, 215, 225, .16);
+  --line-strong: rgba(145, 215, 225, .30);
+  --text: #ECF9FA;
+  --muted: #9CB8BE;
+  --accent: #66E3E5;
+  --accent-ink: #062025;
+  --bad: #FF8A8A;
+  --warn: #FFD166;
+  --grid: rgba(130, 220, 230, .045);
+
+  --font-d: "Space Grotesk", sans-serif;
+  --font-m: "JetBrains Mono", monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4,18,29,.76) 0%,
+      rgba(5,24,35,.84) 48%,
+      rgba(4,15,24,.94) 100%
+    ),
+    url("sea-bg.jpg") center top / cover fixed no-repeat;
+  background-color:var(--bg);
+  color:var(--text);
+  font-family:var(--font-d);
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden
+}
+::selection{background:var(--accent);color:var(--accent-ink)}
+img{max-width:100%;display:block}
+a{color:inherit}
+section{scroll-margin-top:84px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--font-m)}
+
+/* ---- Butonlar ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--font-d);padding:15px 26px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s,color .15s;white-space:nowrap}
+.btn .lucide{width:17px;height:17px}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 rgba(0,232,176,.3)}
+.btn-ghost{border-color:var(--line-strong);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{padding:12px 20px;font-size:14px}
+.btn[disabled]{opacity:.55;cursor:progress}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---- Bölüm başlıkları ---- */
+.sec{padding:104px 0}
+.sec-head{margin-bottom:56px;max-width:720px}
+.kicker{font:500 12px/1 var(--font-m);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.kicker::after{content:"";height:1px;width:56px;background:var(--line-strong)}
+.sec-head h2{font-size:clamp(30px,4.2vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:17px}
+
+/* ---- Üst menü ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .25s,border-color .25s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(5,8,15,.86);backdrop-filter:blur(12px);border-color:var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 24px;height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;letter-spacing:.02em}
+.logo-mark{width:30px;height:30px;border:1px solid var(--accent);display:grid;place-items:center;flex:none}
+.logo-mark svg{width:16px;height:16px}
+.logo small{display:block;font:500 10px/1 var(--font-m);letter-spacing:.3em;color:var(--muted);margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:14.5px;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-burger{display:none;background:none;border:1px solid var(--line-strong);color:var(--text);width:42px;height:42px;cursor:pointer;place-items:center}
+.nav-mobile{display:none;position:fixed;inset:70px 0 0 0;background:var(--bg);z-index:99;padding:36px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
+.nav-mobile.open{display:flex}
+.nav-mobile a{text-decoration:none;color:var(--text);font-size:22px;font-weight:600;padding:14px 0;border-bottom:1px solid var(--line)}
+.nav-mobile .btn{margin-top:22px}
+
+/* ---- Hero ---- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:130px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 90% 80% at 50% 20%,#000 30%,transparent 75%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center;width:100%}
+.hero h1{font-size:clamp(40px,5.6vw,72px);font-weight:700;letter-spacing:-.035em;line-height:1.03;margin:22px 0 24px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{color:var(--muted);font-size:18px;max-width:520px}
+.hero-actions{display:flex;gap:16px;margin:36px 0 0;flex-wrap:wrap}
+.hero-stats{display:flex;gap:0;margin-top:56px;border-top:1px solid var(--line);padding-top:26px}
+.hero-stats>div{padding-right:36px;margin-right:36px;border-right:1px solid var(--line)}
+.hero-stats>div:last-child{border-right:0;margin-right:0;padding-right:0}
+.hero-stats b{display:block;font-size:26px;font-weight:700;letter-spacing:-.02em}
+.hero-stats span{font:400 12px/1.4 var(--font-m);color:var(--muted);letter-spacing:.04em}
+
+/* ---- Terminal ---- */
+.term{border:1px solid var(--line-strong);background:var(--surface);font-family:var(--font-m);font-size:13px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.term-bar{display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:var(--line-strong)}
+.term-bar span{margin-left:10px;color:var(--muted);font-size:11.5px;letter-spacing:.08em}
+.term-body{padding:20px 18px 24px;min-height:308px}
+.tl{white-space:pre-wrap;line-height:1.85;font-size:12.8px}
+.tl.cmd{color:var(--text);font-weight:500}
+.tl.bad{color:var(--bad)}
+.tl.dim{color:var(--muted)}
+.tl.ok{color:var(--accent)}
+.tl.strong{color:var(--text);font-weight:700}
+.tl.typing::after{content:"▌";color:var(--accent);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ---- Kayan şerit ---- */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;background:var(--surface)}
+.marquee-track{display:flex;gap:0;width:max-content;animation:mq 30s linear infinite}
+.mq-item{display:flex;align-items:center;gap:28px;padding-right:28px;font:500 13px/1 var(--font-m);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.mq-item::after{content:"";width:7px;height:7px;background:var(--accent);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---- Tanıdık geldi mi? ---- */
+.sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.sig{border:1px solid var(--line);background:var(--surface);padding:30px 28px;transition:border-color .2s,transform .2s}
+.sig:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+.sig .ico{width:44px;height:44px;border:1px solid var(--line-strong);display:grid;place-items:center;margin-bottom:22px;color:var(--accent)}
+.sig h3{font-size:19px;letter-spacing:-.01em;margin-bottom:10px}
+.sig p{color:var(--muted);font-size:15px}
+.sig-note{margin-top:34px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--surface);padding:20px 26px}
+.sig-note p{color:var(--muted);font-size:15px}
+.sig-note a{color:var(--accent);text-decoration:none;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer}
+.sig-note a:hover{text-decoration:underline}
+
+/* ---- Paketler ---- */
+.pkgs{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.pkg{position:relative;border:1px solid var(--line);background:var(--surface);padding:28px 24px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.pkg:hover{border-color:var(--line-strong);transform:translateY(-5px)}
+.pkg--pop{border-color:var(--accent)}
+.pkg--special{border-color:var(--line-strong);background:var(--surface-2)}
+.pkg-badge{position:absolute;top:-12px;left:24px;background:var(--accent);color:var(--accent-ink);font:700 10.5px/1 var(--font-m);letter-spacing:.14em;padding:6px 10px}
+.pkg-tag{position:absolute;top:-12px;left:24px;border:1px solid var(--line-strong);background:var(--bg);color:var(--muted);font:500 10.5px/1 var(--font-m);letter-spacing:.14em;padding:5px 10px}
+.pkg-name{font-size:21px;font-weight:700;letter-spacing:-.01em;margin-bottom:4px}
+.pkg-best{color:var(--muted);font-size:13.5px;line-height:1.5;min-height:60px;margin-bottom:18px}
+.pkg-from{font:500 10.5px/1 var(--font-m);letter-spacing:.16em;color:var(--accent);text-transform:uppercase;border-top:1px solid var(--line);padding-top:16px;margin-bottom:12px}
+.pkg-list{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
+.pkg-list li{display:flex;gap:9px;font-size:13.5px;color:var(--text);line-height:1.45}
+.pkg-list .lucide{width:14px;height:14px;color:var(--accent);flex:none;margin-top:3px}
+.pkg-actions{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.pkg-more{background:none;border:none;color:var(--muted);font:500 13.5px var(--font-d);cursor:pointer;text-decoration:underline;text-underline-offset:4px;padding:0}
+.pkg-more:hover{color:var(--accent)}
+
+/* ---- Modallar ---- */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(3,5,10,.8);backdrop-filter:blur(4px)}
+.modal-panel{position:relative;width:100%;max-width:780px;max-height:86vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line-strong);animation:mIn .22s ease}
+@keyframes mIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.modal-head{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--line);padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;z-index:2}
+.modal-head h3{font-size:26px;letter-spacing:-.02em}
+.modal-head p{color:var(--accent);font:500 12px/1 var(--font-m);letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
+.modal-x{background:none;border:1px solid var(--line-strong);color:var(--muted);width:38px;height:38px;display:grid;place-items:center;cursor:pointer;flex:none;transition:.15s}
+.modal-x:hover{border-color:var(--bad);color:var(--bad)}
+.modal-body{padding:28px}
+.modal-best{color:var(--muted);border-left:3px solid var(--accent);padding:4px 0 4px 16px;margin-bottom:26px;font-size:15px;line-height:1.65}
+.modal-sub{font:500 11.5px/1 var(--font-m);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:26px 0 14px}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;list-style:none}
+.modal-grid li{display:flex;gap:9px;font-size:14.5px;line-height:1.5}
+.modal-grid .lucide{width:15px;height:15px;color:var(--accent);flex:none;margin-top:4px}
+.modal-notes{list-style:none;display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);background:var(--surface-2);padding:18px 20px}
+.modal-notes li{color:var(--muted);font-size:13.5px;line-height:1.55;padding-left:16px;position:relative}
+.modal-notes li::before{content:"—";position:absolute;left:0;color:var(--line-strong)}
+.modal-foot{padding:0 28px 28px}
+.modal-foot .btn{width:100%}
+
+/* ---- Case study sonuç kutuları ---- */
+.cs-results{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cs-r{border:1px solid var(--line);background:var(--surface-2);padding:18px 14px;text-align:center}
+.cs-r b{display:block;font-size:26px;font-weight:700;color:var(--accent);letter-spacing:-.02em;margin-bottom:6px}
+.cs-r span{font:400 12px/1.4 var(--font-m);color:var(--muted)}
+.w-visit{margin-top:26px;width:100%}
+
+/* ---- Süreç ---- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step{border-top:1px solid var(--line-strong);padding-top:22px;position:relative}
+.step::before{content:"";position:absolute;top:-1px;left:0;width:44px;height:1px;background:var(--accent)}
+.step-num{font:500 12px/1 var(--font-m);color:var(--accent);letter-spacing:.18em;margin-bottom:16px;display:block}
+.step h3{font-size:19px;margin-bottom:10px;letter-spacing:-.01em}
+.step p{color:var(--muted);font-size:14.5px}
+
+/* ---- Portföy ---- */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.work{border:1px solid var(--line);background:var(--surface);padding:16px;transition:border-color .2s,transform .2s;cursor:pointer}
+.work:hover{border-color:var(--accent);transform:translateY(-5px)}
+.work:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mock{border:1px solid var(--line);background:var(--surface-2);overflow:hidden;pointer-events:none}
+.mock-bar{height:28px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:5px;padding:0 10px}
+.mock-bar i{width:7px;height:7px;border-radius:50%;background:var(--line-strong)}
+.mock-url{flex:1;height:9px;margin-left:8px;background:var(--line);border-radius:99px;max-width:170px}
+.mock-body{padding:20px;min-height:196px;display:flex;flex-direction:column;gap:9px}
+.mb-nav{display:flex;gap:8px;margin-bottom:4px}
+.mb-nav i{width:22px;height:5px;background:var(--line-strong);border-radius:2px}
+.mb-title{height:20px;width:70%;background:var(--line-strong);border-radius:2px}
+.mb-title.a{background:var(--accent)}
+.mb-line{height:7px;background:var(--line);border-radius:2px}
+.mb-line.s{width:55%}
+.mb-btn{width:74px;height:16px;background:var(--accent);border-radius:2px;margin-top:4px}
+.mb-img{flex:1;background:var(--line);border-radius:2px;min-height:44px}
+.mb-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.mb-cards i{height:34px;background:var(--line);border-radius:2px}
+.mock-b .mock-body{align-items:center;text-align:center;justify-content:center}
+.mock-b .mb-title{width:82%}
+.mock-b .mb-line{width:48%}
+.work-meta{padding:20px 8px 8px}
+.work-label{font:500 11px/1 var(--font-m);letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+.work-meta h3{font-size:19px;margin:10px 0 8px;letter-spacing:-.01em}
+.work-meta p{color:var(--muted);font-size:14px;line-height:1.55}
+.work-tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.work-tags span{font:500 10.5px/1 var(--font-m);letter-spacing:.08em;color:var(--muted);border:1px solid var(--line);padding:5px 9px}
+.work-cta{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font:600 13.5px var(--font-d);color:var(--accent)}
+.work-cta .lucide{width:15px;height:15px;transition:transform .2s}
+.work:hover .work-cta .lucide{transform:translateX(4px)}
+
+/* ---- Neden OptiCodeStudio ---- */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.why{border:1px solid var(--line);background:var(--surface);padding:28px 26px}
+.why .ico{width:44px;height:44px;border:1px solid var(--line-strong);display:grid;place-items:center;margin-bottom:20px;color:var(--accent)}
+.why h3{font-size:18px;margin-bottom:10px;letter-spacing:-.01em}
+.why p{color:var(--muted);font-size:14px}
+
+/* ---- SSS ---- */
+.faq{max-width:820px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font:600 17px var(--font-d);display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;cursor:pointer;text-align:left;letter-spacing:-.01em}
+.faq-q:hover{color:var(--accent)}
+.faq-q .lucide{width:19px;height:19px;flex:none;color:var(--muted);transition:transform .25s}
+.faq-item.open .faq-q .lucide{transform:rotate(180deg);color:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{color:var(--muted);font-size:15px;padding:0 4px 26px;max-width:700px}
+
+/* ---- İletişim ---- */
+.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:start}
+.form{border:1px solid var(--line);background:var(--surface);padding:34px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f-group{margin-bottom:18px;display:flex;flex-direction:column}
+.f-group label{font:500 12px/1 var(--font-m);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.f-group input,.f-group select,.f-group textarea{background:var(--bg);border:1px solid var(--line-strong);color:var(--text);font:400 16px var(--font-d);padding:13px 14px;transition:border-color .15s;width:100%}
+.f-group textarea{resize:vertical;min-height:130px}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{outline:none;border-color:var(--accent)}
+.f-group.err input,.f-group.err textarea{border-color:var(--bad)}
+.f-msg{color:var(--bad);font-size:12.5px;margin-top:6px;display:none}
+.f-group.err .f-msg{display:block}
+.form-hint{color:var(--muted);font-size:13px;margin-top:14px}
+.side{display:flex;flex-direction:column;gap:18px}
+.side-card{border:1px solid var(--line);background:var(--surface);padding:26px}
+.side-card h4{font-size:16px;margin-bottom:6px}
+.side-card>p{color:var(--muted);font-size:14px}
+.copy-mail{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid var(--line-strong);background:var(--bg);padding:14px 16px;margin-top:16px}
+.copy-mail span{font:500 13.5px var(--font-m);color:var(--text);word-break:break-all}
+.copy-btn{background:none;border:1px solid var(--line-strong);color:var(--accent);width:40px;height:40px;display:grid;place-items:center;cursor:pointer;flex:none;transition:.15s}
+.copy-btn:hover{border-color:var(--accent)}
+.ig-link{display:flex;align-items:center;gap:14px;text-decoration:none;border:1px solid var(--line-strong);background:var(--bg);padding:14px 16px;margin-top:16px;transition:.15s}
+.ig-link:hover{border-color:var(--accent)}
+.ig-link .lucide{width:20px;height:20px;color:var(--accent)}
+.ig-link b{font-size:14px;display:block}
+.ig-link small{color:var(--muted);font-size:12px}
+.next{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.next li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted)}
+.next b{color:var(--text)}
+.next .n{font:700 12px/1 var(--font-m);color:var(--accent);border:1px solid var(--line-strong);width:24px;height:24px;display:grid;place-items:center;flex:none;margin-top:2px}
+
+/* ---- Audit başarı ekranı ---- */
+.audit-ok{text-align:center;padding:26px 8px}
+.audit-ok .ok-ico{width:64px;height:64px;border:1px solid var(--accent);border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;color:var(--accent)}
+.audit-ok .ok-ico .lucide{width:30px;height:30px}
+.audit-ok h4{font-size:21px;margin-bottom:10px;letter-spacing:-.01em}
+.audit-ok p{color:var(--muted);font-size:14.5px}
+
+/* ---- Footer ---- */
+footer{border-top:1px solid var(--line);padding:44px 0 40px;margin-top:20px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.foot-links{display:flex;gap:26px;align-items:center}
+.foot-links a{color:var(--muted);text-decoration:none;font-size:14px;display:inline-flex;gap:7px;align-items:center}
+.foot-links a:hover{color:var(--accent)}
+.foot small{display:block;color:var(--muted);font-size:12.5px;margin-top:10px}
+
+/* ---- Toast ---- */
+.toast{position:fixed;right:22px;bottom:22px;z-index:300;background:var(--surface);border:1px solid var(--accent);border-left:3px solid var(--accent);padding:15px 20px;display:flex;align-items:center;gap:12px;font-size:14.5px;transform:translateY(140%);transition:transform .3s ease;max-width:360px}
+.toast.in{transform:none}
+.toast .lucide{width:17px;height:17px;color:var(--accent);flex:none}
+
+/* ---- Kaydırma animasyonu ---- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- Duyarlı tasarım ---- */
+@media(max-width:1024px){
+  .pkgs{grid-template-columns:1fr 1fr}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .term{max-width:640px}
+  .steps{grid-template-columns:1fr 1fr}
+  .works{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .sig-grid{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .nav-links,.nav-cta .btn{display:none}
+  .nav-burger{display:grid}
+  .pkgs{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .works{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .hero-stats{flex-direction:column;gap:18px}
+  .hero-stats>div{border-right:0;padding:0;margin:0}
+  .sec{padding:76px 0}
+  .hero{padding-top:110px}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{width:100%}
+  .form{padding:26px 18px}
+  .modal-head{padding:20px 18px}
+  .modal-body{padding:20px 18px}
+  .modal-foot{padding:0 18px 20px}
+  .modal-grid{grid-template-columns:1fr}
+  .term-body{min-height:250px;padding:16px 12px}
+  .tl{font-size:11.8px}
+  .toast{left:14px;right:14px;bottom:14px;max-width:none}
+  .cs-results{grid-template-columns:repeat(3,1fr);gap:10px}
+  .cs-r{padding:14px 8px}
+  .cs-r b{font-size:19px}
+  .audit-ok{padding:16px 4px}
+}
+@media(max-width:420px){
+  .hero-stats b{font-size:22px}
+  .nav-in,.wrap{padding:0 16px}
+  .cs-results{grid-template-columns:1fr}
+  .modal{padding:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .marquee-track{animation:none}
+  .reveal{opacity:1;transform:none}
+}
+[data-work="0"] .mock-body {
+    background-image: url('demo4.png') !important; /* Nesmina */
+    background-size: cover !important;
+    background-position: top !important;
+}
+[data-work="1"] .mock-body {
+    background-image: url('demo3.png') !important; /* Golden Crust Bakery */
+    background-size: cover !important;
+    background-position: top !important;
+}
+[data-work="2"] .mock-body {
+    background-image: url('demo1.png') !important; /* Meridian Law */
+    background-size: cover !important;
+    background-position: top !important;
+}
+[data-work="3"] .mock-body {
+    background-image: url('demo2.png') !important; /* Forge Athletics */
+    background-size: cover !important;
+    background-position: top !important;
+}
+.mock-body div, .mock-body i {
+    opacity: 0 !important;
+}
+
+/* DENIZ MANZARASI + CAM KART TASARIMI */
+
+body {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 18, 29, .76) 0%,
+      rgba(5, 24, 35, .84) 48%,
+      rgba(4, 15, 24, .94) 100%
+    ),
+    url("sea-bg.jpg") center top / cover fixed no-repeat;
+  background-color: #06131C;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(110px);
+  opacity: .20;
+}
+
+body::before {
+  top: 8%;
+  left: -180px;
+  background: #00C8D7;
+}
+
+body::after {
+  right: -180px;
+  top: 42%;
+  background: #087A9A;
+}
+
+/* Saydam cam kartlar */
+.pkg,
+.sig,
+.work,
+.why,
+.form,
+.side-card,
+.term {
+  background: rgba(8, 27, 40, .64);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(145, 215, 225, .20);
+  box-shadow: 0 18px 55px rgba(0, 12, 20, .22);
+}
+
+/* Paket kartları */
+.pkg {
+  transition:
+    border-color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+.pkg:hover,
+.sig:hover,
+.work:hover,
+.why:hover {
+  border-color: rgba(102, 227, 229, .58);
+  transform: translateY(-5px);
+  box-shadow:
+    0 22px 70px rgba(0, 205, 220, .16),
+    0 0 0 1px rgba(102, 227, 229, .08);
+}
+
+/* Öne çıkan paket */
+.pkg--pop {
+  background: rgba(10, 47, 58, .72);
+  border-color: rgba(102, 227, 229, .48);
+}
+
+/* Terminal */
+.term {
+  box-shadow:
+    0 24px 60px rgba(0, 12, 20, .40),
+    0 0 45px rgba(0, 190, 210, .08);
+}
+
+.term-bar {
+  background: rgba(12, 41, 53, .78);
+}
+
+/* Hareketli bilgi şeridi */
+.marquee {
+  background: rgba(5, 20, 30, .62);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Form alanları */
+.f-group input,
+.f-group select,
+.f-group textarea {
+  background: rgba(3, 17, 27, .60);
+  border-color: rgba(145, 215, 225, .22);
+}
+
+.f-group input:focus,
+.f-group select:focus,
+.f-group textarea:focus {
+  background: rgba(6, 29, 40, .72);
+  border-color: #66E3E5;
+  box-shadow: 0 0 0 3px rgba(102, 227, 229, .10);
+}
+
+/* Modal */
+.modal-panel {
+  background: rgba(8, 27, 40, .93);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+/* Hero grid yerine yumuşak ışık */
+.hero::before {
+  background-image:
+    radial-gradient(
+      ellipse at center,
+      rgba(102, 227, 229, .10),
+      transparent 58%
+    );
+  background-size: 100% 100%;
+}
+
+/* Mobil */
+@media (max-width: 720px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  body::before,
+  body::after {
+    width: 300px;
+    height: 300px;
+    filter: blur(80px);
+    opacity: .14;
+  }
+
+  .pkg,
+  .sig,
+  .work,
+  .why,
+  .form,
+  .side-card,
+  .term {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+/* DESIGN SYSTEM PANEL */
+
+.design-panel {
+  min-height: 390px;
+  overflow: hidden;
+}
+
+.design-body {
+  padding: 26px 24px 24px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.design-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.design-label {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.design-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: .10em;
+  white-space: nowrap;
+}
+
+.design-status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+  animation: designPulse 1.8s ease-in-out infinite;
+}
+
+.design-line {
+  height: 1px;
+  width: 100%;
+  margin: 28px 0 4px;
+  background: linear-gradient(
+    90deg,
+    rgba(102, 227, 229, .65),
+    rgba(145, 215, 225, .12),
+    transparent
+  );
+}
+
+.design-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(145, 215, 225, .12);
+}
+
+.design-number {
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: .10em;
+  padding-top: 2px;
+}
+
+.design-item strong {
+  display: block;
+  color: var(--text);
+  font-size: 13px;
+  letter-spacing: .10em;
+}
+
+.design-item p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-family: var(--font-d);
+  font-size: 14px;
+}
+
+.design-footer {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 24px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+
+.design-footer span::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+@keyframes designPulse {
+  0%, 100% {
+    opacity: .45;
+    transform: scale(.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 720px) {
+  .design-panel {
+    min-height: 350px;
+  }
+
+  .design-body {
+    padding: 22px 18px 20px;
+  }
+
+  .design-intro {
+    display: block;
+  }
+
+  .design-status {
+    margin-top: 12px;
+  }
+
+  .design-item {
+    padding: 14px 0;
+  }
+
+  .design-footer {
+    gap: 12px;
+    font-size: 9px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= ÜST MENÜ ================= -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="/" class="logo">
+    <div class="logo-mark" style="border: none; width: 32px; height: 32px;">
+        <img src="logo.png" alt="OptiCodeStudio Logo" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div>
+        <span style="display: block; font-size: 16px; font-weight: 700; color: var(--text);">OptiCodeStudio</span>
+        <small>DIGITAL SOLUTIONS</small>
+    </div>
+</a>
+
+    <ul class="nav-links">
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary btn-sm">Get a Quote <i data-lucide="arrow-right"></i></a>
+      <button class="nav-burger" id="burger" aria-label="Menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#packages">Packages</a>
+  <a href="#process">Process</a>
+  <a href="#work">Work</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact" class="btn btn-primary">Get a Quote</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Web Design &amp; Development Studio</div>
+      <h1>A weak website is <em>costing you customers.</em></h1>
+      <p class="hero-lead">OptiCodeStudio designs and builds fast, conversion-focused, hand-coded websites for businesses that are done looking average online.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get a Custom Quote <i data-lucide="arrow-right"></i></a>
+        <button class="btn btn-ghost" id="auditBtn">Get a Quick Review <i data-lucide="search"></i></button>
+      </div>
+      <div class="hero-stats">
+  <div><b>Fast</b><span>clear delivery timelines</span></div>
+  <div><b>100%</b><span>hand-coded, zero templates</span></div>
+  <div><b>Free</b><span>first-look website review</span></div>
+</div>
+    </div>
+    <div class="term design-panel">
+  <div class="term-bar">
+    <i></i><i></i><i></i>
+    <span>OptiCodeStudio / 001</span>
+  </div>
+
+  <div class="design-body">
+    <div class="design-intro">
+      <span class="design-label">DIGITAL EXPERIENCE</span>
+      <span class="design-status">
+        <i></i>
+        ACCEPTING NEW PROJECTS
+      </span>
+    </div>
+
+    <div class="design-line"></div>
+
+    <div class="design-item">
+      <span class="design-number">01</span>
+      <div>
+        <strong>DESIGN</strong>
+        <p>Built around your brand</p>
+      </div>
+    </div>
+
+    <div class="design-item">
+      <span class="design-number">02</span>
+      <div>
+        <strong>DEVELOPMENT</strong>
+        <p>Hand-coded, fast and responsive</p>
+      </div>
+    </div>
+
+    <div class="design-item">
+      <span class="design-number">03</span>
+      <div>
+        <strong>DELIVERY</strong>
+        <p>From idea to launch, clearly</p>
+      </div>
+    </div>
+
+    <div class="design-footer">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>JAVASCRIPT</span>
+      <span>SEO</span>
+    </div>
+  </div>
+</div>
+</header>
+
+<!-- ================= KAYAN ŞERİT ================= -->
+<div class="marquee"><div class="marquee-track" id="mqTrack"></div></div>
+
+<!-- ================= TANIDIK GELDİ Mİ? ================= -->
+<section class="sec" id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">01 — Sound Familiar?</div>
+      <h2>Most business websites quietly fail in the same three ways.</h2>
+      <p>If any of these describe your current website, you're not just losing traffic — you're losing revenue.</p>
+    </div>
+    <div class="sig-grid">
+      <div class="sig reveal">
+        <div class="ico"><i data-lucide="gauge"></i></div>
+        <h3>It loads slowly</h3>
+        <p>Every extra second of load time drops conversions. Visitors don't wait — they leave and buy from someone else.</p>
+      </div>
+      <div class="sig reveal" style="transition-delay:.08s">
+        <div class="ico"><i data-lucide="smartphone"></i></div>
+        <h3>It breaks on mobile</h3>
+        <p>Most of your traffic is on a phone. If your site looks broken there, your business looks closed.</p>
+      </div>
+      <div class="sig reveal" style="transition-delay:.16s">
+        <div class="ico"><i data-lucide="search"></i></div>
+        <h3>It's invisible on Google</h3>
+        <p>No meta structure, no sitemap, no indexing. A website nobody finds is a business card in a drawer.</p>
+      </div>
+    </div>
+    <div class="sig-note reveal">
+      <p><strong>That's exactly who we build for.</strong> Send us your website — we'll tell you, honestly and for free, what's costing you money.</p>
+      <a id="auditNote">Request a quick review <i data-lucide="arrow-up-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAKETLER ================= -->
+<section class="sec" id="packages">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">02 — Packages</div>
+      <h2>Three packages. Fast delivery, pricing built around your budget.</h2>
+      <p>Every project is quoted individually — scope, complexity, timeline and integrations all matter. Tell us what you want to achieve and what you're comfortable spending, and we'll shape the right solution around it. Essential projects can launch in as little as 24 hours once all required content and approvals are ready. Growth projects are usually completed within 2–4 working days, while Premium and custom projects receive a confirmed timeline before work begins. No inflated packages, no surprise invoices.</p>
+    </div>
+    <div class="pkgs" id="pkgGrid"></div>
+  </div>
+</section>
+
+<!-- ================= SÜREÇ ================= -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">03 — Process</div>
+      <h2>From first message to launch, without the chaos.</h2>
+      <p>A clear, four-step process. You always know what's happening, what's next, and what's expected from you.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="step-num">STEP 01</span><h3>Discover</h3><p>We learn your business, goals and customers — and audit what your current site is doing wrong.</p></div>
+      <div class="step reveal" style="transition-delay:.08s"><span class="step-num">STEP 02</span><h3>Design</h3><p>A custom design built around your brand and one goal: turning visitors into customers.</p></div>
+      <div class="step reveal" style="transition-delay:.16s"><span class="step-num">STEP 03</span><h3>Build</h3><p>Hand-coded, fast, fully responsive. You review, we refine — revisions are included in every package.</p></div>
+      <div class="step reveal" style="transition-delay:.24s"><span class="step-num">STEP 04</span><h3>Launch</h3><p>Domain, hosting, SSL and SEO foundations — deployed, tested and handed over with support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFÖY ================= -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">04 — Work</div>
+      <h2>Selected work. Real problems, solved.</h2>
+      <p>Open a project to see what was broken, what we built, and what changed after launch.</p>
+    </div>
+    <div class="works" id="workGrid"></div>
+  </div>
+</section>
+
+<!-- ================= NEDEN OptiCodeStudio ================= -->
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">05 — Why Apex</div>
+      <h2>What you get when a studio actually builds, not assembles.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="ico"><i data-lucide="timer"></i></div>
+        <h3>Fast by design</h3>
+        <p>Essential projects can launch in as little as 24 hours when content and approvals are ready. Growth projects are usually completed within 2–4 working days, while Premium and custom work follows a confirmed project timeline. Why wait months when you could be winning customers this week?</p>
+      </div>
+      <div class="why reveal" style="transition-delay:.08s">
+        <div class="ico"><i data-lucide="wallet"></i></div>
+        <h3>One-time pricing, no subscriptions</h3>
+        <p>The price we agree on is the price you pay — once. No monthly fees, no lock-in, no hidden costs. Your website is 100% yours.</p>
+      </div>
+      <div class="why reveal" style="transition-delay:.16s">
+        <div class="ico"><i data-lucide="code"></i></div>
+        <h3>Hand-coded, no page builders</h3>
+        <p>Every site is custom HTML, CSS and JavaScript. Faster, cleaner, and no bloated template baggage.</p>
+      </div>
+      <div class="why reveal" style="transition-delay:.24s">
+        <div class="ico"><i data-lucide="zap"></i></div>
+        <h3>Direct communication</h3>
+        <p>You talk directly to the person building your site. No account managers, no telephone games.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SSS ================= -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">06 — FAQ</div>
+      <h2>Questions everyone asks. Answered honestly.</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ================= İLETİŞİM ================= -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">07 — Contact</div>
+      <h2>Tell us about your project.</h2>
+      <p>Share your goals and requirements. We'll recommend the right solution and send a custom quote — usually within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="form reveal" id="quoteForm" novalidate>
+        <div class="f-row">
+          <div class="f-group">
+            <label for="f-name">Your name *</label>
+            <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Your name">
+            <span class="f-msg">Please enter your name.</span>
+          </div>
+          <div class="f-group">
+            <label for="f-email">Email *</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@yourbusiness.com">
+            <span class="f-msg">Please enter a valid email.</span>
+          </div>
+        </div>
+        <div class="f-group">
+          <label for="f-site">Business / current website (optional)</label>
+          <input type="text" id="f-site" name="business" autocomplete="organization" placeholder="Business name or website">
+        </div>
+        <div class="f-row">
+          <div class="f-group">
+            <label for="f-pkg">Interested in</label>
+            <select id="f-pkg" name="package">
+              <option value="Not sure yet">Not sure yet</option>
+              <option value="Essential">Essential</option>
+              <option value="Growth">Growth</option>
+              <option value="Premium / Custom">Premium / Custom</option>
+              <option value="E-commerce / Custom Project">E-commerce / Custom Project</option>
+            </select>
+          </div>
+          <div class="f-group">
+  <label for="f-budget">Your budget <span>(optional)</span></label>
+
+  <select id="f-budget" name="budget">
+    <option value="Not specified">Prefer not to say</option>
+    <option value="Under $1,000">Under $1,000</option>
+    <option value="$1,000 - $2,500">$1,000 – $2,500</option>
+    <option value="$2,500 - $5,000">$2,500 – $5,000</option>
+    <option value="$5,000 - $10,000">$5,000 – $10,000</option>
+    <option value="$10,000+">$10,000+</option>
+  </select>
+</div>
+        </div>
+        <div class="f-group">
+          <label for="f-msg">Project details *</label>
+          <textarea id="f-msg" name="details" placeholder="Tell us about your business, what you need and what you want your website to achieve."></textarea>
+          <span class="f-msg">Please tell us a little about your project.</span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Send &amp; Get My Quote <i data-lucide="send"></i></button>
+        <p class="form-hint">Goes straight to our inbox — no spam, no newsletters, no middlemen.</p>
+      </form>
+
+      <div class="side">
+        <div class="side-card reveal">
+          <h4>Prefer email?</h4>
+          <p>Write to us directly — we usually reply within 24 hours.</p>
+          <div class="copy-mail">
+            <span id="mailText">opticodestudio@gmail.com</span>
+            <button class="copy-btn" id="copyMail" aria-label="Copy email"><i data-lucide="copy"></i></button>
+          </div>
+        </div>
+        <div class="side-card reveal" style="transition-delay:.08s">
+          <h4>Find us on Instagram</h4>
+          <p>New work, launches and the fastest way to reach us. Our DMs are always open.</p>
+          <a class="ig-link" id="igLink" href="#" target="_blank" rel="noopener">
+            <i data-lucide="instagram"></i>
+            <span><b id="igHandle">@opticodestudio</b><small>Work, launches &amp; DMs</small></span>
+          </a>
+        </div>
+        <div class="side-card reveal" style="transition-delay:.16s">
+          <h4>What happens next?</h4>
+          <ul class="next">
+            <li><span class="n">1</span><span><b>You send the details.</b> Goals, requirements, current website if you have one.</span></li>
+            <li><span class="n">2</span><span><b>We reply within 24 hours</b> with a recommendation and a custom quote.</span></li>
+            <li><span class="n">3</span><span><b>We agree on scope and start.</b> Timeline and deliverables confirmed in writing.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="#top">
+        <span class="logo-mark" style="border: none; width: 30px; height: 30px; display: inline-block;">
+          <img src="logo.png" alt="OptiCodeStudio Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        </span>
+        <span style="font-weight: 700;">OptiCode<small style="display: block; font: 500 10px/1 var(--font-m); letter-spacing: .3em; color: var(--muted); margin-top: 3px; text-transform: uppercase;">Studio</small></span>
+      </a>
+      <small>Hand-coded with HTML, CSS &amp; JavaScript — no page builders. © 2026 OptiCodeStudio. All rights reserved.</small>
+    </div>
+    <div class="foot-links">
+      <!-- Alttaki 'yönetici@domain.com' yerine kendi yeni mail adresini yaz kanka -->
+      <a href="opticodestudio@gmail.com" id="footMail"><i data-lucide="mail"></i> Email</a>
+      <!-- Instagram adresini değiştirmek istersen alttaki '#' yerine profil linkini yapıştırabilirsin -->
+      <a href="https://www.instagram.com/opticodestudio" id="footIg" target="_blank" rel="noopener"><i data-lucide="instagram"></i> Instagram</a>
+      <a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ================= PAKET DETAY MODALI ================= -->
+<div class="modal" id="pkgModal" role="dialog" aria-modal="true">
+  <div class="modal-bg" data-close="pkgModal"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div><h3 id="mName"></h3><p id="mTag"></p></div>
+      <button class="modal-x" data-close="pkgModal" aria-label="Close"><i data-lucide="x"></i></button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-best" id="mBest"></p>
+      <div class="modal-sub" id="mFrom" style="display:none"></div>
+      <ul class="modal-grid" id="mList"></ul>
+      <div class="modal-sub">Notes &amp; exceptions</div>
+      <ul class="modal-notes" id="mNotes"></ul>
+    </div>
+    <div class="modal-foot"><button class="btn btn-primary" id="mCta">Get a Custom Quote <i data-lucide="arrow-right"></i></button></div>
+  </div>
+</div>
+
+<!-- ================= CASE STUDY MODALI ================= -->
+<div class="modal" id="workModal" role="dialog" aria-modal="true">
+  <div class="modal-bg" data-close="workModal"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div><h3 id="wName"></h3><p id="wTag"></p></div>
+      <button class="modal-x" data-close="workModal" aria-label="Close"><i data-lucide="x"></i></button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-best" id="wOverview"></p>
+      <div class="modal-sub">What we did</div>
+      <ul class="modal-grid" id="wDid"></ul>
+      <div class="modal-sub">Results</div>
+      <div class="cs-results" id="wResults"></div>
+      <a class="btn btn-ghost w-visit" id="wSite" style="display:none">Visit website <i data-lucide="arrow-up-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ÜCRETSİZ DENETİM MODALI ================= -->
+<div class="modal" id="auditModal" role="dialog" aria-modal="true">
+  <div class="modal-bg" data-close="auditModal"></div>
+  <div class="modal-panel" style="max-width:560px">
+    <div class="modal-head">
+      <div><h3>Quick Website Review</h3><p>Quick first look · no pressure</p></div>
+      <button class="modal-x" data-close="auditModal" aria-label="Close"><i data-lucide="x"></i></button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-best">Send us your website address and we’ll take a quick first look. We’ll highlight the biggest issue we notice first and let you know whether a deeper review would be useful. This is a practical starting point, not a full technical audit.</p>
+      <form id="auditForm" novalidate>
+        <div class="f-group">
+          <label for="a-name">Your name *</label>
+          <input type="text" id="a-name" name="name" autocomplete="name" placeholder="Your name">
+          <span class="f-msg">Please enter your name.</span>
+        </div>
+        <div class="f-group">
+          <label for="a-email">Email *</label>
+          <input type="email" id="a-email" name="email" autocomplete="email" placeholder="you@yourbusiness.com">
+          <span class="f-msg">Please enter a valid email.</span>
+        </div>
+        <div class="f-group">
+          <label for="a-site">Your website or business</label>
+          <input type="text" id="a-site" name="website" placeholder="yourwebsite.com or business name">
+<span class="f-msg">Please enter your website or business name.</span>
+        </div>
+        <div class="f-group">
+          <label for="a-note">What would you like us to review? <span>(optional)</span></label>
+          <textarea id="a-note" name="notes" placeholder="What would you like us to review?" style="min-height:90px"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Request My Quick Review <i data-lucide="send"></i></button>
+        <p class="form-hint">A practical first look. We’ll only recommend a deeper review when it makes sense.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast"><i data-lucide="check"></i><span id="toastMsg"></span></div>
+
+<script>
+/* ================================================================
+   ⚙️ AYARLAR MERKEZİ — DEĞİŞTİRECEĞİN HER ŞEY BURADA
+   ----------------------------------------------------------------
+   Nasıl kullanılır:
+   - Sadece tırnak içindeki yazıları değiştir.
+   - Bir satırı silmek istersen başına // koy.
+   - Yeni madde eklemek için bir satırı kopyalayıp altına yapıştır.
+   ================================================================ */
+const CONFIG = {
+
+  // ---- İLETİŞİM BİLGİLERİ --------------------------------------
+  email: "opticodestudio@gmail.com",          // Formlar bu adrese gider
+  instagramUrl: "https://www.instagram.com/opticodestudio/",
+  instagramHandle: "@opticodestudio",
+
+  // ---- KAYAN ŞERİTTEKİ YAZILAR ---------------------------------
+  marquee: [
+    "Website Design", "UI / UX", "Landing Pages", "E-commerce",
+    "SEO Foundations", "Performance", "Responsive Development", "Redesigns"
+  ],
+
+  // ---- PAKETLER -------------------------------------------------
+  packages: [
+    {
+      id: "essential",
+      name: "Essential",
+      tagline: "Professional online presence",
+      bestFor: "Best for small businesses that need a professional, modern online presence — live in 24 hours.",
+      badge: null,
+      special: false,
+      includesFrom: null,
+      short: [
+        "Custom website design",
+        "1–5 pages",
+        "Fully responsive — mobile, tablet, desktop",
+        "Contact form + call-to-action buttons",
+        "Basic SEO structure & meta setup",
+        "SSL, domain & hosting setup",
+        "1–2 revision rounds + launch support"
+      ],
+      full: [
+        "Custom website design","1–5 pages","Home, About, Services, Contact + basic additional pages where needed",
+        "Fully responsive design for mobile, tablet and desktop","Contact form","Phone, email & WhatsApp calls-to-action where applicable",
+        "Google Maps integration if needed","Social media links","Basic SEO structure","Meta titles and descriptions","Favicon setup",
+        "Optimized website images","Basic performance / speed optimization","SSL / HTTPS setup","Domain connection",
+        "Hosting / deployment setup","Custom 404 page","Form success / confirmation state","Simple, professional animations",
+        "1–2 revision rounds","Launch support"
+      ],
+      notes: [
+        "Copywriting, professional photography, branding, logo creation and large-scale content creation are not automatically included.",
+        "Third-party paid services — hosting, domain, plugins, APIs or software subscriptions — may involve additional external costs.",
+        "Advanced integrations and custom functionality require a custom quote."
+      ]
+    },
+    {
+      id: "growth",
+      name: "Growth",
+      tagline: "Built to generate leads",
+      bestFor: "Best for businesses that want a stronger website focused on lead generation, credibility, and conversions — live in 48 hours.",
+      badge: "MOST POPULAR",
+      special: false,
+      includesFrom: "Everything in Essential, plus",
+      short: [
+        "Approx. 5–10 pages depending on scope",
+        "Conversion-focused structure & landing page",
+        "Advanced lead forms + strategic CTAs",
+        "Testimonials, FAQ & portfolio sections",
+        "Blog / CMS if required",
+        "Google Analytics + Search Console",
+        "2–3 revision rounds + post-launch support"
+      ],
+      full: [
+        "Approximately 5–10 pages depending on scope","More customized UI and page layouts","Conversion-focused website structure",
+        "Custom landing page","Advanced lead / contact forms","Service, budget or project-selection fields where appropriate",
+        "Multiple strategic CTA sections","Testimonials / reviews sections","FAQ section","Portfolio, gallery or case studies",
+        "Blog / CMS if required","Online appointment or reservation integration where applicable","Google Analytics setup",
+        "Google Search Console setup","Sitemap and robots.txt configuration","Open Graph / social sharing setup",
+        "More extensive on-page SEO","More extensive performance optimization","Advanced animations and micro-interactions",
+        "Migration of reasonable amounts of existing content","2–3 revision rounds","Short post-launch support period"
+      ],
+      notes: [
+        "Appointment / reservation features may use third-party platforms rather than a fully custom booking system.",
+        "CMS / blog functionality is included only when required by the project.",
+        "Content migration covers a reasonable agreed scope; very large migrations require a custom quote.",
+        "Advanced SEO campaigns, ongoing SEO, advertising and content marketing are separate services.",
+        "Third-party software / API / subscription costs are not automatically included."
+      ]
+    },
+    {
+      id: "premium",
+      name: "Premium / Custom",
+      tagline: "A fully custom digital experience",
+      bestFor: "Best for established businesses requiring a highly customized digital experience — live in 3–7 days.",
+      badge: null,
+      special: false,
+      includesFrom: "Everything in Growth, plus",
+      short: [
+        "10+ pages or fully custom scope",
+        "Full custom design system + UX planning",
+        "Custom interactions, forms & calculators",
+        "CRM, email & newsletter integrations",
+        "Multilingual support where required",
+        "Advanced analytics + conversion tracking",
+        "Client training + extended support"
+      ],
+      full: [
+        "10+ pages or a fully custom project scope","Full custom design system","Advanced UX planning","Advanced scroll animations",
+        "Custom interactions and micro-interactions","Custom forms and calculators where required","CRM integrations",
+        "Email automation integrations","Newsletter integrations","Advanced CMS architecture","Multilingual website functionality where required",
+        "Advanced analytics setup","Conversion tracking","More extensive technical SEO implementation",
+        "Larger content migration where agreed","Priority revisions and support","Client training and project handoff",
+        "Extended post-launch support depending on agreed scope"
+      ],
+      notes: [
+        "Premium / Custom does not mean unlimited functionality, unlimited pages, or unlimited revisions.",
+        "Exact deliverables must be defined before the project begins.",
+        "Complex backend systems, SaaS products, dashboards, membership platforms, custom payment infrastructure, advanced AI systems and complex web applications require individual technical evaluation and a separate quote.",
+        "Third-party service / API / licensing costs are separate unless specifically included in the proposal."
+      ]
+    },
+    {
+  id: "ecommerce",
+  name: "E-commerce",
+  tagline: "Custom storefronts built on the right platform",
+  bestFor: "Best for businesses ready to sell online with a clear product range, a suitable platform and realistic delivery requirements.",
+  badge: null,
+  special: true,
+  includesFrom: "What a typical e-commerce setup can include",
+  short: [
+    "Custom storefront design",
+    "Product and collection page templates",
+    "Platform-based cart and checkout setup",
+    "Supported payment-provider connection",
+    "Basic product filters and search",
+    "Shipping settings based on client-provided details",
+    "Analytics and email-marketing connection",
+    "Store handover and basic training"
+  ],
+  full: [
+    "Custom e-commerce storefront design",
+    "Product and collection page templates",
+    "Product-detail page layout and conversion-focused product UX",
+    "Platform-based shopping cart and checkout setup",
+    "Connection to a supported payment provider",
+    "Collection and product navigation structure",
+    "Basic product filters and search where supported",
+    "Customer accounts where supported by the selected platform",
+    "Shipping settings configured from client-provided rates and rules",
+    "Tax settings configured from client-provided requirements",
+    "Analytics and conversion-tracking setup",
+    "Email-marketing platform connection where required",
+    "Basic store-management handover and training",
+    "Responsive testing across modern devices"
+  ],
+  notes: [
+    "E-commerce projects are built on a suitable third-party platform such as Shopify or WooCommerce, selected based on project requirements.",
+    "Payment, shipping, tax, inventory and customer-account features depend on the selected platform, country, provider availability and client accounts.",
+    "The client is responsible for payment-provider verification, business information, tax rules, shipping rates, product data and legal store policies.",
+    "Custom checkout systems, marketplace syncing, ERP integrations, advanced inventory, subscriptions and custom backend development require separate technical evaluation and pricing.",
+    "Third-party platform, app, payment-provider, shipping-provider and software costs are not included unless stated in the final proposal."
+  ]
+}
+  ],
+
+  // ---- PORTFÖY / CASE STUDY KARTLARI ---------------------------
+  // siteUrl: demo sitelerin dosya adları — kartlardan aynı sekmede açılırlar.
+  // Annenin sitesi eklenince buraya yeni bir blok kopyalayıp
+  // label'ı "Client Project" yapacağız.
+  portfolio: [
+  {
+    label: "Studio Concept",
+    title: "Nesmina",
+    sector: "Handknit Objects Concept",
+    desc: "A quiet, tactile concept site for a handknit label built around natural fibres, small releases and the rhythm of making.",
+    image: "demo4.png",
+    tags: ["Brand Direction", "Web Design", "Development"],
+    variant: "b",
+    caseStudy: {
+      overview: "Nesmina needed an online presence that felt like a real craft studio rather than a generic e-commerce launch page. We created a calmer visual world around yarn, knitting needles, material studies and slow-made objects.",
+      did: [
+        "Original handknit visual direction with yarn and needle-inspired details",
+        "Editorial landing page layout designed around material and process",
+        "Responsive concept system for mobile, tablet and desktop",
+        "Custom CSS artwork for yarn forms, knitting needles and texture",
+        "Clear fictional concept notices and a privacy-safe demo form",
+        "Smooth scroll reveals and considered micro-interactions"
+      ],
+      results: [
+        { value: "01", label: "distinct craft identity" },
+        { value: "4", label: "future object categories" },
+        { value: "0", label: "real data collected" }
+      ],
+      siteUrl: "nesmina.html"
+    }
+  },
+
+  {
+    label: "Studio Work",
+    title: "Golden Crust Bakery",
+    sector: "Bakery Café Website",
+    desc: "A warm, appetite-first one-pager for a family bakery — menu, story and one-tap directions in a single scroll.",
+    image: "demo3.png",
+    tags: ["Design", "Development", "Local Business"],
+    variant: "a",
+    caseStudy: {
+      overview: "A family-run bakery with a loyal local following needed a modern, mobile-friendly home that put its menu, story and location within easy reach.",
+      did: [
+        "Warm, appetite-driven visual identity",
+        "Single-scroll structure for menu, story and directions",
+        "Mobile-first layout for customers on the move",
+        "Google Maps-ready direction area",
+        "Local-search foundations and clear page structure",
+        "Fast, lightweight front-end build"
+      ],
+      results: [
+        { value: "Menu", label: "easy to find" },
+        { value: "Mobile", label: "first layout" },
+        { value: "1 page", label: "clear customer journey" }
+      ],
+      siteUrl: "golden-crust.html"
+    }
+  },
+
+  {
+    label: "Studio Concept",
+    title: "Luma Dental Studio",
+    sector: "Dental Care Website Concept",
+    desc: "An editorial, patient-first dental concept that replaces clinical pressure with clarity, calm and an easier first step.",
+    image: "demo1.png",
+    tags: ["Healthcare", "Editorial UI", "Web Design"],
+    variant: "b",
+    caseStudy: {
+      overview: "Luma Dental Studio is a fictional healthcare concept created to explore a calmer way to present dental care online. Instead of generic clinic cards and hard-sell calls to action, the site uses spacious editorial layouts, clear treatment pathways and a reassuring appointment flow.",
+      did: [
+        "Complete identity shift from a legal site to an original dental-care concept",
+        "Editorial split-screen hero with custom CSS porcelain-tooth artwork",
+        "Full-width treatment navigation instead of standard service cards",
+        "Patient-first copy focused on clarity, comfort and understanding",
+        "Asymmetric appointment enquiry experience",
+        "Fictional concept notices and a data-safe demo confirmation state"
+      ],
+      results: [
+        { value: "4", label: "care pathways" },
+        { value: "01", label: "editorial care journey" },
+        { value: "0", label: "real patient data collected" }
+      ],
+      siteUrl: "meridian-law.html"
+    }
+  },
+
+  {
+    label: "Studio Concept",
+    title: "Northform Training Club",
+    sector: "Strength & Conditioning Concept",
+    desc: "A structured, high-energy training-club concept for strength, conditioning and movement without empty fitness promises.",
+    image: "demo2.png",
+    tags: ["Fitness", "Brand Direction", "Development"],
+    variant: "c",
+    caseStudy: {
+      overview: "Northform replaces a generic fitness-studio site with a stronger, more focused training-club identity. The layout is built like a training log: clear tracks, repeatable structure and no fake transformation claims or invented member testimonials.",
+      did: [
+        "Rebranded Forge Athletics as Northform Training Club",
+        "Training-board hero designed around weekly structure",
+        "Original training-log interface for four concept tracks",
+        "Custom typography, grid system and high-contrast motion details",
+        "Fitness copy with no unsupported outcomes or fake social proof",
+        "Safe demo enquiry flow with no data collection"
+      ],
+      results: [
+        { value: "4", label: "training tracks" },
+        { value: "01", label: "weekly program board" },
+        { value: "0", label: "fake claims or data collected" }
+      ],
+      siteUrl: "forge-athletics.html"
+    }
+  }
+],
+
+  // ---- SSS ------------------------------------------------------
+  faqs: [
+    {
+      q: "How much does a website cost?",
+      a: "Every project is different — scope, complexity, timeline and integrations all play a role — so we don't publish fixed prices. But here's the part most studios won't tell you: you set the budget. Tell us what you're comfortable investing and we'll tell you exactly what it gets you. Clear, itemized quote, usually within 24 hours."
+    },
+    {
+      q: "Can you work within my budget?",
+      a: "Yes — that's exactly how we quote. Tell us what you're comfortable investing and we'll honestly tell you what it gets you, and what the alternatives are. If your budget doesn't fit the project you have in mind, we'll say so and suggest the smartest path instead of inflating the scope."
+    },
+    {
+      q: "How long does a website take to build?",
+      a: "It depends on the scope, content readiness and required integrations. Essential projects can launch in as little as 24 hours once the required content and approvals are ready. Growth projects are usually completed within 2–4 working days. Premium, e-commerce and custom projects receive a clear delivery timeline before work begins, so you always know what to expect."
+    },
+    {
+      q: "What do you need from me to get started?",
+      a: "The basics: what your business does, who your customers are, and what you want the website to achieve. If you already have a logo, texts or photos, great — if not, we'll guide you through what's needed."
+    },
+    {
+      q: "Do you write the text or take the photos?",
+      a: "Copywriting, professional photography, branding and logo creation are not automatically included in the packages — but they're available as separate services. We'll always tell you upfront what's in scope and what isn't."
+    },
+    {
+      q: "Can you redesign my existing website?",
+      a: "Absolutely — that's actually most of our work. Send us your current website and we'll run a free audit showing exactly what's costing you customers, then quote the redesign."
+    },
+    {
+      q: "What about hosting, domain and maintenance?",
+      a: "Domain connection, hosting setup and SSL are included in the Essential package and above. Domain and hosting themselves are third-party services paid by you — we'll recommend affordable, reliable options. Maintenance is available as a separate service."
+    },
+    {
+      q: "What's not included by default?",
+      a: "Complex web applications, membership systems, custom payment infrastructure, custom backend development, advanced AI systems and highly complex integrations require a separate custom quote. We believe in clear scope — you'll never be surprised by what's excluded."
+    }
+  ],
+
+  // ---- HERO'DAKİ TERMİNAL ANİMASYONU ---------------------------
+  terminal: [
+    { t: "$ OptiCodeStudio audit --url yourbusiness.com", c: "cmd" },
+    { t: "▸ mobile experience .......... FAIL", c: "bad" },
+    { t: "▸ page load speed ............ 4.2s · POOR", c: "warn" },
+    { t: "▸ SEO structure .............. 12 issues found", c: "bad" },
+    { t: "▸ design freshness ........... OUTDATED", c: "warn" },
+    { t: "────────────────────────────────────", c: "dim" },
+    { t: "DIAGNOSIS: losing customers every day", c: "strong" },
+    { t: "$ OptiCodeStudio build --redesign", c: "cmd" },
+    { t: "▸ custom design .............. DONE", c: "ok" },
+    { t: "▸ performance ................ 0.9s · PASS", c: "ok" },
+    { t: "▸ mobile experience .......... PASS", c: "ok" },
+    { t: "STATUS: ready to win customers back", c: "ok" }
+  ]
+};
+/* ============== AYARLAR MERKEZİ BİTTİ — alt taraf sistem kodu ============== */
+
+
+// ---------- Yardımcılar ----------
+const $ = (s) => document.querySelector(s);
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const icons = () => window.lucide && lucide.createIcons();
+
+function showToast(msg){
+  $('#toastMsg').textContent = msg;
+  const t = $('#toast');
+  t.classList.add('in');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('in'), 3400);
+}
+
+// ---------- Mail gönderme motoru (FormSubmit) ----------
+// İLK gönderimde FormSubmit sana bir aktivasyon maili atar:
+// Gmail'i aç, linkine tıkla, sistem kalıcı olarak açılır.
+async function sendToApex(payload){
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 10000);
+  try{
+    const r = await fetch('https://formsubmit.co/ajax/' + CONFIG.email, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.assign({ _template: 'table', _captcha: 'false' }, payload)),
+      signal: ctrl.signal
+    });
+    const d = await r.json().catch(() => ({}));
+    return !!(d && (d.success === true || d.success === 'true'));
+  }catch(err){
+    return false;
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
+// ---------- Form doğrulama ----------
+function validate(fields){
+  let ok = true;
+  fields.forEach(f => {
+    const input = $(f.el);
+    const good = f.test(input.value);
+    input.closest('.f-group').classList.toggle('err', !good);
+    if(!good) ok = false;
+  });
+  return ok;
+}
+document.querySelectorAll('.f-group input, .f-group textarea').forEach(i => {
+  i.addEventListener('input', e => e.target.closest('.f-group').classList.remove('err'));
+});
+
+// ---------- Modal yönetimi ----------
+function openModalEl(m){ m.classList.add('open'); document.body.style.overflow = 'hidden'; icons(); }
+function closeModalEl(m){ m.classList.remove('open'); document.body.style.overflow = ''; }
+document.querySelectorAll('[data-close]').forEach(el => {
+  el.addEventListener('click', () => {
+    const m = document.getElementById(el.dataset.close);
+    if(m) closeModalEl(m);
+  });
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') document.querySelectorAll('.modal.open').forEach(closeModalEl);
+});
+
+// ---------- Kayan şerit ----------
+(function(){
+  const items = CONFIG.marquee.map(m => `<div class="mq-item">${m}</div>`).join('');
+  $('#mqTrack').innerHTML = items + items;
+})();
+
+// ---------- Paket kartları ----------
+(function(){
+  const grid = $('#pkgGrid');
+  grid.innerHTML = CONFIG.packages.map(p => `
+    <article class="pkg ${p.badge ? 'pkg--pop' : ''} ${p.special ? 'pkg--special' : ''} reveal">
+      ${p.badge ? `<span class="pkg-badge">${p.badge}</span>` : ''}
+      ${p.special ? `<span class="pkg-tag">SEPARATE SERVICE</span>` : ''}
+      <h3 class="pkg-name">${p.name}</h3>
+      <p class="pkg-best">${p.bestFor}</p>
+      ${p.includesFrom ? `<div class="pkg-from">${p.includesFrom}</div>` : ''}
+      <ul class="pkg-list">
+        ${p.short.map(f => `<li><i data-lucide="check"></i><span>${f}</span></li>`).join('')}
+      </ul>
+      <div class="pkg-actions">
+        <button class="btn btn-primary btn-sm" data-quote="${p.name}">${p.special ? 'Request E-commerce Quote' : 'Get a Custom Quote'}</button>
+        <button class="pkg-more" data-modal="${p.id}">View full details</button>
+      </div>
+    </article>`).join('');
+
+  grid.querySelectorAll('[data-quote]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sel = $('#f-pkg');
+      [...sel.options].forEach(o => { if(o.value === btn.dataset.quote) sel.value = o.value; });
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      showToast(`${btn.dataset.quote} selected — tell us about your project.`);
+    });
+  });
+
+  grid.querySelectorAll('[data-modal]').forEach(btn => {
+    btn.addEventListener('click', () => openPkgModal(btn.dataset.modal));
+  });
+})();
+
+// ---------- Paket modalı ----------
+function openPkgModal(id){
+  const p = CONFIG.packages.find(x => x.id === id);
+  if(!p) return;
+  $('#mName').textContent = p.name;
+  $('#mTag').textContent = p.tagline;
+  $('#mBest').textContent = p.bestFor;
+  const from = $('#mFrom');
+  if(p.includesFrom){ from.style.display = 'block'; from.textContent = p.includesFrom; }
+  else from.style.display = 'none';
+  $('#mList').innerHTML = p.full.map(f => `<li><i data-lucide="check"></i><span>${f}</span></li>`).join('');
+  $('#mNotes').innerHTML = p.notes.map(n => `<li>${n}</li>`).join('');
+  $('#mCta').dataset.pkg = p.name;
+  openModalEl($('#pkgModal'));
+}
+$('#mCta').addEventListener('click', function(){
+  const name = this.dataset.pkg;
+  closeModalEl($('#pkgModal'));
+  const sel = $('#f-pkg');
+  [...sel.options].forEach(o => { if(o.value === name) sel.value = o.value; });
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+});
+
+// ---------- Portföy kartları + case study modalı ----------
+(function(){
+  const mock = {
+    a: `<div class="mb-nav"><i></i><i></i><i></i></div><div class="mb-title a"></div><div class="mb-line"></div><div class="mb-line s"></div><div class="mb-btn"></div>`,
+    b: `<div class="mb-nav"><i></i><i></i><i></i></div><div class="mb-title"></div><div class="mb-line s" style="width:70%"></div><div class="mb-cards"><i></i><i></i><i></i></div>`,
+    c: `<div class="mb-title a" style="width:88%"></div><div style="display:flex;gap:9px;flex:1"><div class="mb-img" style="flex:1.2"></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="mb-line"></div><div class="mb-line"></div><div class="mb-line s"></div><div class="mb-btn"></div></div></div>`
+  };
+  $('#workGrid').innerHTML = CONFIG.portfolio.map((w,i) => `
+    <article class="work reveal" data-work="${i}" tabindex="0" role="button" aria-label="View case study: ${w.title}">
+      <div class="mock"><div class="mock-bar"><i></i><i></i><i></i><span class="mock-url"></span></div><div class="mock-body">${mock[w.variant] || mock.a}</div></div>
+      <div class="work-meta">
+        <span class="work-label">${w.label}</span>
+        <h3>${w.title}</h3>
+        <p>${w.desc}</p>
+        <div class="work-tags">${w.tags.map(t => `<span>${t}</span>`).join('')}<span>${w.sector}</span></div>
+        <span class="work-cta">View case study <i data-lucide="arrow-right"></i></span>
+      </div>
+    </article>`).join('');
+
+  const grid = $('#workGrid');
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.work');
+    if(card) openWork(+card.dataset.work);
+  });
+  grid.addEventListener('keydown', e => {
+    if(e.key === 'Enter'){
+      const card = e.target.closest('.work');
+      if(card) openWork(+card.dataset.work);
+    }
+  });
+})();
+
+function openWork(i){
+  const w = CONFIG.portfolio[i];
+  if(!w || !w.caseStudy) return;
+  $('#wName').textContent = w.title;
+  $('#wTag').textContent = w.sector;
+  $('#wOverview').textContent = w.caseStudy.overview;
+  $('#wDid').innerHTML = w.caseStudy.did.map(d => `<li><i data-lucide="check"></i><span>${d}</span></li>`).join('');
+  $('#wResults').innerHTML = w.caseStudy.results.map(r => `<div class="cs-r"><b>${r.value}</b><span>${r.label}</span></div>`).join('');
+  const site = $('#wSite');
+  if(w.caseStudy.siteUrl){ site.style.display = 'inline-flex'; site.href = w.caseStudy.siteUrl; }
+  else site.style.display = 'none';
+  openModalEl($('#workModal'));
+}
+
+// ---------- SSS ----------
+(function(){
+  $('#faqList').innerHTML = CONFIG.faqs.map(f => `
+    <div class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">${f.q}<i data-lucide="chevron-down"></i></button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>`).join('');
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if(!open){
+        item.classList.add('open');
+        const a = item.querySelector('.faq-a');
+        a.style.maxHeight = a.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+
+// ---------- ANA FORM ----------
+(function(){
+  const form = $('#quoteForm');
+  const fields = [
+    { el: '#f-name',  test: v => v.trim().length > 1 },
+    { el: '#f-email', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    { el: '#f-msg',   test: v => v.trim().length > 9 }
+  ];
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if(!validate(fields)){ showToast('Please fill in the highlighted fields.'); return; }
+
+    const btn = form.querySelector('[type="submit"]');
+    const btnHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const payload = {
+      _subject: `Quote Request — ${$('#f-pkg').value} — ${$('#f-name').value.trim()}`,
+      'Name': $('#f-name').value.trim(),
+      'Email': $('#f-email').value.trim(),
+      'Business / website': $('#f-site').value.trim() || '—',
+      'Interested in': $('#f-pkg').value,
+      'Budget': $('#f-budget').value,
+      'Project details': $('#f-msg').value.trim()
+    };
+
+    const sent = await sendToApex(payload);
+
+    if(sent){
+      showToast('Message sent! We\u2019ll reply within 24 hours.');
+      form.reset();
+      btn.innerHTML = 'Sent ✓';
+      setTimeout(() => { btn.innerHTML = btnHtml; btn.disabled = false; icons(); }, 2400);
+    }else{
+      btn.innerHTML = btnHtml; btn.disabled = false; icons();
+      const s = encodeURIComponent(payload._subject);
+      const b = encodeURIComponent(
+        `Hi OptiCodeStudio,\n\n` +
+        `Name: ${payload['Name']}\n` +
+        `Email: ${payload['Email']}\n` +
+        `Business / website: ${payload['Business / website']}\n` +
+        `Interested in: ${payload['Interested in']}\n` +
+        `Budget: ${payload['Budget']}\n\n` +
+        `Project details:\n${payload['Project details']}`
+      );
+      window.location.href = `mailto:${CONFIG.email}?subject=${s}&body=${b}`;
+      showToast('Opening your email app as a backup — just hit send.');
+    }
+  });
+})();
+
+// ---------- ÜCRETSİZ DENETİM FORMU ----------
+(function(){
+  const af = $('#auditForm');
+  const aFields = [
+    { el: '#a-name',  test: v => v.trim().length > 1 },
+    { el: '#a-email', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    { el: '#a-site',  test: v => v.trim().length > 3 }
+  ];
+
+  af.addEventListener('submit', async e => {
+    e.preventDefault();
+    if(!validate(aFields)){ showToast('Please fill in the highlighted fields.'); return; }
+
+    const btn = af.querySelector('[type="submit"]');
+    const btnHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const payload = {
+      _subject: `Free Audit Request — ${$('#a-site').value.trim()}`,
+      'Name': $('#a-name').value.trim(),
+      'Email': $('#a-email').value.trim(),
+      'Website': $('#a-site').value.trim(),
+      'Notes': $('#a-note').value.trim() || '—'
+    };
+
+    const sent = await sendToApex(payload);
+
+    if(sent){
+      af.innerHTML = `
+        <div class="audit-ok">
+          <div class="ok-ico"><i data-lucide="check-circle-2"></i></div>
+          <h4>Quick review request received!</h4>
+          <p>We’ll take a first look and reply with the biggest issue we notice first. Keep an eye on your inbox and spam folder, just in case.
+        </div>`;
+      showToast('Quick review request sent!');
+      icons();
+    }else{
+      btn.disabled = false; btn.innerHTML = btnHtml; icons();
+      const s = encodeURIComponent(payload._subject);
+      const b = encodeURIComponent(
+        `Hi OptiCodeStudio,\n\nI'd like a quick first-look review of my website.\n\n` +
+        `Name: ${payload['Name']}\nEmail: ${payload['Email']}\nWebsite: ${payload['Website']}\nNotes: ${payload['Notes']}`
+      );
+      window.location.href = `mailto:${CONFIG.email}?subject=${s}&body=${b}`;
+      showToast('Opening your email app as a backup.');
+    }
+  });
+
+  const openAudit = () => openModalEl($('#auditModal'));
+  $('#auditBtn').addEventListener('click', openAudit);
+  $('#auditNote').addEventListener('click', e => { e.preventDefault(); openAudit(); });
+})();
+
+// ---------- İletişim linkleri / kopyalama ----------
+(function(){
+  const set = (id, attr, val) => { const el = $(id); if(el) el.setAttribute(attr, val); };
+  set('#igLink', 'href', CONFIG.instagramUrl);
+  set('#footIg', 'href', CONFIG.instagramUrl);
+  set('#footMail', 'href', `mailto:${CONFIG.email}`);
+  $('#igHandle').textContent = CONFIG.instagramHandle;
+  $('#mailText').textContent = CONFIG.email;
+
+  $('#copyMail').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(CONFIG.email); showToast('Email address copied.'); }
+    catch { showToast('Couldn\u2019t copy — the address is right there though!'); }
+  });
+})();
+
+// ---------- Mobil menü ----------
+(function(){
+  const burger = $('#burger'), mobile = $('#navMobile');
+  burger.addEventListener('click', () => mobile.classList.toggle('open'));
+  mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobile.classList.remove('open')));
+})();
+
+// ---------- Kaydırma: menü arka planı + reveal ----------
+(function(){
+  const nav = $('#nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), {passive:true});
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: .12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+// ---------- Hero terminali ----------
+(async function(){
+  const el = $('#termBody');
+  if(!el) return;
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){
+    el.innerHTML = CONFIG.terminal.map(l => `<div class="tl ${l.c}">${l.t}</div>`).join('');
+    return;
+  }
+  while(true){
+    el.innerHTML = '';
+    for(const line of CONFIG.terminal){
+      const div = document.createElement('div');
+      div.className = 'tl ' + line.c + ' typing';
+      el.appendChild(div);
+      for(const ch of line.t){ div.textContent += ch; await sleep(11); }
+      div.classList.remove('typing');
+      await sleep(line.c === 'cmd' ? 550 : 300);
+    }
+    await sleep(3600);
+  }
+})();
+
+icons();
+</script>
+</body>
+</html>

@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luma Dental Studio — Care That Feels Clear</title>
+<meta name="description" content="Luma Dental Studio is a fictional editorial dental-care website concept.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%2317333A'/><path d='M8 5c2 0 2.8 1.4 4 1.4S14 5 16 5c2.6 0 3.8 2.3 3.2 5.3-.7 3.8-2.1 8.7-4.4 8.7-1.3 0-1.4-3.5-2.8-3.5S10.1 19 8.8 19c-2.3 0-3.8-4.9-4.5-8.7C3.7 7.3 5.2 5 8 5Z' fill='%23F7F8F6' stroke='%238EAFA8' stroke-width='1'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F7F8F6;
+  --paper:#FFFFFF;
+  --ink:#17333A;
+  --ink-soft:#294850;
+  --mist:#DCE7E5;
+  --mist-2:#EAF0EE;
+  --line:#CAD8D5;
+  --accent:#8EAFA8;
+  --warm:#E9DED3;
+  --muted:#6E8588;
+  --serif:"Libre Baskerville", Georgia, serif;
+  --sans:"DM Sans", Arial, sans-serif;
+  --mono:"DM Mono", monospace;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  overflow-x:hidden;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  border:0;
+}
+
+.wrap{
+  width:min(1260px, calc(100% - 56px));
+  margin:0 auto;
+}
+
+.eyebrow{
+  color:var(--muted);
+  font:500 10px/1 var(--mono);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.eyebrow::before{
+  content:"";
+  display:inline-block;
+  width:21px;
+  height:1px;
+  margin:0 9px 3px 0;
+  background:var(--accent);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+
+.reveal.in{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.concept-strip{
+  display:flex;
+  justify-content:center;
+  padding:9px 18px;
+  background:var(--ink);
+  color:#D5E4E1;
+  text-align:center;
+  font:400 10px/1.4 var(--mono);
+  letter-spacing:.045em;
+}
+
+.concept-strip b{
+  color:#fff;
+  font-weight:500;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:30;
+  border-bottom:1px solid rgba(202,216,213,.72);
+  background:rgba(247,248,246,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+.nav{
+  min-height:78px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+}
+
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  width:max-content;
+  font-family:var(--serif);
+  font-size:17px;
+  letter-spacing:-.04em;
+}
+
+.logo-mark{
+  position:relative;
+  width:29px;
+  height:29px;
+  border:1px solid var(--accent);
+  border-radius:50%;
+}
+
+.logo-mark::before{
+  content:"";
+  position:absolute;
+  width:10px;
+  height:14px;
+  top:6px;
+  left:8px;
+  border:1px solid var(--ink-soft);
+  border-radius:50% 50% 42% 42%;
+}
+
+.logo-mark::after{
+  content:"";
+  position:absolute;
+  width:3px;
+  height:3px;
+  top:8px;
+  left:13px;
+  border-radius:50%;
+  background:var(--accent);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:27px;
+  list-style:none;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:600;
+}
+
+.nav-links a{
+  transition:color .2s ease;
+}
+
+.nav-links a:hover{
+  color:var(--ink);
+}
+
+.nav-action{
+  justify-self:end;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--ink);
+  border-bottom:1px solid var(--ink);
+  font:500 11px/1.5 var(--mono);
+  letter-spacing:.05em;
+  transition:color .2s ease, border-color .2s ease;
+}
+
+.nav-action:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+}
+
+.burger{
+  display:none;
+  justify-self:end;
+  width:39px;
+  height:39px;
+  color:var(--ink);
+  background:transparent;
+  border:1px solid var(--line);
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+  padding:6px 28px 20px;
+  border-top:1px solid var(--line);
+  background:var(--bg);
+}
+
+.mobile-menu.open{
+  display:flex;
+  flex-direction:column;
+}
+
+.mobile-menu a{
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+  font-weight:600;
+}
+
+/* =========================
+   HERO / EDITORIAL SPLIT
+========================= */
+
+.hero{
+  position:relative;
+  border-bottom:1px solid var(--line);
+}
+
+.hero-layout{
+  display:grid;
+  grid-template-columns:minmax(0, 1.05fr) minmax(360px, .95fr);
+  min-height:680px;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:92px 7vw 59px 0;
+}
+
+.hero-copy h1{
+  max-width:730px;
+  margin-top:24px;
+  font-family:var(--serif);
+  font-size:clamp(42px, 5.5vw, 78px);
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.055em;
+}
+
+.hero-copy h1 em{
+  color:var(--accent);
+  font-style:italic;
+}
+
+.hero-copy p{
+  max-width:525px;
+  margin-top:24px;
+  color:var(--muted);
+  font-size:17px;
+}
+
+.hero-bottom{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+  margin-top:46px;
+}
+
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  width:max-content;
+  padding:14px 0;
+  color:var(--ink);
+  border-bottom:1px solid var(--ink);
+  font-size:14px;
+  font-weight:700;
+  transition:color .2s ease, border-color .2s ease;
+}
+
+.hero-cta:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+}
+
+.hero-cta svg{
+  width:17px;
+  height:17px;
+  transition:transform .2s ease;
+}
+
+.hero-cta:hover svg{
+  transform:translateX(4px);
+}
+
+.hero-index{
+  max-width:180px;
+  color:var(--muted);
+  font:400 10px/1.55 var(--mono);
+  letter-spacing:.04em;
+}
+
+.hero-visual{
+  position:relative;
+  overflow:hidden;
+  min-height:520px;
+  border-left:1px solid var(--line);
+  background:
+    radial-gradient(circle at 35% 32%, rgba(255,255,255,.88), transparent 25%),
+    linear-gradient(145deg, #D4E4E1 0%, #E8F0EE 55%, #DCE7E5 100%);
+}
+
+/* Large quiet tooth form */
+.hero-visual::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  width:240px;
+  height:300px;
+  left:50%;
+  top:48%;
+  transform:translate(-50%,-50%) rotate(4deg);
+  border-radius:48% 48% 43% 43% / 39% 39% 56% 56%;
+  background:linear-gradient(145deg, #FFFFFF, #E2F0ED);
+  box-shadow:
+    inset -20px -24px 32px rgba(82,135,129,.13),
+    0 35px 48px rgba(54,103,98,.13);
+}
+
+.hero-visual::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  width:480px;
+  height:480px;
+  left:50%;
+  top:48%;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(23,51,58,.14);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 28px rgba(255,255,255,.21),
+    0 0 0 58px rgba(23,51,58,.035),
+    0 0 0 87px rgba(255,255,255,.16);
+}
+
+.tooth-root{
+  position:absolute;
+  z-index:2;
+  width:78px;
+  height:122px;
+  top:62%;
+  background:linear-gradient(145deg, #FFFFFF, #E2F0ED);
+  box-shadow:inset -12px -15px 20px rgba(82,135,129,.10);
+}
+
+.root-left{
+  left:calc(50% - 102px);
+  transform:rotate(13deg);
+  border-radius:0 0 55% 50%;
+}
+
+.root-right{
+  right:calc(50% - 102px);
+  transform:rotate(-13deg) scaleX(-1);
+  border-radius:0 0 55% 50%;
+}
+
+.visual-grid{
+  position:absolute;
+  z-index:0;
+  inset:0;
+  opacity:.36;
+  background-image:
+    linear-gradient(rgba(23,51,58,.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,51,58,.09) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom, transparent 4%, #000 29%, #000 70%, transparent 96%);
+}
+
+.visual-caption{
+  position:absolute;
+  z-index:4;
+  top:24px;
+  left:24px;
+  color:var(--ink-soft);
+  font:500 10px/1.55 var(--mono);
+  letter-spacing:.12em;
+}
+
+.visual-caption span{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:.05em;
+}
+
+.visual-tag{
+  position:absolute;
+  z-index:4;
+  right:22px;
+  bottom:22px;
+  padding:9px 10px;
+  background:rgba(255,255,255,.59);
+  border:1px solid rgba(255,255,255,.78);
+  color:var(--ink-soft);
+  font:500 9px/1.4 var(--mono);
+  letter-spacing:.10em;
+}
+
+/* =========================
+   INTRO BAND
+========================= */
+
+.intro-band{
+  display:grid;
+  grid-template-columns:1fr 1.7fr;
+  gap:48px;
+  padding:64px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.intro-band h2{
+  font-family:var(--serif);
+  font-size:clamp(27px, 3vw, 39px);
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+
+.intro-band p{
+  max-width:640px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+/* =========================
+   TREATMENTS AS A LIST
+========================= */
+
+.care{
+  padding:108px 0 70px;
+}
+
+.care-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:40px;
+  margin-bottom:50px;
+}
+
+.care-head h2{
+  margin-top:18px;
+  font-family:var(--serif);
+  font-size:clamp(34px, 4vw, 55px);
+  font-weight:400;
+  letter-spacing:-.055em;
+}
+
+.care-note{
+  max-width:250px;
+  color:var(--muted);
+  font:400 11px/1.65 var(--mono);
+}
+
+.care-list{
+  border-top:1px solid var(--line);
+}
+
+.care-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:80px minmax(180px, .65fr) minmax(260px, 1fr) 34px;
+  gap:22px;
+  align-items:center;
+  min-height:128px;
+  padding:22px 8px;
+  border-bottom:1px solid var(--line);
+  cursor:default;
+  transition:padding .28s ease, background .28s ease;
+}
+
+.care-item::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0 -18px;
+  opacity:0;
+  background:var(--paper);
+  transition:opacity .28s ease;
+}
+
+.care-item:hover{
+  padding-left:18px;
+  padding-right:18px;
+}
+
+.care-item:hover::before{
+  opacity:1;
+}
+
+.care-no{
+  color:var(--accent);
+  font:500 11px/1 var(--mono);
+  letter-spacing:.12em;
+}
+
+.care-name{
+  font-family:var(--serif);
+  font-size:clamp(20px, 2.2vw, 29px);
+  font-weight:400;
+  letter-spacing:-.04em;
+}
+
+.care-text{
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.55;
+}
+
+.care-arrow{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:var(--ink);
+  transition:background .25s ease, color .25s ease, transform .25s ease;
+}
+
+.care-item:hover .care-arrow{
+  color:#fff;
+  background:var(--ink);
+  transform:rotate(-35deg);
+}
+
+/* =========================
+   BIG STATEMENT
+========================= */
+
+.statement{
+  position:relative;
+  overflow:hidden;
+  margin-top:30px;
+  padding:125px 0;
+  background:var(--mist);
+}
+
+.statement::before{
+  content:"";
+  position:absolute;
+  width:670px;
+  height:670px;
+  right:-220px;
+  top:-360px;
+  border:1px solid rgba(23,51,58,.14);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 45px rgba(255,255,255,.17),
+    0 0 0 90px rgba(23,51,58,.035);
+}
+
+.statement .wrap{
+  position:relative;
+  z-index:1;
+}
+
+.statement p{
+  max-width:985px;
+  font-family:var(--serif);
+  font-size:clamp(35px, 5.6vw, 75px);
+  font-weight:400;
+  letter-spacing:-.065em;
+  line-height:1.12;
+}
+
+.statement em{
+  color:var(--accent-dark);
+  font-style:italic;
+}
+
+.statement small{
+  display:block;
+  max-width:300px;
+  margin-top:28px;
+  color:var(--muted);
+  font:400 11px/1.7 var(--mono);
+  letter-spacing:.03em;
+}
+
+/* =========================
+   JOURNEY / TIMELINE
+========================= */
+
+.journey{
+  display:grid;
+  grid-template-columns:.78fr 1.22fr;
+  gap:90px;
+  padding:112px 0;
+}
+
+.journey-title{
+  position:sticky;
+  top:120px;
+  align-self:start;
+}
+
+.journey-title h2{
+  margin-top:18px;
+  font-family:var(--serif);
+  font-size:clamp(34px, 4vw, 52px);
+  font-weight:400;
+  letter-spacing:-.055em;
+}
+
+.journey-title p{
+  max-width:315px;
+  margin-top:20px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.journey-list{
+  border-top:1px solid var(--line);
+}
+
+.journey-step{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:20px;
+  min-height:170px;
+  padding:27px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.step-number{
+  color:var(--accent-dark);
+  font:500 11px/1.4 var(--mono);
+  letter-spacing:.13em;
+}
+
+.step-copy h3{
+  font-family:var(--serif);
+  font-size:27px;
+  font-weight:400;
+  letter-spacing:-.04em;
+}
+
+.step-copy p{
+  max-width:500px;
+  margin-top:8px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* =========================
+   CONTACT / ASYMMETRIC
+========================= */
+
+.contact{
+  padding:0 0 110px;
+}
+
+.contact-shell{
+  display:grid;
+  grid-template-columns:.88fr 1.12fr;
+  min-height:580px;
+  background:var(--ink);
+}
+
+.contact-copy{
+  position:relative;
+  overflow:hidden;
+  padding:62px 54px;
+  color:#F2F8F6;
+}
+
+.contact-copy::before{
+  content:"";
+  position:absolute;
+  width:330px;
+  height:330px;
+  left:-154px;
+  bottom:-160px;
+  border:1px solid rgba(220,235,231,.27);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 30px rgba(220,235,231,.045),
+    0 0 0 62px rgba(220,235,231,.03);
+}
+
+.contact-copy > *{
+  position:relative;
+  z-index:1;
+}
+
+.contact-copy .eyebrow{
+  color:#A9CFCA;
+}
+
+.contact-copy h2{
+  max-width:390px;
+  margin-top:20px;
+  color:#fff;
+  font-family:var(--serif);
+  font-size:clamp(35px, 4vw, 55px);
+  font-weight:400;
+  letter-spacing:-.06em;
+}
+
+.contact-copy p{
+  max-width:350px;
+  margin-top:18px;
+  color:#AEC8C3;
+  font-size:15px;
+}
+
+.contact-info{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  margin-top:55px;
+  color:#BBD3CF;
+  font:400 10px/1.65 var(--mono);
+  letter-spacing:.04em;
+}
+
+.contact-info div{
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.15);
+}
+
+.contact-info b{
+  display:block;
+  color:#fff;
+  font-weight:500;
+  letter-spacing:.12em;
+}
+
+.form-wrap{
+  padding:62px 54px;
+  background:var(--paper);
+}
+
+.form-heading{
+  margin-bottom:32px;
+}
+
+.form-heading h3{
+  font-family:var(--serif);
+  font-size:30px;
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+
+.form-heading p{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.field{
+  margin-bottom:19px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--muted);
+  font:500 10px/1.2 var(--mono);
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  padding:12px 0;
+  outline:0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  font-size:15px;
+  transition:border-color .2s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:var(--ink);
+}
+
+.field textarea{
+  min-height:88px;
+  resize:vertical;
+}
+
+.form-submit{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  margin-top:8px;
+  padding:13px 0;
+  color:var(--ink);
+  border-bottom:1px solid var(--ink);
+  background:transparent;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:700;
+  transition:color .2s ease, border-color .2s ease;
+}
+
+.form-submit:hover{
+  color:var(--accent-dark);
+  border-color:var(--accent-dark);
+}
+
+.form-submit span{
+  transition:transform .2s ease;
+}
+
+.form-submit:hover span{
+  transform:translateX(4px);
+}
+
+.disclaimer{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+}
+
+.success{
+  display:grid;
+  min-height:330px;
+  place-items:center;
+  text-align:center;
+}
+
+.success div{
+  max-width:370px;
+}
+
+.success h3{
+  font-family:var(--serif);
+  font-size:31px;
+  font-weight:400;
+  letter-spacing:-.045em;
+}
+
+.success p{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:34px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:11.5px;
+}
+
+.footer-in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.footer-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:16px;
+}
+
+.footer-brand .logo-mark{
+  width:23px;
+  height:23px;
+}
+
+.footer-brand .logo-mark::before{
+  width:8px;
+  height:11px;
+  top:5px;
+  left:6px;
+}
+
+.footer-brand .logo-mark::after{
+  top:6px;
+  left:10px;
+}
+
+footer a{
+  color:var(--ink);
+  font-weight:700;
+}
+
+footer a:hover{
+  text-decoration:underline;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+  .nav{
+    grid-template-columns:1fr auto;
+  }
+
+  .nav-links,
+  .nav-action{
+    display:none;
+  }
+
+  .burger{
+    display:grid;
+    place-items:center;
+  }
+
+  .hero-layout{
+    grid-template-columns:1fr;
+  }
+
+  .hero-copy{
+    min-height:570px;
+    padding:76px 0 52px;
+  }
+
+  .hero-visual{
+    min-height:480px;
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+
+  .intro-band,
+  .journey,
+  .contact-shell{
+    grid-template-columns:1fr;
+  }
+
+  .intro-band,
+  .journey{
+    gap:32px;
+  }
+
+  .journey-title{
+    position:static;
+  }
+
+  .care-item{
+    grid-template-columns:68px .75fr 1fr 34px;
+  }
+
+  .contact-copy,
+  .form-wrap{
+    padding:48px 38px;
+  }
+}
+
+@media(max-width:650px){
+  .wrap{
+    width:min(100% - 32px, 1260px);
+  }
+
+  .hero-copy{
+    min-height:535px;
+  }
+
+  .hero-copy h1{
+    font-size:clamp(40px, 12vw, 57px);
+  }
+
+  .hero-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .hero-visual{
+    min-height:395px;
+  }
+
+  .hero-visual::before{
+    transform:translate(-50%,-50%) scale(.78) rotate(4deg);
+  }
+
+  .tooth-root{
+    transform:scale(.78) rotate(13deg);
+  }
+
+  .root-right{
+    transform:scale(.78) rotate(-13deg) scaleX(-1);
+  }
+
+  .care{
+    padding:74px 0 42px;
+  }
+
+  .care-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .care-item{
+    grid-template-columns:52px 1fr 30px;
+    gap:12px;
+    padding:24px 0;
+  }
+
+  .care-text{
+    grid-column:2 / 4;
+    max-width:410px;
+  }
+
+  .care-arrow{
+    grid-column:3;
+    grid-row:1;
+  }
+
+  .statement{
+    padding:82px 0;
+  }
+
+  .journey{
+    padding:76px 0;
+  }
+
+  .journey-step{
+    grid-template-columns:48px 1fr;
+    gap:12px;
+    min-height:0;
+  }
+
+  .contact{
+    padding-bottom:75px;
+  }
+
+  .contact-copy,
+  .form-wrap{
+    padding:42px 23px;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .footer-in{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+    animation-duration:.01ms !important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="concept-strip">
+  LUMA DENTAL STUDIO / <b>FICTIONAL CONCEPT WEBSITE — NOT A REAL PRACTICE</b>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Luma Dental Studio home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span>Luma Dental</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#care">Care</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+
+    <a class="nav-action" href="#contact">
+      REQUEST A VISIT <span>↗</span>
+    </a>
+
+    <button class="burger" id="burger" aria-label="Open menu">☰</button>
+  </div>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#care">Care</a>
+    <a href="#approach">Approach</a>
+    <a href="#contact">Request a visit</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero" id="top">
+    <div class="wrap hero-layout">
+      <div class="hero-copy">
+        <div>
+          <div class="eyebrow">A calmer kind of dental care</div>
+
+          <h1>
+            Care that feels<br>
+            <em>clear</em> from the start.
+          </h1>
+
+          <p>
+            Luma is a fictional dental studio concept built around quieter visits, clearer choices and a more comfortable relationship with care.
+          </p>
+        </div>
+
+        <div class="hero-bottom">
+          <a href="#contact" class="hero-cta">
+            Request a first visit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+
+          <span class="hero-index">
+            LUMA / 001<br>
+            CONCEPTUAL CARE EXPERIENCE
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Abstract porcelain tooth form">
+        <div class="visual-grid"></div>
+        <span class="tooth-root root-left"></span>
+        <span class="tooth-root root-right"></span>
+        <div class="visual-caption">
+          PORCELAIN STUDY / 01
+          <span>comfort, clarity, continuity</span>
+        </div>
+        <div class="visual-tag">NO REAL CLINICAL SERVICE</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap intro-band">
+    <div class="reveal">
+      <div class="eyebrow">The principle</div>
+      <h2>Better care begins with feeling at ease.</h2>
+    </div>
+
+    <p class="reveal" style="transition-delay:.08s">
+      Dental websites often speak in procedures before people. Luma takes the opposite approach: start with comfort, explain what matters and make the next step feel manageable.
+    </p>
+  </section>
+
+  <section class="care" id="care">
+    <div class="wrap">
+      <div class="care-head reveal">
+        <div>
+          <div class="eyebrow">Care, clearly organised</div>
+          <h2>Where would you like<br>to begin?</h2>
+        </div>
+
+        <p class="care-note">
+          A treatment overview designed as a simple wayfinding system — not clinical advice or a promise of treatment.
+        </p>
+      </div>
+
+      <div class="care-list">
+        <article class="care-item reveal">
+          <span class="care-no">01</span>
+          <h3 class="care-name">Preventive care</h3>
+          <p class="care-text">A considered starting point for regular check-ups, cleaning and everyday oral health questions.</p>
+          <span class="care-arrow">↗</span>
+        </article>
+
+        <article class="care-item reveal" style="transition-delay:.06s">
+          <span class="care-no">02</span>
+          <h3 class="care-name">Smile design</h3>
+          <p class="care-text">A calm conversation about the appearance, balance and confidence of your smile.</p>
+          <span class="care-arrow">↗</span>
+        </article>
+
+        <article class="care-item reveal" style="transition-delay:.12s">
+          <span class="care-no">03</span>
+          <h3 class="care-name">Restorative care</h3>
+          <p class="care-text">Clear ways to think about repair, protection and support when a tooth needs attention.</p>
+          <span class="care-arrow">↗</span>
+        </article>
+
+        <article class="care-item reveal" style="transition-delay:.18s">
+          <span class="care-no">04</span>
+          <h3 class="care-name">Alignment planning</h3>
+          <p class="care-text">A simple introduction to exploring spacing, bite and alignment considerations.</p>
+          <span class="care-arrow">↗</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap reveal">
+      <p>
+        Your appointment should not feel <em>rushed</em>, your questions should not feel too small and your choices should not feel unclear.
+      </p>
+
+      <small>
+        Luma is a fictional visual identity and interface concept. It does not represent a real healthcare provider.
+      </small>
+    </div>
+  </section>
+
+  <section class="wrap journey" id="approach">
+    <div class="journey-title reveal">
+      <div class="eyebrow">The first visit</div>
+      <h2>One conversation at a time.</h2>
+      <p>
+        A more grounded first-visit experience, structured around listening before deciding.
+      </p>
+    </div>
+
+    <div class="journey-list">
+      <article class="journey-step reveal">
+        <span class="step-number">01 / ARRIVE</span>
+        <div class="step-copy">
+          <h3>Begin with what matters to you.</h3>
+          <p>Start with your comfort level, questions and the reason you are looking for care now.</p>
+        </div>
+      </article>
+
+      <article class="journey-step reveal" style="transition-delay:.09s">
+        <span class="step-number">02 / UNDERSTAND</span>
+        <div class="step-copy">
+          <h3>Make the information feel usable.</h3>
+          <p>Picture a visit where the details are explained slowly enough to become clear.</p>
+        </div>
+      </article>
+
+      <article class="journey-step reveal" style="transition-delay:.18s">
+        <span class="step-number">03 / DECIDE</span>
+        <div class="step-copy">
+          <h3>Leave with a direction, not pressure.</h3>
+          <p>Any next step should feel understood, practical and connected to your own priorities.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-shell">
+      <div class="contact-copy">
+        <div class="eyebrow">Request a visit</div>
+        <h2>A softer first step.</h2>
+        <p>
+          This interface demonstrates how a calm appointment enquiry could feel. The form is entirely visual and does not submit information anywhere.
+        </p>
+
+        <div class="contact-info">
+          <div>
+            <b>LOCATION</b>
+            CONCEPT CLINIC / DIGITAL DEMONSTRATION
+          </div>
+          <div>
+            <b>AVAILABILITY</b>
+            ILLUSTRATIVE APPOINTMENT FLOW ONLY
+          </div>
+          <div>
+            <b>CONTACT</b>
+            NOT CONNECTED TO A REAL PRACTICE
+          </div>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-heading">
+          <h3>Tell us what you need.</h3>
+          <p>Demo form — no data is collected or sent.</p>
+        </div>
+
+        <form id="conceptForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" type="text" placeholder="Your name">
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@email.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="topic">I would like to discuss</label>
+              <select id="topic">
+                <option>General care</option>
+                <option>Smile design</option>
+                <option>Restorative care</option>
+                <option>Alignment planning</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="contact-way">Preferred contact</label>
+              <select id="contact-way">
+                <option>Email</option>
+                <option>Phone</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">A short note</label>
+            <textarea id="message" placeholder="What would you like to talk about?"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Send concept enquiry <span>→</span>
+          </button>
+
+          <p class="disclaimer">
+            This is a fictional concept site. It does not offer dental advice, appointments or clinical services.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-in">
+    <span class="footer-brand">
+      <span class="logo-mark" aria-hidden="true"></span>
+      Luma Dental Studio
+    </span>
+
+    <span>Fictional concept website · Not a real dental practice</span>
+
+    <span>Concept by <a href="index.html">OptiCodeStudio</a></span>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+burger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+  });
+});
+
+document.getElementById('conceptForm').addEventListener('submit', function(event){
+  event.preventDefault();
+
+  this.innerHTML = `
+    <div class="success">
+      <div>
+        <h3>Thank you.</h3>
+        <p>This is a demo confirmation state. No information was sent or stored.</p>
+      </div>
+    </div>
+  `;
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold:.12 });
+
+document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+</script>
+
+</body>
+</html>

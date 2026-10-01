@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — OptiCodeStudio</title>
+  <meta name="description" content="Privacy Policy for OptiCodeStudio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #06131C;
+      --surface: rgba(8, 27, 40, .78);
+      --line: rgba(145, 215, 225, .20);
+      --line-strong: rgba(145, 215, 225, .34);
+      --text: #ECF9FA;
+      --muted: #9CB8BE;
+      --accent: #66E3E5;
+      --accent-ink: #062025;
+      --font-d: "Space Grotesk", sans-serif;
+      --font-m: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 18, 29, .83) 0%,
+          rgba(5, 24, 35, .88) 50%,
+          rgba(4, 15, 24, .95) 100%
+        ),
+        url("sea-bg.jpg") center top / cover fixed no-repeat;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-d);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(110px);
+      opacity: .16;
+    }
+
+    body::before {
+      top: 10%;
+      left: -180px;
+      background: #00C8D7;
+    }
+
+    body::after {
+      right: -180px;
+      bottom: 5%;
+      background: #087A9A;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(860px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 19, 29, .76);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-in {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font: 700 11px/1 var(--font-m);
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font: 500 9px/1 var(--font-m);
+      letter-spacing: .22em;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      border-bottom: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .back:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    main {
+      padding: 76px 0 94px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      font: 500 11px/1 var(--font-m);
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .kicker::after {
+      content: "";
+      width: 44px;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    h1,
+    h2 {
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin-top: 20px;
+      font-size: clamp(38px, 6vw, 62px);
+    }
+
+    .intro {
+      max-width: 680px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .policy {
+      margin-top: 48px;
+      padding: 38px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: 0 24px 60px rgba(0, 12, 20, .25);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .updated {
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font: 400 11px/1.5 var(--font-m);
+      letter-spacing: .04em;
+    }
+
+    section + section {
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    p + p {
+      margin-top: 13px;
+    }
+
+    ul {
+      display: grid;
+      gap: 9px;
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    li::marker {
+      color: var(--accent);
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .contact-box {
+      margin-top: 18px;
+      padding: 17px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(102, 227, 229, .06);
+    }
+
+    .contact-box a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 620px) {
+      .wrap {
+        width: min(100% - 32px, 860px);
+      }
+
+      .policy {
+        padding: 27px 20px;
+      }
+
+      main {
+        padding: 56px 0 70px;
+      }
+
+      body {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="wrap nav-in">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">O</span>
+        <span>
+          OptiCodeStudio
+          <small>DIGITAL SOLUTIONS</small>
+        </span>
+      </a>
+
+      <a class="back" href="index.html">← Back to website</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="kicker">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="intro">
+      This policy explains what information OptiCodeStudio may receive when you use this website or submit an enquiry, and how that information is handled.
+    </p>
+
+    <article class="policy">
+      <div class="updated">LAST UPDATED: SEPTEMBER 2026</div>
+
+      <section>
+        <h2>Information we collect</h2>
+        <p>
+          When you submit a quote request or quick website review request, you may choose to provide information such as your name, email address, business name or website, budget range and project details.
+        </p>
+        <p>
+          We only collect information that you submit through the forms on this website.
+        </p>
+      </section>
+
+      <section>
+        <h2>How we use information</h2>
+        <p>We use enquiry information to:</p>
+        <ul>
+          <li>Reply to your enquiry and discuss your project</li>
+          <li>Prepare a recommendation, scope or quote where appropriate</li>
+          <li>Review a website when you request a quick first-look review</li>
+          <li>Improve how we communicate about our services</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Form delivery</h2>
+        <p>
+          Website forms may be delivered through a third-party form service and sent to OptiCodeStudio's business email inbox. Do not include passwords, payment information, private keys or other sensitive confidential information in website forms.
+        </p>
+      </section>
+
+      <section>
+        <h2>Sharing information</h2>
+        <p>
+          OptiCodeStudio does not sell your personal information. Information may be shared only with service providers needed to operate this website, respond to your enquiry or deliver agreed services, or where required by law.
+        </p>
+      </section>
+
+      <section>
+        <h2>Data retention</h2>
+        <p>
+          Enquiry information may be retained for as long as reasonably necessary to respond to you, manage a potential or active project, keep business records or meet legal obligations. You may request deletion of your enquiry information where applicable.
+        </p>
+      </section>
+
+      <section>
+        <h2>Your choices</h2>
+        <p>
+          You can contact us to ask what enquiry information we hold, request a correction, or ask for deletion where applicable. You may also choose not to submit a form and contact us through another method.
+        </p>
+
+        <div class="contact-box">
+          <p>
+            For privacy questions, email
+            <a href="mailto:opticodestudio@gmail.com">opticodestudio@gmail.com</a>.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Changes to this policy</h2>
+        <p>
+          This policy may be updated when the website, forms or services change. The latest version will always be available on this page.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 OptiCodeStudio. All rights reserved.</span>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+</body>
+</html>

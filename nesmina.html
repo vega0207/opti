@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nesmina — Objects Made Slowly</title>
+<meta name="description" content="Nesmina is a fictional handknit concept label exploring slow-made objects, natural fibers and small-batch craft.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%23374133'/><path d='M5 17c3-8 7-10 14-11' stroke='%23DCE6CF' stroke-width='1.5' fill='none'/><circle cx='7' cy='14' r='2.4' fill='%23869D72'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+:root{
+  --bg:#F5F2EA;
+  --panel:rgba(255,253,247,.78);
+  --panel-solid:#FFFDF8;
+  --soft:#E7E9DC;
+  --soft-2:#D8DEC9;
+  --ink:#30382F;
+  --muted:#788074;
+  --accent:#7A8B68;
+  --accent-dark:#5D6D50;
+  --rose:#BE9693;
+  --line:#D5DACA;
+  --cream:#FBF9F3;
+
+  --font-display:"Fraunces", Georgia, serif;
+  --font-body:"Karla", Arial, sans-serif;
+  --font-mono:"DM Mono", monospace;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-width:320px;
+  overflow-x:hidden;
+  position:relative;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  z-index:-2;
+  inset:0;
+  pointer-events:none;
+  opacity:.42;
+  background:
+    radial-gradient(circle at 6% 12%, rgba(190,150,147,.17), transparent 24%),
+    radial-gradient(circle at 92% 20%, rgba(122,139,104,.17), transparent 27%),
+    radial-gradient(circle at 34% 94%, rgba(122,139,104,.12), transparent 24%);
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  opacity:.30;
+  background-image:
+    linear-gradient(rgba(48,56,47,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48,56,47,.025) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom, #000, transparent 80%);
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  border:0;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+.wrap{
+  width:min(1120px, calc(100% - 48px));
+  margin:0 auto;
+}
+
+section{
+  padding:100px 0;
+  scroll-margin-top:90px;
+}
+
+h1,
+h2,
+h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  letter-spacing:-.025em;
+  line-height:1.1;
+}
+
+h2{
+  font-size:clamp(32px, 4vw, 48px);
+}
+
+.kicker{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  color:var(--accent-dark);
+  font:500 11px/1 var(--font-mono);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.kicker::before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:currentColor;
+}
+
+.lead{
+  max-width:590px;
+  margin-top:18px;
+  color:var(--muted);
+  font-size:17px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:50px;
+  padding:0 22px;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.02em;
+  transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.btn svg{
+  width:17px;
+  height:17px;
+}
+
+.btn-primary{
+  background:var(--accent-dark);
+  color:#FCFBF6;
+  box-shadow:0 10px 20px rgba(73,88,61,.16);
+}
+
+.btn-primary:hover{
+  background:var(--ink);
+  transform:translateY(-2px);
+  box-shadow:0 15px 28px rgba(48,56,47,.20);
+}
+
+.btn-ghost{
+  color:var(--ink);
+  border-color:var(--line);
+  background:rgba(255,255,255,.32);
+}
+
+.btn-ghost:hover{
+  color:var(--accent-dark);
+  border-color:var(--accent);
+  transform:translateY(-2px);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+
+.reveal.in{
+  opacity:1;
+  transform:none;
+}
+
+/* ===== Decorative yarn / needles ===== */
+
+.thread-art{
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+  opacity:.34;
+}
+
+.thread-art path{
+  fill:none;
+  stroke:var(--accent);
+  stroke-width:1.35;
+  stroke-linecap:round;
+  stroke-dasharray:7 9;
+  animation:threadMove 11s linear infinite;
+}
+
+.thread-art .needle{
+  stroke:var(--ink);
+  stroke-width:1.1;
+  stroke-dasharray:none;
+}
+
+.thread-art .eye{
+  fill:none;
+  stroke:var(--rose);
+  stroke-width:1.1;
+  stroke-dasharray:none;
+}
+
+.thread-art--top{
+  width:370px;
+  top:112px;
+  right:-90px;
+  transform:rotate(-12deg);
+}
+
+.thread-art--bottom{
+  width:440px;
+  left:-170px;
+  bottom:50px;
+  transform:rotate(14deg);
+  opacity:.22;
+}
+
+@keyframes threadMove{
+  to{
+    stroke-dashoffset:-190px;
+  }
+}
+
+/* ===== Announcement ===== */
+
+.announce{
+  position:relative;
+  z-index:2;
+  padding:10px 20px;
+  overflow:hidden;
+  text-align:center;
+  background:var(--ink);
+  color:#E7E9DC;
+  font:400 12px/1.4 var(--font-mono);
+  letter-spacing:.04em;
+}
+
+.announce b{
+  color:#C9D7B9;
+  font-weight:500;
+}
+
+/* ===== Header ===== */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:40;
+  border-bottom:1px solid rgba(213,218,202,.76);
+  background:rgba(245,242,234,.80);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+.nav{
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--font-display);
+  font-size:27px;
+  font-style:italic;
+  letter-spacing:.01em;
+}
+
+.brand-mark{
+  position:relative;
+  width:32px;
+  height:32px;
+  border:1px solid var(--accent);
+  border-radius:50%;
+  overflow:hidden;
+}
+
+.brand-mark::before,
+.brand-mark::after{
+  content:"";
+  position:absolute;
+  border:1px solid var(--accent);
+  border-radius:50%;
+}
+
+.brand-mark::before{
+  inset:6px;
+}
+
+.brand-mark::after{
+  inset:11px;
+  background:var(--rose);
+  border:0;
+}
+
+.brand-copy small{
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font:500 8px/1.2 var(--font-mono);
+  letter-spacing:.22em;
+  font-style:normal;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.nav-note{
+  color:var(--muted);
+  font:400 11px/1.4 var(--font-mono);
+  letter-spacing:.03em;
+}
+
+.ig{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.34);
+  color:var(--muted);
+  font-size:13px;
+  font-weight:600;
+  transition:.2s ease;
+}
+
+.ig:hover{
+  color:var(--accent-dark);
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+
+.ig svg{
+  width:15px;
+  height:15px;
+}
+
+/* ===== Hero ===== */
+
+.hero{
+  position:relative;
+  z-index:1;
+  overflow:hidden;
+  min-height:680px;
+  display:flex;
+  align-items:center;
+  padding:104px 0 90px;
+}
+
+.hero-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:76px;
+  align-items:center;
+}
+
+.hero h1{
+  max-width:660px;
+  margin-top:22px;
+  font-size:clamp(48px, 6.1vw, 78px);
+}
+
+.hero h1 em{
+  color:var(--accent-dark);
+  font-style:italic;
+}
+
+.hero-copy .lead{
+  max-width:535px;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:34px;
+  flex-wrap:wrap;
+}
+
+.hero-meta{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-top:28px;
+  color:var(--muted);
+  font:400 11px/1.5 var(--font-mono);
+}
+
+.hero-meta span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.hero-meta span::before{
+  content:"";
+  display:inline-block;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--rose);
+}
+
+.hero-card{
+  position:relative;
+  min-height:420px;
+  padding:28px;
+  overflow:hidden;
+  border:1px solid rgba(122,139,104,.30);
+  background:rgba(255,253,247,.55);
+  box-shadow:0 30px 70px rgba(58,69,51,.11);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:22px;
+  opacity:.42;
+  background:
+    radial-gradient(circle at 17% 28%, transparent 0 19px, rgba(122,139,104,.42) 20px 21px, transparent 22px),
+    radial-gradient(circle at 36% 43%, transparent 0 27px, rgba(190,150,147,.40) 28px 29px, transparent 30px),
+    radial-gradient(circle at 65% 27%, transparent 0 39px, rgba(122,139,104,.34) 40px 41px, transparent 42px),
+    radial-gradient(circle at 79% 65%, transparent 0 31px, rgba(190,150,147,.32) 32px 33px, transparent 34px),
+    radial-gradient(circle at 35% 81%, transparent 0 48px, rgba(122,139,104,.25) 49px 50px, transparent 51px);
+}
+
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:-70px;
+  opacity:.62;
+  background:
+    repeating-radial-gradient(
+      ellipse at 50% 50%,
+      transparent 0 14px,
+      rgba(122,139,104,.13) 15px 16px,
+      transparent 17px 31px
+    );
+  transform:rotate(-18deg);
+}
+
+.card-top{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(122,139,104,.22);
+  color:var(--muted);
+  font:400 10px/1 var(--font-mono);
+  letter-spacing:.13em;
+}
+
+.card-live{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:var(--accent-dark);
+}
+
+.card-live i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 4px rgba(122,139,104,.12);
+  animation:pulse 2s ease infinite;
+}
+
+.yarn-ball{
+  position:absolute;
+  z-index:2;
+  border-radius:50%;
+  border:1px solid rgba(48,56,47,.12);
+  background:
+    repeating-radial-gradient(
+      ellipse at 45% 50%,
+      transparent 0 7px,
+      rgba(255,255,255,.72) 8px 9px,
+      rgba(122,139,104,.17) 10px 11px,
+      transparent 12px 18px
+    ),
+    var(--soft-2);
+  box-shadow:inset -10px -12px 24px rgba(48,56,47,.10), 12px 18px 26px rgba(48,56,47,.12);
+}
+
+.yarn-ball--one{
+  width:162px;
+  height:162px;
+  top:88px;
+  right:48px;
+  background-color:#C4D0B2;
+}
+
+.yarn-ball--two{
+  width:115px;
+  height:115px;
+  top:205px;
+  left:50px;
+  background-color:#DFC5C2;
+}
+
+.yarn-ball--three{
+  width:84px;
+  height:84px;
+  right:100px;
+  bottom:40px;
+  background-color:#DED8C9;
+}
+
+.knitting-needle{
+  position:absolute;
+  z-index:3;
+  height:2px;
+  border-radius:20px;
+  background:linear-gradient(90deg, #9B9386, #F7F1E9 48%, #928A7C);
+  box-shadow:0 2px 5px rgba(48,56,47,.18);
+  transform-origin:left center;
+}
+
+.knitting-needle::after{
+  content:"";
+  position:absolute;
+  right:-8px;
+  top:-3px;
+  width:0;
+  height:0;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  border-left:9px solid #8D857A;
+}
+
+.needle-one{
+  top:158px;
+  left:62px;
+  width:252px;
+  transform:rotate(22deg);
+}
+
+.needle-two{
+  bottom:116px;
+  right:44px;
+  width:248px;
+  transform:rotate(-38deg);
+}
+
+.card-caption{
+  position:absolute;
+  z-index:4;
+  left:28px;
+  right:28px;
+  bottom:24px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.card-caption b{
+  display:block;
+  max-width:210px;
+  font-family:var(--font-display);
+  font-size:22px;
+  line-height:1.1;
+  font-weight:500;
+}
+
+.card-caption span{
+  color:var(--muted);
+  font:400 10px/1.4 var(--font-mono);
+  letter-spacing:.09em;
+  text-align:right;
+}
+
+/* ===== Thread divider ===== */
+
+.thread-divider{
+  overflow:hidden;
+  padding:0;
+  background:var(--panel-solid);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.thread-track{
+  display:flex;
+  align-items:center;
+  min-width:max-content;
+  padding:16px 0;
+  color:var(--muted);
+  font:400 10px/1 var(--font-mono);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  animation:marquee 26s linear infinite;
+}
+
+.thread-track span{
+  display:inline-flex;
+  align-items:center;
+  gap:24px;
+  padding-right:24px;
+}
+
+.thread-track span::after{
+  content:"";
+  width:14px;
+  height:14px;
+  border:1px solid var(--accent);
+  border-radius:50%;
+  box-shadow:inset 0 0 0 4px var(--panel-solid);
+}
+
+@keyframes marquee{
+  to{
+    transform:translateX(-50%);
+  }
+}
+
+/* ===== Story ===== */
+
+.story{
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,253,247,.44);
+}
+
+.story-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:.92fr 1.08fr;
+  gap:76px;
+  align-items:center;
+}
+
+.story-copy p{
+  max-width:490px;
+  margin-top:17px;
+  color:var(--muted);
+  font-size:16px;
+}
+
+.facts{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:0;
+  margin-top:34px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.facts div{
+  padding:17px 14px 17px 0;
+  border-right:1px solid var(--line);
+}
+
+.facts div:not(:first-child){
+  padding-left:14px;
+}
+
+.facts div:last-child{
+  border:0;
+}
+
+.facts b{
+  display:block;
+  color:var(--accent-dark);
+  font:500 21px/1.1 var(--font-display);
+}
+
+.facts span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.workbench{
+  position:relative;
+  min-height:430px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.56), rgba(231,233,220,.80)),
+    var(--soft);
+}
+
+.workbench::before{
+  content:"";
+  position:absolute;
+  width:330px;
+  height:330px;
+  left:50%;
+  top:55%;
+  border-radius:50%;
+  background:
+    repeating-radial-gradient(
+      ellipse at 45% 50%,
+      transparent 0 8px,
+      rgba(255,255,255,.82) 9px 10px,
+      rgba(122,139,104,.22) 11px 12px,
+      transparent 13px 19px
+    ),
+    #B7C6A5;
+  box-shadow:inset -22px -25px 35px rgba(48,56,47,.12), 22px 30px 38px rgba(48,56,47,.15);
+  transform:translate(-50%, -50%);
+}
+
+.workbench::after{
+  content:"";
+  position:absolute;
+  width:170%;
+  height:1px;
+  left:-25%;
+  top:49%;
+  background:rgba(48,56,47,.24);
+  transform:rotate(-35deg);
+  box-shadow:0 82px 0 rgba(48,56,47,.18);
+}
+
+.workbench-needle{
+  position:absolute;
+  z-index:3;
+  width:360px;
+  height:3px;
+  left:49%;
+  top:42%;
+  border-radius:20px;
+  background:linear-gradient(90deg, #887F73, #FBF7EF 50%, #8A8174);
+  box-shadow:0 4px 9px rgba(48,56,47,.20);
+  transform:rotate(24deg);
+}
+
+.workbench-needle::after{
+  content:"";
+  position:absolute;
+  right:-12px;
+  top:-4px;
+  width:0;
+  height:0;
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-left:13px solid #8A8174;
+}
+
+.workbench-label{
+  position:absolute;
+  z-index:4;
+  left:22px;
+  bottom:20px;
+  padding:9px 11px;
+  border:1px solid rgba(255,255,255,.75);
+  background:rgba(255,253,247,.73);
+  color:var(--accent-dark);
+  font:500 10px/1.4 var(--font-mono);
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+
+/* ===== Collection ===== */
+
+.collection-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:36px;
+  flex-wrap:wrap;
+}
+
+.collection-head .lead{
+  max-width:450px;
+}
+
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:15px;
+  margin-top:46px;
+}
+
+.collection-card{
+  min-height:272px;
+  padding:22px;
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  border:1px solid var(--line);
+  background:var(--panel);
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.collection-card:hover{
+  z-index:2;
+  border-color:var(--accent);
+  transform:translateY(-6px);
+  box-shadow:0 18px 34px rgba(62,78,55,.12);
+}
+
+.collection-card::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  width:180px;
+  height:180px;
+  top:-46px;
+  right:-46px;
+  border-radius:50%;
+  opacity:.68;
+}
+
+.collection-card:nth-child(1)::before{
+  background:
+    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.65) 9px 10px, transparent 11px 16px),
+    #BDCBAF;
+}
+
+.collection-card:nth-child(2)::before{
+  background:
+    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.66) 9px 10px, transparent 11px 16px),
+    #DFC4C1;
+}
+
+.collection-card:nth-child(3)::before{
+  background:
+    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.66) 9px 10px, transparent 11px 16px),
+    #D8D4C4;
+}
+
+.collection-card:nth-child(4)::before{
+  background:
+    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.66) 9px 10px, transparent 11px 16px),
+    #CCD7D1;
+}
+
+.collection-card::after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  width:170px;
+  height:1px;
+  top:95px;
+  right:18px;
+  background:rgba(48,56,47,.26);
+  transform:rotate(-37deg);
+}
+
+.collection-card > *{
+  position:relative;
+  z-index:2;
+}
+
+.collection-card .num{
+  margin-bottom:auto;
+  color:var(--accent-dark);
+  font:500 11px/1 var(--font-mono);
+  letter-spacing:.14em;
+}
+
+.collection-card h3{
+  font-size:25px;
+}
+
+.collection-card p{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:13.5px;
+  line-height:1.5;
+}
+
+.collection-card .tag{
+  width:max-content;
+  margin-top:17px;
+  color:var(--accent-dark);
+  font:500 9px/1 var(--font-mono);
+  letter-spacing:.12em;
+  padding:7px 8px;
+  border:1px solid rgba(122,139,104,.42);
+  text-transform:uppercase;
+}
+
+/* ===== Values ===== */
+
+.values{
+  padding-top:0;
+}
+
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:15px;
+  margin-top:44px;
+}
+
+.value{
+  position:relative;
+  overflow:hidden;
+  padding:30px 28px;
+  border:1px solid var(--line);
+  background:rgba(255,253,247,.63);
+}
+
+.value::after{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  right:-48px;
+  bottom:-48px;
+  border:1px solid rgba(122,139,104,.19);
+  border-radius:50%;
+  box-shadow:0 0 0 18px rgba(122,139,104,.05), 0 0 0 36px rgba(122,139,104,.03);
+}
+
+.value-icon{
+  position:relative;
+  z-index:1;
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:46px;
+  margin-bottom:20px;
+  border-radius:50%;
+  color:var(--accent-dark);
+  background:var(--soft);
+}
+
+.value-icon svg{
+  width:20px;
+  height:20px;
+}
+
+.value h3{
+  position:relative;
+  z-index:1;
+  font-size:21px;
+}
+
+.value p{
+  position:relative;
+  z-index:1;
+  margin-top:8px;
+  color:var(--muted);
+  font-size:14.5px;
+}
+
+/* ===== Closing ===== */
+
+.closing{
+  padding-top:0;
+}
+
+.closing-panel{
+  position:relative;
+  overflow:hidden;
+  padding:70px 56px;
+  color:#F4F5EE;
+  background:var(--ink);
+}
+
+.closing-panel::before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  top:-220px;
+  right:-85px;
+  border:1px solid rgba(203,218,185,.22);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 28px rgba(203,218,185,.05),
+    0 0 0 57px rgba(203,218,185,.04),
+    0 0 0 86px rgba(203,218,185,.03);
+}
+
+.closing-panel::after{
+  content:"";
+  position:absolute;
+  left:-100px;
+  bottom:-66px;
+  width:460px;
+  height:160px;
+  border:1px dashed rgba(225,203,200,.45);
+  border-radius:50%;
+  transform:rotate(-12deg);
+}
+
+.closing-content{
+  position:relative;
+  z-index:2;
+  max-width:590px;
+}
+
+.closing .kicker{
+  color:#C9D7B9;
+}
+
+.closing h2{
+  margin-top:18px;
+  color:#fff;
+}
+
+.closing .lead{
+  max-width:510px;
+  color:#C8CEC0;
+}
+
+.signup{
+  display:flex;
+  gap:10px;
+  max-width:510px;
+  margin-top:32px;
+}
+
+.signup input{
+  min-width:0;
+  flex:1;
+  min-height:51px;
+  border:1px solid rgba(255,255,255,.26);
+  border-radius:0;
+  outline:0;
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  padding:0 16px;
+  font-size:15px;
+  transition:border-color .2s ease, background .2s ease;
+}
+
+.signup input::placeholder{
+  color:#ABB5A5;
+}
+
+.signup input:focus{
+  border-color:#C9D7B9;
+  background:rgba(255,255,255,.10);
+}
+
+.signup input.err{
+  border-color:#E3A2A0;
+}
+
+.signup .btn{
+  background:#C9D7B9;
+  color:#31402E;
+  box-shadow:none;
+}
+
+.signup .btn:hover{
+  background:#fff;
+}
+
+.tiny{
+  margin-top:13px;
+  color:#AEB8A8;
+  font-size:12.5px;
+}
+
+.ok-box{
+  max-width:510px;
+  margin-top:30px;
+  padding:23px;
+  border:1px solid rgba(201,215,185,.50);
+  background:rgba(255,255,255,.06);
+}
+
+.ok-box b{
+  display:block;
+  color:#fff;
+  font:500 22px/1.2 var(--font-display);
+}
+
+.ok-box p{
+  margin-top:7px;
+  color:#C8CEC0;
+  font-size:14px;
+}
+
+/* ===== Footer ===== */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:38px 0;
+}
+
+.foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  color:var(--muted);
+  font-size:12.5px;
+}
+
+.foot-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--ink);
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:19px;
+}
+
+.foot a{
+  color:var(--accent-dark);
+  font-weight:700;
+}
+
+.foot a:hover{
+  text-decoration:underline;
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:960px){
+  .hero-grid,
+  .story-grid{
+    grid-template-columns:1fr;
+    gap:46px;
+  }
+
+  .hero{
+    padding-top:80px;
+  }
+
+  .hero-card{
+    max-width:650px;
+  }
+
+  .collection-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media(max-width:700px){
+  .wrap{
+    width:min(100% - 32px, 1120px);
+  }
+
+  section{
+    padding:72px 0;
+  }
+
+  .nav-note{
+    display:none;
+  }
+
+  .brand{
+    font-size:24px;
+  }
+
+  .ig span{
+    display:none;
+  }
+
+  .ig{
+    padding:10px;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:66px 0 68px;
+  }
+
+  .hero h1{
+    font-size:clamp(42px, 13vw, 59px);
+  }
+
+  .hero-actions,
+  .signup{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .hero-actions .btn,
+  .signup .btn{
+    width:100%;
+  }
+
+  .hero-meta{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .hero-card{
+    min-height:360px;
+    padding:20px;
+  }
+
+  .card-caption{
+    left:20px;
+    right:20px;
+  }
+
+  .card-caption b{
+    font-size:19px;
+  }
+
+  .card-caption span{
+    display:none;
+  }
+
+  .yarn-ball--one{
+    width:135px;
+    height:135px;
+    right:28px;
+  }
+
+  .yarn-ball--two{
+    width:92px;
+    height:92px;
+    left:34px;
+  }
+
+  .facts,
+  .collection-grid,
+  .values-grid{
+    grid-template-columns:1fr;
+  }
+
+  .facts div,
+  .facts div:not(:first-child){
+    padding:15px 0;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .facts div:last-child{
+    border-bottom:0;
+  }
+
+  .workbench{
+    min-height:330px;
+  }
+
+  .workbench::before{
+    width:250px;
+    height:250px;
+  }
+
+  .workbench-needle{
+    width:270px;
+  }
+
+  .collection-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:0;
+  }
+
+  .closing-panel{
+    padding:46px 22px;
+  }
+
+  .thread-art--top{
+    width:290px;
+    right:-150px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<svg class="thread-art thread-art--top" viewBox="0 0 370 190" aria-hidden="true">
+  <path d="M4 165 C45 25, 92 190, 134 70 S215 42, 252 128 S327 165, 365 20"></path>
+  <path class="needle" d="M252 128 L348 38"></path>
+  <ellipse class="eye" cx="344" cy="42" rx="6" ry="3"></ellipse>
+</svg>
+
+<svg class="thread-art thread-art--bottom" viewBox="0 0 440 220" aria-hidden="true">
+  <path d="M8 194 C67 38, 112 212, 168 78 S260 42, 308 147 S378 190, 432 24"></path>
+  <path class="needle" d="M304 145 L413 35"></path>
+  <ellipse class="eye" cx="408" cy="40" rx="6" ry="3"></ellipse>
+</svg>
+
+<div class="announce">
+  <span>NESMINA / STUDY 001 — <b>small-batch objects, made by hand</b></span>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Nesmina home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-copy">
+        Nesmina
+        <small>HANDKNIT OBJECTS</small>
+      </span>
+    </a>
+
+    <div class="nav-right">
+      <span class="nav-note">fibre / form / patience</span>
+      <a class="ig" id="igLink" href="#" target="_blank" rel="noopener" aria-label="Nesmina Instagram">
+        <i data-lucide="instagram"></i>
+        <span id="igHandle">@nesmina.studio</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="kicker">Handknit Objects</div>
+
+        <h1>
+          Made by hand.<br>
+          Held <em>for years.</em>
+        </h1>
+
+        <p class="lead">
+          Nesmina is a fictional concept label for slow-made knit objects. Natural fibres, deliberate textures and small releases — shaped one stitch at a time.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#collection">
+            Explore the first study
+            <i data-lucide="arrow-down-right"></i>
+          </a>
+
+          <a class="btn btn-ghost" href="#process">
+            Our process
+            <i data-lucide="move-down"></i>
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span>small-run pieces</span>
+          <span>natural fibre focus</span>
+          <span>fictional concept site</span>
+        </div>
+      </div>
+
+      <div class="hero-card reveal" aria-label="Abstract yarn and knitting needle illustration">
+        <div class="card-top">
+          <span>ATELIER NOTES / 001</span>
+          <span class="card-live"><i></i> IN PROGRESS</span>
+        </div>
+
+        <div class="yarn-ball yarn-ball--one"></div>
+        <div class="yarn-ball yarn-ball--two"></div>
+        <div class="yarn-ball yarn-ball--three"></div>
+
+        <span class="knitting-needle needle-one"></span>
+        <span class="knitting-needle needle-two"></span>
+
+        <div class="card-caption">
+          <b>Every object begins with a thread.</b>
+          <span>KNIT / REPEAT / HOLD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thread-divider" aria-label="Nesmina studio values">
+    <div class="thread-track">
+      <span>natural fibres</span>
+      <span>small runs</span>
+      <span>considered colour</span>
+      <span>quiet texture</span>
+      <span>made slowly</span>
+      <span>natural fibres</span>
+      <span>small runs</span>
+      <span>considered colour</span>
+      <span>quiet texture</span>
+      <span>made slowly</span>
+    </div>
+  </section>
+
+  <section class="story" id="process">
+    <div class="wrap story-grid">
+      <div class="story-copy reveal">
+        <div class="kicker">The Practice</div>
+        <h2>Not fast fashion. Not factory-perfect.</h2>
+
+        <p>
+          Nesmina explores what happens when everyday objects are given more time. A hat, wrap or blanket begins with a material choice, a test swatch and the rhythm of repeated stitches.
+        </p>
+
+        <p>
+          The result is intentionally human: subtle variation, tactile surfaces and pieces that feel more personal the longer they are used.
+        </p>
+
+        <div class="facts">
+          <div>
+            <b>01</b>
+            <span>maker-led process</span>
+          </div>
+          <div>
+            <b>Small</b>
+            <span>considered releases</span>
+          </div>
+          <div>
+            <b>Slow</b>
+            <span>by design, not delay</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="workbench reveal" aria-label="Abstract yarn ball and knitting needle artwork">
+        <span class="workbench-needle"></span>
+        <span class="workbench-label">material study / 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="collection">
+    <div class="wrap">
+      <div class="collection-head reveal">
+        <div>
+          <div class="kicker">First Study</div>
+          <h2>Objects for cold days<br>and quiet corners.</h2>
+        </div>
+
+        <p class="lead">
+          A future collection imagined around useful, lasting knit objects. Each category begins with material, proportion and a purpose.
+        </p>
+      </div>
+
+      <div class="collection-grid">
+        <article class="collection-card reveal">
+          <span class="num">01 / WEAR</span>
+          <h3>Headwear</h3>
+          <p>Structured beanies and soft hats, built around warmth and repeat wear.</p>
+          <span class="tag">In development</span>
+        </article>
+
+        <article class="collection-card reveal" style="transition-delay:.08s">
+          <span class="num">02 / LAYER</span>
+          <h3>Wraps</h3>
+          <p>Generous scarves and wraps with texture that becomes softer over time.</p>
+          <span class="tag">In development</span>
+        </article>
+
+        <article class="collection-card reveal" style="transition-delay:.16s">
+          <span class="num">03 / HOME</span>
+          <h3>Throws</h3>
+          <p>Heavy, tactile layers for sofas, beds and the spaces we return to.</p>
+          <span class="tag">In development</span>
+        </article>
+
+        <article class="collection-card reveal" style="transition-delay:.24s">
+          <span class="num">04 / SMALL</span>
+          <h3>Useful Things</h3>
+          <p>Small knit forms for desks, shelves and thoughtful gifting.</p>
+          <span class="tag">In development</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="wrap">
+      <div class="kicker reveal">Studio Principles</div>
+      <h2 class="reveal">A quieter way to make things.</h2>
+
+      <div class="values-grid">
+        <article class="value reveal">
+          <div class="value-icon"><i data-lucide="leaf"></i></div>
+          <h3>Material first</h3>
+          <p>Natural-feeling fibre, selected for texture, comfort and a life beyond one season.</p>
+        </article>
+
+        <article class="value reveal" style="transition-delay:.08s">
+          <div class="value-icon"><i data-lucide="workflow"></i></div>
+          <h3>Visible process</h3>
+          <p>Swatches, trial pieces and gradual refinement are part of the object, not hidden from it.</p>
+        </article>
+
+        <article class="value reveal" style="transition-delay:.16s">
+          <div class="value-icon"><i data-lucide="heart-handshake"></i></div>
+          <h3>Made to stay</h3>
+          <p>Objects imagined for regular use, repairable care and the comfort of familiarity.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <div class="closing-panel reveal">
+        <div class="closing-content">
+          <div class="kicker">Studio Notes</div>
+          <h2>The first collection is still taking shape.</h2>
+
+          <p class="lead">
+            This is a fictional concept page created as a design study. Join the list to see the intended interaction and confirmation state.
+          </p>
+
+          <div id="signupWrap">
+            <form class="signup" id="launchForm" novalidate>
+              <input type="email" id="l-email" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
+              <button class="btn" type="submit">
+                Join the concept list
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </form>
+
+            <p class="tiny">Demo form only — it does not send or store your email address.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="foot-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Nesmina
+    </span>
+
+    <span>Fictional concept website · Not a real shop or brand</span>
+
+    <span>Website concept by <a id="apexCredit" href="index.html">OptiCodeStudio</a></span>
+  </div>
+</footer>
+
+<script>
+const CONFIG = {
+  instagramUrl: "#",
+  instagramHandle: "@nesmina.studio",
+  apexUrl: "index.html"
+};
+
+const $ = selector => document.querySelector(selector);
+
+const igLink = $('#igLink');
+const igHandle = $('#igHandle');
+const apexCredit = $('#apexCredit');
+
+igLink.href = CONFIG.instagramUrl;
+igHandle.textContent = CONFIG.instagramHandle;
+apexCredit.href = CONFIG.apexUrl;
+
+$('#launchForm').addEventListener('submit', event => {
+  event.preventDefault();
+
+  const input = $('#l-email');
+  const email = input.value.trim();
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  input.classList.toggle('err', !valid);
+
+  if(!valid){
+    input.focus();
+    return;
+  }
+
+  $('#signupWrap').innerHTML = `
+    <div class="ok-box">
+      <b>You're on the concept list.</b>
+      <p>This is a demo confirmation state. No email was sent and no information was stored.</p>
+    </div>
+  `;
+});
+
+$('#l-email').addEventListener('input', event => {
+  event.target.classList.remove('err');
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold:.12 });
+
+document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+if(window.lucide){
+  window.lucide.createIcons();
+}
+</script>
+
+</body>
+</html>
