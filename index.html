@@ -863,7 +863,7 @@ body::after {
 <section class="sec" id="why">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">05 — Why Apex</div>
+      <div class="kicker">05 — Why OptiCodeStudio</div>
       <h2>What you get when a studio actually builds, not assembles.</h2>
     </div>
     <div class="why-grid">
@@ -1264,7 +1264,7 @@ const CONFIG = {
   // label'ı "Client Project" yapacağız.
   portfolio: [
   {
-    label: "Studio Concept",
+    label: "Client Project",
     title: "Nesmina",
     sector: "Handknit Objects Concept",
     desc: "A quiet, tactile concept site for a handknit label built around natural fibres, small releases and the rhythm of making.",
@@ -1291,7 +1291,7 @@ const CONFIG = {
   },
 
   {
-    label: "Studio Work",
+    label: "Studio Demo",
     title: "Golden Crust Bakery",
     sector: "Bakery Café Website",
     desc: "A warm, appetite-first one-pager for a family bakery — menu, story and one-tap directions in a single scroll.",
@@ -1318,7 +1318,7 @@ const CONFIG = {
   },
 
   {
-    label: "Studio Concept",
+    label: "Studio Demo",
     title: "Luma Dental Studio",
     sector: "Dental Care Website Concept",
     desc: "An editorial, patient-first dental concept that replaces clinical pressure with clarity, calm and an easier first step.",
@@ -1345,7 +1345,7 @@ const CONFIG = {
   },
 
   {
-    label: "Studio Concept",
+    label: "Studio Demo",
     title: "Northform Training Club",
     sector: "Strength & Conditioning Concept",
     desc: "A structured, high-energy training-club concept for strength, conditioning and movement without empty fitness promises.",
@@ -1660,20 +1660,11 @@ function openWork(i){
       btn.innerHTML = 'Sent ✓';
       setTimeout(() => { btn.innerHTML = btnHtml; btn.disabled = false; icons(); }, 2400);
     }else{
-      btn.innerHTML = btnHtml; btn.disabled = false; icons();
-      const s = encodeURIComponent(payload._subject);
-      const b = encodeURIComponent(
-        `Hi OptiCodeStudio,\n\n` +
-        `Name: ${payload['Name']}\n` +
-        `Email: ${payload['Email']}\n` +
-        `Business / website: ${payload['Business / website']}\n` +
-        `Interested in: ${payload['Interested in']}\n` +
-        `Budget: ${payload['Budget']}\n\n` +
-        `Project details:\n${payload['Project details']}`
-      );
-      window.location.href = `mailto:${CONFIG.email}?subject=${s}&body=${b}`;
-      showToast('Opening your email app as a backup — just hit send.');
-    }
+  btn.innerHTML = btnHtml;
+  btn.disabled = false;
+  icons();
+  showToast('We couldn’t send your message right now. Please try again in a moment.');
+}
   });
 })();
 
@@ -1715,15 +1706,11 @@ function openWork(i){
       showToast('Quick review request sent!');
       icons();
     }else{
-      btn.disabled = false; btn.innerHTML = btnHtml; icons();
-      const s = encodeURIComponent(payload._subject);
-      const b = encodeURIComponent(
-        `Hi OptiCodeStudio,\n\nI'd like a quick first-look review of my website.\n\n` +
-        `Name: ${payload['Name']}\nEmail: ${payload['Email']}\nWebsite: ${payload['Website']}\nNotes: ${payload['Notes']}`
-      );
-      window.location.href = `mailto:${CONFIG.email}?subject=${s}&body=${b}`;
-      showToast('Opening your email app as a backup.');
-    }
+  btn.disabled = false;
+  btn.innerHTML = btnHtml;
+  icons();
+  showToast('We couldn’t send your quick review request right now. Please try again in a moment.');
+}
   });
 
   const openAudit = () => openModalEl($('#auditModal'));
