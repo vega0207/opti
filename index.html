@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OptiCodeStudio — Websites Built to Win Customers</title>
-<meta name="description" content="OptiCodeStudio designs and builds fast, conversion-focused, hand-coded websites. Essential, Growth and Premium packages plus custom e-commerce. Get a custom quote.">
+<title>OptiCodeStudio — Website Design & Redesign for Small Businesses</title>
+<meta name="description" content="OptiCodeStudio designs and builds clean, fast, mobile-friendly websites for small businesses. We also redesign existing websites. Get a quote.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,22 +34,18 @@
   --font-m: "JetBrains Mono", monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}
 body{
   background:
-    linear-gradient(
-      180deg,
-      rgba(4,18,29,.76) 0%,
-      rgba(5,24,35,.84) 48%,
-      rgba(4,15,24,.94) 100%
-    ),
-    url("sea-bg.jpg") center top / cover fixed no-repeat;
-  background-color:var(--bg);
+    linear-gradient(180deg, rgba(4,18,29,.76) 0, rgba(5,24,35,.84) 48%, rgba(4,15,24,.94) 100%),
+    url('sea-bg.jpg') center top / cover no-repeat;
+  background-attachment:fixed;
+  background-color:#06131C;
   color:var(--text);
   font-family:var(--font-d);
-  font-size:16px;line-height:1.6;
+  font-size:16px;
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden
 }
 ::selection{background:var(--accent);color:var(--accent-ink)}
 img{max-width:100%;display:block}
@@ -103,7 +99,7 @@ nav.scrolled{background:rgba(5,8,15,.86);backdrop-filter:blur(12px);border-color
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero-lead{color:var(--muted);font-size:18px;max-width:520px}
 .hero-actions{display:flex;gap:16px;margin:36px 0 0;flex-wrap:wrap}
-.hero-stats{display:flex;gap:0;margin-top:56px;border-top:1px solid var(--line);padding-top:26px}
+.hero-stats{display:flex;gap:0;margin-top:32px;border-top:1px solid var(--line);padding-top:26px}
 .hero-stats>div{padding-right:36px;margin-right:36px;border-right:1px solid var(--line)}
 .hero-stats>div:last-child{border-right:0;margin-right:0;padding-right:0}
 .hero-stats b{display:block;font-size:26px;font-weight:700;letter-spacing:-.02em}
@@ -125,7 +121,7 @@ nav.scrolled{background:rgba(5,8,15,.86);backdrop-filter:blur(12px);border-color
 @keyframes blink{50%{opacity:0}}
 
 /* ---- Kayan şerit ---- */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;background:var(--surface)}
+.marquee{position:relative;z-index:2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;background:var(--bg)}
 .marquee-track{display:flex;gap:0;width:max-content;animation:mq 30s linear infinite}
 .mq-item{display:flex;align-items:center;gap:28px;padding-right:28px;font:500 13px/1 var(--font-m);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .mq-item::after{content:"";width:7px;height:7px;background:var(--accent);flex:none}
@@ -144,7 +140,7 @@ nav.scrolled{background:rgba(5,8,15,.86);backdrop-filter:blur(12px);border-color
 .sig-note a:hover{text-decoration:underline}
 
 /* ---- Paketler ---- */
-.pkgs{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
 .pkg{position:relative;border:1px solid var(--line);background:var(--surface);padding:28px 24px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
 .pkg:hover{border-color:var(--line-strong);transform:translateY(-5px)}
 .pkg--pop{border-color:var(--accent)}
@@ -153,6 +149,7 @@ nav.scrolled{background:rgba(5,8,15,.86);backdrop-filter:blur(12px);border-color
 .pkg-tag{position:absolute;top:-12px;left:24px;border:1px solid var(--line-strong);background:var(--bg);color:var(--muted);font:500 10.5px/1 var(--font-m);letter-spacing:.14em;padding:5px 10px}
 .pkg-name{font-size:21px;font-weight:700;letter-spacing:-.01em;margin-bottom:4px}
 .pkg-best{color:var(--muted);font-size:13.5px;line-height:1.5;min-height:60px;margin-bottom:18px}
+.pkg-price{font:600 16px/1.2 var(--font-d);color:var(--text);letter-spacing:-.01em;margin:14px 0 4px}
 .pkg-from{font:500 10.5px/1 var(--font-m);letter-spacing:.16em;color:var(--accent);text-transform:uppercase;border-top:1px solid var(--line);padding-top:16px;margin-bottom:12px}
 .pkg-list{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1}
 .pkg-list li{display:flex;gap:9px;font-size:13.5px;color:var(--text);line-height:1.45}
@@ -165,17 +162,17 @@ nav.scrolled{background:rgba(5,8,15,.86);backdrop-filter:blur(12px);border-color
 .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px}
 .modal.open{display:flex}
 .modal-bg{position:absolute;inset:0;background:rgba(3,5,10,.8);backdrop-filter:blur(4px)}
-.modal-panel{position:relative;width:100%;max-width:780px;max-height:86vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line-strong);animation:mIn .22s ease}
+.modal-panel{position:relative;width:100%;max-width:780px;max-height:86vh;overflow-y:auto;overscroll-behavior:contain;background:var(--surface);border:1px solid var(--line-strong);animation:mIn .22s ease}
 @keyframes mIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .modal-head{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--line);padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;z-index:2}
 .modal-head h3{font-size:26px;letter-spacing:-.02em}
 .modal-head p{color:var(--accent);font:500 12px/1 var(--font-m);letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
 .modal-x{background:none;border:1px solid var(--line-strong);color:var(--muted);width:38px;height:38px;display:grid;place-items:center;cursor:pointer;flex:none;transition:.15s}
 .modal-x:hover{border-color:var(--bad);color:var(--bad)}
-.modal-body{padding:28px}
+.modal-body{padding:28px;overscroll-behavior:contain}
 .modal-best{color:var(--muted);border-left:3px solid var(--accent);padding:4px 0 4px 16px;margin-bottom:26px;font-size:15px;line-height:1.65}
 .modal-sub{font:500 11.5px/1 var(--font-m);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:26px 0 14px}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;list-style:none}
+.modal-grid{display:grid;grid-template-columns:1fr;gap:6px;list-style:none;align-items:start}
 .modal-grid li{display:flex;gap:9px;font-size:14.5px;line-height:1.5}
 .modal-grid .lucide{width:15px;height:15px;color:var(--accent);flex:none;margin-top:4px}
 .modal-notes{list-style:none;display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);background:var(--surface-2);padding:18px 20px}
@@ -191,6 +188,76 @@ nav.scrolled{background:rgba(5,8,15,.86);backdrop-filter:blur(12px);border-color
 .cs-r span{font:400 12px/1.4 var(--font-m);color:var(--muted)}
 .w-visit{margin-top:26px;width:100%}
 
+/* ---- Care Plans ---- */
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.care{position:relative;border:1px solid var(--line);background:var(--surface);padding:30px 26px;display:flex;flex-direction:column}
+.care--pop{border-color:var(--accent)}
+.care-badge{position:absolute;top:-12px;left:24px;background:var(--accent);color:var(--accent-ink);font:700 10.5px/1 var(--font-m);letter-spacing:.14em;padding:6px 10px;text-transform:uppercase}
+.care h3{font-size:21px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.care-price{font:600 22px/1.2 var(--font-d);color:var(--accent);margin-bottom:20px}
+.care-price span{font:400 12px/1 var(--font-m);color:var(--muted);letter-spacing:.06em}
+.care ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.care li{display:flex;gap:9px;font-size:14px;color:var(--text);line-height:1.5}
+.care li .lucide{width:15px;height:15px;color:var(--accent);flex:none;margin-top:3px}
+
+@media (max-width:720px){
+  .hero-stack .hero{
+    padding:96px 0 48px;
+  }
+
+  .hero h1{
+    font-size:clamp(32px,9vw,44px);
+  }
+
+  .hero-lead{
+    font-size:16px;
+  }
+
+  .hero-stats{
+    margin-top:28px;
+    padding-top:20px;
+  }
+
+  .hero-stats b{
+    font-size:22px;
+  }
+
+  .design-panel{
+    min-height:auto;
+  }
+
+  .design-body{
+    min-height:auto;
+    padding:20px 16px;
+  }
+
+  .marquee{
+    padding:14px 0;
+  }
+
+  .care{
+    padding:24px 20px;
+  }
+
+  .care-price{
+    font-size:20px;
+  }
+
+  .pkg{
+    padding:24px 20px;
+  }
+
+  .pkg-price{
+    font-size:15px;
+  }
+
+  .modal-panel{
+    max-height:92vh;
+  }
+}
+@media (max-width:1024px){
+  .care-grid{grid-template-columns:1fr}
+}
 /* ---- Süreç ---- */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .step{border-top:1px solid var(--line-strong);padding-top:22px;position:relative}
@@ -303,6 +370,37 @@ footer{border-top:1px solid var(--line);padding:44px 0 40px;margin-top:20px}
 /* ---- Kaydırma animasyonu ---- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
+html,body{
+  overflow-x:clip;
+}
+
+.hero-stack{
+  position:relative;
+}
+
+.hero-stack .hero{
+  position:sticky;
+  top:0;
+  z-index:1;
+  min-height:auto;
+  padding:90px 0 40px;
+}
+
+.hero-stack .marquee{
+  position:relative;
+  z-index:2;
+  background:var(--bg);
+  border-top:1px solid rgba(102,227,229,.55);
+  border-bottom:1px solid rgba(102,227,229,.55);
+  box-shadow:
+    0 -10px 30px rgba(102,227,229,.12),
+    0 10px 30px rgba(102,227,229,.12);
+}
+
+.hero-stack #problem{
+  position:relative;
+  z-index:2;
+}
 
 /* ---- Duyarlı tasarım ---- */
 @media(max-width:1024px){
@@ -389,6 +487,7 @@ body {
     url("sea-bg.jpg") center top / cover fixed no-repeat;
   background-color: #06131C;
 }
+
 
 body::before,
 body::after {
@@ -678,14 +777,232 @@ body::after {
     font-size: 9px;
   }
 }
+/* WHY OPTICODESTUDIO MOBIL */
+@media (max-width:720px){
+  #why .sec{
+    padding:64px 0;
+  }
+
+  #why .sec-head{
+    margin-bottom:34px;
+  }
+
+  #why .sec-head h2{
+    font-size:clamp(28px,7.6vw,36px);
+  }
+
+  #why .why-grid{
+    gap:12px;
+  }
+
+  #why .why{
+    padding:22px 18px;
+  }
+
+  #why .why .ico{
+    width:38px;
+    height:38px;
+    margin-bottom:14px;
+  }
+
+  #why .why h3{
+    font-size:17.5px;
+    margin-bottom:8px;
+  }
+
+  #why .why p{
+    font-size:14px;
+    line-height:1.6;
+  }
+}
+/* MOBILDE TERMINAL KUTUSU KESILMESIN */
+@media (max-width:720px){
+  .design-panel{
+    min-height:auto !important;
+    height:auto !important;
+    overflow:visible !important;
+  }
+
+  .design-body{
+    min-height:auto !important;
+    height:auto !important;
+    padding:20px 16px 22px !important;
+  }
+
+  .term-body{
+    min-height:auto !important;
+    height:auto !important;
+    padding:16px 14px 20px !important;
+  }
+
+  .tl{
+    font-size:11.5px !important;
+    line-height:1.7 !important;
+  }
+}
+/* HERO TAMAMI FADE ANIMASYONUNA DAHIL */
+.hero-stack{
+  position:relative;
+}
+
+.hero-stack .hero{
+  position:sticky;
+  top:0;
+  z-index:1;
+  min-height:100vh;
+  will-change:opacity, transform;
+}
+
+.hero-stack .marquee{
+  position:relative;
+  z-index:2;
+}
+/* HERO NORMAL KAYDIRMA: MOBIL VE TABLETTE KESILME YOK */
+.hero-stack .hero{
+  position:relative;
+  top:auto;
+  min-height:auto;
+  height:auto;
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+  overflow:visible;
+  padding:110px 0 64px;
+}
+
+.hero-stack .marquee{
+  position:relative;
+  z-index:2;
+}
+
+.work-card-enter{
+  animation:workCardIn .35s ease both;
+}
+
+@keyframes workCardIn{
+  from{
+    opacity:0;
+    transform:translateY(14px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+/* PORTFOLIO TABLARI — KAYAN MAVI BLOK */
+.work-tabs{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  max-width:500px;
+  margin:0 0 32px;
+  padding:5px;
+  overflow:hidden;
+  border:1px solid var(--line-strong);
+  background:rgba(5,20,30,.72);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+.work-tabs::before{
+  content:"";
+  position:absolute;
+  top:5px;
+  bottom:5px;
+  left:5px;
+  width:calc(50% - 5px);
+  background:var(--accent);
+  box-shadow:0 0 24px rgba(102,227,229,.22);
+  transform:translateX(0);
+  transition:transform .32s cubic-bezier(.2,.8,.2,1);
+  z-index:0;
+}
+
+/* Client Projects aktifken mavi blok sağa kayar */
+.work-tabs.client-active::before{
+  transform:translateX(100%);
+}
+
+.work-tab{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  font:700 12px/1 var(--font-m);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:color .22s ease;
+  white-space:nowrap;
+}
+
+.work-tab.active{
+  color:var(--accent-ink);
+}
+
+.work-tab:hover:not(.active){
+  color:var(--text);
+}
+
+.work-card-enter{
+  animation:workCardIn .35s ease both;
+}
+
+@keyframes workCardIn{
+  from{
+    opacity:0;
+    transform:translateY(14px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media (max-width:720px){
+  .work-tabs{
+    width:100%;
+    max-width:none;
+    margin-bottom:24px;
+  }
+
+  .work-tab{
+    min-height:44px;
+    padding:0 8px;
+    font-size:10.5px;
+    letter-spacing:.035em;
+  }
+}
+/* WORK TABLARINI OVAL YAP */
+.work-tabs{
+  border-radius:999px !important;
+}
+
+.work-tabs::before{
+  border-radius:999px !important;
+  box-shadow:
+    0 6px 18px rgba(0,0,0,.20),
+    0 0 28px rgba(102,227,229,.24) !important;
+}
+
+.work-tab{
+  border-radius:999px !important;
+}
 </style>
 </head>
 <body>
+  <div class="bg-layer"></div>
 
 <!-- ================= ÜST MENÜ ================= -->
 <nav id="nav">
   <div class="nav-in">
-    <a href="/" class="logo">
+    <a href="#top" class="logo">
     <div class="logo-mark" style="border: none; width: 32px; height: 32px;">
         <img src="logo.png" alt="OptiCodeStudio Logo" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
@@ -716,19 +1033,20 @@ body::after {
 </div>
 
 <!-- ================= HERO ================= -->
+<div class="hero-stack">
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <div class="kicker">Web Design &amp; Development Studio</div>
-      <h1>A weak website is <em>costing you customers.</em></h1>
-      <p class="hero-lead">OptiCodeStudio designs and builds fast, conversion-focused, hand-coded websites for businesses that are done looking average online.</p>
+      <div class="kicker">Web Design Studio</div>
+      <h1>A better website, <em>built or improved for you.</em></h1>
+      <p class="hero-lead">We design and build clean, fast, mobile-friendly websites for small businesses. We can also improve or redesign your current website.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">Get a Custom Quote <i data-lucide="arrow-right"></i></a>
         <button class="btn btn-ghost" id="auditBtn">Get a Quick Review <i data-lucide="search"></i></button>
       </div>
       <div class="hero-stats">
   <div><b>Fast</b><span>clear delivery timelines</span></div>
-  <div><b>100%</b><span>hand-coded, zero templates</span></div>
+  <div><b>Custom</b><span>design and development</span></div>
   <div><b>Free</b><span>first-look website review</span></div>
 </div>
     </div>
@@ -791,42 +1109,90 @@ body::after {
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker">01 — Sound Familiar?</div>
-      <h2>Most business websites quietly fail in the same three ways.</h2>
-      <p>If any of these describe your current website, you're not just losing traffic — you're losing revenue.</p>
+      <h2>Your website should help customers trust you and get in touch.</h2>
+      <p>If your website looks old, does not work well on mobile or does not clearly explain your business, customers may choose another company.</p>
     </div>
     <div class="sig-grid">
       <div class="sig reveal">
         <div class="ico"><i data-lucide="gauge"></i></div>
         <h3>It loads slowly</h3>
-        <p>Every extra second of load time drops conversions. Visitors don't wait — they leave and buy from someone else.</p>
+        <p>A slow website makes it harder for visitors to find what they need and get in touch.</p>
       </div>
       <div class="sig reveal" style="transition-delay:.08s">
         <div class="ico"><i data-lucide="smartphone"></i></div>
         <h3>It breaks on mobile</h3>
-        <p>Most of your traffic is on a phone. If your site looks broken there, your business looks closed.</p>
+        <p>Your website should be easy to read and use on a phone, with clear buttons and simple navigation.</p>
       </div>
       <div class="sig reveal" style="transition-delay:.16s">
         <div class="ico"><i data-lucide="search"></i></div>
-        <h3>It's invisible on Google</h3>
-        <p>No meta structure, no sitemap, no indexing. A website nobody finds is a business card in a drawer.</p>
+        <h3>Basic SEO is missing</h3>
+        <p>We check page titles, descriptions and structure as part of the website project.</p>
       </div>
     </div>
     <div class="sig-note reveal">
-      <p><strong>That's exactly who we build for.</strong> Send us your website — we'll tell you, honestly and for free, what's costing you money.</p>
+      <p><strong>Not sure where to start?</strong> Send us your website for a free review and we’ll suggest the main improvements.</p>
       <a id="auditNote">Request a quick review <i data-lucide="arrow-up-right"></i></a>
     </div>
   </div>
 </section>
+</div>
 
 <!-- ================= PAKETLER ================= -->
 <section class="sec" id="packages">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker">02 — Packages</div>
-      <h2>Three packages. Fast delivery, pricing built around your budget.</h2>
-      <p>Every project is quoted individually — scope, complexity, timeline and integrations all matter. Tell us what you want to achieve and what you're comfortable spending, and we'll shape the right solution around it. Essential projects can launch in as little as 24 hours once all required content and approvals are ready. Growth projects are usually completed within 2–4 working days, while Premium and custom projects receive a confirmed timeline before work begins. No inflated packages, no surprise invoices.</p>
+      <h2>Simple website packages with clear pricing.</h2>
+      <p>Choose the option that fits your project. We’ll confirm the scope and price before we start. Most projects are ready in 2–4 working days once we have your content and approval.</p>
     </div>
     <div class="pkgs" id="pkgGrid"></div>
+  </div>
+</section>
+
+<!-- BAKIM PLANLARI -->
+<section class="sec" id="care">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Optional Care Plans</div>
+      <h2>Your website stays fast, secure and up to date.</h2>
+      <p>Choose ongoing support only if you need it. Monthly hours are the total time included in your plan. There is no obligation and no lock-in.</p>
+    </div>
+
+    <div class="care-grid">
+      <div class="care reveal">
+        <h3>Care</h3>
+        <div class="care-price">£300 <span>per month</span></div>
+        <ul>
+  <li><i data-lucide="check"></i> Website updates and security checks</li>
+  <li><i data-lucide="check"></i> Backups and uptime monitoring</li>
+  <li><i data-lucide="check"></i> Up to 1 hour of small changes per month</li>
+  <li><i data-lucide="check"></i> Monthly status update</li>
+</ul>
+      </div>
+
+      <div class="care care--pop reveal">
+        <span class="care-badge">Most popular</span>
+        <h3>Care+</h3>
+        <div class="care-price">£400 <span>per month</span></div>
+        <ul>
+  <li><i data-lucide="check"></i> Everything in Care</li>
+  <li><i data-lucide="check"></i> Up to 3 hours of small changes per month</li>
+  <li><i data-lucide="check"></i> Speed and performance checks</li>
+  <li><i data-lucide="check"></i> Priority support</li>
+</ul>
+      </div>
+
+      <div class="care reveal">
+        <h3>Growth</h3>
+        <div class="care-price">£700 <span>per month</span></div>
+        <ul>
+  <li><i data-lucide="check"></i> Everything in Care+</li>
+  <li><i data-lucide="check"></i> Up to 8 hours of improvements per month</li>
+  <li><i data-lucide="check"></i> New sections or landing pages where agreed</li>
+  <li><i data-lucide="check"></i> Monthly update call</li>
+</ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -835,14 +1201,14 @@ body::after {
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker">03 — Process</div>
-      <h2>From first message to launch, without the chaos.</h2>
-      <p>A clear, four-step process. You always know what's happening, what's next, and what's expected from you.</p>
+      <h2>How we work</h2>
+      <p>A simple four-step process, so you always know what is happening next.</p>
     </div>
     <div class="steps">
-      <div class="step reveal"><span class="step-num">STEP 01</span><h3>Discover</h3><p>We learn your business, goals and customers — and audit what your current site is doing wrong.</p></div>
-      <div class="step reveal" style="transition-delay:.08s"><span class="step-num">STEP 02</span><h3>Design</h3><p>A custom design built around your brand and one goal: turning visitors into customers.</p></div>
-      <div class="step reveal" style="transition-delay:.16s"><span class="step-num">STEP 03</span><h3>Build</h3><p>Hand-coded, fast, fully responsive. You review, we refine — revisions are included in every package.</p></div>
-      <div class="step reveal" style="transition-delay:.24s"><span class="step-num">STEP 04</span><h3>Launch</h3><p>Domain, hosting, SSL and SEO foundations — deployed, tested and handed over with support.</p></div>
+      <div class="step reveal"><span class="step-num">STEP 01</span><h3>Discover</h3><p>We learn about your business, goals and customers. If you have a current website, we review it too.</p></div>
+      <div class="step reveal" style="transition-delay:.08s"><span class="step-num">STEP 02</span><h3>Design</h3><p>We create a clean design that presents your business clearly and makes it easy for customers to contact you.</p></div>
+      <div class="step reveal" style="transition-delay:.16s"><span class="step-num">STEP 03</span><h3>Build</h3><p>We build a fast, mobile-friendly website and make changes based on your feedback.</p></div>
+      <div class="step reveal" style="transition-delay:.24s"><span class="step-num">STEP 04</span><h3>Launch</h3><p>We handle the technical setup, test the website and hand it over ready to use.</p></div>
     </div>
   </div>
 </section>
@@ -852,10 +1218,32 @@ body::after {
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker">04 — Work</div>
-      <h2>Selected work. Real problems, solved.</h2>
-      <p>Open a project to see what was broken, what we built, and what changed after launch.</p>
+      <h2>Selected work and website concepts.</h2>
+      <p>A selection of website concepts and projects showing how we approach clean design, mobile-friendly layouts and clear structure.</p>
     </div>
-    <div class="works" id="workGrid"></div>
+    <div class="work-tabs" role="tablist" aria-label="Portfolio filters">
+  <button
+    class="work-tab active"
+    type="button"
+    role="tab"
+    aria-selected="true"
+    data-work-filter="concept"
+  >
+    Studio Concepts
+  </button>
+
+  <button
+    class="work-tab"
+    type="button"
+    role="tab"
+    aria-selected="false"
+    data-work-filter="client"
+  >
+    Client Projects
+  </button>
+</div>
+
+<div class="works" id="workGrid"></div>
   </div>
 </section>
 
@@ -864,28 +1252,28 @@ body::after {
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="kicker">05 — Why OptiCodeStudio</div>
-      <h2>What you get when a studio actually builds, not assembles.</h2>
+      <h2>Why work with OptiCodeStudio?</h2>
     </div>
     <div class="why-grid">
       <div class="why reveal">
         <div class="ico"><i data-lucide="timer"></i></div>
-        <h3>Fast by design</h3>
-        <p>Essential projects can launch in as little as 24 hours when content and approvals are ready. Growth projects are usually completed within 2–4 working days, while Premium and custom work follows a confirmed project timeline. Why wait months when you could be winning customers this week?</p>
+        <h3>Clear delivery times</h3>
+        <p>Standard websites and redesigns usually take 2–4 working days once your content and approvals are ready. We confirm the timeline before we start. Larger projects may take longer.</p>
       </div>
       <div class="why reveal" style="transition-delay:.08s">
         <div class="ico"><i data-lucide="wallet"></i></div>
-        <h3>One-time pricing, no subscriptions</h3>
-        <p>The price we agree on is the price you pay — once. No monthly fees, no lock-in, no hidden costs. Your website is 100% yours.</p>
+        <h3>Clear project pricing</h3>
+<p>We confirm the price and scope before we start. There are no hidden costs, and your website is yours.</p>
       </div>
       <div class="why reveal" style="transition-delay:.16s">
         <div class="ico"><i data-lucide="code"></i></div>
-        <h3>Hand-coded, no page builders</h3>
-        <p>Every site is custom HTML, CSS and JavaScript. Faster, cleaner, and no bloated template baggage.</p>
+        <h3>Clean, custom development</h3>
+        <p>We build clean, fast websites that are made for your business, not copied from a template.</p>
       </div>
       <div class="why reveal" style="transition-delay:.24s">
         <div class="ico"><i data-lucide="zap"></i></div>
         <h3>Direct communication</h3>
-        <p>You talk directly to the person building your site. No account managers, no telephone games.</p>
+        <p>You speak directly with the person building your website, so feedback and updates are simple.</p>
       </div>
     </div>
   </div>
@@ -908,7 +1296,7 @@ body::after {
     <div class="sec-head reveal">
       <div class="kicker">07 — Contact</div>
       <h2>Tell us about your project.</h2>
-      <p>Share your goals and requirements. We'll recommend the right solution and send a custom quote — usually within 24 hours.</p>
+      <p>Tell us about your business and what you need. We’ll reply with a recommendation and a quote, usually within 24 hours.</p>
     </div>
     <div class="contact-grid">
       <form class="form reveal" id="quoteForm" novalidate>
@@ -933,10 +1321,10 @@ body::after {
             <label for="f-pkg">Interested in</label>
             <select id="f-pkg" name="package">
               <option value="Not sure yet">Not sure yet</option>
-              <option value="Essential">Essential</option>
-              <option value="Growth">Growth</option>
-              <option value="Premium / Custom">Premium / Custom</option>
-              <option value="E-commerce / Custom Project">E-commerce / Custom Project</option>
+              <option value="New Website">New Website</option>
+              <option value="Website Redesign">Website Redesign</option>
+              <option value="Custom Project">Custom Project</option>
+              <option value="Care Plan / Monthly Support">Care Plan / Monthly Support</option>
             </select>
           </div>
           <div class="f-group">
@@ -944,11 +1332,11 @@ body::after {
 
   <select id="f-budget" name="budget">
     <option value="Not specified">Prefer not to say</option>
-    <option value="Under $1,000">Under $1,000</option>
-    <option value="$1,000 - $2,500">$1,000 – $2,500</option>
-    <option value="$2,500 - $5,000">$2,500 – $5,000</option>
-    <option value="$5,000 - $10,000">$5,000 – $10,000</option>
-    <option value="$10,000+">$10,000+</option>
+    <option value="Under £1,000">Under £1,000</option>
+    <option value="£1,000 - £2,500">£1,000 – £2,500</option>
+    <option value="£2,500 - £5,000">£2,500 – £5,000</option>
+    <option value="£5,000 - £10,000">£5,000 – £10,000</option>
+    <option value="£10,000+">£10,000+</option>
   </select>
 </div>
         </div>
@@ -958,7 +1346,7 @@ body::after {
           <span class="f-msg">Please tell us a little about your project.</span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%">Send &amp; Get My Quote <i data-lucide="send"></i></button>
-        <p class="form-hint">Goes straight to our inbox — no spam, no newsletters, no middlemen.</p>
+        <p class="form-hint">Your message goes straight to our inbox. We usually reply within 24 hours.</p>
       </form>
 
       <div class="side">
@@ -972,7 +1360,7 @@ body::after {
         </div>
         <div class="side-card reveal" style="transition-delay:.08s">
           <h4>Find us on Instagram</h4>
-          <p>New work, launches and the fastest way to reach us. Our DMs are always open.</p>
+          <p>See our latest work and send us a message on Instagram.</p>
           <a class="ig-link" id="igLink" href="#" target="_blank" rel="noopener">
             <i data-lucide="instagram"></i>
             <span><b id="igHandle">@opticodestudio</b><small>Work, launches &amp; DMs</small></span>
@@ -1001,11 +1389,11 @@ body::after {
         </span>
         <span style="font-weight: 700;">OptiCode<small style="display: block; font: 500 10px/1 var(--font-m); letter-spacing: .3em; color: var(--muted); margin-top: 3px; text-transform: uppercase;">Studio</small></span>
       </a>
-      <small>Hand-coded with HTML, CSS &amp; JavaScript — no page builders. © 2026 OptiCodeStudio. All rights reserved.</small>
+      <small>Clean, custom website design and development. © 2026 OptiCodeStudio. All rights reserved.</small>
     </div>
     <div class="foot-links">
       <!-- Alttaki 'yönetici@domain.com' yerine kendi yeni mail adresini yaz kanka -->
-      <a href="opticodestudio@gmail.com" id="footMail"><i data-lucide="mail"></i> Email</a>
+      <a href="mailto:opticodestudio@gmail.com" id="footMail"><i data-lucide="mail"></i> Email</a>
       <!-- Instagram adresini değiştirmek istersen alttaki '#' yerine profil linkini yapıştırabilirsin -->
       <a href="https://www.instagram.com/opticodestudio" id="footIg" target="_blank" rel="noopener"><i data-lucide="instagram"></i> Instagram</a>
       <a href="privacy.html">Privacy</a>
@@ -1046,7 +1434,7 @@ body::after {
       <p class="modal-best" id="wOverview"></p>
       <div class="modal-sub">What we did</div>
       <ul class="modal-grid" id="wDid"></ul>
-      <div class="modal-sub">Results</div>
+      <div class="modal-sub">Design highlights</div>
       <div class="cs-results" id="wResults"></div>
       <a class="btn btn-ghost w-visit" id="wSite" style="display:none">Visit website <i data-lucide="arrow-up-right"></i></a>
     </div>
@@ -1058,11 +1446,11 @@ body::after {
   <div class="modal-bg" data-close="auditModal"></div>
   <div class="modal-panel" style="max-width:560px">
     <div class="modal-head">
-      <div><h3>Quick Website Review</h3><p>Quick first look · no pressure</p></div>
+      <div><h3>Quick Website Review</h3><p>Quick review of your website</p></div>
       <button class="modal-x" data-close="auditModal" aria-label="Close"><i data-lucide="x"></i></button>
     </div>
     <div class="modal-body">
-      <p class="modal-best">Send us your website address and we’ll take a quick first look. We’ll highlight the biggest issue we notice first and let you know whether a deeper review would be useful. This is a practical starting point, not a full technical audit.</p>
+      <p>Send us your website link and we’ll suggest the main improvements. This is a quick review, not a full technical audit.</p>
       <form id="auditForm" novalidate>
         <div class="f-group">
           <label for="a-name">Your name *</label>
@@ -1084,7 +1472,7 @@ body::after {
           <textarea id="a-note" name="notes" placeholder="What would you like us to review?" style="min-height:90px"></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%">Request My Quick Review <i data-lucide="send"></i></button>
-        <p class="form-hint">A practical first look. We’ll only recommend a deeper review when it makes sense.</p>
+        <p class="form-hint">Free, with no obligation to book a project.</p>
       </form>
     </div>
   </div>
@@ -1102,7 +1490,14 @@ body::after {
    - Bir satırı silmek istersen başına // koy.
    - Yeni madde eklemek için bir satırı kopyalayıp altına yapıştır.
    ================================================================ */
-const CONFIG = {
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+   const CONFIG = {
 
   // ---- İLETİŞİM BİLGİLERİ --------------------------------------
   email: "opticodestudio@gmail.com",          // Formlar bu adrese gider
@@ -1110,152 +1505,133 @@ const CONFIG = {
   instagramHandle: "@opticodestudio",
 
   // ---- KAYAN ŞERİTTEKİ YAZILAR ---------------------------------
-  marquee: [
-    "Website Design", "UI / UX", "Landing Pages", "E-commerce",
-    "SEO Foundations", "Performance", "Responsive Development", "Redesigns"
-  ],
+ marquee: [
+  "Website Design",
+  "Website Redesign",
+  "Landing Pages",
+  "Contact Forms",
+  "Basic SEO Setup",
+  "Performance",
+  "Mobile-Friendly Websites",
+  "Website Updates"
+],
 
   // ---- PAKETLER -------------------------------------------------
   packages: [
     {
       id: "essential",
-      name: "Essential",
+      price: "Starting from £1,000",
+      name: "New Website",
       tagline: "Professional online presence",
-      bestFor: "Best for small businesses that need a professional, modern online presence — live in 24 hours.",
+      bestFor: "For small businesses that need a new website or do not have one yet.",
       badge: null,
       special: false,
-      includesFrom: null,
+      includesFrom: "What's included",
       short: [
-        "Custom website design",
-        "1–5 pages",
-        "Fully responsive — mobile, tablet, desktop",
-        "Contact form + call-to-action buttons",
-        "Basic SEO structure & meta setup",
-        "SSL, domain & hosting setup",
-        "1–2 revision rounds + launch support"
-      ],
+  "Custom website design",
+  "Usually 1–5 pages, depending on your needs",
+  "Mobile, tablet and desktop friendly",
+  "Contact form and call-to-action buttons",
+  "Basic SEO setup",
+  "Domain, hosting and SSL setup",
+  "1–2 revision rounds and launch support"
+],
       full: [
-        "Custom website design","1–5 pages","Home, About, Services, Contact + basic additional pages where needed",
-        "Fully responsive design for mobile, tablet and desktop","Contact form","Phone, email & WhatsApp calls-to-action where applicable",
-        "Google Maps integration if needed","Social media links","Basic SEO structure","Meta titles and descriptions","Favicon setup",
-        "Optimized website images","Basic performance / speed optimization","SSL / HTTPS setup","Domain connection",
-        "Hosting / deployment setup","Custom 404 page","Form success / confirmation state","Simple, professional animations",
-        "1–2 revision rounds","Launch support"
-      ],
+  "Custom website design",
+  "Typically 1–5 pages, with the final scope confirmed before starting",
+  "Home, About, Services and Contact pages",
+  "Mobile, tablet and desktop friendly layout",
+  "Contact form",
+  "Phone, email and WhatsApp buttons where needed",
+  "Google Maps integration where needed",
+  "Social media links",
+  "Basic SEO setup",
+  "Meta titles and descriptions",
+  "Optimized images",
+  "SSL / HTTPS setup",
+  "Domain connection",
+  "Hosting and deployment setup",
+  "1–2 revision rounds",
+  "Launch support"
+],
       notes: [
-        "Copywriting, professional photography, branding, logo creation and large-scale content creation are not automatically included.",
-        "Third-party paid services — hosting, domain, plugins, APIs or software subscriptions — may involve additional external costs.",
-        "Advanced integrations and custom functionality require a custom quote."
-      ]
+  "Copywriting, professional photography, branding and logo design are not automatically included.",
+  "Domain and hosting are third-party services paid by the client.",
+  "Advanced integrations and custom features require a separate quote."
+]
     },
     {
-      id: "growth",
-      name: "Growth",
-      tagline: "Built to generate leads",
-      bestFor: "Best for businesses that want a stronger website focused on lead generation, credibility, and conversions — live in 48 hours.",
+      id: "redesign",
+      price: "Starting from £1,500",
+      name: "Website Redesign",
+      tagline: "Turn an outdated website into a modern one",
+      bestFor: "For businesses that already have a website but want it to look better and work better on mobile.",
       badge: "MOST POPULAR",
       special: false,
-      includesFrom: "Everything in Essential, plus",
+      includesFrom: "What's included",
       short: [
-        "Approx. 5–10 pages depending on scope",
-        "Conversion-focused structure & landing page",
-        "Advanced lead forms + strategic CTAs",
-        "Testimonials, FAQ & portfolio sections",
-        "Blog / CMS if required",
-        "Google Analytics + Search Console",
-        "2–3 revision rounds + post-launch support"
-      ],
+  "Review of your current website",
+  "Modern redesign based on your needs",
+  "Mobile, tablet and desktop friendly layout",
+  "Improved contact and enquiry experience",
+  "Content and image updates where needed",
+  "Basic SEO improvements",
+  "2–3 revision rounds and launch support"
+],
       full: [
-        "Approximately 5–10 pages depending on scope","More customized UI and page layouts","Conversion-focused website structure",
-        "Custom landing page","Advanced lead / contact forms","Service, budget or project-selection fields where appropriate",
-        "Multiple strategic CTA sections","Testimonials / reviews sections","FAQ section","Portfolio, gallery or case studies",
-        "Blog / CMS if required","Online appointment or reservation integration where applicable","Google Analytics setup",
-        "Google Search Console setup","Sitemap and robots.txt configuration","Open Graph / social sharing setup",
-        "More extensive on-page SEO","More extensive performance optimization","Advanced animations and micro-interactions",
-        "Migration of reasonable amounts of existing content","2–3 revision rounds","Short post-launch support period"
-      ],
+  "Review of the current website",
+  "Modern redesign based on your current website and requirements",
+  "Mobile, tablet and desktop friendly layout",
+  "Improved navigation and clear calls to action",
+  "Contact and enquiry forms",
+  "Content and image updates where needed",
+  "Image optimization",
+  "Basic SEO improvements",
+  "Google Analytics setup where required",
+  "Google Search Console setup where required",
+  "Performance improvements",
+  "2–3 revision rounds",
+  "Launch support"
+],
       notes: [
-        "Appointment / reservation features may use third-party platforms rather than a fully custom booking system.",
-        "CMS / blog functionality is included only when required by the project.",
-        "Content migration covers a reasonable agreed scope; very large migrations require a custom quote.",
-        "Advanced SEO campaigns, ongoing SEO, advertising and content marketing are separate services.",
-        "Third-party software / API / subscription costs are not automatically included."
-      ]
+  "The final scope depends on the current website, content and required changes.",
+  "Complex migrations, custom booking systems and advanced integrations require a separate quote.",
+  "Third-party software, plugins, APIs and subscriptions are paid by the client."
+]
     },
     {
-      id: "premium",
-      name: "Premium / Custom",
-      tagline: "A fully custom digital experience",
-      bestFor: "Best for established businesses requiring a highly customized digital experience — live in 3–7 days.",
+      id: "custom",
+      price: "Custom quote",
+      name: "Custom Project",
+      tagline: "For websites that need extra functionality",
+      bestFor: "For projects that need extra features, more pages or a custom quote.",
       badge: null,
       special: false,
-      includesFrom: "Everything in Growth, plus",
+      includesFrom: "What's included",
       short: [
-        "10+ pages or fully custom scope",
-        "Full custom design system + UX planning",
-        "Custom interactions, forms & calculators",
-        "CRM, email & newsletter integrations",
-        "Multilingual support where required",
-        "Advanced analytics + conversion tracking",
-        "Client training + extended support"
-      ],
+  "Custom scope and timeline",
+  "Custom design and development",
+  "Additional pages or sections",
+  "Simple forms and integrations where possible",
+  "Detailed planning before the project begins",
+  "Support and training where agreed"
+],
       full: [
-        "10+ pages or a fully custom project scope","Full custom design system","Advanced UX planning","Advanced scroll animations",
-        "Custom interactions and micro-interactions","Custom forms and calculators where required","CRM integrations",
-        "Email automation integrations","Newsletter integrations","Advanced CMS architecture","Multilingual website functionality where required",
-        "Advanced analytics setup","Conversion tracking","More extensive technical SEO implementation",
-        "Larger content migration where agreed","Priority revisions and support","Client training and project handoff",
-        "Extended post-launch support depending on agreed scope"
-      ],
+  "Custom project scope",
+  "Custom design and development",
+  "Additional pages or sections",
+  "Simple forms and integrations where possible",
+  "Content migration where agreed",
+  "Detailed planning before work begins",
+  "Testing before launch",
+  "Support and training where agreed"
+],
       notes: [
-        "Premium / Custom does not mean unlimited functionality, unlimited pages, or unlimited revisions.",
-        "Exact deliverables must be defined before the project begins.",
-        "Complex backend systems, SaaS products, dashboards, membership platforms, custom payment infrastructure, advanced AI systems and complex web applications require individual technical evaluation and a separate quote.",
-        "Third-party service / API / licensing costs are separate unless specifically included in the proposal."
-      ]
+  "Complex web applications, membership systems, custom payment systems and advanced backend development require separate technical evaluation.",
+  "Third-party services, APIs, licences and subscriptions are paid by the client.",
+  "Timeline and final price are confirmed in writing before the project begins."
+]
     },
-    {
-  id: "ecommerce",
-  name: "E-commerce",
-  tagline: "Custom storefronts built on the right platform",
-  bestFor: "Best for businesses ready to sell online with a clear product range, a suitable platform and realistic delivery requirements.",
-  badge: null,
-  special: true,
-  includesFrom: "What a typical e-commerce setup can include",
-  short: [
-    "Custom storefront design",
-    "Product and collection page templates",
-    "Platform-based cart and checkout setup",
-    "Supported payment-provider connection",
-    "Basic product filters and search",
-    "Shipping settings based on client-provided details",
-    "Analytics and email-marketing connection",
-    "Store handover and basic training"
-  ],
-  full: [
-    "Custom e-commerce storefront design",
-    "Product and collection page templates",
-    "Product-detail page layout and conversion-focused product UX",
-    "Platform-based shopping cart and checkout setup",
-    "Connection to a supported payment provider",
-    "Collection and product navigation structure",
-    "Basic product filters and search where supported",
-    "Customer accounts where supported by the selected platform",
-    "Shipping settings configured from client-provided rates and rules",
-    "Tax settings configured from client-provided requirements",
-    "Analytics and conversion-tracking setup",
-    "Email-marketing platform connection where required",
-    "Basic store-management handover and training",
-    "Responsive testing across modern devices"
-  ],
-  notes: [
-    "E-commerce projects are built on a suitable third-party platform such as Shopify or WooCommerce, selected based on project requirements.",
-    "Payment, shipping, tax, inventory and customer-account features depend on the selected platform, country, provider availability and client accounts.",
-    "The client is responsible for payment-provider verification, business information, tax rules, shipping rates, product data and legal store policies.",
-    "Custom checkout systems, marketplace syncing, ERP integrations, advanced inventory, subscriptions and custom backend development require separate technical evaluation and pricing.",
-    "Third-party platform, app, payment-provider, shipping-provider and software costs are not included unless stated in the final proposal."
-  ]
-}
   ],
 
   // ---- PORTFÖY / CASE STUDY KARTLARI ---------------------------
@@ -1265,60 +1641,63 @@ const CONFIG = {
   portfolio: [
   {
     label: "Client Project",
+    type: "client",
     title: "Nesmina",
-    sector: "Handknit Objects Concept",
-    desc: "A quiet, tactile concept site for a handknit label built around natural fibres, small releases and the rhythm of making.",
+    sector: "Handknit Brand",
+    desc: "A calm, mobile-friendly website for a handknit brand, designed to present handmade products clearly.",
     image: "demo4.png",
-    tags: ["Brand Direction", "Web Design", "Development"],
+    tags: ["Web Design", "Development", "Handknit Brand"],
     variant: "b",
     caseStudy: {
-      overview: "Nesmina needed an online presence that felt like a real craft studio rather than a generic e-commerce launch page. We created a calmer visual world around yarn, knitting needles, material studies and slow-made objects.",
+      overview: "Nesmina is a handknit brand website designed to present handmade products with a calm, natural and premium feel. The project focused on clear branding, a mobile-friendly layout and a simple customer journey.",
       did: [
-        "Original handknit visual direction with yarn and needle-inspired details",
-        "Editorial landing page layout designed around material and process",
-        "Responsive concept system for mobile, tablet and desktop",
-        "Custom CSS artwork for yarn forms, knitting needles and texture",
-        "Clear fictional concept notices and a privacy-safe demo form",
-        "Smooth scroll reveals and considered micro-interactions"
-      ],
+  "Calm visual direction for a handmade brand",
+  "Editorial landing page layout",
+  "Mobile, tablet and desktop friendly design",
+  "Product-focused page structure",
+  "Custom visual details and texture-inspired styling",
+  "Simple enquiry flow and smooth interactions"
+],
       results: [
-        { value: "01", label: "distinct craft identity" },
-        { value: "4", label: "future object categories" },
-        { value: "0", label: "real data collected" }
-      ],
+  { value: "01", label: "distinct brand identity" },
+  { value: "100%", label: "responsive design" },
+  { value: "Mobile", label: "first customer journey" }
+],
       siteUrl: "nesmina.html"
     }
   },
 
   {
-    label: "Studio Demo",
+    label: "Concept Project",
+    type: "concept",
     title: "Golden Crust Bakery",
     sector: "Bakery Café Website",
-    desc: "A warm, appetite-first one-pager for a family bakery — menu, story and one-tap directions in a single scroll.",
+    desc: "A simple, mobile-friendly website for a family bakery, with menu, story and directions in one place.",
     image: "demo3.png",
     tags: ["Design", "Development", "Local Business"],
     variant: "a",
     caseStudy: {
-      overview: "A family-run bakery with a loyal local following needed a modern, mobile-friendly home that put its menu, story and location within easy reach.",
+      overview: "Golden Crust Bakery is a website concept for a family bakery. The design makes the menu, story and location easy to find on both mobile and desktop.",
       did: [
-        "Warm, appetite-driven visual identity",
-        "Single-scroll structure for menu, story and directions",
-        "Mobile-first layout for customers on the move",
-        "Google Maps-ready direction area",
-        "Local-search foundations and clear page structure",
-        "Fast, lightweight front-end build"
-      ],
+  "Warm and simple website concept for a bakery",
+  "Clear layout for menu, story and location",
+  "Mobile, tablet and desktop friendly design",
+  "Easy-to-find directions section",
+  "Simple page structure for local customers",
+  "Fast and lightweight website build"
+],
       results: [
-        { value: "Menu", label: "easy to find" },
-        { value: "Mobile", label: "first layout" },
-        { value: "1 page", label: "clear customer journey" }
-      ],
+  { value: "Menu", label: "easy to find" },
+  { value: "100%", label: "responsive design" },
+  { value: "1 page", label: "simple customer journey" }
+],
       siteUrl: "golden-crust.html"
     }
   },
 
   {
-    label: "Studio Demo",
+    label: "Concept Project",
+    type: "concept",
     title: "Luma Dental Studio",
     sector: "Dental Care Website Concept",
     desc: "An editorial, patient-first dental concept that replaces clinical pressure with clarity, calm and an easier first step.",
@@ -1326,26 +1705,27 @@ const CONFIG = {
     tags: ["Healthcare", "Editorial UI", "Web Design"],
     variant: "b",
     caseStudy: {
-      overview: "Luma Dental Studio is a fictional healthcare concept created to explore a calmer way to present dental care online. Instead of generic clinic cards and hard-sell calls to action, the site uses spacious editorial layouts, clear treatment pathways and a reassuring appointment flow.",
+      overview: "Luma Dental Studio is a website concept for a dental practice. The design focuses on a calm, clear and mobile-friendly experience for patients.",
       did: [
-        "Complete identity shift from a legal site to an original dental-care concept",
-        "Editorial split-screen hero with custom CSS porcelain-tooth artwork",
-        "Full-width treatment navigation instead of standard service cards",
-        "Patient-first copy focused on clarity, comfort and understanding",
-        "Asymmetric appointment enquiry experience",
-        "Fictional concept notices and a data-safe demo confirmation state"
-      ],
+  "Calm and clear website concept for a dental practice",
+  "Simple layout for treatments and appointments",
+  "Mobile, tablet and desktop friendly design",
+  "Clear patient-focused content structure",
+  "Easy appointment enquiry flow",
+  "Smooth scroll and simple interactions"
+],
       results: [
-        { value: "4", label: "care pathways" },
-        { value: "01", label: "editorial care journey" },
-        { value: "0", label: "real patient data collected" }
-      ],
+  { value: "4", label: "treatment sections" },
+  { value: "100%", label: "responsive design" },
+  { value: "Simple", label: "appointment flow" }
+],
       siteUrl: "meridian-law.html"
     }
   },
 
   {
-    label: "Studio Demo",
+    label: "Concept Project",
+    type: "concept",
     title: "Northform Training Club",
     sector: "Strength & Conditioning Concept",
     desc: "A structured, high-energy training-club concept for strength, conditioning and movement without empty fitness promises.",
@@ -1353,20 +1733,20 @@ const CONFIG = {
     tags: ["Fitness", "Brand Direction", "Development"],
     variant: "c",
     caseStudy: {
-      overview: "Northform replaces a generic fitness-studio site with a stronger, more focused training-club identity. The layout is built like a training log: clear tracks, repeatable structure and no fake transformation claims or invented member testimonials.",
+      overview: "Northform is a website concept for a strength and conditioning club. The design focuses on a strong visual identity, clear training information and a mobile-friendly layout.",
       did: [
-        "Rebranded Forge Athletics as Northform Training Club",
-        "Training-board hero designed around weekly structure",
-        "Original training-log interface for four concept tracks",
-        "Custom typography, grid system and high-contrast motion details",
-        "Fitness copy with no unsupported outcomes or fake social proof",
-        "Safe demo enquiry flow with no data collection"
-      ],
+  "Strong website concept for a training club",
+  "Clear layout for training programmes",
+  "Mobile, tablet and desktop friendly design",
+  "Simple structure for classes and programmes",
+  "Bold typography and visual details",
+  "Smooth scroll and simple interactions"
+],
       results: [
-        { value: "4", label: "training tracks" },
-        { value: "01", label: "weekly program board" },
-        { value: "0", label: "fake claims or data collected" }
-      ],
+  { value: "4", label: "training sections" },
+  { value: "100%", label: "responsive design" },
+  { value: "Clear", label: "programme structure" }
+],
       siteUrl: "forge-athletics.html"
     }
   }
@@ -1376,36 +1756,48 @@ const CONFIG = {
   faqs: [
     {
       q: "How much does a website cost?",
-      a: "Every project is different — scope, complexity, timeline and integrations all play a role — so we don't publish fixed prices. But here's the part most studios won't tell you: you set the budget. Tell us what you're comfortable investing and we'll tell you exactly what it gets you. Clear, itemized quote, usually within 24 hours."
+      a: "New websites start from £1,000 and website redesigns start from £1,500. The final price depends on the number of pages, content, design requirements and any additional features. We confirm the exact scope and price before starting."
     },
     {
       q: "Can you work within my budget?",
-      a: "Yes — that's exactly how we quote. Tell us what you're comfortable investing and we'll honestly tell you what it gets you, and what the alternatives are. If your budget doesn't fit the project you have in mind, we'll say so and suggest the smartest path instead of inflating the scope."
+      a: "Tell us your budget and what you need. We’ll explain what is possible within that budget and suggest the most practical option."
     },
     {
       q: "How long does a website take to build?",
-      a: "It depends on the scope, content readiness and required integrations. Essential projects can launch in as little as 24 hours once the required content and approvals are ready. Growth projects are usually completed within 2–4 working days. Premium, e-commerce and custom projects receive a clear delivery timeline before work begins, so you always know what to expect."
+      a: "Most standard projects are delivered within 2–4 working days once content and approvals are ready. Larger or more custom projects receive a clear timeline before work begins."
     },
     {
       q: "What do you need from me to get started?",
       a: "The basics: what your business does, who your customers are, and what you want the website to achieve. If you already have a logo, texts or photos, great — if not, we'll guide you through what's needed."
     },
     {
-      q: "Do you write the text or take the photos?",
-      a: "Copywriting, professional photography, branding and logo creation are not automatically included in the packages — but they're available as separate services. We'll always tell you upfront what's in scope and what isn't."
-    },
+  q: "Do you offer logo design?",
+  a: "Logo design is available as a separate service. We’ll confirm the price and scope before the project starts."
+},
     {
       q: "Can you redesign my existing website?",
-      a: "Absolutely — that's actually most of our work. Send us your current website and we'll run a free audit showing exactly what's costing you customers, then quote the redesign."
+      a: "Yes. Send us your current website and we'll review the main issues, explain what we would improve and send a quote for the redesign."
     },
     {
       q: "What about hosting, domain and maintenance?",
-      a: "Domain connection, hosting setup and SSL are included in the Essential package and above. Domain and hosting themselves are third-party services paid by you — we'll recommend affordable, reliable options. Maintenance is available as a separate service."
+      a: "We connect your domain and set up hosting and HTTPS where needed. Domain and hosting fees are paid separately by you. Ongoing maintenance is available through an optional Care Plan."
     },
     {
       q: "What's not included by default?",
-      a: "Complex web applications, membership systems, custom payment infrastructure, custom backend development, advanced AI systems and highly complex integrations require a separate custom quote. We believe in clear scope — you'll never be surprised by what's excluded."
-    }
+      a: "Complex web applications, membership systems, custom payment systems, advanced backend development and highly complex integrations need a separate quote. We confirm the scope before starting."
+    },
+    {
+  q: "Do you offer monthly support?",
+  a: "Yes. After launch, you can choose an optional Care Plan starting from £300 per month. Plans include updates, backups, security checks and a set amount of small changes."
+},
+{
+  q: "Can I cancel a Care Plan?",
+  a: "Yes. Care Plans are optional and there is no lock-in. You can cancel with 30 days' written notice."
+},
+{
+  q: "What happens after my website is launched?",
+  a: "Every project includes a 7-day post-launch adjustment window and 30 days of technical support. After that, you can choose an optional Care Plan or manage the website yourself."
+}
   ],
 
   // ---- HERO'DAKİ TERMİNAL ANİMASYONU ---------------------------
@@ -1478,7 +1870,25 @@ document.querySelectorAll('.f-group input, .f-group textarea').forEach(i => {
 });
 
 // ---------- Modal yönetimi ----------
-function openModalEl(m){ m.classList.add('open'); document.body.style.overflow = 'hidden'; icons(); }
+function openModalEl(m){
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  const panel = m.querySelector('.modal-panel');
+  if(panel) panel.scrollTop = 0;
+
+  const body = m.querySelector('.modal-body');
+  if(body) body.scrollTop = 0;
+
+  icons();
+}
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('wheel', e => {
+    if(e.target.classList.contains('modal-bg')){
+      e.preventDefault();
+    }
+  }, { passive: false });
+});
 function closeModalEl(m){ m.classList.remove('open'); document.body.style.overflow = ''; }
 document.querySelectorAll('[data-close]').forEach(el => {
   el.addEventListener('click', () => {
@@ -1505,6 +1915,7 @@ document.addEventListener('keydown', e => {
       ${p.special ? `<span class="pkg-tag">SEPARATE SERVICE</span>` : ''}
       <h3 class="pkg-name">${p.name}</h3>
       <p class="pkg-best">${p.bestFor}</p>
+      ${p.price ? `<div class="pkg-price">${p.price}</div>` : ""}
       ${p.includesFrom ? `<div class="pkg-from">${p.includesFrom}</div>` : ''}
       <ul class="pkg-list">
         ${p.short.map(f => `<li><i data-lucide="check"></i><span>${f}</span></li>`).join('')}
@@ -1571,17 +1982,120 @@ $('#mCta').addEventListener('click', function(){
       </div>
     </article>`).join('');
 
-  const grid = $('#workGrid');
-  grid.addEventListener('click', e => {
-    const card = e.target.closest('.work');
-    if(card) openWork(+card.dataset.work);
+  const grid = document.getElementById('workGrid');
+const workTabs = document.querySelectorAll('[data-work-filter]');
+let activeWorkFilter = 'concept';
+
+function renderPortfolio(filter = 'concept') {
+  const visibleWorks = CONFIG.portfolio.filter(work => work.type === filter);
+
+  grid.innerHTML = visibleWorks.map((w) => {
+    const originalIndex = CONFIG.portfolio.indexOf(w);
+
+    const mock = {
+      a: `
+        <div class="mb-nav"><i></i><i></i><i></i></div>
+        <div class="mb-title a"></div>
+        <div class="mb-line"></div>
+        <div class="mb-line s"></div>
+        <div class="mb-btn"></div>
+      `,
+      b: `
+        <div class="mb-nav"><i></i><i></i><i></i></div>
+        <div class="mb-title"></div>
+        <div class="mb-line s" style="width:70%"></div>
+        <div class="mb-cards"><i></i><i></i><i></i></div>
+      `,
+      c: `
+        <div class="mb-title a" style="width:88px"></div>
+        <div style="display:flex;gap:9px;flex:1">
+          <div class="mb-img" style="flex:1.2"></div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:9px">
+            <div class="mb-line"></div>
+            <div class="mb-line"></div>
+            <div class="mb-line s"></div>
+            <div class="mb-btn"></div>
+          </div>
+        </div>
+      `
+    };
+
+    return `
+      <article
+        class="work reveal in work-card-enter"
+        data-work="${originalIndex}"
+        tabindex="0"
+        role="button"
+        aria-label="View case study: ${w.title}"
+      >
+        <div class="mock">
+          <div class="mock-bar">
+            <i></i><i></i><i></i>
+            <span class="mock-url"></span>
+          </div>
+          <div class="mock-body mock-${w.variant}">
+            ${mock[w.variant]}
+          </div>
+        </div>
+
+        <div class="work-meta">
+          <span class="work-label">${w.label}</span>
+          <h3>${w.title}</h3>
+          <p>${w.desc}</p>
+          <div class="work-tags">
+            ${w.tags.map(tag => `<span>${tag}</span>`).join('')}
+            <span>${w.sector}</span>
+          </div>
+          <span class="work-cta">
+            View case study
+            <i data-lucide="arrow-right"></i>
+          </span>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  icons();
+}
+
+renderPortfolio(activeWorkFilter);
+
+workTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const nextFilter = tab.dataset.workFilter;
+
+    if (nextFilter === activeWorkFilter) return;
+
+    activeWorkFilter = nextFilter;
+
+    workTabs.forEach(button => {
+      const isActive = button === tab;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-selected', String(isActive));
+    });
+    document.querySelector('.work-tabs').classList.toggle(
+  'client-active',
+  activeWorkFilter === 'client'
+);
+
+    renderPortfolio(activeWorkFilter);
   });
-  grid.addEventListener('keydown', e => {
-    if(e.key === 'Enter'){
-      const card = e.target.closest('.work');
-      if(card) openWork(+card.dataset.work);
-    }
-  });
+});
+
+grid.addEventListener('click', event => {
+  const card = event.target.closest('.work');
+  if (card) openWork(card.dataset.work);
+});
+
+grid.addEventListener('keydown', event => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+
+  const card = event.target.closest('.work');
+  if (!card) return;
+
+  event.preventDefault();
+  openWork(card.dataset.work);
+});
 })();
 
 function openWork(i){
@@ -1744,7 +2258,6 @@ function openWork(i){
 (function(){
   const nav = $('#nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), {passive:true});
-
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold: .12});
