@@ -994,6 +994,123 @@ body::after {
 .work-tab{
   border-radius:999px !important;
 }
+/* PACKAGES TABS */
+.pkg-tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 680px;
+  margin: 0 auto 36px;
+  padding: 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(5, 20, 30, .72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.pkg-tabs::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: calc((100% - 10px) / 3);
+  background: var(--accent);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .20), 0 0 28px rgba(102, 227, 229, .24);
+  transform: translateX(0);
+  transition: transform .32s cubic-bezier(.2, .8, .2, 1);
+  z-index: 0;
+}
+
+.pkg-tabs[data-active="monthly"]::before {
+  transform: translateX(100%);
+}
+
+.pkg-tabs[data-active="care"]::before {
+  transform: translateX(200%);
+}
+
+.pkg-tab {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 700 12px/1 var(--font-m);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .22s ease;
+}
+
+.pkg-tab.active {
+  color: var(--accent-ink);
+}
+
+.pkg-tab:hover:not(.active) {
+  color: var(--text);
+}
+
+.pkg-panel {
+  display: none;
+}
+
+.pkg-panel.active {
+  display: block;
+  animation: pkgFade .35s ease both;
+}
+
+@keyframes pkgFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pkg-panel-note {
+  max-width: 760px;
+  margin: 0 auto 28px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  .pkg-tabs {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 24px;
+  }
+
+  .pkg-tab {
+    min-height: 44px;
+    padding: 0 6px;
+    font-size: 10.5px;
+    letter-spacing: .03em;
+  }
+
+  .pkg-panel-note {
+    padding: 14px 16px;
+    font-size: 13.5px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1140,60 +1257,52 @@ body::after {
 </div>
 
 <!-- ================= PAKETLER ================= -->
+<!-- PAKETLER -->
 <section class="sec" id="packages">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="kicker">02 — Packages</div>
-      <h2>Simple website packages with clear pricing.</h2>
-      <p>Choose the option that fits your project. We’ll confirm the scope and price before we start. Most projects are ready in 2–4 working days once we have your content and approval.</p>
-    </div>
-    <div class="pkgs" id="pkgGrid"></div>
-  </div>
-</section>
-
-<!-- BAKIM PLANLARI -->
-<section class="sec" id="care">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="kicker">Optional Care Plans</div>
-      <h2>Your website stays fast, secure and up to date.</h2>
-      <p>Choose ongoing support only if you need it. Monthly hours are the total time included in your plan. There is no obligation and no lock-in.</p>
+      <div class="kicker">02 Packages</div>
+      <h2>Choose how you want to work with us.</h2>
+      <p>
+        One-time website projects, monthly website plans or ongoing care.
+        We confirm the exact scope and price before starting.
+      </p>
     </div>
 
-    <div class="care-grid">
-      <div class="care reveal">
-        <h3>Care</h3>
-        <div class="care-price">£300 <span>per month</span></div>
-        <ul>
-  <li><i data-lucide="check"></i> Website updates and security checks</li>
-  <li><i data-lucide="check"></i> Backups and uptime monitoring</li>
-  <li><i data-lucide="check"></i> Up to 1 hour of small changes per month</li>
-  <li><i data-lucide="check"></i> Monthly status update</li>
-</ul>
-      </div>
+    <div class="pkg-tabs" role="tablist" aria-label="Package options" data-active="new">
+      <button class="pkg-tab active" type="button" data-pkg-tab="new">
+        New Website
+      </button>
+      <button class="pkg-tab" type="button" data-pkg-tab="monthly">
+        Monthly Plans
+      </button>
+      <button class="pkg-tab" type="button" data-pkg-tab="care">
+        Website Care
+      </button>
+    </div>
 
-      <div class="care care--pop reveal">
-        <span class="care-badge">Most popular</span>
-        <h3>Care+</h3>
-        <div class="care-price">£400 <span>per month</span></div>
-        <ul>
-  <li><i data-lucide="check"></i> Everything in Care</li>
-  <li><i data-lucide="check"></i> Up to 3 hours of small changes per month</li>
-  <li><i data-lucide="check"></i> Speed and performance checks</li>
-  <li><i data-lucide="check"></i> Priority support</li>
-</ul>
+    <div id="pkgTabNew" class="pkg-panel active">
+      <div class="pkg-panel-note">
+        One-time website projects. After launch, every project includes a
+        7-day adjustment window and 30 days of technical support.
       </div>
+      <div class="pkgs" id="pkgGridNew"></div>
+    </div>
 
-      <div class="care reveal">
-        <h3>Growth</h3>
-        <div class="care-price">£700 <span>per month</span></div>
-        <ul>
-  <li><i data-lucide="check"></i> Everything in Care+</li>
-  <li><i data-lucide="check"></i> Up to 8 hours of improvements per month</li>
-  <li><i data-lucide="check"></i> New sections or landing pages where agreed</li>
-  <li><i data-lucide="check"></i> Monthly update call</li>
-</ul>
+    <div id="pkgTabMonthly" class="pkg-panel">
+      <div class="pkg-panel-note">
+        Monthly plans include your website project and limited ongoing care
+        while the plan is active.
       </div>
+      <div class="pkgs" id="pkgGridMonthly"></div>
+    </div>
+
+    <div id="pkgTabCare" class="pkg-panel">
+      <div class="pkg-panel-note">
+        For websites purchased with a one-time payment. After the included
+        30-day support period, ongoing maintenance requires an active care plan.
+      </div>
+      <div class="pkgs" id="pkgGridCare"></div>
     </div>
   </div>
 </section>
@@ -1322,12 +1431,14 @@ body::after {
           <div class="f-group">
             <label for="f-pkg">Interested in</label>
             <select id="f-pkg" name="package">
-              <option value="Not sure yet">Not sure yet</option>
-              <option value="New Website">New Website</option>
-              <option value="Website Redesign">Website Redesign</option>
-              <option value="Custom Project">Custom Project</option>
-              <option value="Care Plan / Monthly Support">Care Plan / Monthly Support</option>
-            </select>
+  <option value="Not sure yet">Not sure yet</option>
+  <option value="New Website">New Website</option>
+  <option value="Website Redesign">Website Redesign</option>
+  <option value="Custom Project">Custom Project</option>
+  <option value="Starter Monthly">Starter Monthly</option>
+  <option value="Business Monthly">Business Monthly</option>
+  <option value="Website Care">Website Care</option>
+</select>
           </div>
           <div class="f-group">
   <label for="f-budget">Your budget <span>(optional)</span></label>
@@ -1522,6 +1633,7 @@ window.addEventListener('load', () => {
   packages: [
     {
       id: "essential",
+      category: "new",
       price: "Starting from £1,000",
       name: "New Website",
       tagline: "Professional online presence",
@@ -1564,6 +1676,7 @@ window.addEventListener('load', () => {
     },
     {
       id: "redesign",
+      category: "new",
       price: "Starting from £1,500",
       name: "Website Redesign",
       tagline: "Turn an outdated website into a modern one",
@@ -1603,6 +1716,7 @@ window.addEventListener('load', () => {
     },
     {
       id: "custom",
+      category: "new",
       price: "Custom quote",
       name: "Custom Project",
       tagline: "For websites that need extra functionality",
@@ -1634,6 +1748,106 @@ window.addEventListener('load', () => {
   "Timeline and final price are confirmed in writing before the project begins."
 ]
     },
+    {
+  id: "monthly-starter",
+  category: "monthly",
+  price: "£180 / month",
+  name: "Starter Monthly",
+  tagline: "Website + ongoing care",
+  bestFor: "For small businesses that want a simple website with essential ongoing support.",
+  badge: null,
+  special: false,
+  includesFrom: "What's included",
+  short: [
+    "Simple 3–5 page website",
+    "Mobile-friendly design",
+    "Contact form and call-to-action buttons",
+    "Basic SEO setup",
+    "Up to 1 hour of updates per month",
+    "Security checks and backups"
+  ],
+  full: [
+    "Simple 3–5 page website",
+    "Mobile-friendly design",
+    "Contact form and call-to-action buttons",
+    "Basic SEO setup",
+    "Domain connection and SSL setup",
+    "Up to 1 hour of updates per month",
+    "Security checks and backups",
+    "Monthly status update"
+  ],
+  notes: [
+    "Minimum 6-month term.",
+    "Large redesigns, new pages and advanced features may require an additional quote.",
+    "Domain and hosting fees are paid separately by the client."
+  ]
+},
+{
+  id: "monthly-business",
+  category: "monthly",
+  price: "£280 / month",
+  name: "Business Monthly",
+  tagline: "Website, updates and improvements",
+  bestFor: "For businesses that want a stronger website plus regular updates and support.",
+  badge: "MOST POPULAR",
+  special: false,
+  includesFrom: "Everything in Starter Monthly, plus",
+  short: [
+    "5–8 page website",
+    "Conversion-focused structure",
+    "Up to 3 hours of updates per month",
+    "Performance and speed checks",
+    "Priority support",
+    "Monthly update call"
+  ],
+  full: [
+    "5–8 page website",
+    "Conversion-focused structure",
+    "Mobile-friendly design",
+    "Advanced contact and enquiry forms",
+    "Basic SEO setup",
+    "Up to 3 hours of updates per month",
+    "Performance and speed checks",
+    "Priority support",
+    "Monthly update call"
+  ],
+  notes: [
+    "Minimum 6-month term.",
+    "New landing pages and advanced integrations may require an additional quote.",
+    "Domain and hosting fees are paid separately by the client."
+  ]
+},
+{
+  id: "care-standard",
+  category: "care",
+  price: "£300 / month",
+  name: "Website Care",
+  tagline: "Ongoing maintenance after launch",
+  bestFor: "For clients who purchased their website with a one-time payment and want ongoing support after launch.",
+  badge: null,
+  special: false,
+  includesFrom: "What's included",
+  short: [
+    "Website updates and security checks",
+    "Backups and uptime monitoring",
+    "Up to 1 hour of small changes per month",
+    "Monthly status update",
+    "Priority support for website issues"
+  ],
+  full: [
+    "Website updates and security checks",
+    "Backups and uptime monitoring",
+    "Up to 1 hour of small changes per month",
+    "Monthly status update",
+    "Priority support for website issues",
+    "Minor content and image updates"
+  ],
+  notes: [
+    "No lock-in; cancel with 30 days' written notice.",
+    "Large redesigns, new pages and advanced features require a separate quote.",
+    "After the included 30-day support period, websites without an active care plan do not receive ongoing maintenance."
+  ]
+}
   ],
 
   // ---- PORTFÖY / CASE STUDY KARTLARI ---------------------------
@@ -1825,6 +2039,31 @@ window.addEventListener('load', () => {
 const $ = (s) => document.querySelector(s);
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const icons = () => window.lucide && lucide.createIcons();
+/* PACKAGES TABS */
+function initPackageTabs() {
+  const tabs = document.querySelectorAll(".pkg-tab");
+  const tabWrap = document.querySelector(".pkg-tabs");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.dataset.pkgTab;
+
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      if (tabWrap) tabWrap.dataset.active = target;
+
+      document.querySelectorAll(".pkg-panel").forEach(panel => {
+        panel.classList.remove("active");
+      });
+
+      const panel = document.getElementById(`pkgTab${target.charAt(0).toUpperCase() + target.slice(1)}`);
+      if (panel) panel.classList.add("active");
+    });
+  });
+}
+
+initPackageTabs();
 
 function showToast(msg){
   $('#toastMsg').textContent = msg;
@@ -1909,38 +2148,59 @@ document.addEventListener('keydown', e => {
 })();
 
 // ---------- Paket kartları ----------
-(function(){
-  const grid = $('#pkgGrid');
-  grid.innerHTML = CONFIG.packages.map(p => `
-    <article class="pkg ${p.badge ? 'pkg--pop' : ''} ${p.special ? 'pkg--special' : ''} reveal">
-      ${p.badge ? `<span class="pkg-badge">${p.badge}</span>` : ''}
-      ${p.special ? `<span class="pkg-tag">SEPARATE SERVICE</span>` : ''}
-      <h3 class="pkg-name">${p.name}</h3>
-      <p class="pkg-best">${p.bestFor}</p>
-      ${p.price ? `<div class="pkg-price">${p.price}</div>` : ""}
-      ${p.includesFrom ? `<div class="pkg-from">${p.includesFrom}</div>` : ''}
-      <ul class="pkg-list">
-        ${p.short.map(f => `<li><i data-lucide="check"></i><span>${f}</span></li>`).join('')}
-      </ul>
-      <div class="pkg-actions">
-        <button class="btn btn-primary btn-sm" data-quote="${p.name}">${p.special ? 'Request E-commerce Quote' : 'Get a Custom Quote'}</button>
-        <button class="pkg-more" data-modal="${p.id}">View full details</button>
-      </div>
-    </article>`).join('');
+function renderPackages() {
+  const groups = {
+    new: document.getElementById("pkgGridNew"),
+    monthly: document.getElementById("pkgGridMonthly"),
+    care: document.getElementById("pkgGridCare")
+  };
 
-  grid.querySelectorAll('[data-quote]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const sel = $('#f-pkg');
-      [...sel.options].forEach(o => { if(o.value === btn.dataset.quote) sel.value = o.value; });
-      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+  Object.entries(groups).forEach(([category, grid]) => {
+    if (!grid) return;
+
+    const items = CONFIG.packages.filter(p => p.category === category);
+
+    grid.innerHTML = items.map(p => `
+      <article class="pkg ${p.badge ? "pkg--pop" : ""} ${p.special ? "pkg--special" : ""} reveal">
+        ${p.badge ? `<span class="pkg-badge">${p.badge}</span>` : ""}
+        ${p.special ? `<span class="pkg-tag">SEPARATE SERVICE</span>` : ""}
+        <h3 class="pkg-name">${p.name}</h3>
+        <p class="pkg-best">${p.bestFor}</p>
+        ${p.price ? `<div class="pkg-price">${p.price}</div>` : ""}
+        ${p.includesFrom ? `<div class="pkg-from">${p.includesFrom}</div>` : ""}
+        <ul class="pkg-list">
+          ${p.short.map(f => `<li><i data-lucide="check"></i><span>${f}</span></li>`).join("")}
+        </ul>
+        <div class="pkg-actions">
+          <button class="btn btn-primary btn-sm" data-quote="${p.name}">Get a Custom Quote</button>
+          <button class="pkg-more" data-modal="${p.id}">View full details</button>
+        </div>
+      </article>
+    `).join("");
+  });
+
+  bindPackageButtons();
+  icons();
+}
+
+function bindPackageButtons() {
+  document.querySelectorAll("[data-quote]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const sel = document.getElementById("f-pkg");
+      [...sel.options].forEach(option => {
+        if (option.value === btn.dataset.quote) sel.value = option.value;
+      });
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
       showToast(`${btn.dataset.quote} selected — tell us about your project.`);
     });
   });
 
-  grid.querySelectorAll('[data-modal]').forEach(btn => {
-    btn.addEventListener('click', () => openPkgModal(btn.dataset.modal));
+  document.querySelectorAll("[data-modal]").forEach(btn => {
+    btn.addEventListener("click", () => openPkgModal(btn.dataset.modal));
   });
-})();
+}
+
+renderPackages();
 
 // ---------- Paket modalı ----------
 function openPkgModal(id){
