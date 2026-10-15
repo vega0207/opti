@@ -1751,7 +1751,7 @@ window.addEventListener('load', () => {
     {
   id: "monthly-starter",
   category: "monthly",
-  price: "£180 / month",
+  price: "£350 / month",
   name: "Starter Monthly",
   tagline: "Website + ongoing care",
   bestFor: "For small businesses that want a simple website with essential ongoing support.",
@@ -1785,7 +1785,7 @@ window.addEventListener('load', () => {
 {
   id: "monthly-business",
   category: "monthly",
-  price: "£280 / month",
+  price: "£550 / month",
   name: "Business Monthly",
   tagline: "Website, updates and improvements",
   bestFor: "For businesses that want a stronger website plus regular updates and support.",
@@ -1820,7 +1820,7 @@ window.addEventListener('load', () => {
 {
   id: "care-standard",
   category: "care",
-  price: "£300 / month",
+  price: "£350 / month",
   name: "Website Care",
   tagline: "Ongoing maintenance after launch",
   bestFor: "For clients who purchased their website with a one-time payment and want ongoing support after launch.",
@@ -2004,7 +2004,7 @@ window.addEventListener('load', () => {
     },
     {
   q: "Do you offer monthly support?",
-  a: "Yes. After launch, you can choose an optional Care Plan starting from £300 per month. Plans include updates, backups, security checks and a set amount of small changes."
+  a: "Yes. Monthly website plans include a website project and limited ongoing care, starting from £350 per month with a minimum 6-month term. For websites purchased with a one-time payment, optional Website Care is £350 per month. Included maintenance and change limits are stated in each plan.",
 },
 {
   q: "Can I cancel a Care Plan?",
@@ -2207,7 +2207,9 @@ function openPkgModal(id){
   const p = CONFIG.packages.find(x => x.id === id);
   if(!p) return;
   $('#mName').textContent = p.name;
-  $('#mTag').textContent = p.tagline;
+  $('#mTag').textContent = p.price
+  ? `${p.tagline} — ${p.price}`
+  : p.tagline;
   $('#mBest').textContent = p.bestFor;
   const from = $('#mFrom');
   if(p.includesFrom){ from.style.display = 'block'; from.textContent = p.includesFrom; }
