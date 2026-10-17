@@ -333,107 +333,14 @@ header{
   overflow:hidden;
   min-height:520px;
   border-left:1px solid var(--line);
-  background:
-    radial-gradient(circle at 35% 32%, rgba(255,255,255,.88), transparent 25%),
-    linear-gradient(145deg, #D4E4E1 0%, #E8F0EE 55%, #DCE7E5 100%);
+  background:#E5E7EB;
 }
 
-/* Large quiet tooth form */
-.hero-visual::before{
-  content:"";
-  position:absolute;
-  z-index:2;
-  width:240px;
-  height:300px;
-  left:50%;
-  top:48%;
-  transform:translate(-50%,-50%) rotate(4deg);
-  border-radius:48% 48% 43% 43% / 39% 39% 56% 56%;
-  background:linear-gradient(145deg, #FFFFFF, #E2F0ED);
-  box-shadow:
-    inset -20px -24px 32px rgba(82,135,129,.13),
-    0 35px 48px rgba(54,103,98,.13);
-}
-
-.hero-visual::after{
-  content:"";
-  position:absolute;
-  z-index:1;
-  width:480px;
-  height:480px;
-  left:50%;
-  top:48%;
-  transform:translate(-50%,-50%);
-  border:1px solid rgba(23,51,58,.14);
-  border-radius:50%;
-  box-shadow:
-    0 0 0 28px rgba(255,255,255,.21),
-    0 0 0 58px rgba(23,51,58,.035),
-    0 0 0 87px rgba(255,255,255,.16);
-}
-
-.tooth-root{
-  position:absolute;
-  z-index:2;
-  width:78px;
-  height:122px;
-  top:62%;
-  background:linear-gradient(145deg, #FFFFFF, #E2F0ED);
-  box-shadow:inset -12px -15px 20px rgba(82,135,129,.10);
-}
-
-.root-left{
-  left:calc(50% - 102px);
-  transform:rotate(13deg);
-  border-radius:0 0 55% 50%;
-}
-
-.root-right{
-  right:calc(50% - 102px);
-  transform:rotate(-13deg) scaleX(-1);
-  border-radius:0 0 55% 50%;
-}
-
-.visual-grid{
-  position:absolute;
-  z-index:0;
-  inset:0;
-  opacity:.36;
-  background-image:
-    linear-gradient(rgba(23,51,58,.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23,51,58,.09) 1px, transparent 1px);
-  background-size:42px 42px;
-  mask-image:linear-gradient(to bottom, transparent 4%, #000 29%, #000 70%, transparent 96%);
-}
-
-.visual-caption{
-  position:absolute;
-  z-index:4;
-  top:24px;
-  left:24px;
-  color:var(--ink-soft);
-  font:500 10px/1.55 var(--mono);
-  letter-spacing:.12em;
-}
-
-.visual-caption span{
+.hero-visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
   display:block;
-  color:var(--muted);
-  font-size:9px;
-  letter-spacing:.05em;
-}
-
-.visual-tag{
-  position:absolute;
-  z-index:4;
-  right:22px;
-  bottom:22px;
-  padding:9px 10px;
-  background:rgba(255,255,255,.59);
-  border:1px solid rgba(255,255,255,.78);
-  color:var(--ink-soft);
-  font:500 9px/1.4 var(--mono);
-  letter-spacing:.10em;
 }
 
 /* =========================
@@ -1026,18 +933,6 @@ footer a:hover{
     min-height:395px;
   }
 
-  .hero-visual::before{
-    transform:translate(-50%,-50%) scale(.78) rotate(4deg);
-  }
-
-  .tooth-root{
-    transform:scale(.78) rotate(13deg);
-  }
-
-  .root-right{
-    transform:scale(.78) rotate(-13deg) scaleX(-1);
-  }
-
   .care{
     padding:74px 0 42px;
   }
@@ -1118,10 +1013,6 @@ footer a:hover{
 
 <body>
 
-<div class="concept-strip">
-  LUMA DENTAL STUDIO / <b>FICTIONAL CONCEPT WEBSITE — NOT A REAL PRACTICE</b>
-</div>
-
 <header>
   <div class="wrap nav">
     <a href="#top" class="logo" aria-label="Luma Dental Studio home">
@@ -1136,7 +1027,7 @@ footer a:hover{
     </ul>
 
     <a class="nav-action" href="#contact">
-      REQUEST A VISIT <span>↗</span>
+      BOOK APPOINTMENT <span>↗</span>
     </a>
 
     <button class="burger" id="burger" aria-label="Open menu">☰</button>
@@ -1161,15 +1052,11 @@ footer a:hover{
             Care that feels<br>
             <em>clear</em> from the start.
           </h1>
-
-          <p>
-            Luma is a fictional dental studio concept built around quieter visits, clearer choices and a more comfortable relationship with care.
-          </p>
         </div>
 
         <div class="hero-bottom">
           <a href="#contact" class="hero-cta">
-            Request a first visit
+            Book Appointment
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
 
@@ -1180,16 +1067,10 @@ footer a:hover{
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="Abstract porcelain tooth form">
-        <div class="visual-grid"></div>
-        <span class="tooth-root root-left"></span>
-        <span class="tooth-root root-right"></span>
-        <div class="visual-caption">
-          PORCELAIN STUDY / 01
-          <span>comfort, clarity, continuity</span>
-        </div>
-        <div class="visual-tag">NO REAL CLINICAL SERVICE</div>
-      </div>
+      <div class="hero-visual reveal">
+  <img src="dental-hero.jpg"
+       alt="Smiling patient with bright white teeth">
+</div>
     </div>
   </section>
 
@@ -1256,7 +1137,6 @@ footer a:hover{
       </p>
 
       <small>
-        Luma is a fictional visual identity and interface concept. It does not represent a real healthcare provider.
       </small>
     </div>
   </section>
@@ -1300,7 +1180,7 @@ footer a:hover{
   <section class="contact" id="contact">
     <div class="wrap contact-shell">
       <div class="contact-copy">
-        <div class="eyebrow">Request a visit</div>
+        <div class="eyebrow"> BOOK APPOINTMENT</div>
         <h2>A softer first step.</h2>
         <p>
           This interface demonstrates how a calm appointment enquiry could feel. The form is entirely visual and does not submit information anywhere.
@@ -1325,7 +1205,7 @@ footer a:hover{
       <div class="form-wrap">
         <div class="form-heading">
           <h3>Tell us what you need.</h3>
-          <p>Demo form — no data is collected or sent.</p>
+          
         </div>
 
         <form id="conceptForm" novalidate>
@@ -1369,11 +1249,11 @@ footer a:hover{
           </div>
 
           <button type="submit" class="form-submit">
-            Send concept enquiry <span>→</span>
+            Request Appointment <span>→</span>
           </button>
 
           <p class="disclaimer">
-            This is a fictional concept site. It does not offer dental advice, appointments or clinical services.
+            It does not offer dental advice, appointments or clinical services.
           </p>
         </form>
       </div>
@@ -1389,7 +1269,6 @@ footer a:hover{
       Luma Dental Studio
     </span>
 
-    <span>Fictional concept website · Not a real dental practice</span>
 
     <span>Concept by <a href="index.html">OptiCodeStudio</a></span>
   </div>
