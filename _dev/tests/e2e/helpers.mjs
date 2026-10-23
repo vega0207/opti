@@ -45,7 +45,8 @@ export async function openPage(ctx, path, opts = {}) {
     blockStorage = false,
     local = {},
     session = {},
-    wait = 'networkidle0'
+    wait = 'networkidle0',
+    beforeGoto = null            // async page => {}: sayfa açılmadan önce çalışır (evaluateOnNewDocument vb.)
   } = opts;
 
   const context = await ctx.browser.createBrowserContext();
@@ -99,6 +100,7 @@ export async function openPage(ctx, path, opts = {}) {
     return req.abort('blockedbyclient');
   });
 
+  if (beforeGoto) await beforeGoto(page);
   await page.goto(ctx.base + path, { waitUntil: wait });
   return { page, context, external, formRequests, errors, close: () => context.close() };
 }

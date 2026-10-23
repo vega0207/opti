@@ -119,7 +119,63 @@
     return key;
   };
 
-  OCS.i18n = { lang: () => currentLang, dict, locale, t, fmt };
+  // Seçilen dilin dosyası yalnız gerektiğinde yüklenir.
+  const loading = {};
+  const load = code => {
+    if (OCS.langs[code]) return Promise.resolve(OCS.langs[code]);
+    if (loading[code]) return loading[code];
+    loading[code] = new Promise((resolve, reject) => {
+      const s = d.createElement('script');
+      s.src = `js/lang/${code}.js`;
+      s.onload = () => (OCS.langs[code] ? resolve(OCS.langs[code]) : reject(new Error(`lang ${code} missing`)));
+      s.onerror = () => { delete loading[code]; reject(new Error(`lang ${code} failed`)); };
+      d.head.appendChild(s);
+    });
+    return loading[code];
+  };
+
+  // data-i18n: düz metin · data-i18n-html: bizim dosyalarımızdaki HTML · data-i18n-attr="öznitelik:anahtar;..."
+  const apply = (root = d) => {
+    root.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    root.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    root.querySelectorAll('[data-i18n-attr]').forEach(el => {
+      for (const pair of el.dataset.i18nAttr.split(';')) {
+        const [attr, key] = pair.split(':').map(s => s.trim());
+        if (attr && key) el.setAttribute(attr, t(key));
+      }
+    });
+    if (root !== d) return;
+    const meta = dict().meta || {};
+    d.documentElement.setAttribute('lang', meta.code || currentLang);
+    d.documentElement.setAttribute('dir', meta.dir || 'ltr');
+    const ui = dict().ui || {};
+    if (ui['meta.title']) d.title = ui['meta.title'];
+    const desc = d.querySelector('meta[name="description"]');
+    if (desc && ui['meta.description']) desc.setAttribute('content', ui['meta.description']);
+  };
+
+  let resolveReady;
+  const ready = new Promise(r => { resolveReady = r; });
+  const timeout = (promise, ms) => Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms))
+  ]);
+
+  // Sayfa açılışı: dil dosyası 2,5 sn içinde gelmezse İngilizce; o da yoksa HTML'deki İngilizce kalır.
+  const init = async () => {
+    try {
+      await timeout(load(currentLang), 2500);
+    } catch (e) {
+      currentLang = 'en';
+      try { await load('en'); } catch (e2) { /* HTML'deki metin kalır */ }
+    }
+    if (OCS.langs[currentLang]) apply();
+    d.documentElement.classList.remove('i18n-pending');
+    resolveReady();
+    d.dispatchEvent(new CustomEvent('ocs:lang', { detail: { code: currentLang } }));
+  };
+
+  OCS.i18n = { lang: () => currentLang, dict, locale, t, fmt, load, apply, init, ready };
 
   /* ---------- Para birimi ----------
      Fiyatlar config.js'teki tablodan gelir; kur hesabı yapılmaz. */
@@ -185,5 +241,64 @@
       options.push({ value: `gte-${b[3]}`, label: t('form.budget.over', { x: format(b[3]) }) });
       return options;
     }
+  };
+
+  /* ---------- Tema (gece / gündüz) ----------
+     İlk değer boot.js'te yazılır; burada düğme ve cihaz ayarı değişimi yönetilir. */
+  let themeTimer;
+  const setTheme = (mode, persist) => {
+    if (mode !== 'dark' && mode !== 'light') return;
+    const html = d.documentElement;
+    html.classList.add('theme-anim');
+    clearTimeout(themeTimer);
+    themeTimer = setTimeout(() => html.classList.remove('theme-anim'), 400);
+    html.setAttribute('data-theme', mode);
+    if (persist) OCS.store.set('ocs.theme', mode);
+    d.dispatchEvent(new CustomEvent('ocs:theme', { detail: { mode } }));
+  };
+
+  OCS.theme = {
+    current: () => (d.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark'),
+    set: mode => setTheme(mode, true),
+    toggle: () => setTheme(OCS.theme.current() === 'dark' ? 'light' : 'dark', true),
+    // Ziyaretçi elle seçim yapmadıysa cihazın gece/gündüz değişimini izler.
+    watchSystem() {
+      const mq = w.matchMedia('(prefers-color-scheme: dark)');
+      const onChange = e => {
+        const stored = OCS.store.get('ocs.theme');
+        if (stored === 'dark' || stored === 'light') return;
+        setTheme(e.matches ? 'dark' : 'light', false);
+      };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
+  };
+
+  /* ---------- Arayüz yardımcıları ---------- */
+  OCS.ui = OCS.ui || {};
+
+  OCS.ui.icon = (name, cls = '') =>
+    `<svg class="i${cls ? ' ' + cls : ''}" aria-hidden="true"><use href="img/icons.svg#i-${name}"></use></svg>`;
+
+  OCS.ui.bindThemeToggles = () => {
+    const buttons = () => d.querySelectorAll('.theme-toggle');
+    const sync = () => buttons().forEach(b => {
+      const dark = OCS.theme.current() === 'dark';
+      b.setAttribute('aria-pressed', String(dark));
+      b.setAttribute('aria-label', t(dark ? 'controls.themeToLight' : 'controls.themeToDark'));
+    });
+    buttons().forEach(b => b.addEventListener('click', () => OCS.theme.toggle()));
+    d.addEventListener('ocs:theme', sync);
+    d.addEventListener('ocs:lang', sync);
+  };
+
+  // Etkin olmayan temanın fotoğrafı, sayfa yüklendikten sonra boşta yüklenir (geçiş anında hazır olsun).
+  OCS.ui.lazyBackground = () => {
+    const layer = d.querySelector('.bg-layer');
+    if (!layer) return;
+    const idle = w.requestIdleCallback || (fn => setTimeout(fn, 300));
+    const go = () => idle(() => layer.classList.add('both'));
+    if (d.readyState === 'complete') go();
+    else w.addEventListener('load', go, { once: true });
   };
 })(window, document);
