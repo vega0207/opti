@@ -1,0 +1,15 @@
+{
+  "name": "opticodestudio-dev",
+  "private": true,
+  "type": "module",
+  "description": "Development tools and tests for opticodestudio.com (not published: Jekyll skips folders starting with _)",
+  "scripts": {
+    "test": "node --test \"tests/unit/*.test.mjs\"",
+    "e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
+    "shots": "node tools/shoot.mjs"
+  },
+  "dependencies": {
+    "puppeteer-core": "25.13.0",
+    "sharp": "0.35.5"
+  }
+}
