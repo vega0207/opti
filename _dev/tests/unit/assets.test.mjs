@@ -33,6 +33,17 @@ test('gerekli ikonlar sprite içinde ve her biri çizim içeriyor', () => {
   }
 });
 
+test('logo işareti: animasyonun kullandığı parçalar, viewBox ve boyut', () => {
+  const file = path.join(REPO_ROOT, 'img', 'logo-mark.svg');
+  assert.ok(existsSync(file), 'img/logo-mark.svg yok');
+  const svg = readFileSync(file, 'utf8');
+  assert.match(svg, /<svg[^>]*\bviewBox="[\d.]+ [\d.]+ [\d.]+ [\d.]+"/);
+  for (const id of ['frame', 'chevron', 'arrow', 'chip', 'pink']) assert.match(svg, new RegExp(`id="${id}"`), id);
+  for (const id of ['g-frame', 'g-teal', 'g-pink']) assert.match(svg, new RegExp(`id="${id}"`), id);
+  assert.doesNotMatch(svg, /<text|xlink:href="http|href="http/);
+  assert.ok(statSync(file).size < 4096, `${statSync(file).size} bayt`);
+});
+
 test('kodda kullanılan her ikon sprite içinde', () => {
   const svg = read('img/icons.svg');
   const used = new Set();

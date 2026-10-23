@@ -28,6 +28,17 @@ test('icons.svg geçerli XML ve her ikon çiziliyor', async () => {
   for (const n of REQUIRED_ICONS) assert.ok(sizes[n] > 0, `i-${n} çizilmedi`);
 });
 
+test('logo işareti tarayıcıda görüntü olarak açılıyor', async () => {
+  const { page } = await openPage(ctx, '/');
+  const size = await page.evaluate(() => new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve({ w: img.naturalWidth, h: img.naturalHeight });
+    img.onerror = () => resolve({ w: 0, h: 0 });
+    img.src = 'img/logo-mark.svg';
+  }));
+  assert.ok(size.w > 0 && size.h > 0, JSON.stringify(size));
+});
+
 test('yazı tipleri tarayıcıda yükleniyor', async () => {
   const { page } = await openPage(ctx, '/');
   const status = await page.evaluate(async () => {
