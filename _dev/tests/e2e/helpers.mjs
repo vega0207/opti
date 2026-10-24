@@ -47,7 +47,9 @@ export async function openPage(ctx, path, opts = {}) {
     session = {},
     wait = 'networkidle0',
     beforeGoto = null,           // async page => {}: sayfa açılmadan önce çalışır (evaluateOnNewDocument vb.)
-    override = {}                // { '/js/config.js': body => yeniBody }: yerel dosyayı değiştirerek sunar
+    override = {},               // { '/js/config.js': body => yeniBody }: yerel dosyayı değiştirerek sunar
+    delay = {},                  // { '/js/lang/tr.js': 1500 }: yerel isteği geciktirir (ms)
+    block = []                   // ['/js/lang/tr.js']: yerel isteği iptal eder
   } = opts;
 
   const context = await ctx.browser.createBrowserContext();
@@ -90,6 +92,8 @@ export async function openPage(ctx, path, opts = {}) {
     if (url.startsWith('data:') || url.startsWith('blob:')) return req.continue();
     const u = new URL(url);
     if (u.origin === origin) {
+      if (block.includes(u.pathname)) return req.abort('failed');
+      if (delay[u.pathname]) return setTimeout(() => req.continue(), delay[u.pathname]);
       const change = override[u.pathname];
       if (!change) return req.continue();
       return fetch(url)

@@ -255,6 +255,8 @@
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     w.addEventListener('load', () => w.scrollTo(0, 0));
 
+    OCS.ui.renderControls($('#navControls'));
+    OCS.ui.renderControls($('#navMobileControls'));
     OCS.ui.bindThemeToggles();
     OCS.theme.watchSystem();
     OCS.ui.lazyBackground();

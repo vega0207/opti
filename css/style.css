@@ -273,6 +273,46 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 .nav-links a:hover { color: var(--text); }
 .nav-tools { display: flex; align-items: center; gap: 10px; }
 .nav-controls { display: flex; align-items: center; gap: 8px; }
+.ctl {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  transition: border-color .15s ease;
+}
+.ctl:hover,
+.ctl:focus-within { border-color: var(--accent); }
+.ctl > .i { position: absolute; inset-inline-start: 10px; width: 16px; height: 16px; color: var(--muted); pointer-events: none; }
+.ctl::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  inset-inline-end: 12px;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+.ctl select {
+  height: 100%;
+  padding-block: 0;
+  padding-inline: 34px 30px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.ctl-cur select { padding-inline-start: 12px; }
+.ctl select:focus { outline: none; }
+.ctl select option { background: var(--surface); color: var(--text); }
 .theme-toggle,
 .nav-burger {
   width: 42px;

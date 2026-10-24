@@ -163,8 +163,12 @@
 
   // Sayfa açılışı: dil dosyası 2,5 sn içinde gelmezse İngilizce; o da yoksa HTML'deki İngilizce kalır.
   const init = async () => {
+    const wanted = currentLang;
     try {
-      await timeout(load(currentLang), 2500);
+      await timeout(load(wanted), 2500);
+      // Başka bir dille gelindiyse (ör. ?lang=de linki) elle seçilmiş para birimi bırakılır
+      if (wanted !== OCS.store.get('ocs.lang')) OCS.money.syncToLang(wanted);
+      OCS.store.set('ocs.lang', wanted);
     } catch (e) {
       currentLang = 'en';
       try { await load('en'); } catch (e2) { /* HTML'deki metin kalır */ }
@@ -175,7 +179,23 @@
     d.dispatchEvent(new CustomEvent('ocs:lang', { detail: { code: currentLang } }));
   };
 
-  OCS.i18n = { lang: () => currentLang, dict, locale, t, fmt, load, apply, init, ready };
+  // Dil menüsünden seçim: sayfa yenilenmeden yazılar, yön, adres ve para birimi değişir.
+  const set = async code => {
+    if (!OCS.SUPPORTED_LANGS.includes(code)) return;
+    try { await load(code); } catch (e) { return; }
+    OCS.money.syncToLang(code);
+    currentLang = code;
+    apply();
+    OCS.store.set('ocs.lang', code);
+    try {
+      const url = new URL(w.location.href);
+      url.searchParams.set('lang', code);
+      w.history.replaceState(w.history.state, '', url.pathname + url.search + url.hash);
+    } catch (e) { /* adres güncellenemezse sorun değil */ }
+    d.dispatchEvent(new CustomEvent('ocs:lang', { detail: { code } }));
+  };
+
+  OCS.i18n = { lang: () => currentLang, dict, locale, t, fmt, load, apply, init, ready, set };
 
   /* ---------- Para birimi ----------
      Fiyatlar config.js'teki tablodan gelir; kur hesabı yapılmaz. */
@@ -290,6 +310,45 @@
     buttons().forEach(b => b.addEventListener('click', () => OCS.theme.toggle()));
     d.addEventListener('ocs:theme', sync);
     d.addEventListener('ocs:lang', sync);
+  };
+
+  // Dil ve para menüleri: aynı sayfadaki tüm kopyalar (üst bar + mobil menü) birlikte güncellenir.
+  const escAttr = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const syncControls = () => {
+    d.querySelectorAll('select[data-ctl="lang"]').forEach(s => {
+      s.value = currentLang;
+      s.setAttribute('aria-label', t('controls.lang'));
+    });
+    d.querySelectorAll('select[data-ctl="currency"]').forEach(s => {
+      s.value = OCS.money.current();
+      s.setAttribute('aria-label', t('controls.currency'));
+    });
+  };
+  let controlsBound = false;
+  OCS.ui.renderControls = (container, { lang = true, currency = true } = {}) => {
+    if (!container) return;
+    const parts = [];
+    if (lang) {
+      parts.push(`<label class="ctl ctl-lang">${OCS.ui.icon('globe')}<select data-ctl="lang">` +
+        CONFIG.languages.map(l => `<option value="${escAttr(l.code)}" lang="${escAttr(l.code)}">${escAttr(l.name)}</option>`).join('') +
+        '</select></label>');
+    }
+    if (currency) {
+      parts.push('<label class="ctl ctl-cur"><select data-ctl="currency">' +
+        CONFIG.currencies.map(c => `<option value="${escAttr(c)}">${escAttr(CONFIG.currencySymbols[c] || '')} ${escAttr(c)}</option>`).join('') +
+        '</select></label>');
+    }
+    container.innerHTML = parts.join('');
+    const langSelect = container.querySelector('select[data-ctl="lang"]');
+    const curSelect = container.querySelector('select[data-ctl="currency"]');
+    if (langSelect) langSelect.addEventListener('change', () => OCS.i18n.set(langSelect.value));
+    if (curSelect) curSelect.addEventListener('change', () => OCS.money.set(curSelect.value));
+    if (!controlsBound) {
+      controlsBound = true;
+      d.addEventListener('ocs:lang', syncControls);
+      d.addEventListener('ocs:currency', syncControls);
+    }
+    syncControls();
   };
 
   // Etkin olmayan temanın fotoğrafı, sayfa yüklendikten sonra boşta yüklenir (geçiş anında hazır olsun).
