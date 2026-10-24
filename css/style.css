@@ -705,7 +705,47 @@ html.splash nav .logo-mark { opacity: 0; }
 .splash-fade { opacity: 0; transition: opacity .3s ease; }
 
 /* ============================================================
-   13. Ekran kırılımları
+   13. Kaydırma animasyonları (yalnız opaklık ve transform)
+   Kayma mesafesi ekran kenar boşluğunu aşmaz: sayfa yana kaymaz.
+   ============================================================ */
+[data-anim] { opacity: 0; transition: opacity .6s ease, transform .6s ease; transition-delay: calc(var(--i, 0) * 80ms); }
+[data-anim="up"] { transform: translateY(32px); }
+[data-anim="left"] { transform: translateX(-48px); }
+[data-anim="right"] { transform: translateX(48px); }
+[data-anim="zoom"] { transform: scale(.94); }
+[dir="rtl"] [data-anim="left"] { transform: translateX(48px); }
+[dir="rtl"] [data-anim="right"] { transform: translateX(-48px); }
+@media (max-width: 1024px) {
+  [data-anim="left"],
+  [dir="rtl"] [data-anim="right"] { transform: translateX(-24px); }
+  [data-anim="right"],
+  [dir="rtl"] [data-anim="left"] { transform: translateX(24px); }
+}
+@media (max-width: 720px) {
+  [data-anim="up"] { transform: translateY(16px); }
+  [data-anim="left"],
+  [dir="rtl"] [data-anim="right"] { transform: translateX(-16px); }
+  [data-anim="right"],
+  [dir="rtl"] [data-anim="left"] { transform: translateX(16px); }
+  [data-anim="zoom"] { transform: scale(.97); }
+}
+html [data-anim].in { opacity: 1; transform: none; }
+html.no-motion [data-anim] { opacity: 1; transform: none; transition: none; }
+
+/* Hero görselleri yavaşça süzülür */
+@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+.shot:nth-child(1) { animation: float 7s ease-in-out infinite; }
+.shot:nth-child(2) { animation: float 6s ease-in-out .8s infinite; }
+.shot:nth-child(3) { animation: float 8s ease-in-out 1.6s infinite; }
+
+/* Çalışma kartı: üzerine gelince sitenin devamı görünür */
+@media (hover: hover) {
+  .work-shot img { transition: transform .6s ease; }
+  .work:hover .work-shot img { transform: translateY(-60%); transition: transform 4s ease-in-out; }
+}
+
+/* ============================================================
+   14. Ekran kırılımları
    ============================================================ */
 @media (max-width: 1024px) {
   .nav-links { display: none; }
@@ -759,5 +799,7 @@ html.splash nav .logo-mark { opacity: 0; }
     scroll-behavior: auto !important;
   }
   .marquee-track { animation: none; }
+  .shot { animation: none; }
+  [data-anim] { opacity: 1; transform: none; }
 }
 

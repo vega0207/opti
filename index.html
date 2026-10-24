@@ -93,7 +93,7 @@
         <button class="btn btn-ghost" type="button" data-open-audit><span data-i18n="hero.ctaReview">Free website review</span><svg class="i" aria-hidden="true"><use href="img/icons.svg#i-search"></use></svg></button>
       </div>
     </div>
-    <div class="hero-collage" id="heroCollage" aria-hidden="true"></div>
+    <div class="hero-collage" id="heroCollage" aria-hidden="true" data-anim="zoom"></div>
   </div>
 </header>
 
@@ -104,21 +104,21 @@
 <!-- ================= ÇALIŞMALAR ================= -->
 <section class="sec" id="work">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="left">
       <h2 data-i18n="work.title">Recent work</h2>
     </div>
     <div class="tabs work-tabs" role="tablist">
       <button class="tab active" type="button" role="tab" aria-selected="true" data-work-filter="concept" data-i18n="work.tab.concept">Concepts</button>
       <button class="tab" type="button" role="tab" aria-selected="false" data-work-filter="client" data-i18n="work.tab.client">Client projects</button>
     </div>
-    <div class="works" id="workGrid"></div>
+    <div class="works" id="workGrid" data-anim-stagger="up"></div>
   </div>
 </section>
 
 <!-- ================= PAKETLER ================= -->
 <section class="sec" id="packages">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="left">
       <h2 data-i18n="pkg.title">Packages</h2>
       <p data-i18n="pkg.lead">One-time projects, monthly plans or ongoing care. We confirm the exact scope and price before we start.</p>
     </div>
@@ -129,15 +129,15 @@
     </div>
     <div class="pkg-panel active" id="pkgTabNew">
       <p class="pkg-note" data-i18n="pkg.note.new">Every one-time project includes a 7-day adjustment window and 30 days of technical support after launch.</p>
-      <div class="pkgs" id="pkgGridNew"></div>
+      <div class="pkgs" id="pkgGridNew" data-anim-stagger="up"></div>
     </div>
     <div class="pkg-panel" id="pkgTabMonthly">
       <p class="pkg-note" data-i18n="pkg.note.monthly">Your website plus limited ongoing care while the plan is active.</p>
-      <div class="pkgs" id="pkgGridMonthly"></div>
+      <div class="pkgs" id="pkgGridMonthly" data-anim-stagger="up"></div>
     </div>
     <div class="pkg-panel" id="pkgTabCare">
       <p class="pkg-note" data-i18n="pkg.note.care">For websites paid in one go. After the included 30 days of support, maintenance needs an active care plan.</p>
-      <div class="pkgs" id="pkgGridCare"></div>
+      <div class="pkgs" id="pkgGridCare" data-anim-stagger="up"></div>
     </div>
   </div>
 </section>
@@ -145,10 +145,10 @@
 <!-- ================= SÜREÇ ================= -->
 <section class="sec" id="process">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="left">
       <h2 data-i18n="process.title">How we work</h2>
     </div>
-    <div class="steps">
+    <div class="steps" data-anim-stagger="right">
       <div class="step">
         <svg class="i step-ico" aria-hidden="true"><use href="img/icons.svg#i-compass"></use></svg>
         <h3 data-i18n="process.s1.title">Discover</h3>
@@ -170,7 +170,7 @@
         <p data-i18n="process.s4.text">We handle the setup, test everything and hand it over.</p>
       </div>
     </div>
-    <ul class="why-badges">
+    <ul class="why-badges" data-anim-stagger="fade">
       <li><svg class="i" aria-hidden="true"><use href="img/icons.svg#i-timer"></use></svg><span data-i18n="why.b1">Delivered in 2–4 working days</span></li>
       <li><svg class="i" aria-hidden="true"><use href="img/icons.svg#i-wallet"></use></svg><span data-i18n="why.b2">Clear price, no hidden fees</span></li>
       <li><svg class="i" aria-hidden="true"><use href="img/icons.svg#i-braces"></use></svg><span data-i18n="why.b3">Hand-coded, not a template</span></li>
@@ -182,10 +182,10 @@
 <!-- ================= SSS ================= -->
 <section class="sec" id="faq">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="left">
       <h2 data-i18n="faq.title">Common questions</h2>
     </div>
-    <div class="faq" id="faqList"></div>
+    <div class="faq" id="faqList" data-anim-stagger="up"></div>
   </div>
 </section>
 
@@ -194,11 +194,11 @@
 <!-- ================= İLETİŞİM ================= -->
 <section class="sec" id="contact">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="left">
       <h2 data-i18n="contact.title">Tell us about your project.</h2>
       <p data-i18n="contact.lead">We usually reply within 24 hours with a recommendation and a quote.</p>
     </div>
-    <div class="contact-grid">
+    <div class="contact-grid" data-anim-stagger="up">
       <form class="form card" id="quoteForm" novalidate>
         <div class="f-row">
           <div class="f-group">

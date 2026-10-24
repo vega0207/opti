@@ -411,6 +411,49 @@
     return { init, open, close };
   })();
 
+  /* ---------- Kaydırma animasyonları ----------
+     data-anim="up|left|right|zoom|fade": öğe görünür olunca belirir, ekrandan tamamen çıkınca kaybolur.
+     data-anim-stagger="...": kapsayıcının çocukları sırayla (80 ms arayla) gelir. */
+  OCS.motion = (() => {
+    let observer = null;
+    const prepare = root => {
+      const containers = [];
+      if (root.matches && root.matches('[data-anim-stagger]')) containers.push(root);
+      if (root.querySelectorAll) containers.push(...root.querySelectorAll('[data-anim-stagger]'));
+      for (const c of containers) {
+        [...c.children].forEach((child, i) => {
+          child.dataset.anim = c.dataset.animStagger;
+          child.style.setProperty('--i', String(i));
+        });
+      }
+      const els = [];
+      if (root.matches && root.matches('[data-anim]')) els.push(root);
+      if (root.querySelectorAll) els.push(...root.querySelectorAll('[data-anim]'));
+      return els;
+    };
+    const observe = elements => {
+      if (!observer) return;
+      for (const el of elements) observer.observe(el);
+    };
+    const init = () => {
+      const reduced = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      d.addEventListener('ocs:rendered', e => observe(prepare((e.detail && e.detail.root) || d)));
+      if (reduced || !('IntersectionObserver' in w)) {
+        d.documentElement.classList.add('no-motion');
+        prepare(d);
+        return;
+      }
+      observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.15) entry.target.classList.add('in');
+          else if (entry.intersectionRatio === 0) entry.target.classList.remove('in');
+        }
+      }, { threshold: [0, 0.15] });
+      observe(prepare(d));
+    };
+    return { init, observe };
+  })();
+
   // Etkin olmayan temanın fotoğrafı, sayfa yüklendikten sonra boşta yüklenir (geçiş anında hazır olsun).
   OCS.ui.lazyBackground = () => {
     const layer = d.querySelector('.bg-layer');

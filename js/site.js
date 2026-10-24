@@ -452,6 +452,7 @@
     OCS.ui.bindThemeToggles();
     OCS.theme.watchSystem();
     OCS.ui.lazyBackground();
+    OCS.motion.init();
     initNav();
     initModals();
     initContact();
