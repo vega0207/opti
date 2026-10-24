@@ -46,7 +46,8 @@ export async function openPage(ctx, path, opts = {}) {
     local = {},
     session = {},
     wait = 'networkidle0',
-    beforeGoto = null            // async page => {}: sayfa açılmadan önce çalışır (evaluateOnNewDocument vb.)
+    beforeGoto = null,           // async page => {}: sayfa açılmadan önce çalışır (evaluateOnNewDocument vb.)
+    override = {}                // { '/js/config.js': body => yeniBody }: yerel dosyayı değiştirerek sunar
   } = opts;
 
   const context = await ctx.browser.createBrowserContext();
@@ -88,7 +89,13 @@ export async function openPage(ctx, path, opts = {}) {
     const url = req.url();
     if (url.startsWith('data:') || url.startsWith('blob:')) return req.continue();
     const u = new URL(url);
-    if (u.origin === origin) return req.continue();
+    if (u.origin === origin) {
+      const change = override[u.pathname];
+      if (!change) return req.continue();
+      return fetch(url)
+        .then(async res => req.respond({ status: 200, contentType: res.headers.get('content-type') || 'text/plain', body: change(await res.text()) }))
+        .catch(() => req.continue());
+    }
     if (u.hostname === 'formsubmit.co') {
       if (req.method() === 'OPTIONS') return req.respond({ status: 204, headers: CORS, body: '' });
       let body;

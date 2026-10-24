@@ -345,7 +345,7 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 }
 .shot-bar { display: flex; align-items: center; gap: 5px; height: 22px; padding-inline: 10px; background: var(--surface); border-bottom: 1px solid var(--line); }
 .shot-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--line-strong); }
-.shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.shot img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
 .shot:nth-child(1) { width: 64%; top: 0; inset-inline-start: 0; rotate: -4deg; z-index: 1; }
 .shot:nth-child(2) { width: 60%; top: 26%; inset-inline-end: 0; rotate: 3deg; z-index: 2; }
 .shot:nth-child(3) { width: 52%; bottom: 0; inset-inline-start: 10%; rotate: -1.5deg; z-index: 3; }
@@ -629,6 +629,8 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
   .hero-collage { height: 250px; }
+  .shot:nth-child(1) { width: 60%; inset-inline-start: 4%; rotate: -2deg; }
+  .shot:nth-child(2) { width: 58%; inset-inline-end: 4%; rotate: 2deg; }
   .shot:nth-child(3) { display: none; }
   .tabs { display: grid; width: 100%; }
   .tab { padding: 0 8px; font-size: 13px; }
