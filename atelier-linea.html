@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Linea | Architecture and interiors, Copenhagen</title>
+<meta name="description" content="Atelier Linea is a Copenhagen studio for architecture and interiors: family houses, apartments, workplaces and small cultural buildings across Denmark and southern Sweden.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' fill='%23111'/><path d='M6 18V6M6 18h12' stroke='%23F4F3F0' stroke-width='2'/></svg>">
+<link rel="stylesheet" href="fonts/demo/fonts.css">
+<link rel="stylesheet" href="css/demo.css">
+<style>
+@font-face{font-family:"Manrope";font-style:normal;font-weight:200 800;font-display:swap;src:url("fonts/manrope-latin.woff2") format("woff2")}
+:root{
+  --bg:#F4F3F0; --ink:#111111; --muted:#6B6A66; --line:#D9D7D2; --rust:#B5562F; --white:#FBFAF8;
+  --head:"Syne", "Helvetica Neue", Arial, sans-serif; --body:"Manrope", system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip;
+  background-image:linear-gradient(90deg, rgba(17,17,17,.045) 1px, transparent 1px);background-size:calc((100% - 2px) / 6) 100%}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1280px, 100% - 64px);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1;letter-spacing:-.025em}
+h2{font-size:clamp(40px,5.6vw,82px)}
+.label{display:block;margin-bottom:18px;color:var(--muted);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+section{padding:120px 0;border-top:1px solid var(--line)}
+.arrow{display:inline-flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:4px}
+.arrow:hover{color:var(--rust)}
+
+/* Menü */
+header{position:sticky;top:0;z-index:40;background:rgba(244,243,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:baseline;gap:14px;text-decoration:none}
+.logo b{font:800 19px/1 var(--head);letter-spacing:.12em}
+.logo small{color:var(--muted);font-size:13px}
+.links{display:flex;gap:34px;list-style:none;align-items:center}
+.links a{font-size:14.5px;font-weight:600;text-decoration:none;color:var(--muted)}
+.links a:hover,.links a.arrow{color:var(--ink)}
+.burger{display:none;background:none;border:0;font:700 14px/1 var(--body);letter-spacing:.12em;cursor:pointer;color:var(--ink);padding:12px 0}
+.m-menu{display:none;flex-direction:column;padding:0 32px 24px}
+.m-menu.open{display:flex}
+.m-menu a{padding:14px 0;border-bottom:1px solid var(--line);font:600 28px/1 var(--head);text-decoration:none}
+
+/* Hero */
+.hero{padding:90px 0 0;border-top:0}
+.hero h1{font-size:clamp(54px,9.6vw,150px);font-weight:600}
+.hero h1 span{color:var(--muted)}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:56px 0 40px;padding-top:20px;border-top:1px solid var(--ink)}
+.meta b{display:block;font:600 28px/1.1 var(--head)}
+.meta span{color:var(--muted);font-size:14px}
+.hero-img{width:100%;aspect-ratio:16/8;object-fit:cover}
+.caption{display:flex;justify-content:space-between;gap:16px;padding:12px 0 0;color:var(--muted);font-size:13.5px}
+
+/* İşler */
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:46px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filter{padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);font:600 14px/1 var(--body);cursor:pointer}
+.filter:hover{color:var(--ink);border-color:var(--ink)}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.projects{display:grid;grid-template-columns:repeat(12,1fr);gap:56px 28px}
+.project{grid-column:span 6;cursor:pointer;background:none;border:0;text-align:left;color:inherit;font:inherit}
+.project:nth-child(3n+1){grid-column:span 5}
+.project:nth-child(3n+2){grid-column:span 7}
+.project:nth-child(3n){grid-column:4 / span 6}
+.project[hidden]{display:none}
+.project .ph{overflow:hidden;background:var(--line)}
+.project img{width:100%;aspect-ratio:9/7;object-fit:cover;transition:transform .7s ease}
+.project.tall img{aspect-ratio:9/11}
+.project:hover img{transform:scale(1.03)}
+.project .row{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:baseline;padding-top:16px}
+.project .no{color:var(--muted);font-size:13px}
+.project h3{font-size:26px}
+.project small{display:block;margin-top:6px;color:var(--muted);font-size:14px;grid-column:2}
+.project .yr{color:var(--muted);font-size:14px}
+
+/* Proje paneli */
+dialog{width:min(1100px, calc(100% - 32px));max-height:calc(100% - 32px);margin:auto;padding:0;border:0;background:var(--white);color:var(--ink)}
+dialog::backdrop{background:rgba(17,17,17,.6)}
+.dlg{display:grid;grid-template-columns:1.2fr 1fr}
+.dlg img{width:100%;height:100%;min-height:420px;object-fit:cover}
+.dlg-body{padding:44px 40px;position:relative}
+.dlg-body h3{font-size:42px;margin-bottom:16px}
+.dlg-body p{color:var(--muted)}
+.dlg-body dl{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.dlg-body dt{color:var(--muted);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.dlg-body dd{font-weight:600}
+.close{position:absolute;top:14px;right:14px;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--white);cursor:pointer;font-size:20px;line-height:1}
+
+/* Stüdyo */
+.studio .wrap{display:grid;grid-template-columns:5fr 7fr;gap:80px}
+.studio p.big{font:500 clamp(22px,2.2vw,30px)/1.35 var(--body);letter-spacing:-.01em}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.principles div{padding-top:18px;border-top:1px solid var(--ink)}
+.principles b{display:block;font:600 21px/1.2 var(--head);margin-bottom:8px}
+.principles span{color:var(--muted);font-size:15px}
+
+/* Süreç */
+.process .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.process img{width:100%;aspect-ratio:3/2;object-fit:cover;filter:grayscale(.3)}
+.steps{list-style:none;margin-top:20px}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+.steps li > span{font:600 15px/1.6 var(--head);color:var(--rust)}
+.steps b{display:block;font:600 22px/1.2 var(--head);margin-bottom:6px}
+.steps p{color:var(--muted);font-size:15px}
+
+/* İletişim */
+.contact .wrap{display:grid;grid-template-columns:5fr 7fr;gap:80px}
+.contact address{font-style:normal;margin-top:30px;display:grid;gap:18px}
+.contact address b{display:block;color:var(--muted);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.field{display:flex;flex-direction:column;gap:4px;margin-bottom:24px;min-width:0}
+.field label{color:var(--muted);font-size:13px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;padding:10px 0;border:0;border-bottom:1px solid var(--ink);border-radius:0;background:transparent;color:var(--ink);font:500 17px/1.4 var(--body)}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--rust)}
+.field.err input{border-bottom-color:#C0392B}
+.send{display:inline-flex;align-items:center;gap:12px;padding:18px 30px;border:0;border-radius:999px;background:var(--ink);color:var(--white);font:700 15px/1 var(--body);cursor:pointer}
+.send:hover{background:var(--rust)}
+.done h3{font-size:44px}
+.done p{margin-top:14px;color:var(--muted);max-width:520px}
+
+footer{padding:30px 0 90px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  .links{display:none}
+  .burger{display:block}
+  .studio .wrap,.process .wrap,.contact .wrap{grid-template-columns:1fr;gap:44px}
+  .dlg{grid-template-columns:1fr}
+  .dlg img{min-height:260px;max-height:340px}
+}
+@media (max-width:700px){
+  .wrap{width:min(1280px, 100% - 32px)}
+  .m-menu{padding:0 16px 20px}
+  section{padding:80px 0}
+  .hero{padding-top:56px}
+  .meta{grid-template-columns:1fr 1fr}
+  .hero-img{aspect-ratio:4/3}
+  .projects{grid-template-columns:1fr;gap:44px}
+  .project,.project:nth-child(3n+1),.project:nth-child(3n+2),.project:nth-child(3n){grid-column:auto}
+  .principles,.grid2{grid-template-columns:1fr}
+  .dlg-body{padding:30px 20px}
+  .dlg-body h3{font-size:32px}
+  body{background-size:calc((100% - 2px) / 3) 100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .project img{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><b>ATELIER LINEA</b><small>Architecture &amp; Interiors</small></a>
+    <ul class="links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a class="arrow" href="#contact">Start a project →</a></li>
+    </ul>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mMenu">MENU</button>
+  </div>
+  <nav class="m-menu" id="mMenu"><a href="#work">Work</a><a href="#studio">Studio</a><a href="#process">Process</a><a href="#contact">Start a project</a></nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <h1 class="reveal">Quiet buildings.<br><span>Considered rooms.</span></h1>
+    <div class="meta reveal">
+      <div><b>2011</b><span>studio founded</span></div>
+      <div><b>46</b><span>projects completed</span></div>
+      <div><b>9</b><span>architects and designers</span></div>
+      <div><b>DK · SE</b><span>Copenhagen, Aarhus, Malmö</span></div>
+    </div>
+    <img class="hero-img reveal" src="img/demo/atelier-linea/hero.jpg" alt="Board-marked concrete wall against a blue sky" width="1920" height="1100">
+    <div class="caption"><span>Facade detail, Hus Nordlys, Aarhus</span><span>Completed 2024</span></div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="work-head">
+      <div><span class="label">Selected work</span><h2>Projects</h2></div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter" type="button" data-filter="" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="Residential" aria-pressed="false">Residential</button>
+        <button class="filter" type="button" data-filter="Interiors" aria-pressed="false">Interiors</button>
+        <button class="filter" type="button" data-filter="Workplace" aria-pressed="false">Workplace</button>
+        <button class="filter" type="button" data-filter="Cultural" aria-pressed="false">Cultural</button>
+      </div>
+    </div>
+    <div class="projects" id="projects"></div>
+  </div>
+</section>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <div class="dlg">
+    <img id="dlgImg" src="img/demo/atelier-linea/nordlys.jpg" alt="" width="900" height="1100">
+    <div class="dlg-body">
+      <button class="close" type="button" id="dlgClose" aria-label="Close">×</button>
+      <span class="label" id="dlgType"></span>
+      <h3 id="dlgTitle"></h3>
+      <p id="dlgText"></p>
+      <dl>
+        <div><dt>Location</dt><dd id="dlgPlace"></dd></div>
+        <div><dt>Completed</dt><dd id="dlgYear"></dd></div>
+        <div><dt>Area</dt><dd id="dlgArea"></dd></div>
+        <div><dt>Scope</dt><dd id="dlgScope"></dd></div>
+      </dl>
+    </div>
+  </div>
+</dialog>
+
+<section class="studio" id="studio">
+  <div class="wrap">
+    <div class="reveal"><span class="label">Studio</span><h2>Small team, long view.</h2></div>
+    <div class="reveal">
+      <p class="big">We design houses, apartments and workplaces that feel calm on the first day and better after ten years. Most of our clients find us through someone who already lives in one of our buildings.</p>
+      <div class="principles">
+        <div><b>Light first</b><span>Every plan starts with where the sun comes from at eight in the morning and four in the afternoon.</span></div>
+        <div><b>Fewer materials</b><span>Three or four honest materials, used well, age better than ten fashionable ones.</span></div>
+        <div><b>Built to last</b><span>We stay on site through construction and come back after one year to check the details.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <img class="reveal" src="img/demo/atelier-linea/drawings.jpg" alt="Architectural drawings and a compass on a desk" width="1200" height="800" loading="lazy">
+    <div class="reveal">
+      <span class="label">Process</span>
+      <h2>How a project runs</h2>
+      <ol class="steps">
+        <li><span>01</span><div><b>Brief and site visit</b><p>A first meeting on site, free of charge. We listen, measure and talk honestly about budget.</p></div></li>
+        <li><span>02</span><div><b>Concept</b><p>Two or three directions as sketches and simple models, so you can compare before choosing.</p></div></li>
+        <li><span>03</span><div><b>Design and permits</b><p>Drawings, materials and the building permit application, with a cost estimate you can plan around.</p></div></li>
+        <li><span>04</span><div><b>Build and follow-up</b><p>We tender, follow the build every week and return after one year to check everything still works.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="label">Contact</span>
+      <h2>Start a project</h2>
+      <address>
+        <div><b>Studio</b>Havnegade 31, 1058 Copenhagen K</div>
+        <div><b>Visits</b>By appointment, Monday to Friday</div>
+        <div><b>Instagram</b>@atelier.linea</div>
+      </address>
+    </div>
+    <div class="reveal" id="formWrap">
+      <form id="projectForm" novalidate>
+        <div class="grid2">
+          <div class="field"><label for="p-name">Name</label><input id="p-name" type="text" autocomplete="name"></div>
+          <div class="field"><label for="p-email">Email</label><input id="p-email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="p-type">Project</label><select id="p-type"><option>New house</option><option>Renovation or extension</option><option>Apartment interior</option><option>Workplace</option><option>Something else</option></select></div>
+          <div class="field"><label for="p-budget">Budget</label><select id="p-budget"><option>Under DKK 2 m</option><option>DKK 2–5 m</option><option>DKK 5–10 m</option><option>Over DKK 10 m</option><option>Not sure yet</option></select></div>
+        </div>
+        <div class="field"><label for="p-place">Location</label><input id="p-place" type="text" placeholder="Town or neighbourhood"></div>
+        <div class="field"><label for="p-msg">Tell us about it</label><textarea id="p-msg" placeholder="The site, the people who will use it, your timing."></textarea></div>
+        <button class="send" type="submit">Send enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Atelier Linea ApS, Copenhagen</span><span>Website by <a href="index.html">OptiCodeStudio</a></span></div>
+</footer>
+
+<a class="ocs-demo-badge" href="index.html"><img src="img/logo-mark.svg" alt="" width="22" height="17">Demo · OptiCodeStudio</a>
+
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var PROJECTS = [
+    { img: 'nordlys', tall: true, title: 'Hus Nordlys', place: 'Aarhus', year: 2024, type: 'Residential', area: '240 m²', scope: 'Architecture, interiors', alt: 'Concrete house facade with three small round windows',
+      text: 'A family house in board-marked concrete on a steep plot facing the bay. Small openings on the street side, a full glass wall to the garden and the sea.' },
+    { img: 'hvid', title: 'Galleri Hvid', place: 'Copenhagen', year: 2023, type: 'Cultural', area: '410 m²', scope: 'Interior architecture, lighting', alt: 'Curved white wall with a soft shadow',
+      text: 'A former printing hall turned into a gallery. One continuous curved wall guides visitors through three rooms without a single visible corner.' },
+    { img: 'pavilion', title: 'Pavilion Nord', place: 'Malmö', year: 2022, type: 'Workplace', area: '180 m²', scope: 'Architecture', alt: 'Glass and steel roof line against a pale sky',
+      text: 'A glazed studio pavilion for a design agency, built on the roof of their existing building. North light all day, no blinds needed.' },
+    { img: 'kaj', tall: true, title: 'Kajhuset', place: 'Nordhavn, Copenhagen', year: 2021, type: 'Workplace', area: '1,250 m²', scope: 'Architecture, interiors', alt: 'White concrete beams projecting from a building',
+      text: 'Offices for 90 people on the harbour front. Deep concrete beams shade the windows in summer and let the low winter sun in.' },
+    { img: 'flat', title: 'Lejlighed Ø', place: 'Østerbro, Copenhagen', year: 2023, type: 'Interiors', area: '118 m²', scope: 'Interior design, joinery', alt: 'Bright apartment living room with large windows',
+      text: 'A 1930s apartment opened up around one long oak joinery wall that holds the kitchen, books and a hidden home office.' },
+    { img: 'summer', title: 'Sommerhus Odde', place: 'Odsherred', year: 2020, type: 'Residential', area: '96 m²', scope: 'Architecture', alt: 'Timber roof beams and a stone wall inside a summer house',
+      text: 'A timber summer house among pine trees. Exposed roof beams, a stone fireplace wall and sliding doors on three sides.' }
+  ];
+  $('#projects').innerHTML = PROJECTS.map(function(p, i){
+    return '<button class="project reveal' + (p.tall ? ' tall' : '') + '" type="button" data-i="' + i + '" data-type="' + p.type + '">' +
+      '<div class="ph"><img src="img/demo/atelier-linea/' + p.img + '.jpg" alt="' + p.alt + '" width="900" height="' + (p.tall ? 1100 : 700) + '" loading="lazy"></div>' +
+      '<div class="row"><span class="no">' + String(i + 1).padStart(2, '0') + '</span><h3>' + p.title + '</h3><span class="yr">' + p.year + '</span><small>' + p.place + ' · ' + p.type + '</small></div></button>';
+  }).join('');
+
+  document.querySelectorAll('.filter').forEach(function(f){
+    f.addEventListener('click', function(){
+      document.querySelectorAll('.filter').forEach(function(x){ x.setAttribute('aria-pressed', String(x === f)); });
+      document.querySelectorAll('.project').forEach(function(p){ p.hidden = Boolean(f.dataset.filter) && p.dataset.type !== f.dataset.filter; });
+    });
+  });
+
+  var dlg = $('#dlg');
+  $('#projects').addEventListener('click', function(e){
+    var card = e.target.closest('.project');
+    if (!card) return;
+    var p = PROJECTS[Number(card.dataset.i)];
+    $('#dlgImg').src = 'img/demo/atelier-linea/' + p.img + '.jpg';
+    $('#dlgImg').alt = p.alt;
+    $('#dlgType').textContent = p.type;
+    $('#dlgTitle').textContent = p.title;
+    $('#dlgText').textContent = p.text;
+    $('#dlgPlace').textContent = p.place;
+    $('#dlgYear').textContent = p.year;
+    $('#dlgArea').textContent = p.area;
+    $('#dlgScope').textContent = p.scope;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+  });
+  $('#dlgClose').addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+
+  var burger = $('#burger'), menu = $('#mMenu');
+  burger.addEventListener('click', function(){ var open = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', String(open)); burger.textContent = open ? 'CLOSE' : 'MENU'; });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.textContent = 'MENU'; }); });
+
+  $('#projectForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('#p-name'), email = $('#p-email');
+    var okN = name.value.trim().length > 1, okE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    name.parentElement.classList.toggle('err', !okN);
+    email.parentElement.classList.toggle('err', !okE);
+    if (!okN || !okE) return;
+    $('#formWrap').innerHTML = '<div class="done" role="status"><h3>Thank you.</h3><p>On the live site the studio would reply within two working days to arrange a first meeting. This demo does not send enquiries anywhere.</p></div>';
+  });
+
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

@@ -49,3 +49,18 @@ test('kırık yerel bağlantı yok', () => {
   }
   assert.deepEqual(missing, []);
 });
+
+test('hiçbir sayfa (demolar dahil) başka sunucudan betik, stil, yazı tipi ya da görsel yüklemez', () => {
+  const pages = readdirSync(REPO_ROOT).filter(f => f.endsWith('.html'));
+  const found = [];
+  for (const f of pages) {
+    const src = read(f);
+    // rel="alternate" / "canonical" yalnız adres bildirir, tarayıcı indirmez
+    for (const m of src.matchAll(/<(?:script|link|img|iframe|source|video|audio)\b[^>]*?\s(?:src|href|srcset)="(https?:)?\/\/[^"]+"/gi)) {
+      if (!/rel="(alternate|canonical)"/.test(m[0])) found.push(`${f}: ${m[0].slice(0, 90)}`);
+    }
+    for (const m of src.matchAll(/url\(\s*["']?(?:https?:)?\/\/[^)]+\)/gi)) found.push(`${f}: ${m[0].slice(0, 90)}`);
+    for (const m of src.matchAll(/@import\s+["']?(?:url\()?["']?(?:https?:)?\/\//gi)) found.push(`${f}: ${m[0]}`);
+  }
+  assert.deepEqual(found, []);
+});

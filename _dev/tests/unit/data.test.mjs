@@ -154,3 +154,10 @@ test('koddaki her metin anahtarı en.ui içinde', () => {
   const missing = [...used].filter(k => !(k in en.ui));
   assert.deepEqual(missing, []);
 });
+
+test('portföy: 10 demo (concept) ve Nesmina (client)', () => {
+  assert.equal(CONFIG.portfolio.filter(w => w.type === 'concept').length, 10);
+  assert.deepEqual(CONFIG.portfolio.filter(w => w.type === 'client').map(w => w.url), ['nesmina.html']);
+  assert.equal(new Set(CONFIG.portfolio.map(w => w.url)).size, CONFIG.portfolio.length, 'aynı sayfa iki kez');
+  for (const w of CONFIG.portfolio) assert.ok(existsSync(path.join(REPO_ROOT, w.thumb)), `${w.thumb} yok`);
+});

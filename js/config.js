@@ -87,6 +87,12 @@ const CONFIG = {
     { type: "concept", name: "Luma Dental Studio",      url: "meridian-law.html",    thumb: "img/work/luma-dental.jpg",  hero: true },
     { type: "concept", name: "Northform Training Club", url: "forge-athletics.html", thumb: "img/work/northform.jpg",    hero: true },
     { type: "concept", name: "Olive & Ember",           url: "olive-and-ember.html", thumb: "img/work/olive-and-ember.jpg", hero: false },
+    { type: "concept", name: "Harbor & Hill Realty",    url: "harbor-homes.html",    thumb: "img/work/harbor-homes.jpg", hero: false },
+    { type: "concept", name: "Sharp & Co. Barbers",     url: "sharp-and-co.html",    thumb: "img/work/sharp-and-co.jpg", hero: false },
+    { type: "concept", name: "Atelier Linea",           url: "atelier-linea.html",   thumb: "img/work/atelier-linea.jpg", hero: false },
+    { type: "concept", name: "Casa Olivo",              url: "casa-olivo.html",      thumb: "img/work/casa-olivo.jpg",   hero: false },
+    { type: "concept", name: "Pitline Auto Care",       url: "pitline-auto.html",    thumb: "img/work/pitline-auto.jpg", hero: false },
+    { type: "concept", name: "Willow Veterinary Clinic", url: "willow-vet.html",     thumb: "img/work/willow-vet.jpg",   hero: false },
     { type: "client",  name: "Nesmina",                 url: "nesmina.html",         thumb: "img/work/nesmina.jpg",      hero: false }
   ]
 };

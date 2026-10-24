@@ -1,4 +1,94 @@
 {
+ "img/demo/atelier-linea/drawings.jpg": {
+  "title": "Architectural drawings (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Architectural_drawings_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Sergey Zolkin szolkin"
+ },
+ "img/demo/atelier-linea/flat.jpg": {
+  "title": "The living room that needs houseplants.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_living_room_that_needs_houseplants.jpg",
+  "license": "CC0",
+  "artist": "Lo"
+ },
+ "img/demo/atelier-linea/hero.jpg": {
+  "title": "Concrete architecture (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Concrete_architecture_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Lance Anderson lanceanderson"
+ },
+ "img/demo/atelier-linea/hvid.jpg": {
+  "title": "White architecture concept (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:White_architecture_concept_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Tobias van Schneider vanschneider"
+ },
+ "img/demo/atelier-linea/kaj.jpg": {
+  "title": "Rare Madrid architecture (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Rare_Madrid_architecture_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Joel Filipe joelfilip"
+ },
+ "img/demo/atelier-linea/nordlys.jpg": {
+  "title": "Concrete slab architecture (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Concrete_slab_architecture_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Samuel Zeller samuelzeller"
+ },
+ "img/demo/atelier-linea/pavilion.jpg": {
+  "title": "Glass cube architecture (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Glass_cube_architecture_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Scott Webb scottwebb"
+ },
+ "img/demo/atelier-linea/summer.jpg": {
+  "title": "Rustic house ceiling (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Rustic_house_ceiling_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Michael Browning michaelwb"
+ },
+ "img/demo/casa-olivo/breakfast.jpg": {
+  "title": "Breakfast in bed (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Breakfast_in_bed_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Toa Heftiba heftiba"
+ },
+ "img/demo/casa-olivo/family.jpg": {
+  "title": "Hotel National, Moscow. View from the upper floor room (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hotel_National,_Moscow._View_from_the_upper_floor_room_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Andrey Yachmenov yachmenov"
+ },
+ "img/demo/casa-olivo/garden.jpg": {
+  "title": "Ali Inay 2015-02-25 (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ali_Inay_2015-02-25_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Ali Inay inayali"
+ },
+ "img/demo/casa-olivo/hero.jpg": {
+  "title": "Chill out. It's morning (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chill_out._It%27s_morning_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Oshomah Abubakar oshomah"
+ },
+ "img/demo/casa-olivo/pool.jpg": {
+  "title": "Infinity pool by the sea (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Infinity_pool_by_the_sea_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "E C eunicwonders"
+ },
+ "img/demo/casa-olivo/terrace.jpg": {
+  "title": "Warsaw Sunrise (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Warsaw_Sunrise_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Sylwia Pietruszka pietruszka"
+ },
+ "img/demo/casa-olivo/tower.jpg": {
+  "title": "Open bedroom window in Paris.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Open_bedroom_window_in_Paris.jpg",
+  "license": "CC0",
+  "artist": "JOHN TOWNER heytowner"
+ },
  "img/demo/golden-crust/hero.jpg": {
   "title": "Bread (Unsplash).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Bread_(Unsplash).jpg",
@@ -10,6 +100,54 @@
   "page": "https://commons.wikimedia.org/wiki/File:Man_holding_bread_(Unsplash).jpg",
   "license": "CC0",
   "artist": "Kate Remmer studioktr"
+ },
+ "img/demo/harbor-homes/bikes.jpg": {
+  "title": "Two bicycles near a house (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Two_bicycles_near_a_house_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Christopher Harris chrisrossharris"
+ },
+ "img/demo/harbor-homes/brick.jpg": {
+  "title": "Lost House (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lost_House_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Peter Boccia peterboccia"
+ },
+ "img/demo/harbor-homes/forest.jpg": {
+  "title": "Forest house (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Forest_house_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Bruno Marinho brunomarinho"
+ },
+ "img/demo/harbor-homes/hero.jpg": {
+  "title": "House and Mountain (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:House_and_Mountain_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Alexandre Godreau alexandre_godreau"
+ },
+ "img/demo/harbor-homes/interior.jpg": {
+  "title": "Modern wooden house interior (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Modern_wooden_house_interior_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Jolene Hardy jolene"
+ },
+ "img/demo/harbor-homes/maple.jpg": {
+  "title": "Small house on an autumn's day (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Small_house_on_an_autumn%27s_day_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Scott Webb scottwebb"
+ },
+ "img/demo/harbor-homes/vintage.jpg": {
+  "title": "Vintage House in a City (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Vintage_House_in_a_City_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Jamie Whiffen jamiewhiffen"
+ },
+ "img/demo/harbor-homes/white.jpg": {
+  "title": "White house (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:White_house_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Frøy Hamstad froel"
  },
  "img/demo/olive-and-ember/burrata.jpg": {
   "title": "Italian Dish for High-End Resturant (Unsplash).jpg",
@@ -52,5 +190,89 @@
   "page": "https://commons.wikimedia.org/wiki/File:Romantic_dinner_for_one_(Unsplash).jpg",
   "license": "CC0",
   "artist": "Janko Ferlič thepootphotographer"
+ },
+ "img/demo/pitline-auto/bench.jpg": {
+  "title": "Car mechanic's workbench (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Car_mechanic%27s_workbench_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "AJ  Yorio lightninghorse"
+ },
+ "img/demo/pitline-auto/garage.jpg": {
+  "title": "Vintage car garage (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Vintage_car_garage_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Logan Meis loganmeis"
+ },
+ "img/demo/pitline-auto/hero.jpg": {
+  "title": "The Mechanic (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Mechanic_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Tim Mossholder timmossholder"
+ },
+ "img/demo/pitline-auto/workshop.jpg": {
+  "title": "Car Restoration Workshop (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Car_Restoration_Workshop_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Igor Ovsyannykov igorovsyannykov"
+ },
+ "img/demo/sharp-and-co/hero.jpg": {
+  "title": "Head shaved by barber (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Head_shaved_by_barber_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Phùng Hải pminhai"
+ },
+ "img/demo/sharp-and-co/pole.jpg": {
+  "title": "Baber's pole up close (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Baber%27s_pole_up_close_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Dan Gold danielcgold"
+ },
+ "img/demo/sharp-and-co/shave.jpg": {
+  "title": "Christoffer Engström 2017-01-13 (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Christoffer_Engstr%C3%B6m_2017-01-13_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Christoffer Engström christoffere"
+ },
+ "img/demo/sharp-and-co/shop.jpg": {
+  "title": "Barber shop, Quebec city, Canada.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Barber_shop,_Quebec_city,_Canada.jpg",
+  "license": "CC0",
+  "artist": "Wilfredor"
+ },
+ "img/demo/sharp-and-co/street.jpg": {
+  "title": "Monochrome street barber (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Monochrome_street_barber_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Adam Sherez mr_sherez"
+ },
+ "img/demo/willow-vet/boxer.jpg": {
+  "title": "Ottawa dog (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ottawa_dog_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Anita Peeples anitapeeples"
+ },
+ "img/demo/willow-vet/cat.jpg": {
+  "title": "Sunday Kitty (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Sunday_Kitty_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Nirzar Pangarkar nirzar"
+ },
+ "img/demo/willow-vet/fluffy.jpg": {
+  "title": "Walkhaven Dog Park, Johannesburg, South Africa (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Walkhaven_Dog_Park,_Johannesburg,_South_Africa_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Mpho Mojapelo mpho_mojapelo"
+ },
+ "img/demo/willow-vet/hero.jpg": {
+  "title": "Happy dog at Anjuna Beach (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Happy_dog_at_Anjuna_Beach_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Samantha Scholl sauriel"
+ },
+ "img/demo/willow-vet/puppy.jpg": {
+  "title": "Puppy playing with a toy (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Puppy_playing_with_a_toy_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Justin Veenema justinveenema"
  }
 }
