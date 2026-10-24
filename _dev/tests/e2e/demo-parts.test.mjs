@@ -139,3 +139,81 @@ test('Luma: tedavi kartındaki düğme randevuda o tedaviyi seçer', async () =>
   assert.equal(await page.$eval('#booking input[name="treatment"][value="whitening"]', i => i.checked), true);
   await close();
 });
+
+/* ---------------- Northform Training Club ---------------- */
+const NF = '/forge-athletics.html';
+const shownRows = page => page.$$eval('.class-row', rs => rs.filter(r => r.checkVisibility()).map(r => ({ id: r.dataset.classId, day: r.dataset.day, type: r.dataset.type })));
+
+test('Northform: ders programı filtreleri ve yer ayırma', async () => {
+  const { page, close } = await at(NF, [2026, 10, 26, 10, 0]);
+  const all = await shownRows(page);
+  assert.ok(all.length >= 14, `${all.length} ders`);
+  for (const type of ['strength', 'conditioning', 'mobility', 'open']) {
+    assert.ok(all.filter(r => r.type === type).length >= 2, type);
+  }
+  await page.click('button[data-day-filter="wed"]');
+  const wed = await shownRows(page);
+  assert.ok(wed.length > 0 && wed.every(r => r.day === 'wed'), JSON.stringify(wed));
+  await page.click('button[data-day-filter="all"]');
+  await page.click('button[data-type-filter="mobility"]');
+  const mob = await shownRows(page);
+  assert.ok(mob.length >= 2 && mob.every(r => r.type === 'mobility'), JSON.stringify(mob));
+  await page.click('button[data-type-filter="all"]');
+  const row = '.class-row[data-class-id="mon-0630-strength"]';
+  assert.equal(await text(page, `${row} .spots`), '3 spots left');
+  await page.click(`${row} .book-btn`);
+  assert.equal(await text(page, `${row} .spots`), '2 spots left');
+  assert.equal(await text(page, `${row} .book-btn`), 'Booked');
+  assert.equal(await page.$eval(`${row} .book-btn`, b => b.disabled), true);
+  const full = '.class-row[data-class-id="wed-1830-conditioning"] .book-btn';
+  assert.equal(await text(page, full), 'Full');
+  assert.equal(await page.$eval(full, b => b.disabled), true);
+  await close();
+});
+
+test('Northform: aylık / yıllık üyelik fiyatları', async () => {
+  const { page, close } = await at(NF, [2026, 10, 26, 10, 0]);
+  const price = plan => text(page, `[data-plan="${plan}"] .price`);
+  assert.deepEqual([await price('flex'), await price('core'), await price('unlimited')], ['£39', '£59', '£79']);
+  await page.click('button[data-billing="annual"]');
+  assert.deepEqual([await price('flex'), await price('core'), await price('unlimited')], ['£32', '£49', '£65']);
+  assert.equal(await page.$eval('button[data-billing="annual"]', b => b.getAttribute('aria-pressed')), 'true');
+  await page.click('button[data-billing="monthly"]');
+  assert.equal(await price('core'), '£59');
+  await close();
+});
+
+test('Northform: "Sana hangi plan uyar?" testi doğru planı önerir', async () => {
+  const { page, close } = await at(NF, [2026, 10, 26, 10, 0]);
+  const cases = [
+    [['strength', '3-4', 'some'], 'core'],
+    [['fitness', '5+', 'lots'], 'unlimited'],
+    [['mobility', '1-2', 'new'], 'flex'],
+    [['strength', '5+', 'new'], 'core']
+  ];
+  for (const [[q1, q2, q3], want] of cases) {
+    await page.click(`#quiz input[name="q1"][value="${q1}"]`);
+    await page.click(`#quiz input[name="q2"][value="${q2}"]`);
+    await page.click(`#quiz input[name="q3"][value="${q3}"]`);
+    await page.click('#quiz [type="submit"]');
+    assert.deepEqual(await page.$$eval('[data-plan].is-recommended', ps => ps.map(p => p.dataset.plan)), [want], `${q1} ${q2} ${q3}`);
+    assert.equal(await visible(page, '#quiz-result'), true);
+  }
+  await close();
+});
+
+test('Northform: ücretsiz deneme dersi formu', async () => {
+  const { page, close } = await at(NF, [2026, 10, 26, 10, 0]);
+  await page.click('#trial [type="submit"]');
+  assert.equal(await visible(page, '#trial-done'), false);
+  assert.ok((await page.$$eval('#trial .err', es => es.filter(e => e.textContent.trim()).length)) >= 2);
+  await page.type('#tr-name', 'Callum Reid');
+  await page.type('#tr-email', 'callum@example');
+  await page.click('#trial [type="submit"]');
+  assert.equal(await visible(page, '#trial-done'), false, 'geçersiz e-posta');
+  await page.type('#tr-email', '.co.uk');
+  await page.click('#trial [type="submit"]');
+  await page.waitForSelector('#trial-done', { visible: true, timeout: 2000 });
+  assert.match(await text(page, '#trial-done'), /Callum/);
+  await close();
+});

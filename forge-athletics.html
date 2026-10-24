@@ -3,1496 +3,570 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Northform Training Club | Strength and conditioning in Leith, Edinburgh</title>
-<meta name="description" content="Small-group strength and conditioning in Leith, Edinburgh. Coached sessions of up to eight people, a free intro and no contracts.">
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='4' fill='%23101615'/><path d='M5 15h14M8 10v10M16 10v10M3 12v6M21 12v6' stroke='%238CCFC9' stroke-width='1.5'/></svg>">
-
+<meta name="description" content="Coached strength, conditioning and mobility classes in Leith, Edinburgh. See the weekly timetable, book a spot and try your first session free.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%230E0F10'/><path d='M6 18V6l6 7 6-7v12' fill='none' stroke='%23C8F031' stroke-width='2.4' stroke-linejoin='round'/></svg>">
 <link rel="stylesheet" href="fonts/demo/fonts.css">
 <link rel="stylesheet" href="css/demo.css">
-
 <style>
 :root{
-  --bg:#101615;
-  --panel:#18201E;
-  --panel-2:#23302D;
-  --paper:#EFF5F1;
-  --muted:#A7B5AF;
-  --line:#31403B;
-  --accent:#E36D4C;
-  --accent-2:#8CCFC9;
-  --accent-pale:#C9E5E0;
-  --black:#0A0E0D;
-  --font-display:"Archivo Black", Impact, sans-serif;
-  --font-main:"DM Sans", Arial, sans-serif;
-  --font-mono:"DM Mono", monospace;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  overflow-x:hidden;
-  background:var(--bg);
-  color:var(--paper);
-  font-family:var(--font-main);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,
-input,
-select,
-textarea{
-  font:inherit;
-}
-
-button{
-  border:0;
-}
-
-.wrap{
-  width:min(1240px, calc(100% - 48px));
-  margin:0 auto;
-}
-
-.label{
-  color:var(--accent-2);
-  font:500 10px/1 var(--font-mono);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-
-.label::before{
-  content:"//";
-  margin-right:8px;
-  color:var(--accent);
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .6s ease, transform .6s ease;
-}
-
-.reveal.in{
-  opacity:1;
-  transform:none;
-}
-
-/* ================= HEADER ================= */
-
-.concept{
-  padding:8px 18px;
-  background:var(--accent);
-  color:var(--black);
-  text-align:center;
-  font:500 10px/1.4 var(--font-mono);
-  letter-spacing:.05em;
-}
-
-.concept b{
-  font-weight:700;
-}
-
-header{
-  position:sticky;
-  top:0;
-  z-index:30;
-  border-bottom:1px solid var(--line);
-  background:rgba(16,22,21,.90);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-}
-
-.nav{
-  min-height:72px;
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-}
-
-.brand{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  width:max-content;
-  font-family:var(--font-display);
-  font-size:17px;
-  letter-spacing:-.05em;
-}
-
-.brand-mark{
-  position:relative;
-  width:28px;
-  height:28px;
-  border:1px solid var(--accent-2);
-}
-
-.brand-mark::before,
-.brand-mark::after{
-  content:"";
-  position:absolute;
-  top:50%;
-  height:10px;
-  transform:translateY(-50%);
-  border-top:2px solid var(--accent-2);
-  border-bottom:2px solid var(--accent-2);
-}
-
-.brand-mark::before{
-  left:2px;
-  width:7px;
-}
-
-.brand-mark::after{
-  right:2px;
-  width:7px;
-}
-
-.brand-dot{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:7px;
-  height:7px;
-  transform:translate(-50%,-50%);
-  background:var(--accent);
-}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:26px;
-  list-style:none;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.03em;
-  text-transform:uppercase;
-}
-
-.nav-links a:hover{
-  color:var(--accent-2);
-}
-
-.nav-cta{
-  justify-self:end;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:var(--paper);
-  border-bottom:1px solid var(--paper);
-  font:500 10px/1.5 var(--font-mono);
-  letter-spacing:.08em;
-}
-
-.nav-cta:hover{
-  color:var(--accent);
-  border-color:var(--accent);
-}
-
-.burger{
-  display:none;
-  justify-self:end;
-  width:40px;
-  height:40px;
-  border:1px solid var(--line);
-  color:var(--paper);
-  background:transparent;
-  cursor:pointer;
-  font-size:20px;
-}
-
-.mobile-menu{
-  display:none;
-  padding:8px 24px 20px;
-  border-top:1px solid var(--line);
-  background:var(--bg);
-}
-
-.mobile-menu.open{
-  display:flex;
-  flex-direction:column;
-}
-
-.mobile-menu a{
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
-  color:var(--paper);
-  font-weight:700;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-  position:relative;
-  overflow:hidden;
-  border-bottom:1px solid var(--line);
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  opacity:.23;
-  background-image:
-    linear-gradient(rgba(140,207,201,.20) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(140,207,201,.20) 1px, transparent 1px);
-  background-size:42px 42px;
-  mask-image:linear-gradient(to right, #000 0%, #000 58%, transparent 100%);
-}
-
-.hero-layout{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:1.07fr .93fr;
-  gap:54px;
-  min-height:650px;
-  align-items:stretch;
-}
-
-.hero-copy{
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:93px 0 54px;
-}
-
-.hero-title{
-  margin-top:22px;
-  max-width:720px;
-  font-family:var(--font-display);
-  font-size:clamp(48px, 7vw, 91px);
-  line-height:.91;
-  letter-spacing:-.075em;
-  text-transform:uppercase;
-}
-
-.hero-title span{
-  display:block;
-  color:var(--accent);
-}
-
-.hero-copy p{
-  max-width:465px;
-  margin-top:25px;
-  color:var(--muted);
-  font-size:16px;
-}
-
-.hero-action{
-  display:inline-flex;
-  align-items:center;
-  gap:11px;
-  width:max-content;
-  margin-top:31px;
-  padding:13px 16px;
-  background:var(--accent);
-  color:var(--black);
-  font-size:13px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.03em;
-  transition:transform .2s ease, background .2s ease;
-}
-
-.hero-action:hover{
-  background:var(--paper);
-  transform:translateY(-3px);
-}
-
-.hero-action span{
-  font-size:19px;
-  line-height:0;
-}
-
-.hero-foot{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:25px;
-  padding-top:29px;
-  border-top:1px solid var(--line);
-}
-
-.hero-foot p{
-  max-width:270px;
-  margin:0;
-  color:var(--muted);
-  font:400 10px/1.55 var(--font-mono);
-  letter-spacing:.04em;
-}
-
-.hero-count{
-  text-align:right;
-  color:var(--accent-2);
-  font:500 10px/1.45 var(--font-mono);
-  letter-spacing:.10em;
-}
-
-/* Training board */
-
-.board{
-  position:relative;
-  min-height:100%;
-  overflow:hidden;
-  border-left:1px solid var(--line);
-  background:var(--panel);
-}
-
-.board::before{
-  content:"";
-  position:absolute;
-  z-index:0;
-  width:430px;
-  height:430px;
-  right:-210px;
-  top:51%;
-  transform:translateY(-50%);
-  border:1px solid rgba(140,207,201,.28);
-  border-radius:50%;
-  box-shadow:
-    0 0 0 31px rgba(140,207,201,.05),
-    0 0 0 62px rgba(140,207,201,.035);
-}
-
-.board-top{
-  position:relative;
-  z-index:2;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:19px 20px;
-  border-bottom:1px solid var(--line);
-  color:var(--muted);
-  font:500 10px/1 var(--font-mono);
-  letter-spacing:.10em;
-}
-
-.board-live{
-  color:var(--accent-2);
-}
-
-.board-live::before{
-  content:"";
-  display:inline-block;
-  width:6px;
-  height:6px;
-  margin:0 7px 1px 0;
-  border-radius:50%;
-  background:var(--accent-2);
-  box-shadow:0 0 0 4px rgba(140,207,201,.10);
-}
-
-.program{
-  position:relative;
-  z-index:2;
-  padding:23px 20px 35px;
-}
-
-.program-head{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:15px;
-  padding-bottom:17px;
-  border-bottom:1px solid var(--line);
-}
-
-.program-head h2{
-  font-family:var(--font-display);
-  font-size:28px;
-  letter-spacing:-.06em;
-  text-transform:uppercase;
-}
-
-.program-head span{
-  color:var(--muted);
-  font:400 9px/1.4 var(--font-mono);
-  letter-spacing:.08em;
-}
-
-.program-row{
-  display:grid;
-  grid-template-columns:40px 1fr auto;
-  gap:13px;
-  align-items:center;
-  padding:19px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.program-day{
-  color:var(--accent);
-  font:500 11px/1 var(--font-mono);
-  letter-spacing:.08em;
-}
-
-.program-row b{
-  display:block;
-  color:var(--paper);
-  font-size:14px;
-  letter-spacing:.02em;
-  text-transform:uppercase;
-}
-
-.program-row small{
-  display:block;
-  margin-top:2px;
-  color:var(--muted);
-  font-size:11px;
-}
-
-.program-mark{
-  width:11px;
-  height:11px;
-  border:1px solid var(--accent-2);
-  border-radius:50%;
-}
-
-.program-row:nth-child(3) .program-mark{
-  background:var(--accent);
-  border-color:var(--accent);
-}
-
-.program-row:nth-child(4) .program-mark{
-  background:var(--accent-2);
-}
-
-.board-bottom{
-  position:absolute;
-  z-index:2;
-  left:20px;
-  right:20px;
-  bottom:20px;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  color:var(--muted);
-  font:400 9px/1.4 var(--font-mono);
-  letter-spacing:.06em;
-}
-
-/* ================= RUNNING STRIP ================= */
-
-.strip{
-  overflow:hidden;
-  border-bottom:1px solid var(--line);
-  background:var(--paper);
-  color:var(--black);
-}
-
-.strip-track{
-  display:flex;
-  width:max-content;
-  min-width:100%;
-  animation:move 24s linear infinite;
-}
-
-.strip span{
-  display:flex;
-  align-items:center;
-  gap:21px;
-  padding:16px 21px 16px 0;
-  font-family:var(--font-display);
-  font-size:19px;
-  letter-spacing:-.05em;
-  text-transform:uppercase;
-}
-
-.strip span::after{
-  content:"+";
-  color:var(--accent);
-  font-family:var(--font-mono);
-  font-size:17px;
-}
-
-@keyframes move{
-  to{transform:translateX(-50%)}
-}
-
-/* ================= MANIFESTO ================= */
-
-.manifesto{
-  padding:110px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.manifesto-grid{
-  display:grid;
-  grid-template-columns:.73fr 1.27fr;
-  gap:74px;
-}
-
-.manifesto h2{
-  max-width:830px;
-  font-family:var(--font-display);
-  font-size:clamp(32px, 4.2vw, 60px);
-  line-height:.98;
-  letter-spacing:-.075em;
-  text-transform:uppercase;
-}
-
-.manifesto h2 em{
-  color:var(--accent-2);
-  font-style:normal;
-}
-
-.manifesto-copy{
-  align-self:end;
-}
-
-.manifesto-copy p{
-  max-width:410px;
-  color:var(--muted);
-  font-size:15px;
-}
-
-.manifesto-meta{
-  display:flex;
-  gap:0;
-  margin-top:31px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.manifesto-meta div{
-  flex:1;
-  padding:14px 13px 14px 0;
-  border-right:1px solid var(--line);
-}
-
-.manifesto-meta div:not(:first-child){
-  padding-left:13px;
-}
-
-.manifesto-meta div:last-child{
-  border-right:0;
-}
-
-.manifesto-meta b{
-  display:block;
-  color:var(--accent);
-  font:500 14px/1.2 var(--font-mono);
-}
-
-.manifesto-meta span{
-  display:block;
-  margin-top:4px;
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* ================= TRAINING LOG ================= */
-
-.log-section{
-  padding:98px 0;
-  background:var(--panel);
-}
-
-.log-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:35px;
-  margin-bottom:42px;
-}
-
-.log-header h2{
-  margin-top:17px;
-  font-family:var(--font-display);
-  font-size:clamp(36px, 4.5vw, 62px);
-  line-height:.95;
-  letter-spacing:-.075em;
-  text-transform:uppercase;
-}
-
-.log-header p{
-  max-width:300px;
-  color:var(--muted);
-  font:400 11px/1.65 var(--font-mono);
-}
-
-.training-log{
-  border-top:1px solid var(--line);
-}
-
-.log-row{
-  display:grid;
-  grid-template-columns:120px .72fr 1.1fr 42px;
-  gap:28px;
-  align-items:center;
-  min-height:117px;
-  padding:20px 0;
-  border-bottom:1px solid var(--line);
-  transition:padding .25s ease, background .25s ease;
-}
-
-.log-row:hover{
-  padding-left:15px;
-  padding-right:15px;
-  background:rgba(255,255,255,.025);
-}
-
-.log-code{
-  color:var(--accent-2);
-  font:500 10px/1.4 var(--font-mono);
-  letter-spacing:.10em;
-}
-
-.log-row h3{
-  color:var(--paper);
-  font-family:var(--font-display);
-  font-size:23px;
-  letter-spacing:-.06em;
-  text-transform:uppercase;
-}
-
-.log-row p{
-  color:var(--muted);
-  font-size:14px;
-}
-
-.log-arrow{
-  display:grid;
-  place-items:center;
-  width:34px;
-  height:34px;
-  color:var(--paper);
-  border:1px solid var(--line);
-  border-radius:50%;
-  font-size:17px;
-  transition:background .2s ease, color .2s ease, transform .2s ease;
-}
-
-.log-row:hover .log-arrow{
-  color:var(--black);
-  background:var(--accent);
-  border-color:var(--accent);
-  transform:rotate(-40deg);
-}
-
-/* ================= QUOTE BLOCK ================= */
-
-.quote-block{
-  position:relative;
-  overflow:hidden;
-  padding:126px 0;
-  background:var(--accent);
-  color:var(--black);
-}
-
-.quote-block::before{
-  content:"";
-  position:absolute;
-  width:550px;
-  height:550px;
-  top:-340px;
-  right:-65px;
-  border:1px solid rgba(10,14,13,.22);
-  border-radius:50%;
-  box-shadow:
-    0 0 0 35px rgba(255,255,255,.09),
-    0 0 0 70px rgba(10,14,13,.04);
-}
-
-.quote-block .wrap{
-  position:relative;
-  z-index:1;
-}
-
-.quote-block p{
-  max-width:1010px;
-  font-family:var(--font-display);
-  font-size:clamp(36px, 5.6vw, 78px);
-  line-height:.95;
-  letter-spacing:-.08em;
-  text-transform:uppercase;
-}
-
-.quote-block em{
-  color:var(--paper);
-  font-style:normal;
-}
-
-.quote-block small{
-  display:block;
-  margin-top:28px;
-  font:500 10px/1.5 var(--font-mono);
-  letter-spacing:.10em;
-}
-
-/* ================= START FORM ================= */
-
-.start{
-  padding:110px 0;
-}
-
-.start-layout{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0;
-  border:1px solid var(--line);
-}
-
-.start-copy{
-  position:relative;
-  overflow:hidden;
-  min-height:530px;
-  padding:53px 51px;
-  background:var(--paper);
-  color:var(--black);
-}
-
-.start-copy::after{
-  content:"N";
-  position:absolute;
-  right:-28px;
-  bottom:-81px;
-  color:rgba(16,22,21,.055);
-  font-family:var(--font-display);
-  font-size:420px;
-  line-height:1;
-  letter-spacing:-.15em;
-}
-
-.start-copy > *{
-  position:relative;
-  z-index:1;
-}
-
-.start-copy h2{
-  max-width:450px;
-  margin-top:20px;
-  font-family:var(--font-display);
-  font-size:clamp(38px,4vw,58px);
-  line-height:.94;
-  letter-spacing:-.075em;
-  text-transform:uppercase;
-}
-
-.start-copy p{
-  max-width:385px;
-  margin-top:20px;
-  color:#52615D;
-  font-size:15px;
-}
-
-.start-points{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-top:41px;
-  color:#50615D;
-  font:500 11px/1.4 var(--font-mono);
-  letter-spacing:.04em;
-}
-
-.start-points span::before{
-  content:"✓";
-  display:inline-block;
-  width:18px;
-  color:var(--accent);
-  font-size:13px;
-  font-weight:700;
-}
-
-.start-form{
-  padding:53px 51px;
-  background:var(--panel-2);
-}
-
-.start-form h3{
-  color:var(--paper);
-  font-family:var(--font-display);
-  font-size:28px;
-  letter-spacing:-.06em;
-  text-transform:uppercase;
-}
-
-.start-form > p{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:13px;
-}
-
-.form-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-  margin-top:30px;
-}
-
-.field{
-  margin-bottom:19px;
-}
-
-.field label{
-  display:block;
-  margin-bottom:8px;
-  color:var(--accent-2);
-  font:500 9px/1.2 var(--font-mono);
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-
-.field input,
-.field select,
-.field textarea{
-  width:100%;
-  outline:0;
-  border:0;
-  border-bottom:1px solid #46554F;
-  background:transparent;
-  color:var(--paper);
-  padding:12px 0;
-  font-size:14px;
-  transition:border-color .2s ease;
-}
-
-.field input::placeholder,
-.field textarea::placeholder{
-  color:#71817A;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-  border-color:var(--accent-2);
-}
-
-.field textarea{
-  min-height:88px;
-  resize:vertical;
-}
-
-.submit{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-top:6px;
-  padding:13px 15px;
-  color:var(--black);
-  background:var(--accent-2);
-  cursor:pointer;
-  font-size:12px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.03em;
-  transition:background .2s ease, transform .2s ease;
-}
-
-.submit:hover{
-  background:var(--paper);
-  transform:translateY(-2px);
-}
-
-.disclaimer{
-  margin-top:17px;
-  color:var(--muted);
-  font-size:10.5px;
-  line-height:1.55;
-}
-
-.success{
-  display:grid;
-  min-height:360px;
-  place-items:center;
-  text-align:center;
-}
-
-.success div{
-  max-width:350px;
-}
-
-.success h3{
-  color:var(--paper);
-  font-family:var(--font-display);
-  font-size:31px;
-  letter-spacing:-.06em;
-  text-transform:uppercase;
-}
-
-.success p{
-  margin-top:10px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  padding:36px 0;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:11px;
-}
-
-.footer-in{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.footer-brand{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:var(--paper);
-  font-family:var(--font-display);
-  font-size:14px;
-  letter-spacing:-.05em;
-  text-transform:uppercase;
-}
-
-.footer-brand .brand-mark{
-  width:22px;
-  height:22px;
-}
-
-.footer-brand .brand-mark::before,
-.footer-brand .brand-mark::after{
-  transform:translateY(-50%) scale(.72);
-}
-
-footer a{
-  color:var(--paper);
-  font-weight:700;
-}
-
-footer a:hover{
-  color:var(--accent-2);
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:960px){
-  .nav{
-    grid-template-columns:1fr auto;
-  }
-
-  .nav-links,
-  .nav-cta{
-    display:none;
-  }
-
-  .burger{
-    display:block;
-  }
-
-  .hero-layout,
-  .manifesto-grid,
-  .start-layout{
-    grid-template-columns:1fr;
-  }
-
-  .hero-layout{
-    gap:0;
-  }
-
-  .hero-copy{
-    min-height:570px;
-    padding:80px 0 46px;
-  }
-
-  .board{
-    min-height:510px;
-    border-left:0;
-    border-top:1px solid var(--line);
-  }
-
-  .manifesto-grid{
-    gap:33px;
-  }
-
-  .log-row{
-    grid-template-columns:100px .8fr 1fr 42px;
-    gap:18px;
-  }
-
-  .start-copy{
-    min-height:390px;
-  }
-}
-
-@media(max-width:650px){
-  .wrap{
-    width:min(100% - 32px, 1240px);
-  }
-
-  .concept{
-    font-size:9px;
-  }
-
-  .hero-copy{
-    min-height:530px;
-    padding-top:65px;
-  }
-
-  .hero-title{
-    font-size:clamp(47px, 15vw, 68px);
-  }
-
-  .hero-foot{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .hero-count{
-    text-align:left;
-  }
-
-  .board{
-    min-height:475px;
-  }
-
-  .manifesto{
-    padding:77px 0;
-  }
-
-  .manifesto-meta{
-    flex-direction:column;
-  }
-
-  .manifesto-meta div,
-  .manifesto-meta div:not(:first-child){
-    padding:13px 0;
-    border-right:0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .manifesto-meta div:last-child{
-    border-bottom:0;
-  }
-
-  .log-section{
-    padding:74px 0;
-  }
-
-  .log-header{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:16px;
-  }
-
-  .log-row{
-    grid-template-columns:78px 1fr 34px;
-    gap:11px;
-    padding:22px 0;
-  }
-
-  .log-row p{
-    grid-column:2 / 4;
-  }
-
-  .log-arrow{
-    grid-column:3;
-    grid-row:1;
-  }
-
-  .quote-block{
-    padding:84px 0;
-  }
-
-  .start{
-    padding:74px 0;
-  }
-
-  .start-copy,
-  .start-form{
-    padding:38px 22px;
-  }
-
-  .form-row{
-    grid-template-columns:1fr;
-    gap:0;
-  }
-
-  .footer-in{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:10px;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms !important;
-    transition-duration:.01ms !important;
-    scroll-behavior:auto !important;
-  }
-
-  .reveal{
-    opacity:1;
-    transform:none;
-  }
+  --bg:#0E0F10; --panel:#17191A; --panel-2:#1F2223; --chalk:#F2F0EA; --muted:#9A9C96; --lime:#C8F031; --lime-dk:#A9CC1E;
+  --line:rgba(242,240,234,.12);
+  --wide:"Unbounded", system-ui, sans-serif; --sans:"Chivo", system-ui, sans-serif;
+  --wrap:1240px; --gutter:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--chalk);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--wide);font-weight:800;line-height:1;text-transform:uppercase;letter-spacing:-.02em}
+h2{font-size:clamp(34px,5.4vw,72px)}
+h2 span,h1 span{color:var(--lime)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+section{scroll-margin-top:80px}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--wide);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin-bottom:20px}
+.tag::before{content:"";width:10px;height:10px;background:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border:2px solid transparent;font-family:var(--wide);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--lime)}
+.btn-lime{background:var(--lime);color:var(--bg)}
+.btn-lime:hover{box-shadow:4px 4px 0 var(--chalk)}
+.btn-line{border-color:var(--chalk)}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+
+/* Kayan şerit ve menü */
+.ticker{background:var(--lime);color:var(--bg);overflow:hidden;font-family:var(--wide);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.ticker-track{display:flex;width:max-content;animation:tick 32s linear infinite}
+.ticker span{padding:9px 28px;white-space:nowrap}
+.ticker span::after{content:"✦";margin-inline-start:56px}
+@keyframes tick{to{transform:translateX(-50%)}}
+header{position:sticky;top:0;z-index:40;background:rgba(14,15,16,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--wide);font-weight:800;font-size:20px;letter-spacing:.02em}
+.brand svg{width:34px;height:34px}
+.links{display:flex;gap:30px;list-style:none}
+.links a{text-decoration:none;font-family:var(--wide);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s ease}
+.links a:hover{color:var(--lime)}
+.burger{display:none;width:44px;height:44px;border:2px solid var(--line);background:none;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;margin:4px auto;background:var(--chalk)}
+
+/* Hero */
+.hero{position:relative;min-height:min(92vh,860px);display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% 40%;transform:scale(1.1);transition:transform 3s cubic-bezier(.2,.7,.2,1)}
+.hero.ready .hero-bg{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,15,16,.95) 0%,rgba(14,15,16,.7) 45%,rgba(14,15,16,.1) 100%),linear-gradient(0deg,rgba(14,15,16,1) 0%,transparent 35%)}
+.hero .wrap{padding-block:110px 56px;width:100%}
+.hero h1{font-size:clamp(44px,8.4vw,120px);max-width:900px}
+.hero p{max-width:520px;margin:26px 0 34px;font-size:18px;color:rgba(242,240,234,.8)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);margin-top:70px;border-top:1px solid var(--line)}
+.counters div{padding:22px 0 0;border-inline-end:1px solid var(--line);padding-inline-end:16px}
+.counters div:last-child{border:0}
+.counters b{display:block;font-family:var(--wide);font-weight:800;font-size:clamp(28px,3.4vw,46px);color:var(--lime);line-height:1}
+.counters span{font-size:14px;color:var(--muted)}
+
+/* Yaklaşım */
+.approach{padding:120px 0}
+.ap-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.ap-grid figure{position:relative}
+.ap-grid figure img{filter:grayscale(1) contrast(1.1)}
+.ap-grid figure::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:2px solid var(--lime);z-index:-1}
+.pillars{list-style:none;margin-top:34px}
+.pillars li{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:22px 0;border-top:1px solid var(--line);transition:padding .25s ease}
+.pillars li:hover{padding-inline-start:10px}
+.pillars b{font-family:var(--wide);font-size:22px;color:var(--lime)}
+.pillars h3{font-size:18px;margin-bottom:6px;letter-spacing:0}
+.pillars p{color:var(--muted)}
+
+/* Program */
+.timetable{padding:120px 0;background:var(--panel)}
+.tt-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:36px}
+.tt-head p{max-width:400px;color:var(--muted)}
+.filters{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 16px;border:1.5px solid var(--line);background:none;cursor:pointer;font-family:var(--wide);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:border-color .2s ease,color .2s ease,background-color .2s ease}
+.chip:hover{border-color:var(--chalk);color:var(--chalk)}
+.chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--bg)}
+.rows{border-top:1px solid var(--line)}
+.class-row{display:grid;grid-template-columns:120px 1.4fr 1fr 130px 150px 130px;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);transition:background-color .25s ease}
+.class-row:hover{background:var(--panel-2)}
+.class-row[hidden]{display:none}
+.class-row.in{animation:rowin .35s ease both}
+@keyframes rowin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.when b{display:block;font-family:var(--wide);font-size:18px}
+.when small{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+.class-row h3{font-size:15px;letter-spacing:0}
+.coach{color:var(--muted);font-size:15px}
+.type{justify-self:start;padding:5px 10px;font-size:11px;font-family:var(--wide);font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line)}
+.type.strength{color:var(--lime);border-color:rgba(200,240,49,.4)}
+.type.conditioning{color:#FF9E6B;border-color:rgba(255,158,107,.4)}
+.type.mobility{color:#8FD3FF;border-color:rgba(143,211,255,.4)}
+.type.open{color:var(--chalk)}
+.spots{font-size:14px;color:var(--muted)}
+.spots.low{color:#FF9E6B}
+.book-btn{padding:11px 14px;border:2px solid var(--chalk);background:none;cursor:pointer;font-family:var(--wide);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.book-btn:hover:not(:disabled){background:var(--chalk);color:var(--bg)}
+.book-btn:disabled{cursor:not-allowed;border-color:var(--line);color:var(--muted)}
+.book-btn.booked{background:var(--lime);border-color:var(--lime);color:var(--bg)}
+.empty{padding:30px 0;color:var(--muted)}
+
+/* Planlar ve test */
+.plans{padding:120px 0}
+/* Üstteki başlık belirirken 30 px aşağıdan gelir: arada daha az boşluk olursa görünmez başlık düğmeleri örter */
+.billing{display:inline-flex;border:2px solid var(--line);margin:40px 0 40px}
+.billing button{padding:12px 20px;border:0;background:none;cursor:pointer;font-family:var(--wide);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.billing button[aria-pressed="true"]{background:var(--chalk);color:var(--bg)}
+.billing em{font-style:normal;color:var(--lime);margin-inline-start:6px}
+.billing button[aria-pressed="true"] em{color:var(--bg)}
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plan{position:relative;display:flex;flex-direction:column;padding:34px 28px;background:var(--panel);border:2px solid var(--line);transition:transform .3s ease,border-color .3s ease}
+.plan:hover{transform:translateY(-6px);border-color:rgba(242,240,234,.35)}
+.plan.is-recommended{border-color:var(--lime);box-shadow:0 0 0 4px rgba(200,240,49,.15)}
+.plan.is-recommended::before{content:"Your match";position:absolute;top:-14px;left:24px;padding:4px 10px;background:var(--lime);color:var(--bg);font-family:var(--wide);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.plan h3{font-size:22px}
+.plan .lead{color:var(--muted);margin:8px 0 22px;min-height:52px}
+.price-row{display:flex;align-items:baseline;gap:8px}
+.price{font-family:var(--wide);font-weight:800;font-size:54px;line-height:1}
+.price-row small{color:var(--muted)}
+.save{min-height:22px;margin:8px 0 18px;font-size:14px;color:var(--lime)}
+.plan ul{list-style:none;margin-bottom:26px;flex:1}
+.plan li{padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.plan li::before{content:"→";color:var(--lime);margin-inline-end:10px}
+.quiz{margin-top:90px;padding:44px;background:var(--panel);border:2px solid var(--line)}
+.quiz h3{font-size:26px;margin-bottom:26px}
+.q-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.q-grid fieldset{border:0}
+.q-grid legend{font-weight:700;margin-bottom:12px}
+.q-opt{display:flex;align-items:center;gap:10px;padding:12px 14px;margin-bottom:8px;border:1.5px solid var(--line);cursor:pointer;transition:border-color .2s ease}
+.q-opt:hover{border-color:var(--chalk)}
+.q-opt:has(input:checked){border-color:var(--lime)}
+.q-opt input{accent-color:var(--lime);width:17px;height:17px}
+.q-foot{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:22px}
+#quiz-result{font-size:17px}
+#quiz-result b{color:var(--lime)}
+.q-error{color:#FF9E6B;font-weight:600}
+
+/* Antrenörler ve galeri */
+.coaches{padding:0 0 120px}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.coach-card{padding:30px;border:2px solid var(--line);transition:border-color .3s ease}
+.coach-card:hover{border-color:var(--lime)}
+.initials{font-family:var(--wide);font-weight:800;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--lime);margin-bottom:22px}
+.coach-card h3{font-size:18px;letter-spacing:0}
+.coach-card small{display:block;color:var(--lime);font-size:13px;margin:6px 0 12px;text-transform:uppercase;letter-spacing:.1em}
+.coach-card p{color:var(--muted);font-size:15px}
+.grid4{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:12px}
+.grid4 figure{overflow:hidden;position:relative}
+.grid4 figure:first-child{grid-row:1/3}
+.grid4 img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35);transition:transform .7s ease,filter .7s ease}
+.grid4 figure:hover img{transform:scale(1.06);filter:none}
+.grid4 figcaption{position:absolute;left:12px;bottom:12px;padding:5px 10px;background:var(--bg);font-family:var(--wide);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+
+/* Deneme */
+.trial{padding:120px 0;background:var(--lime);color:var(--bg)}
+.trial h2 span{color:var(--bg);-webkit-text-stroke:0}
+.tr-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.tr-grid p{font-size:18px;margin-top:20px;max-width:440px}
+.tr-form{background:var(--bg);color:var(--chalk);padding:36px}
+.field{display:block;margin-bottom:16px}
+.field span{display:block;font-family:var(--wide);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.field input,.field select{width:100%;padding:14px;border:2px solid var(--line);background:var(--panel);color:var(--chalk)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--lime)}
+.err{display:block;min-height:20px;margin-top:6px;font-size:13.5px;color:#FF9E6B}
+.tr-form .btn{width:100%}
+#trial-done h3{font-size:26px;margin-bottom:12px}
+#trial-done p{color:var(--muted);margin:0}
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1040px){
+  .links{display:none}
+  .burger{display:block}
+  .links.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:var(--panel);border-bottom:1px solid var(--line);padding:8px var(--gutter) 16px}
+  .links.open a{display:block;padding:14px 0;font-size:14px;color:var(--chalk)}
+  .ap-grid,.tr-grid{grid-template-columns:1fr;gap:40px}
+  .class-row{grid-template-columns:90px 1fr 120px;grid-template-areas:"when name btn" "when meta btn"}
+  .class-row .when{grid-area:when}
+  .class-row h3{grid-area:name}
+  .class-row .coach,.class-row .type,.class-row .spots{display:none}
+  .class-row .meta{grid-area:meta;display:flex !important;gap:10px;flex-wrap:wrap;align-items:center}
+  .class-row .book-btn{grid-area:btn}
+  .p-grid,.q-grid,.c-grid{grid-template-columns:1fr}
+  .tt-head{flex-direction:column;align-items:flex-start}
+  .counters{grid-template-columns:repeat(2,1fr);row-gap:20px}
+}
+.class-row .meta{display:none}
+.class-row .meta .type,.class-row .meta .spots{display:inline-block}
+@media (max-width:640px){
+  :root{--gutter:18px}
+  .header-cta{display:none}
+  .grid4{grid-template-columns:1fr 1fr;grid-template-rows:240px 160px 160px}
+  .grid4 figure:first-child{grid-row:auto;grid-column:1/3}
+  .quiz,.tr-form{padding:24px}
+  .approach,.timetable,.plans,.trial{padding:80px 0}
+  .coaches{padding-bottom:80px}
+  .class-row{grid-template-columns:70px 1fr;grid-template-areas:"when name" "when meta" "btn btn"}
+  .class-row .book-btn{justify-self:start}
+  .ap-grid figure::after{inset:12px -10px -12px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .hero-bg{transform:none}
 }
 </style>
 </head>
-
 <body>
 
-<div class="concept">
-  NORTHFORM TRAINING CLUB / <b>FIRST WEEK FREE FOR NEW MEMBERS · LEITH, EDINBURGH</b>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>First session free for new members</span><span>Leith, Edinburgh</span><span>Open 6 AM to 10 PM</span><span>38 coached classes a week</span>
+    <span>First session free for new members</span><span>Leith, Edinburgh</span><span>Open 6 AM to 10 PM</span><span>38 coached classes a week</span>
+  </div>
 </div>
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Northform Training Club home">
-      <span class="brand-mark"><span class="brand-dot"></span></span>
-      NORTHFORM
+    <a class="brand" href="#top" aria-label="Northform Training Club, home">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" fill="#C8F031"/><path d="M8 26V8l9 10.5L26 8v18" fill="none" stroke="#0E0F10" stroke-width="3.4" stroke-linejoin="round"/></svg>
+      Northform
     </a>
-
-    <ul class="nav-links">
-      <li><a href="#training">Training</a></li>
+    <ul class="links" id="links">
       <li><a href="#approach">Method</a></li>
-      <li><a href="#start">Start here</a></li>
+      <li><a href="#timetable">Timetable</a></li>
+      <li><a href="#plans">Membership</a></li>
+      <li><a href="#coaches">Coaches</a></li>
+      <li><a href="#trial">Free trial</a></li>
     </ul>
-
-    <a class="nav-cta" href="#start">START A SESSION ↗</a>
-
-    <button class="burger" id="burger" aria-label="Open menu">☰</button>
+    <a class="btn btn-lime header-cta" href="#trial">Free session</a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
   </div>
-
-  <nav class="mobile-menu" id="mobileMenu">
-    <a href="#training">Training</a>
-    <a href="#approach">Method</a>
-    <a href="#start">Start here</a>
-  </nav>
 </header>
 
-<main>
-
-  <section class="hero" id="top">
-    <div class="wrap hero-layout">
-      <div class="hero-copy">
-        <div>
-          <div class="label">Strength &amp; conditioning / Leith</div>
-
-          <h1 class="hero-title">
-            Build<br>
-            <span>strength</span>
-            that stays.
-          </h1>
-
-          <p>
-            Small-group strength and conditioning for people who want to get stronger, move better and actually enjoy training. Every session is coached and capped at eight people.
-          </p>
-
-          <a class="hero-action" href="#start">
-            Start with a plan <span>→</span>
-          </a>
-        </div>
-
-        <div class="hero-foot">
-          <p>
-            No contracts, no pressure, no shouting. Just good coaching, a plan that makes sense and people who notice when you miss a week.
-          </p>
-
-          <span class="hero-count">
-            OPEN 6 AM–9 PM<br>
-            MONDAY TO SATURDAY
-          </span>
-        </div>
-      </div>
-
-      <aside class="board reveal" aria-label="Northform weekly training board">
-        <div class="board-top">
-          <span>WEEKLY TRAINING BOARD</span>
-          <span class="board-live">ACTIVE</span>
-        </div>
-
-        <div class="program">
-          <div class="program-head">
-            <h2>Week 01</h2>
-            <span>FOUNDATION BLOCK</span>
-          </div>
-
-          <div class="program-row">
-            <span class="program-day">MON</span>
-            <div>
-              <b>Strength base</b>
-              <small>Build the patterns</small>
-            </div>
-            <span class="program-mark"></span>
-          </div>
-
-          <div class="program-row">
-            <span class="program-day">WED</span>
-            <div>
-              <b>Conditioning</b>
-              <small>Work capacity, paced</small>
-            </div>
-            <span class="program-mark"></span>
-          </div>
-
-          <div class="program-row">
-            <span class="program-day">SAT</span>
-            <div>
-              <b>Move better</b>
-              <small>Mobility + control</small>
-            </div>
-            <span class="program-mark"></span>
-          </div>
-        </div>
-
-        <div class="board-bottom">
-          <span>CONSISTENCY &gt; INTENSITY</span>
-          <span>LOG 01.26</span>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <section class="strip" aria-label="Northform values">
-    <div class="strip-track">
-      <span>Strength</span>
-      <span>Conditioning</span>
-      <span>Mobility</span>
-      <span>Coaching</span>
-      <span>Consistency</span>
-      <span>Strength</span>
-      <span>Conditioning</span>
-      <span>Mobility</span>
-      <span>Coaching</span>
-      <span>Consistency</span>
-    </div>
-  </section>
-
-  <section class="manifesto" id="approach">
-    <div class="wrap manifesto-grid">
-      <div class="reveal">
-        <div class="label">The Northform method</div>
-      </div>
-
-      <div class="manifesto-copy reveal">
-        <h2>
-          Train for the life you have, not the highlight reel you <em>don't.</em>
-        </h2>
-
-        <p>
-          Every member starts with a one-to-one session. We look at how you move, ask what you want from training and plan your first four weeks from there. Then we adjust as you get stronger.
-        </p>
-
-        <div class="manifesto-meta">
-          <div>
-            <b>01</b>
-            <span>clear starting point</span>
-          </div>
-          <div>
-            <b>02</b>
-            <span>progressive sessions</span>
-          </div>
-          <div>
-            <b>03</b>
-            <span>repeatable habits</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="log-section" id="training">
+<main id="top">
+  <section class="hero" aria-label="Northform Training Club">
+    <img class="hero-bg" src="img/demo/northform/hero.webp" alt="An athlete resting between sets" width="1920" height="1100" fetchpriority="high">
     <div class="wrap">
-      <div class="log-header reveal">
-        <div>
-          <div class="label">Training log</div>
-          <h2>Pick your<br>starting point.</h2>
+      <span class="tag">Strength &amp; conditioning · Leith</span>
+      <h1>Build strength <span>that stays.</span></h1>
+      <p>Small coached classes for people who want to get stronger, move better and keep showing up. Every member starts with a one-to-one session.</p>
+      <div class="hero-cta">
+        <a class="btn btn-lime" href="#trial">Book a free session</a>
+        <a class="btn btn-line" href="#timetable">See the timetable</a>
+      </div>
+      <div class="counters">
+        <div><b data-count="1240">1,240</b><span>members training</span></div>
+        <div><b data-count="38">38</b><span>classes a week</span></div>
+        <div><b data-count="9">9</b><span>full-time coaches</span></div>
+        <div><b data-count="12" data-suffix=" max">12 max</b><span>people per class</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="approach" id="approach">
+    <div class="wrap ap-grid">
+      <figure class="reveal"><img src="img/demo/northform/boxing.webp" alt="Two people training on the pads" width="1200" height="900" loading="lazy"></figure>
+      <div class="reveal">
+        <span class="tag">The Northform method</span>
+        <h2>Train for the life <span>you have.</span></h2>
+        <ul class="pillars">
+          <li><b>01</b><div><h3>Start with a conversation</h3><p>A free one-to-one session to look at how you move, what you want and what gets in the way.</p></div></li>
+          <li><b>02</b><div><h3>Progress you can measure</h3><p>Four-week blocks with logged lifts, so you can see your numbers move.</p></div></li>
+          <li><b>03</b><div><h3>Habits over hype</h3><p>Two good sessions a week beat six you cannot keep. We plan around your real week.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="timetable" id="timetable">
+    <div class="wrap">
+      <div class="tt-head reveal">
+        <div><span class="tag">This week</span><h2>The <span>timetable.</span></h2></div>
+        <p>Filter by day or class type and save your spot. Every class is capped at twelve people, so you get real coaching.</p>
+      </div>
+      <div class="filters">
+        <div class="chips" role="group" aria-label="Filter by day" id="day-chips"></div>
+        <div class="chips" role="group" aria-label="Filter by type" id="type-chips"></div>
+      </div>
+      <div class="rows" id="rows"></div>
+      <p class="empty" id="empty" hidden>No classes match these filters. Try another day.</p>
+    </div>
+  </section>
+
+  <section class="plans" id="plans">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="tag">Membership</span>
+        <h2>Pick your <span>pace.</span></h2>
+      </div>
+      <div class="billing" role="group" aria-label="Billing">
+        <button type="button" data-billing="monthly" aria-pressed="true">Monthly</button>
+        <button type="button" data-billing="annual" aria-pressed="false">Annual<em>save up to 18%</em></button>
+      </div>
+      <div class="p-grid" id="p-grid"></div>
+
+      <form class="quiz reveal" id="quiz" novalidate>
+        <h3>Not sure? Answer three questions.</h3>
+        <div class="q-grid">
+          <fieldset><legend>What is your main goal?</legend>
+            <label class="q-opt"><input type="radio" name="q1" value="strength"> Get stronger</label>
+            <label class="q-opt"><input type="radio" name="q1" value="fitness"> Get fitter</label>
+            <label class="q-opt"><input type="radio" name="q1" value="mobility"> Move without pain</label>
+          </fieldset>
+          <fieldset><legend>How many days a week can you train?</legend>
+            <label class="q-opt"><input type="radio" name="q2" value="1-2"> 1 – 2 days</label>
+            <label class="q-opt"><input type="radio" name="q2" value="3-4"> 3 – 4 days</label>
+            <label class="q-opt"><input type="radio" name="q2" value="5+"> 5 or more</label>
+          </fieldset>
+          <fieldset><legend>How much have you trained before?</legend>
+            <label class="q-opt"><input type="radio" name="q3" value="new"> I'm new to this</label>
+            <label class="q-opt"><input type="radio" name="q3" value="some"> On and off</label>
+            <label class="q-opt"><input type="radio" name="q3" value="lots"> Years of training</label>
+          </fieldset>
         </div>
-
-        <p>
-          Four ways in, depending on where you are now. Not sure which one fits? Book the free intro and we will point you to the right one.
-        </p>
-      </div>
-
-      <div class="training-log">
-        <article class="log-row reveal">
-          <span class="log-code">TRACK / 01</span>
-          <h3>Foundation</h3>
-          <p>Learn the core patterns and build a steady relationship with training.</p>
-          <span class="log-arrow">↗</span>
-        </article>
-
-        <article class="log-row reveal" style="transition-delay:.07s">
-          <span class="log-code">TRACK / 02</span>
-          <h3>Strength</h3>
-          <p>Develop confidence around progressive lifts, carries and loaded movement.</p>
-          <span class="log-arrow">↗</span>
-        </article>
-
-        <article class="log-row reveal" style="transition-delay:.14s">
-          <span class="log-code">TRACK / 03</span>
-          <h3>Conditioning</h3>
-          <p>Build capacity through repeatable, scalable work that respects your pace.</p>
-          <span class="log-arrow">↗</span>
-        </article>
-
-        <article class="log-row reveal" style="transition-delay:.21s">
-          <span class="log-code">TRACK / 04</span>
-          <h3>Movement</h3>
-          <p>Create more range, control and awareness around the way your body moves.</p>
-          <span class="log-arrow">↗</span>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="quote-block">
-    <div class="wrap reveal">
-      <p>
-        <em>Train well.</em><br>
-        Keep showing up.<br>
-        Let the work add up.
-      </p>
-      <small>PAINTED ON THE GYM WALL / DOCK STREET</small>
-    </div>
-  </section>
-
-  <section class="start" id="start">
-    <div class="wrap start-layout">
-      <div class="start-copy">
-        <div class="label">Start here</div>
-        <h2>Your next session can begin with a question.</h2>
-        <p>
-          Book a free 30-minute intro. We will show you around, talk about your goals and plan your first session together.
-        </p>
-
-        <div class="start-points">
-          <span>Free 30-minute intro</span>
-          <span>First week of classes free</span>
-          <span>Memberships from £69 a month</span>
+        <div class="q-foot">
+          <button class="btn btn-lime" type="submit">Show my plan</button>
+          <p id="quiz-result" hidden></p>
+          <p class="q-error" id="quiz-error" role="alert"></p>
         </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="coaches" id="coaches">
+    <div class="wrap">
+      <div class="reveal"><span class="tag">Coaches</span><h2>Who's <span>coaching.</span></h2></div>
+      <div class="c-grid">
+        <article class="coach-card reveal"><div class="initials">IM</div><h3>Isla Mackenzie</h3><small>Head of strength</small><p>Former national-level weightlifter. Runs Barbell Club and every first session she can.</p></article>
+        <article class="coach-card reveal"><div class="initials">CF</div><h3>Callum Fraser</h3><small>Conditioning</small><p>Builds engines without wrecking knees. Ask him about rowing intervals, carefully.</p></article>
+        <article class="coach-card reveal"><div class="initials">KM</div><h3>Kofi Mensah</h3><small>Mobility &amp; recovery</small><p>Physio background. His Wednesday Mobility Reset is the class nobody regrets.</p></article>
       </div>
-
-      <div class="start-form">
-        <h3>Build your starting point.</h3>
-        <p>We reply within a day to confirm a time.</p>
-
-        <form id="startForm" novalidate>
-          <div class="form-row">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Your name">
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@email.com">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="field">
-              <label for="focus">Main focus</label>
-              <select id="focus">
-                <option>Build strength</option>
-                <option>Improve conditioning</option>
-                <option>Move better</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="experience">Experience</label>
-              <select id="experience">
-                <option>Starting fresh</option>
-                <option>Returning to training</option>
-                <option>Already training</option>
-                <option>Prefer not to say</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="note">A short note</label>
-            <textarea id="note" placeholder="What would you like to work on?"></textarea>
-          </div>
-
-          <button class="submit" type="submit">
-            Book my free intro →
-          </button>
-
-          <p class="disclaimer">
-            No contract. Cancel any time with 30 days' notice.
-          </p>
-        </form>
+      <div class="grid4 reveal" style="margin-top:56px">
+        <figure><img src="img/demo/northform/kettlebell.webp" alt="Kettlebell training on the gym floor" width="1200" height="800" loading="lazy"><figcaption>The floor</figcaption></figure>
+        <figure><img src="img/demo/northform/dumbbells.webp" alt="A pair of dumbbells" width="900" height="900" loading="lazy"><figcaption>Free weights</figcaption></figure>
+        <figure><img src="img/demo/northform/mobility.webp" alt="Mobility work on a reformer" width="900" height="900" loading="lazy"><figcaption>Mobility</figcaption></figure>
+        <figure style="grid-column:2/4"><img src="img/demo/northform/lockers.webp" alt="The changing room lockers" width="1200" height="800" loading="lazy"><figcaption>Changing rooms</figcaption></figure>
       </div>
     </div>
   </section>
 
+  <section class="trial" id="trial">
+    <div class="wrap tr-grid">
+      <div class="reveal">
+        <span class="tag" style="color:var(--bg)">Free trial</span>
+        <h2>Your first <span>session is free.</span></h2>
+        <p>Sixty minutes with a coach: a movement check, a short workout and an honest chat about what would work for you. No contract, no hard sell.</p>
+      </div>
+      <form class="tr-form reveal" id="trial-form" novalidate>
+        <div id="trial-fields">
+          <label class="field"><span>Name</span><input id="tr-name" autocomplete="name"><em class="err" data-for="tr-name"></em></label>
+          <label class="field"><span>Email</span><input id="tr-email" type="email" autocomplete="email"><em class="err" data-for="tr-email"></em></label>
+          <label class="field"><span>Preferred day</span>
+            <select id="tr-day"><option value="any">Any day</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select>
+            <em class="err" data-for="tr-day"></em>
+          </label>
+          <button class="btn btn-lime" type="submit">Book my free session</button>
+        </div>
+        <div id="trial-done" hidden>
+          <h3 id="trial-done-title">Nice one.</h3>
+          <p id="trial-done-text"></p>
+        </div>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="wrap footer-in">
-    <span class="footer-brand">
-      <span class="brand-mark"><span class="brand-dot"></span></span>
-      NORTHFORM
-    </span>
-
-    <span>14 Dock Street, Leith, Edinburgh</span>
-
-    <span>Website by <a href="index.html">OptiCodeStudio</a></span>
-  </div>
+  <div class="wrap"><span>© 2026 Northform Training Club · 17 Coburg Street, Leith, Edinburgh EH6 6ET</span><span>Open 6 AM – 10 PM, every day</span></div>
 </footer>
 
-<script>
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobileMenu');
-
-burger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
-
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-  });
-});
-
-document.getElementById('startForm').addEventListener('submit', function(event){
-  event.preventDefault();
-
-  this.innerHTML = `
-    <div class="success">
-      <div>
-        <h3>REQUEST RECEIVED.</h3>
-        <p>On the live site the coaching team would get this right away. This demo does not send it anywhere.</p>
-      </div>
-    </div>
-  `;
-});
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold:.12 });
-
-document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
-</script>
-
 <a class="ocs-demo-badge" href="index.html"><img src="img/logo-mark.svg" alt="" width="22" height="17">Demo · OptiCodeStudio</a>
+
+<script>
+(function () {
+  'use strict';
+
+  var DAYS = { mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday' };
+  var TYPES = { strength: 'Strength', conditioning: 'Conditioning', mobility: 'Mobility', open: 'Open gym' };
+  // spots: bu haftaki boş yer (sayfa yenilenince başa döner)
+  var CLASSES = [
+    ['mon', '06:30', 'strength', 'Strength Foundations', 'Isla', 3],
+    ['mon', '12:30', 'mobility', 'Mobility Reset', 'Kofi', 8],
+    ['mon', '18:00', 'conditioning', 'Engine Builder', 'Callum', 5],
+    ['tue', '07:00', 'open', 'Open Gym', 'Floor coach', 14],
+    ['tue', '18:30', 'strength', 'Barbell Club', 'Isla', 1],
+    ['wed', '06:30', 'conditioning', 'Sweat Circuit', 'Callum', 6],
+    ['wed', '18:30', 'conditioning', 'Engine Builder', 'Callum', 0],
+    ['wed', '20:00', 'mobility', 'Mobility Reset', 'Kofi', 9],
+    ['thu', '07:00', 'strength', 'Strength Foundations', 'Isla', 4],
+    ['thu', '18:00', 'open', 'Open Gym', 'Floor coach', 12],
+    ['fri', '06:30', 'conditioning', 'Sweat Circuit', 'Callum', 2],
+    ['fri', '17:30', 'strength', 'Barbell Club', 'Isla', 7],
+    ['sat', '09:00', 'strength', 'Saturday Strength', 'Isla', 5],
+    ['sat', '10:30', 'mobility', 'Yoga for Lifters', 'Kofi', 10],
+    ['sun', '10:00', 'open', 'Open Gym', 'Floor coach', 16],
+    ['sun', '11:00', 'conditioning', 'Long Engine', 'Callum', 6]
+  ].map(function (c) {
+    return { id: c[0] + '-' + c[1].replace(':', '') + '-' + c[2], day: c[0], time: c[1], type: c[2], name: c[3], coach: c[4], spots: c[5], booked: false };
+  });
+  var PLANS = [
+    { id: 'flex', name: 'Flex', lead: 'Two sessions a week for busy diaries.', monthly: 39, annual: 32, perks: ['8 classes a month', 'Open gym off-peak', 'Free first session'] },
+    { id: 'core', name: 'Core', lead: 'The plan most members start on.', monthly: 59, annual: 49, perks: ['Unlimited classes', 'Open gym any time', 'Quarterly progress check'] },
+    { id: 'unlimited', name: 'Unlimited', lead: 'For training five days or more.', monthly: 79, annual: 65, perks: ['Everything in Core', 'Monthly one-to-one', 'Recovery room access'] }
+  ];
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+
+  /* ---------- Program ---------- */
+  var filter = { day: 'all', type: 'all' };
+  var spotsText = function (n) { return n === 1 ? '1 spot left' : n + ' spots left'; };
+  function rowHtml(c) {
+    var full = c.spots === 0 && !c.booked;
+    var btn = c.booked ? '<button class="book-btn booked" type="button" disabled>Booked</button>' :
+      full ? '<button class="book-btn" type="button" disabled>Full</button>' :
+      '<button class="book-btn" type="button" aria-label="Book a spot in ' + esc(c.name) + ' on ' + DAYS[c.day] + ' at ' + c.time + '">Book a spot</button>';
+    var spots = '<span class="spots' + (c.spots <= 2 ? ' low' : '') + '">' + (full ? 'Waitlist only' : spotsText(c.spots)) + '</span>';
+    var type = '<span class="type ' + c.type + '">' + TYPES[c.type] + '</span>';
+    return '<div class="when"><b>' + c.time + '</b><small>' + DAYS[c.day].slice(0, 3) + '</small></div>' +
+      '<h3>' + esc(c.name) + '</h3><span class="coach">with ' + esc(c.coach) + '</span>' + type + spots +
+      '<span class="meta">' + type + spots + '</span>' + btn;
+  }
+  $('#rows').innerHTML = CLASSES.map(function (c) {
+    return '<div class="class-row" data-class-id="' + c.id + '" data-day="' + c.day + '" data-type="' + c.type + '">' + rowHtml(c) + '</div>';
+  }).join('');
+  function applyFilter() {
+    var shown = 0;
+    $$('.class-row').forEach(function (r, i) {
+      var on = (filter.day === 'all' || r.dataset.day === filter.day) && (filter.type === 'all' || r.dataset.type === filter.type);
+      r.hidden = !on;
+      r.classList.remove('in');
+      if (on) { r.style.animationDelay = Math.min(shown, 8) * 30 + 'ms'; void r.offsetWidth; r.classList.add('in'); shown++; }
+    });
+    $('#empty').hidden = shown > 0;
+    $$('#day-chips .chip').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.dayFilter === filter.day)); });
+    $$('#type-chips .chip').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.typeFilter === filter.type)); });
+  }
+  $('#day-chips').innerHTML = '<button class="chip" type="button" data-day-filter="all">All days</button>' +
+    Object.keys(DAYS).map(function (d) { return '<button class="chip" type="button" data-day-filter="' + d + '">' + DAYS[d].slice(0, 3) + '</button>'; }).join('');
+  $('#type-chips').innerHTML = '<button class="chip" type="button" data-type-filter="all">All classes</button>' +
+    Object.keys(TYPES).map(function (t) { return '<button class="chip" type="button" data-type-filter="' + t + '">' + TYPES[t] + '</button>'; }).join('');
+  $('.filters').addEventListener('click', function (e) {
+    var b = e.target.closest('.chip');
+    if (!b) return;
+    if (b.dataset.dayFilter) filter.day = b.dataset.dayFilter;
+    if (b.dataset.typeFilter) filter.type = b.dataset.typeFilter;
+    applyFilter();
+  });
+  $('#rows').addEventListener('click', function (e) {
+    var b = e.target.closest('.book-btn');
+    if (!b || b.disabled) return;
+    var row = b.closest('.class-row');
+    var c = CLASSES.filter(function (x) { return x.id === row.dataset.classId; })[0];
+    c.spots -= 1;
+    c.booked = true;
+    row.innerHTML = rowHtml(c);
+  });
+  applyFilter();
+
+  /* ---------- Planlar ---------- */
+  var billing = 'monthly';
+  function renderPlans(recommended) {
+    $('#p-grid').innerHTML = PLANS.map(function (p) {
+      var price = billing === 'annual' ? p.annual : p.monthly;
+      var save = billing === 'annual' ? 'Save £' + (p.monthly - p.annual) * 12 + ' a year · billed £' + p.annual * 12 : '';
+      return '<article class="plan' + (p.id === recommended ? ' is-recommended' : '') + '" data-plan="' + p.id + '">' +
+        '<h3>' + p.name + '</h3><p class="lead">' + p.lead + '</p>' +
+        '<div class="price-row"><span class="price">£' + price + '</span><small>/ month</small></div>' +
+        '<p class="save">' + save + '</p><ul>' + p.perks.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+        '<a class="btn ' + (p.id === 'core' ? 'btn-lime' : 'btn-line') + '" href="#trial">Start with ' + p.name + '</a></article>';
+    }).join('');
+  }
+  var recommended = null;
+  $$('.billing button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      billing = b.dataset.billing;
+      $$('.billing button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      renderPlans(recommended);
+    });
+  });
+  renderPlans(null);
+
+  /* ---------- Test ---------- */
+  // 1–2 gün → Flex, 3–4 gün → Core, 5+ gün → Unlimited; yeni başlayan 5+ gün isterse önce Core
+  function recommend(goal, days, exp) {
+    if (days === '1-2') return 'flex';
+    if (days === '3-4') return 'core';
+    return exp === 'new' ? 'core' : 'unlimited';
+  }
+  $('#quiz').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var val = function (n) { var c = $('#quiz input[name="' + n + '"]:checked'); return c && c.value; };
+    var a = [val('q1'), val('q2'), val('q3')];
+    if (a.some(function (x) { return !x; })) { $('#quiz-error').textContent = 'Answer all three questions.'; return; }
+    $('#quiz-error').textContent = '';
+    recommended = recommend(a[0], a[1], a[2]);
+    renderPlans(recommended);
+    var plan = PLANS.filter(function (p) { return p.id === recommended; })[0];
+    var why = { flex: 'two quality sessions a week', core: 'three or four coached sessions a week', unlimited: 'training most days with a monthly one-to-one' }[recommended];
+    $('#quiz-result').innerHTML = 'We would start you on <b>' + plan.name + '</b>: ' + why + '.';
+    $('#quiz-result').hidden = false;
+  });
+
+  /* ---------- Deneme formu ---------- */
+  $('#trial-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('#tr-name').value.trim();
+    var email = $('#tr-email').value.trim();
+    var errors = {
+      'tr-name': name.length < 2 ? 'Tell us your name.' : '',
+      'tr-email': !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'We need a valid email to confirm.' : ''
+    };
+    $$('#trial .err').forEach(function (el) { el.textContent = errors[el.dataset.for] || ''; });
+    if (errors['tr-name'] || errors['tr-email']) return;
+    var day = $('#tr-day').value;
+    $('#trial-done-title').textContent = 'Nice one, ' + name.split(' ')[0] + '.';
+    $('#trial-done-text').textContent = 'A coach will email ' + email + ' within a day to set up your free session' + (day === 'any' ? '.' : ' on a ' + day + '.') + ' Bring trainers and water; we have the rest.';
+    $('#trial-fields').hidden = true;
+    $('#trial-done').hidden = false;
+  });
+
+  /* ---------- Menü, sayaçlar, belirme ---------- */
+  var burger = $('.burger');
+  burger.addEventListener('click', function () {
+    var open = $('#links').classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  $$('#links a').forEach(function (a) { a.addEventListener('click', function () { $('#links').classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countUp(el) {
+    var target = Number(el.dataset.count), suffix = el.dataset.suffix || '', t0 = null;
+    function frame(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / 1400);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('en-GB') + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (!reduced) $$('[data-count]').forEach(countUp);
+  if ('IntersectionObserver' in window && !reduced) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.1 });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    $$('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+  requestAnimationFrame(function () { $('.hero').classList.add('ready'); });
+})();
+</script>
 </body>
 </html>
