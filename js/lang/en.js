@@ -127,6 +127,7 @@ OCS.addLang({
     "footer.rights": "© 2026 OptiCodeStudio. All rights reserved.",
     "footer.cookies": "Cookie Policy",
     "footer.cookiePrefs": "Cookie preferences",
+    "legal.back": "Back to the website",
 
     "consent.label": "Cookie notice",
     "consent.text": "This site uses no advertising or tracking cookies. We keep a small record in your browser to remember your language, theme and currency.",
@@ -380,6 +381,7 @@ OCS.addLang({
 <li>Your message</li>
 <li>The language and currency you used on the site, and the date and time you gave the consents on the form</li>
 </ul>
+<p>Please do not send passwords, payment details or other sensitive information through the forms.</p>
 <h3>Why we use it</h3>
 <ul>
 <li>To answer your enquiry and discuss your project</li>
@@ -409,6 +411,68 @@ OCS.addLang({
 <p>To answer the message you send through the forms on this website, your name, email address, business or website details, budget range and message are delivered by FormSubmit (USA) to our email inbox hosted by Google (Gmail), and stored there.</p>
 <p>By ticking the box, you give your explicit consent to this transfer of your personal data abroad, only for the purpose of answering your request (KVKK Art. 9). Countries outside Turkey may not offer the same level of data protection.</p>
 <p>You can withdraw your consent at any time by writing to <a href="mailto:{email}">{email}</a>. Withdrawing does not affect transfers made before. Without this consent the form cannot be sent.</p>`
+    },
+    terms: {
+      title: "Terms of Service",
+      html: `
+<p>These terms explain the general basis on which OptiCodeStudio discusses, scopes and delivers website and digital services.</p>
+<h3>General information</h3>
+<p>OptiCodeStudio provides website design, development and related digital services. Information on this website is for general information only and does not create a client relationship by itself.</p>
+<p>A project begins only after scope, deliverables, timeline, price and other relevant terms have been agreed in writing.</p>
+<h3>Quotes and scope</h3>
+<p>Quotes are based on the information available at the time of discussion. Changes to the agreed scope, content, features, integrations, pages, revisions or timeline may require a revised quote and delivery schedule.</p>
+<p>Estimates and example timelines are not guarantees. Delivery timing depends on scope, content readiness, approvals, third-party services and client responsiveness.</p>
+<h3>Prices and currencies</h3>
+<p>Prices are shown in several currencies. The amount and currency stated in the written quote apply.</p>
+<h3>Client responsibilities</h3>
+<p>Clients are responsible for providing accurate and lawful materials needed for a project, including where applicable:</p>
+<ul>
+<li>Text, images, logos, product information and brand assets</li>
+<li>Required approvals, feedback and access to relevant accounts</li>
+<li>Rights or licences for content supplied to OptiCodeStudio</li>
+<li>Business, legal, privacy, tax, shipping and policy information</li>
+<li>Verification and approval of final content before launch</li>
+</ul>
+<h3>Third-party services</h3>
+<p>Websites may rely on third-party services such as hosting providers, domain registrars, payment providers, e-commerce platforms, plugins, analytics tools, email platforms, APIs or social networks.</p>
+<p>OptiCodeStudio is not responsible for outages, policy changes, fees, account suspensions, security issues or changes made by third-party providers. Third-party costs are not included unless explicitly stated in a written proposal.</p>
+<h3>E-commerce and integrations</h3>
+<p>E-commerce, payments, shipping, tax, inventory, customer accounts and integrations depend on the selected platform, country, provider availability and client accounts. Clients remain responsible for business verification, payment-provider approval, product data, tax settings, shipping rules and legal store policies.</p>
+<p>Custom checkout systems, advanced inventory, marketplace synchronisation, subscriptions, ERP connections and custom backend functionality require separate technical evaluation and pricing.</p>
+<h3>Website reviews</h3>
+<p>A free website review is a general first-look observation based on publicly available information and the details you provide. It is not a complete technical, security, accessibility, legal, SEO or performance audit, and should not be treated as professional legal, financial or compliance advice.</p>
+<h3>Intellectual property</h3>
+<p>Unless otherwise agreed in writing, final approved website assets created specifically for a paid client project are transferred or licensed as described in the project agreement after all agreed payments have been received.</p>
+<p>OptiCodeStudio may retain ownership of pre-existing tools, reusable code, methods, templates, libraries and general know-how. Portfolio display rights may be discussed in the project agreement.</p>
+<h3>Limitation of liability</h3>
+<p>OptiCodeStudio aims to deliver work with reasonable care and professionalism. However, no website, third-party platform or digital service can be guaranteed to be error-free, uninterrupted, secure, ranked on search engines or to produce a specific commercial result.</p>
+<p>To the extent permitted by applicable law, OptiCodeStudio is not responsible for indirect loss, lost profits, business interruption, data loss, third-party failures or outcomes outside the agreed project scope.</p>
+<h3>Contact</h3>
+<p>Questions about these terms can be sent to <a href="mailto:{email}">{email}</a>.</p>
+<h3>Changes to these terms</h3>
+<p>These terms may be updated as services, processes or legal requirements change. The latest version will always be available on this page.</p>
+<p class="legal-updated">Last updated: {updated}</p>`
+    },
+    cookies: {
+      title: "Cookie Policy",
+      html: `
+<p>This website does not use cookies. There is no advertising, analytics or tracking.</p>
+<h3>What the site stores in your browser</h3>
+<p>To remember your choices, the site keeps a few small entries in your browser's storage (localStorage and sessionStorage). They stay on your device and are not sent to us.</p>
+<ul>
+<li><code>ocs.lang</code>: the language you chose</li>
+<li><code>ocs.currency</code>: the currency you chose</li>
+<li><code>ocs.theme</code>: night or day mode</li>
+<li><code>ocs.consent</code>: your answer to the cookie notice and when you gave it, so the notice does not ask again</li>
+<li><code>ocs.splash</code>: that the opening animation has been shown; it is deleted when you close the tab</li>
+</ul>
+<p>If you accept the notice, your language, currency and theme are remembered on later visits. If you reject it, they are kept only until you close the tab.</p>
+<h3>Third parties</h3>
+<p>Fonts, icons and images are served from this website itself, so browsing it sends no requests to other companies. The site is hosted on GitHub Pages, which, like any web server, may record your IP address in technical logs.</p>
+<p>When you send a form, your message is delivered to our inbox through FormSubmit (USA). The <a href="privacy.html">Privacy Notice</a> explains how we handle it.</p>
+<h3>Changing your choice</h3>
+<p>You can change your answer at any time with "Cookie preferences" at the bottom of every page, or delete everything the site has stored by clearing this site's data in your browser settings.</p>
+<p class="legal-updated">Last updated: {updated}</p>`
     }
   }
 });

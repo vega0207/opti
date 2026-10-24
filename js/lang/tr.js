@@ -128,6 +128,7 @@ OCS.addLang({
     "footer.rights": "© 2026 OptiCodeStudio. Tüm hakları saklıdır.",
     "footer.cookies": "Çerez Politikası",
     "footer.cookiePrefs": "Çerez tercihleri",
+    "legal.back": "Siteye dön",
 
     "consent.label": "Çerez bildirimi",
     "consent.text": "Bu sitede reklam veya takip çerezi yok. Dil, tema ve para seçiminizi hatırlamak için tarayıcınıza küçük bir kayıt bırakıyoruz.",
@@ -381,6 +382,7 @@ OCS.addLang({
 <li>Mesajınız</li>
 <li>Sitede kullandığınız dil ve para birimi, formdaki onayları verdiğiniz tarih ve saat</li>
 </ul>
+<p>Lütfen formlarla şifre, ödeme bilgisi veya başka hassas bilgi göndermeyin.</p>
 <h3>Hangi amaçla işliyoruz</h3>
 <ul>
 <li>Talebinize cevap vermek ve projenizi konuşmak</li>
@@ -410,6 +412,68 @@ OCS.addLang({
 <p>Bu sitedeki formlarla gönderdiğiniz mesaja cevap verebilmemiz için adınız, e-posta adresiniz, işletme ya da web sitesi bilginiz, bütçe aralığınız ve mesajınız FormSubmit (ABD) aracılığıyla Google (Gmail) üzerinde barındırılan e-posta kutumuza iletilir ve orada saklanır.</p>
 <p>Kutucuğu işaretleyerek, kişisel verilerinizin yalnızca talebinize cevap verilmesi amacıyla bu şekilde yurt dışına aktarılmasına açık rıza vermiş olursunuz (KVKK m.9). Türkiye dışındaki ülkeler aynı düzeyde veri koruması sağlamayabilir.</p>
 <p>Rızanızı istediğiniz zaman <a href="mailto:{email}">{email}</a> adresine yazarak geri alabilirsiniz. Geri almanız, öncesinde yapılmış aktarımları etkilemez. Bu rıza olmadan form gönderilemez.</p>`
+    },
+    terms: {
+      title: "Hizmet Şartları",
+      html: `
+<p>Bu şartlar, OptiCodeStudio'nun web sitesi ve dijital hizmetleri hangi genel esaslarla görüştüğünü, kapsamını nasıl belirlediğini ve nasıl teslim ettiğini açıklar.</p>
+<h3>Genel bilgiler</h3>
+<p>OptiCodeStudio web sitesi tasarımı, geliştirme ve ilgili dijital hizmetler sunar. Bu sitedeki bilgiler genel bilgilendirme amaçlıdır ve tek başına bir müşteri ilişkisi doğurmaz.</p>
+<p>Bir proje ancak kapsam, teslim edilecekler, takvim, fiyat ve diğer ilgili koşullar yazılı olarak kararlaştırıldıktan sonra başlar.</p>
+<h3>Teklif ve kapsam</h3>
+<p>Teklifler, görüşme sırasında elimizde olan bilgilere dayanır. Kararlaştırılan kapsamda, içerikte, özelliklerde, entegrasyonlarda, sayfalarda, revizyonlarda veya takvimde yapılan değişiklikler yeni bir teklif ve teslim takvimi gerektirebilir.</p>
+<p>Tahminler ve örnek süreler garanti değildir. Teslim süresi kapsama, içeriğin hazır olmasına, onaylara, üçüncü taraf hizmetlere ve müşterinin dönüş hızına bağlıdır.</p>
+<h3>Fiyatlar ve para birimleri</h3>
+<p>Fiyatlar birden çok para biriminde gösterilir. Geçerli olan, yazılı teklifte belirtilen tutar ve para birimidir.</p>
+<h3>Müşterinin sorumlulukları</h3>
+<p>Müşteri, proje için gereken doğru ve hukuka uygun materyalleri sağlamakla sorumludur. Gerektiğinde bunlar şunları kapsar:</p>
+<ul>
+<li>Metinler, görseller, logolar, ürün bilgileri ve marka unsurları</li>
+<li>Gerekli onaylar, geri bildirimler ve ilgili hesaplara erişim</li>
+<li>OptiCodeStudio'ya verilen içeriklerin kullanım hakları veya lisansları</li>
+<li>İşletme, hukuk, gizlilik, vergi, kargo ve politika bilgileri</li>
+<li>Yayından önce son içeriğin kontrolü ve onayı</li>
+</ul>
+<h3>Üçüncü taraf hizmetler</h3>
+<p>Web siteleri barındırma firmaları, alan adı kayıt firmaları, ödeme kuruluşları, e-ticaret platformları, eklentiler, analiz araçları, e-posta platformları, API'ler veya sosyal ağlar gibi üçüncü taraf hizmetlere dayanabilir.</p>
+<p>OptiCodeStudio; bu hizmet sağlayıcıların kesintilerinden, politika değişikliklerinden, ücretlerinden, hesap kapatmalarından, güvenlik sorunlarından veya yaptıkları değişikliklerden sorumlu değildir. Üçüncü taraf maliyetleri, yazılı teklifte açıkça belirtilmedikçe fiyata dahil değildir.</p>
+<h3>E-ticaret ve entegrasyonlar</h3>
+<p>E-ticaret, ödeme, kargo, vergi, stok, müşteri hesapları ve entegrasyonlar; seçilen platforma, ülkeye, hizmet sağlayıcının sunduklarına ve müşterinin hesaplarına bağlıdır. İşletme doğrulaması, ödeme kuruluşu onayı, ürün bilgileri, vergi ayarları, kargo kuralları ve mağazanın yasal politikaları müşterinin sorumluluğundadır.</p>
+<p>Özel ödeme sistemleri, gelişmiş stok yönetimi, pazaryeri eşitleme, abonelikler, ERP bağlantıları ve özel sunucu tarafı işlevler ayrı bir teknik değerlendirme ve fiyatlandırma gerektirir.</p>
+<h3>Site incelemeleri</h3>
+<p>Ücretsiz site incelemesi, herkese açık bilgilere ve sizin verdiğiniz ayrıntılara dayanan genel bir ilk bakıştır. Eksiksiz bir teknik, güvenlik, erişilebilirlik, hukuk, SEO veya performans denetimi değildir; hukuki, mali ya da mevzuata uyum danışmanlığı yerine geçmez.</p>
+<h3>Fikri mülkiyet</h3>
+<p>Yazılı olarak aksi kararlaştırılmadıkça, ücretli bir müşteri projesi için özel olarak hazırlanıp onaylanan son site içerikleri, kararlaştırılan tüm ödemeler alındıktan sonra proje sözleşmesinde belirtildiği şekilde devredilir veya lisanslanır.</p>
+<p>OptiCodeStudio; önceden var olan araçlarının, yeniden kullanılabilir kodlarının, yöntemlerinin, şablonlarının, kütüphanelerinin ve genel bilgi birikiminin sahipliğini koruyabilir. Projenin portföyde gösterilmesi proje sözleşmesinde konuşulabilir.</p>
+<h3>Sorumluluğun sınırı</h3>
+<p>OptiCodeStudio işini makul özen ve profesyonellikle yapmayı amaçlar. Ancak hiçbir web sitesi, üçüncü taraf platform veya dijital hizmet için hatasız, kesintisiz ya da güvenli çalışacağı, arama motorlarında belli bir sırada çıkacağı veya belli bir ticari sonuç getireceği garanti edilemez.</p>
+<p>Yürürlükteki hukukun izin verdiği ölçüde OptiCodeStudio; dolaylı zararlardan, kâr kaybından, iş kesintisinden, veri kaybından, üçüncü taraf hatalarından veya kararlaştırılan kapsam dışındaki sonuçlardan sorumlu değildir.</p>
+<h3>İletişim</h3>
+<p>Bu şartlarla ilgili sorularınızı <a href="mailto:{email}">{email}</a> adresine gönderebilirsiniz.</p>
+<h3>Şartlardaki değişiklikler</h3>
+<p>Bu şartlar; hizmetler, süreçler veya yasal gereklilikler değiştikçe güncellenebilir. Güncel sürüm her zaman bu sayfadadır.</p>
+<p class="legal-updated">Son güncelleme: {updated}</p>`
+    },
+    cookies: {
+      title: "Çerez Politikası",
+      html: `
+<p>Bu site çerez kullanmaz. Reklam, analiz veya takip aracı yoktur.</p>
+<h3>Tarayıcınızda neler saklanır</h3>
+<p>Seçimlerinizi hatırlamak için site, tarayıcınızın depolama alanına (localStorage ve sessionStorage) birkaç küçük kayıt bırakır. Bu kayıtlar cihazınızda kalır, bize gönderilmez.</p>
+<ul>
+<li><code>ocs.lang</code>: seçtiğiniz dil</li>
+<li><code>ocs.currency</code>: seçtiğiniz para birimi</li>
+<li><code>ocs.theme</code>: gece veya gündüz modu</li>
+<li><code>ocs.consent</code>: çerez bildirimine verdiğiniz cevap ve tarihi; bildirim tekrar sorulmasın diye tutulur</li>
+<li><code>ocs.splash</code>: açılış animasyonunun gösterildiği bilgisi; sekmeyi kapatınca silinir</li>
+</ul>
+<p>Bildirimi kabul ederseniz dil, para birimi ve tema seçiminiz sonraki ziyaretlerinizde de hatırlanır. Reddederseniz yalnızca sekmeyi kapatana kadar tutulur.</p>
+<h3>Üçüncü taraflar</h3>
+<p>Yazı tipleri, simgeler ve görseller bu sitenin kendisinden yüklenir; siteyi gezerken başka şirketlere istek gönderilmez. Site GitHub Pages üzerinde barındırılır; GitHub Pages her web sunucusu gibi IP adresinizi teknik kayıtlarda tutabilir.</p>
+<p>Bir form gönderdiğinizde mesajınız FormSubmit (ABD) aracılığıyla e-posta kutumuza iletilir. Bu verileri nasıl işlediğimizi <a href="privacy.html">KVKK Aydınlatma Metni</a> anlatır.</p>
+<h3>Seçiminizi değiştirmek</h3>
+<p>Cevabınızı her sayfanın altındaki "Çerez tercihleri" bağlantısıyla istediğiniz zaman değiştirebilir, tarayıcı ayarlarından bu sitenin verilerini silerek saklanan her şeyi kaldırabilirsiniz.</p>
+<p class="legal-updated">Son güncelleme: {updated}</p>`
     }
   }
 });

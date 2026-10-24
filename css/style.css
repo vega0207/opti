@@ -567,11 +567,28 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 .legal-text h3:first-child { margin-top: 0; }
 .legal-text p,
 .legal-text li { color: var(--muted); font-size: 15px; }
-.legal-text p + p { margin-top: 10px; }
+.legal-text p + p,
+.legal-text ul + p { margin-top: 10px; }
 .legal-text ul { display: grid; gap: 6px; margin-top: 8px; padding-inline-start: 20px; }
 .legal-text li::marker { color: var(--accent); }
 .legal-text a { color: var(--accent); font-weight: 600; }
 .legal-text .legal-updated { margin-top: 22px; font-size: 13px; }
+.legal-text code { color: var(--text); font-size: 14px; }
+
+/* Hukuki sayfalar (privacy.html, terms.html, cookies.html) */
+.legal-bar { position: relative; z-index: 2; background: rgba(var(--bg-rgb), .94); border-bottom: 1px solid var(--line); }
+.legal-bar-in { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.legal-tools { display: flex; align-items: center; gap: 10px; }
+.legal { max-width: 860px; padding-block: 44px 88px; }
+.legal-back { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--surface); border: 1px solid var(--line-strong); color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none; transition: color .15s ease, border-color .15s ease; }
+.legal-back:hover { color: var(--accent); border-color: var(--accent); }
+.legal-back .i { width: 16px; height: 16px; }
+.back-i { transform: scaleX(-1); }
+[dir="rtl"] .back-i { transform: none; }
+.legal-doc { margin-top: 20px; padding: 40px; background: var(--surface); border: 1px solid var(--line); }
+.legal-doc + .legal-doc { margin-top: 28px; }
+.legal-doc h1,
+.legal-doc h2 { margin-bottom: 24px; font-size: clamp(30px, 4.4vw, 46px); overflow-wrap: break-word; hyphens: auto; }
 
 .side { display: flex; flex-direction: column; gap: 18px; }
 .side-card { padding: 26px; }
@@ -789,6 +806,9 @@ html.no-motion [data-anim] { opacity: 1; transform: none; transition: none; }
   .tab { padding: 0 8px; font-size: 13px; }
   .consent { inset-inline: 12px; bottom: 12px; max-width: none; padding: 16px; }
   .consent-actions .btn { flex: 1; }
+  .legal-bar .logo-text { display: none; }
+  .legal { padding-block: 28px 64px; }
+  .legal-doc { padding: 26px 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
