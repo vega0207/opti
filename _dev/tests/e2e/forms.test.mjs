@@ -90,7 +90,7 @@ test('hukuki pencereler: aydınlatma ve açık rıza metni, kutucuğu değiştir
   assert.equal(await page.$eval('#legalModal', el => el.classList.contains('open')), true);
   assert.equal(await page.$eval('#legalTitle', el => el.textContent), TR.legal.privacy.title);
   const body = await page.$eval('#legalBody', el => el.textContent);
-  assert.ok(body.includes('[DOLDURULACAK'));
+  assert.ok(body.includes('Veri sorumlusu: OptiCodeStudio.'));
   assert.ok(body.includes('opticodestudio@gmail.com'));
   assert.ok(body.includes('bir yıl'));
   assert.equal(await page.$eval('#quoteForm input[name="kvkk"]', el => el.checked), false);

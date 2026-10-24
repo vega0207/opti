@@ -67,19 +67,25 @@ test('inceleme formunun maili', () => {
 test('hukuki metin: şirket bilgileri yerleşir ve HTML olarak kaçışlanır', () => {
   const { run } = load('https://x/?lang=en');
   const html = run(`OCS.legalText('privacy')`);
-  assert.ok(html.includes('[DOLDURULACAK: Şirket ticaret unvanı]'));
+  // Adres boşken sorumlu satırında virgül ya da yer tutucu kalmaz
+  assert.ok(html.includes('Data controller: <bdi>OptiCodeStudio</bdi>. Contact:'), 'sorumlu satırı');
   assert.ok(html.includes('opticodestudio@gmail.com'));
   assert.ok(html.includes('2026-10'));
-  assert.doesNotMatch(html, /\{(company|address|email|updated)\}/);
+  assert.doesNotMatch(html, /\{(company|address|email|updated)\}|DOLDURULACAK/);
   run(`CONFIG.legal.companyTitle = 'A & B <Ltd>'`);
   assert.ok(run(`OCS.legalText('privacy')`).includes('A &amp; B &lt;Ltd&gt;'));
   assert.equal(run(`OCS.legalText('nope')`), '');
 });
 
+test('hukuki metin: adres boşsa Arapça virgül de kalkar', () => {
+  const { run } = loadScripts(['js/boot.js', 'js/config.js', 'js/core.js', 'js/lang/ar.js'], { page: 'none', url: 'https://x/?lang=ar' });
+  assert.ok(run(`OCS.legalText('privacy')`).includes('المسؤول عن البيانات: <bdi>OptiCodeStudio</bdi>. للتواصل'));
+});
+
 test('hukuki metin: şirket unvanı ve adres kendi yazı yönünde kalır (Arapça metinde Latin unvan)', () => {
   const { run } = load('https://x/?lang=en');
+  run(`CONFIG.legal.address = 'Örnek Sk. 1, İstanbul'`);
   const html = run(`OCS.legalText('privacy')`);
-  assert.ok(html.includes('<bdi>[DOLDURULACAK: Şirket ticaret unvanı]</bdi>'), 'unvan yalıtılmadı');
-  assert.ok(html.includes('<bdi>[DOLDURULACAK: Şirket adresi]</bdi>'), 'adres yalıtılmadı');
+  assert.ok(html.includes('<bdi>OptiCodeStudio</bdi>, <bdi>Örnek Sk. 1, İstanbul</bdi>.'), 'unvan ve adres yalıtılmadı');
   assert.ok(html.includes('href="mailto:opticodestudio@gmail.com"'), 'e-posta bağlantısı bozuldu');
 });

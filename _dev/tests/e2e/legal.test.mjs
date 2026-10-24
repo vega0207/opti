@@ -37,10 +37,11 @@ test('hukuki sayfada açılış animasyonu yok', async () => {
   await close();
 });
 
-test('KVKK metni: yer tutucu, 1 yıl ve açık rıza bölümü', async () => {
+test('KVKK metni: veri sorumlusu, 1 yıl ve açık rıza bölümü', async () => {
   const { page, close } = await openPage(ctx, '/privacy.html?lang=tr');
   const text = await page.$eval('main', el => el.textContent);
-  assert.ok(text.includes('[DOLDURULACAK'));
+  assert.ok(text.includes('Veri sorumlusu: OptiCodeStudio. İletişim:'));
+  assert.ok(!text.includes('DOLDURULACAK'));
   assert.ok(text.includes('bir yıl'));
   assert.equal(await page.$eval('#consent [data-legal-title]', el => el.textContent), LANGS.tr.legal.consent.title);
   await close();

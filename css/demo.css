@@ -1,6 +1,6 @@
 /* OptiCodeStudio demo rozeti: her demo sayfasının köşesinde durur, ana siteye döner.
-   Kullanım: <link rel="stylesheet" href="css/demo.css"> ve body'nin sonuna
-   <a class="ocs-demo-badge" href="index.html"><img src="img/logo-mark.svg" alt="" width="22" height="17">Demo · OptiCodeStudio</a> */
+   Kullanım: bu dosya sayfanın head'ine bağlanır; body'nin sonuna .ocs-demo-badge sınıflı,
+   index.html'e giden bir bağlantı konur (örnek: olive-and-ember.html'in sonu). */
 .ocs-demo-badge {
   position: fixed;
   z-index: 9999;

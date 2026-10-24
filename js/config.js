@@ -17,8 +17,8 @@ const CONFIG = {
   // ---- KVKK / GİZLİLİK METNİNDEKİ ŞİRKET BİLGİLERİ -------------
   // Yayına almadan önce ilk iki alanı doldur; tüm dillerdeki metinlerde otomatik görünür.
   legal: {
-    companyTitle: "[DOLDURULACAK: Şirket ticaret unvanı]",
-    address: "[DOLDURULACAK: Şirket adresi]",
+    companyTitle: "OptiCodeStudio",                 // Şirket kurulunca ticaret unvanı yazılır
+    address: "",                                    // Boş bırakılırsa metinde adres yer almaz
     email: "opticodestudio@gmail.com",
     updated: "2026-10"                               // Metinlerin "son güncelleme" tarihi (yıl-ay)
   },
@@ -86,6 +86,7 @@ const CONFIG = {
     { type: "concept", name: "Golden Crust Bakery",     url: "golden-crust.html",    thumb: "img/work/golden-crust.jpg", hero: true },
     { type: "concept", name: "Luma Dental Studio",      url: "meridian-law.html",    thumb: "img/work/luma-dental.jpg",  hero: true },
     { type: "concept", name: "Northform Training Club", url: "forge-athletics.html", thumb: "img/work/northform.jpg",    hero: true },
+    { type: "concept", name: "Olive & Ember",           url: "olive-and-ember.html", thumb: "img/work/olive-and-ember.jpg", hero: false },
     { type: "client",  name: "Nesmina",                 url: "nesmina.html",         thumb: "img/work/nesmina.jpg",      hero: false }
   ]
 };

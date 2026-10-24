@@ -205,7 +205,9 @@
     const entry = (dict().legal || {})[doc];
     if (!entry) return '';
     const info = (typeof CONFIG !== 'undefined' && CONFIG.legal) || {};
-    return entry.html.replace(/\{(company|address|email|updated)\}/g, (token, key) => {
+    // Adres boşsa önündeki virgülle (Arapçada "،") birlikte çıkar
+    const html = info.address ? entry.html : entry.html.replace(/\s*[,،]\s*\{address\}/g, '');
+    return html.replace(/\{(company|address|email|updated)\}/g, (token, key) => {
       const value = escHtml(info[LEGAL_FIELDS[key]] || '');
       // Unvan ve adres metnin dilinden farklı yönde olabilir (Arapça metinde Latin harfli unvan)
       return key === 'company' || key === 'address' ? `<bdi>${value}</bdi>` : value;

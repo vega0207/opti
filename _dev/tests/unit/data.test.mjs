@@ -75,7 +75,9 @@ test('portföy: tür geçerli, demo dosyası var, tam 3 hero', () => {
 });
 
 test('hukuki bilgiler alanları var', () => {
-  for (const k of ['companyTitle', 'address', 'email', 'updated']) assert.ok(CONFIG.legal[k], k);
+  for (const k of ['companyTitle', 'email', 'updated']) assert.ok(CONFIG.legal[k], k);
+  assert.equal(typeof CONFIG.legal.address, 'string', 'adres yazı olmalı (boş olabilir)');
+  for (const k of ['companyTitle', 'address']) assert.ok(!CONFIG.legal[k].includes('DOLDURULACAK'), `${k} yer tutucu`);
 });
 
 const pkgIds = () => CONFIG.packages.map(p => p.id).sort();

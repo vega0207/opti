@@ -10,12 +10,12 @@ import { REPO_ROOT } from './serve.mjs';
 
 const CONFIG = loadScripts(['js/boot.js', 'js/config.js']).run('CONFIG');
 const FREEZE = '*,*::before,*::after{animation:none!important;transition:none!important}' +
-  '.reveal,[class*="reveal"]{opacity:1!important;transform:none!important}';
+  '.reveal,[class*="reveal"]{opacity:1!important;transform:none!important}' +
+  '.ocs-demo-badge{display:none!important}';
 
 const ctx = await setup();
 try {
   for (const w of CONFIG.portfolio) {
-    // Demolar kendi yazı tiplerini ve görsellerini dışarıdan yükler; burada engellenmez.
     const page = await ctx.browser.newPage();
     await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
     await page.goto(`${ctx.base}/${w.url}`, { waitUntil: 'networkidle0', timeout: 90000 });

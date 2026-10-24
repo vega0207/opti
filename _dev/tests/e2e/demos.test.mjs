@@ -19,7 +19,11 @@ for (const work of CONFIG.portfolio) {
       try {
         // Tembel görseller ve kaydırınca beliren bölümler için sayfa sonuna kadar inilir
         const height = await page.evaluate(() => document.documentElement.scrollHeight);
-        for (let y = 0; y <= height; y += 700) await page.evaluate(top => window.scrollTo({ top, behavior: 'instant' }), y);
+        // Her adımda kısa bekleme: tarayıcı ara konumları çizmezse tembel görseller hiç tetiklenmez
+        for (let y = 0; y <= height; y += 700) {
+          await page.evaluate(top => window.scrollTo({ top, behavior: 'instant' }), y);
+          await new Promise(r => setTimeout(r, 60));
+        }
         await page.waitForNetworkIdle({ idleTime: 500 });
         const info = await page.evaluate(() => {
           const badge = document.querySelector('a.ocs-demo-badge');
