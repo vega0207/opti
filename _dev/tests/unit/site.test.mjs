@@ -75,3 +75,11 @@ test('hukuki metin: şirket bilgileri yerleşir ve HTML olarak kaçışlanır', 
   assert.ok(run(`OCS.legalText('privacy')`).includes('A &amp; B &lt;Ltd&gt;'));
   assert.equal(run(`OCS.legalText('nope')`), '');
 });
+
+test('hukuki metin: şirket unvanı ve adres kendi yazı yönünde kalır (Arapça metinde Latin unvan)', () => {
+  const { run } = load('https://x/?lang=en');
+  const html = run(`OCS.legalText('privacy')`);
+  assert.ok(html.includes('<bdi>[DOLDURULACAK: Şirket ticaret unvanı]</bdi>'), 'unvan yalıtılmadı');
+  assert.ok(html.includes('<bdi>[DOLDURULACAK: Şirket adresi]</bdi>'), 'adres yalıtılmadı');
+  assert.ok(html.includes('href="mailto:opticodestudio@gmail.com"'), 'e-posta bağlantısı bozuldu');
+});

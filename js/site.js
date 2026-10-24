@@ -74,9 +74,12 @@
   const checkList = items => items.map(s => `<li>${OCS.ui.icon('check')}<span>${esc(s)}</span></li>`).join('');
 
   /* ---------- Kayan şerit ve hero görselleri ---------- */
+  // Şerit iki eş yarıdır ve yarısı kadar kayar; her yarıda liste 3 kez tekrarlanır ki
+  // geniş ekranlarda da döngünün sonunda boşluk kalmasın.
   function renderMarquee() {
     const items = (OCS.i18n.dict().marquee || []).map(m => `<div class="mq-item">${esc(m)}</div>`).join('');
-    $('#mqTrack').innerHTML = items + items;
+    const half = items.repeat(3);
+    $('#mqTrack').innerHTML = half + half;
   }
 
   function renderHeroCollage() {

@@ -22,3 +22,20 @@ test('Rusça sayfa Manrope Kiril dosyasını gerçekten yükler', async () => {
   assert.ok(result.statuses.includes('loaded'), `Kiril yüzü yüklenmedi: ${result.statuses.join(', ')}`);
   await close();
 });
+
+test('Arapça sayfa IBM Plex Sans Arabic dosyasını gerçekten yükler', async () => {
+  const { page, close } = await openPage(ctx, '/?lang=ar');
+  const result = await page.evaluate(async () => {
+    await document.fonts.ready;
+    const faces = [...document.fonts].filter(f => f.family.replace(/["']/g, '') === 'IBM Plex Sans Arabic');
+    return {
+      lang: document.documentElement.lang,
+      arabicHero: /[؀-ۿ]/.test(document.querySelector('h1').textContent),
+      statuses: faces.map(f => f.status)
+    };
+  });
+  assert.equal(result.lang, 'ar');
+  assert.equal(result.arabicHero, true, 'başlık Arapça değil');
+  assert.ok(result.statuses.includes('loaded'), `Arapça yüz yüklenmedi: ${result.statuses.join(', ')}`);
+  await close();
+});

@@ -11,10 +11,12 @@ const CFG = loadScripts(['js/boot.js', 'js/config.js']).run('CONFIG');
 const EN = loadScripts(['js/boot.js', 'js/lang/en.js']).run('OCS.langs.en');
 const text = (page, sel) => page.$eval(sel, el => el.textContent.trim());
 
-test('kayan şerit: dil dosyasındaki 8 hizmet, döngü için iki kez', async () => {
+test('kayan şerit: dil dosyasındaki 8 hizmet, iki eş yarı halinde tekrar', async () => {
   const { page, close } = await openPage(ctx, '/?lang=en');
   const items = await page.$$eval('#mqTrack .mq-item', els => els.map(e => e.textContent));
-  assert.deepEqual(items, [...EN.marquee, ...EN.marquee]);
+  const n = EN.marquee.length;
+  assert.ok(items.length >= 2 * n && items.length % (2 * n) === 0, String(items.length));
+  for (let i = 0; i < items.length; i += n) assert.deepEqual(items.slice(i, i + n), EN.marquee);
   await close();
 });
 

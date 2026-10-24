@@ -159,6 +159,10 @@ html.theme-anim *::after {
 [lang="ar"] * { letter-spacing: 0 !important; }
 [lang="ar"] body { line-height: 1.75; }
 [dir="rtl"] .flip { transform: scaleX(-1); }
+/* Arapça sayfada e-posta adresleri ve Instagram adı soldan sağa yazılır, sağa yaslı kalır */
+[dir="rtl"] #mailText,
+[dir="rtl"] #igHandle,
+[dir="rtl"] input[type="email"] { direction: ltr; text-align: right; }
 
 .i { width: 18px; height: 18px; flex: none; }
 .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
@@ -394,7 +398,7 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
    8. Kayan şerit ve manzara pencereleri
    ============================================================ */
 .marquee { overflow: hidden; padding: 16px 0; background: var(--surface); border-block: 1px solid var(--line); }
-.marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+.marquee-track { display: flex; width: max-content; animation: marquee 120s linear infinite; }
 .mq-item {
   display: flex;
   align-items: center;
@@ -409,6 +413,10 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 }
 .mq-item::after { content: ""; width: 7px; height: 7px; flex: none; background: var(--accent); }
 @keyframes marquee { to { transform: translateX(-50%); } }
+/* Arapça: şerit soldan dizilir ve sağa akar; her öğenin yazısı sağdan sola kalır */
+[dir="rtl"] .marquee { direction: ltr; }
+[dir="rtl"] .marquee-track { animation-direction: reverse; }
+[dir="rtl"] .mq-item { direction: rtl; }
 
 .window { height: clamp(140px, 26vh, 300px); }
 
