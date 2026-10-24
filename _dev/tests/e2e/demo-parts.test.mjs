@@ -217,3 +217,61 @@ test('Northform: ücretsiz deneme dersi formu', async () => {
   assert.match(await text(page, '#trial-done'), /Callum/);
   await close();
 });
+
+/* ---------------- Nesmina (Türkçe, gerçek marka) ---------------- */
+const NES = '/nesmina.html';
+
+test('Nesmina: Türkçe sayfa, Türkçe harfler kendi yazı tipiyle çiziliyor', async () => {
+  const { page, close } = await at(NES, [2026, 10, 26, 10, 0]);
+  assert.equal(await page.evaluate(() => document.documentElement.lang), 'tr');
+  const fonts = await page.evaluate(async () => {
+    const out = {};
+    for (const [family, w] of [['Mulish', 400], ['Newsreader', 400]]) {
+      const faces = await document.fonts.load(`${w} 16px "${family}"`, 'ğşıİçöü');
+      out[family] = faces.length > 0 && faces.every(f => f.status === 'loaded');
+    }
+    return out;
+  });
+  assert.deepEqual(fonts, { Mulish: true, Newsreader: true });
+  await close();
+});
+
+test('Nesmina: koleksiyon filtresi', async () => {
+  const { page, close } = await at(NES, [2026, 10, 26, 10, 0]);
+  const count = () => page.$$eval('.product', ps => ps.filter(p => p.checkVisibility()).length);
+  assert.equal(await count(), 12);
+  for (const [cat, n] of [['bere', 3], ['sal', 3], ['battaniye', 2], ['kucuk', 4], ['hepsi', 12]]) {
+    await page.click(`button[data-cat="${cat}"]`);
+    assert.equal(await count(), n, cat);
+    if (cat !== 'hepsi') {
+      assert.ok(await page.$$eval('.product', (ps, c) => ps.filter(p => p.checkVisibility()).every(p => p.dataset.cat === c), cat), cat);
+    }
+  }
+  await close();
+});
+
+test('Nesmina: ürün penceresi açılır, Escape ile kapanır, odak karta döner', async () => {
+  const { page, close } = await at(NES, [2026, 10, 26, 10, 0]);
+  const card = '.product[data-cat="sal"]';
+  const name = await page.$eval(card, p => p.dataset.name);
+  await page.click(card);
+  await page.waitForSelector('#product-dialog[open]', { timeout: 2000 });
+  assert.equal(await text(page, '#product-dialog [data-p-name]'), name);
+  assert.equal(await page.evaluate(() => document.getElementById('product-dialog').contains(document.activeElement)), true, 'odak pencerede');
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.getElementById('product-dialog').open, { timeout: 2000 });
+  assert.equal(await page.evaluate(s => document.activeElement === document.querySelector(s), card), true, 'odak karta döndü');
+  await close();
+});
+
+test('Nesmina: Instagram adresi gelene kadar düğme "Yakında" der ve gezinmez', async () => {
+  const { page, close } = await at(NES, [2026, 10, 26, 10, 0]);
+  const cta = 'a.ig-cta';
+  assert.equal(await page.$eval(cta, a => a.getAttribute('aria-disabled')), 'true');
+  assert.match(await text(page, cta), /Yakında/);
+  const before = await page.evaluate(() => location.href);
+  await page.click(cta);
+  await new Promise(r => setTimeout(r, 300));
+  assert.equal(await page.evaluate(() => location.href), before);
+  await close();
+});

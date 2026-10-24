@@ -215,6 +215,78 @@
   "license": "CC0",
   "artist": "Jon Tyson jontyson"
  },
+ "img/demo/nesmina/beanie.webp": {
+  "title": "Waterfall View (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Waterfall_View_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Izzy Gerosa izzygerosa"
+ },
+ "img/demo/nesmina/blanket.webp": {
+  "title": "My home, Amsterdam, Netherland (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:My_home,_Amsterdam,_Netherland_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "MabelAmber® mabelamber"
+ },
+ "img/demo/nesmina/cowl.webp": {
+  "title": "Speckled cowl (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Speckled_cowl_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Giulia Bertelli unpeusauvage"
+ },
+ "img/demo/nesmina/finish.webp": {
+  "title": "Giulia Bertelli 2016-06-22 (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Giulia_Bertelli_2016-06-22_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Giulia Bertelli unpeusauvage"
+ },
+ "img/demo/nesmina/hero.webp": {
+  "title": "Alex Palmer 2016 (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Alex_Palmer_2016_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Alex Palmer alexpalmer"
+ },
+ "img/demo/nesmina/mittens.webp": {
+  "title": "Mittens (USA.), 19th century (CH 18497947).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mittens_(USA.),_19th_century_(CH_18497947).jpg",
+  "license": "Public domain",
+  "artist": "Unknown artistUnknown artist"
+ },
+ "img/demo/nesmina/needles.webp": {
+  "title": "Knitting needles and yarn (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Knitting_needles_and_yarn_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Olliss fomaolea"
+ },
+ "img/demo/nesmina/scarf.webp": {
+  "title": "Knit scarf and camera (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Knit_scarf_and_camera_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Anete Lūsiņa anete_lusina"
+ },
+ "img/demo/nesmina/story.webp": {
+  "title": "Young Woman Knitting MET DT1928.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Young_Woman_Knitting_MET_DT1928.jpg",
+  "license": "CC0",
+  "artist": "Berthe Morisot"
+ },
+ "img/demo/nesmina/swatch.webp": {
+  "title": "Flat knitting.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Flat_knitting.JPG",
+  "license": "Public domain",
+  "artist": "Loggie-log"
+ },
+ "img/demo/nesmina/wrap.webp": {
+  "title": "Woman with a blue scarf (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Woman_with_a_blue_scarf_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Pete Bellis petebellis"
+ },
+ "img/demo/nesmina/yarn.webp": {
+  "title": "A ball of yarn.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:A_ball_of_yarn.jpg",
+  "license": "CC0",
+  "artist": "Сергей Михель"
+ },
  "img/demo/northform/boxing.webp": {
   "title": "La Boxe, Boxing Beats, Aubervilliers, France (Unsplash).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:La_Boxe,_Boxing_Beats,_Aubervilliers,_France_(Unsplash).jpg",

@@ -1,1627 +1,486 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Nesmina | Handknit objects, made slowly</title>
-<meta name="description" content="Nesmina makes handknit hats, wraps, throws and small objects for the home in natural fibres and small batches.">
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%23374133'/><path d='M5 17c3-8 7-10 14-11' stroke='%23DCE6CF' stroke-width='1.5' fill='none'/><circle cx='7' cy='14' r='2.4' fill='%23869D72'/></svg>">
-
+<title>Nesmina | Elde örülen bere, şal ve battaniyeler</title>
+<meta name="description" content="Nesmina bere, şal, battaniye ve ev için küçük eşyaları elde, tek tek örüyor. Doğal lifler, küçük seriler, siparişe göre üretim.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='11' fill='%235E6B4E'/><circle cx='12' cy='12' r='6.5' fill='none' stroke='%23F3EDE4' stroke-width='1.4'/><path d='M7 9.5c3 1 7 1 10 0M6.5 13c3.5 1.2 7.5 1.2 11 0' fill='none' stroke='%23F3EDE4' stroke-width='1.2'/></svg>">
 <link rel="stylesheet" href="fonts/demo/fonts.css">
 <link rel="stylesheet" href="css/demo.css">
-
 <style>
 :root{
-  --bg:#F5F2EA;
-  --panel:rgba(255,253,247,.78);
-  --panel-solid:#FFFDF8;
-  --soft:#E7E9DC;
-  --soft-2:#D8DEC9;
-  --ink:#30382F;
-  --muted:#788074;
-  --accent:#7A8B68;
-  --accent-dark:#5D6D50;
-  --rose:#BE9693;
-  --line:#D5DACA;
-  --cream:#FBF9F3;
-
-  --font-display:"Fraunces", Georgia, serif;
-  --font-body:"Karla", Arial, sans-serif;
-  --font-mono:"DM Mono", monospace;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  min-width:320px;
-  overflow-x:hidden;
-  position:relative;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--font-body);
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  z-index:-2;
-  inset:0;
-  pointer-events:none;
-  opacity:.42;
-  background:
-    radial-gradient(circle at 6% 12%, rgba(190,150,147,.17), transparent 24%),
-    radial-gradient(circle at 92% 20%, rgba(122,139,104,.17), transparent 27%),
-    radial-gradient(circle at 34% 94%, rgba(122,139,104,.12), transparent 24%);
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  z-index:-1;
-  inset:0;
-  pointer-events:none;
-  opacity:.30;
-  background-image:
-    linear-gradient(rgba(48,56,47,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(48,56,47,.025) 1px, transparent 1px);
-  background-size:42px 42px;
-  mask-image:linear-gradient(to bottom, #000, transparent 80%);
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,
-input{
-  font:inherit;
-}
-
-button{
-  border:0;
-}
-
-img{
-  display:block;
-  max-width:100%;
-}
-
-.wrap{
-  width:min(1120px, calc(100% - 48px));
-  margin:0 auto;
-}
-
-section{
-  padding:100px 0;
-  scroll-margin-top:90px;
-}
-
-h1,
-h2,
-h3{
-  font-family:var(--font-display);
-  font-weight:500;
-  letter-spacing:-.025em;
-  line-height:1.1;
-}
-
-h2{
-  font-size:clamp(32px, 4vw, 48px);
-}
-
-.kicker{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  color:var(--accent-dark);
-  font:500 11px/1 var(--font-mono);
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
-.kicker::before{
-  content:"";
-  width:28px;
-  height:1px;
-  background:currentColor;
-}
-
-.lead{
-  max-width:590px;
-  margin-top:18px;
-  color:var(--muted);
-  font-size:17px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  min-height:50px;
-  padding:0 22px;
-  border:1px solid transparent;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:.02em;
-  transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
-}
-
-.btn svg{
-  width:17px;
-  height:17px;
-}
-
-.btn-primary{
-  background:var(--accent-dark);
-  color:#FCFBF6;
-  box-shadow:0 10px 20px rgba(73,88,61,.16);
-}
-
-.btn-primary:hover{
-  background:var(--ink);
-  transform:translateY(-2px);
-  box-shadow:0 15px 28px rgba(48,56,47,.20);
-}
-
-.btn-ghost{
-  color:var(--ink);
-  border-color:var(--line);
-  background:rgba(255,255,255,.32);
-}
-
-.btn-ghost:hover{
-  color:var(--accent-dark);
-  border-color:var(--accent);
-  transform:translateY(-2px);
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .65s ease, transform .65s ease;
-}
-
-.reveal.in{
-  opacity:1;
-  transform:none;
-}
-
-/* ===== Decorative yarn / needles ===== */
-
-/* Süs çizgileri ekrandan taşabilir; katman onları kırpar, sayfa yana kaymaz */
-.thread-layer{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  overflow:hidden;
-  pointer-events:none;
-}
-
-.thread-art{
-  position:absolute;
-  pointer-events:none;
-  z-index:0;
-  opacity:.34;
-}
-
-.thread-art path{
-  fill:none;
-  stroke:var(--accent);
-  stroke-width:1.35;
-  stroke-linecap:round;
-  stroke-dasharray:7 9;
-  animation:threadMove 11s linear infinite;
-}
-
-.thread-art .needle{
-  stroke:var(--ink);
-  stroke-width:1.1;
-  stroke-dasharray:none;
-}
-
-.thread-art .eye{
-  fill:none;
-  stroke:var(--rose);
-  stroke-width:1.1;
-  stroke-dasharray:none;
-}
-
-.thread-art--top{
-  width:370px;
-  top:112px;
-  right:-90px;
-  transform:rotate(-12deg);
-}
-
-.thread-art--bottom{
-  width:440px;
-  left:-170px;
-  bottom:50px;
-  transform:rotate(14deg);
-  opacity:.22;
-}
-
-@keyframes threadMove{
-  to{
-    stroke-dashoffset:-190px;
-  }
-}
-
-/* ===== Announcement ===== */
-
-.announce{
-  position:relative;
-  z-index:2;
-  padding:10px 20px;
-  overflow:hidden;
-  text-align:center;
-  background:var(--ink);
-  color:#E7E9DC;
-  font:400 12px/1.4 var(--font-mono);
-  letter-spacing:.04em;
-}
-
-.announce b{
-  color:#C9D7B9;
-  font-weight:500;
-}
-
-/* ===== Header ===== */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:40;
-  border-bottom:1px solid rgba(213,218,202,.76);
-  background:rgba(245,242,234,.80);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-}
-
-.nav{
-  min-height:78px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.brand{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  font-family:var(--font-display);
-  font-size:27px;
-  font-style:italic;
-  letter-spacing:.01em;
-}
-
-.brand-mark{
-  position:relative;
-  width:32px;
-  height:32px;
-  border:1px solid var(--accent);
-  border-radius:50%;
-  overflow:hidden;
-}
-
-.brand-mark::before,
-.brand-mark::after{
-  content:"";
-  position:absolute;
-  border:1px solid var(--accent);
-  border-radius:50%;
-}
-
-.brand-mark::before{
-  inset:6px;
-}
-
-.brand-mark::after{
-  inset:11px;
-  background:var(--rose);
-  border:0;
-}
-
-.brand-copy small{
-  display:block;
-  margin-top:2px;
-  color:var(--muted);
-  font:500 8px/1.2 var(--font-mono);
-  letter-spacing:.22em;
-  font-style:normal;
-}
-
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-
-.nav-note{
-  color:var(--muted);
-  font:400 11px/1.4 var(--font-mono);
-  letter-spacing:.03em;
-}
-
-.ig{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:9px 14px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.34);
-  color:var(--muted);
-  font-size:13px;
-  font-weight:600;
-  transition:.2s ease;
-}
-
-.ig:hover{
-  color:var(--accent-dark);
-  border-color:var(--accent);
-  transform:translateY(-1px);
-}
-
-.ig svg{
-  width:15px;
-  height:15px;
-}
-
-/* ===== Hero ===== */
-
-.hero{
-  position:relative;
-  z-index:1;
-  overflow:hidden;
-  min-height:680px;
-  display:flex;
-  align-items:center;
-  padding:104px 0 90px;
-}
-
-.hero-grid{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:76px;
-  align-items:center;
-}
-
-.hero h1{
-  max-width:660px;
-  margin-top:22px;
-  font-size:clamp(48px, 6.1vw, 78px);
-}
-
-.hero h1 em{
-  color:var(--accent-dark);
-  font-style:italic;
-}
-
-.hero-copy .lead{
-  max-width:535px;
-}
-
-.hero-actions{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:34px;
-  flex-wrap:wrap;
-}
-
-.hero-meta{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  margin-top:28px;
-  color:var(--muted);
-  font:400 11px/1.5 var(--font-mono);
-}
-
-.hero-meta span{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-
-.hero-meta span::before{
-  content:"";
-  display:inline-block;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--rose);
-}
-
-.hero-card{
-  position:relative;
-  min-height:420px;
-  padding:28px;
-  overflow:hidden;
-  border:1px solid rgba(122,139,104,.30);
-  background:rgba(255,253,247,.55);
-  box-shadow:0 30px 70px rgba(58,69,51,.11);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-
-.hero-card::before{
-  content:"";
-  position:absolute;
-  inset:22px;
-  opacity:.42;
-  background:
-    radial-gradient(circle at 17% 28%, transparent 0 19px, rgba(122,139,104,.42) 20px 21px, transparent 22px),
-    radial-gradient(circle at 36% 43%, transparent 0 27px, rgba(190,150,147,.40) 28px 29px, transparent 30px),
-    radial-gradient(circle at 65% 27%, transparent 0 39px, rgba(122,139,104,.34) 40px 41px, transparent 42px),
-    radial-gradient(circle at 79% 65%, transparent 0 31px, rgba(190,150,147,.32) 32px 33px, transparent 34px),
-    radial-gradient(circle at 35% 81%, transparent 0 48px, rgba(122,139,104,.25) 49px 50px, transparent 51px);
-}
-
-.hero-card::after{
-  content:"";
-  position:absolute;
-  inset:-70px;
-  opacity:.62;
-  background:
-    repeating-radial-gradient(
-      ellipse at 50% 50%,
-      transparent 0 14px,
-      rgba(122,139,104,.13) 15px 16px,
-      transparent 17px 31px
-    );
-  transform:rotate(-18deg);
-}
-
-.card-top{
-  position:relative;
-  z-index:2;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding-bottom:18px;
-  border-bottom:1px solid rgba(122,139,104,.22);
-  color:var(--muted);
-  font:400 10px/1 var(--font-mono);
-  letter-spacing:.13em;
-}
-
-.card-live{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  color:var(--accent-dark);
-}
-
-.card-live i{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 0 4px rgba(122,139,104,.12);
-  animation:pulse 2s ease infinite;
-}
-
-.yarn-ball{
-  position:absolute;
-  z-index:2;
-  border-radius:50%;
-  border:1px solid rgba(48,56,47,.12);
-  background:
-    repeating-radial-gradient(
-      ellipse at 45% 50%,
-      transparent 0 7px,
-      rgba(255,255,255,.72) 8px 9px,
-      rgba(122,139,104,.17) 10px 11px,
-      transparent 12px 18px
-    ),
-    var(--soft-2);
-  box-shadow:inset -10px -12px 24px rgba(48,56,47,.10), 12px 18px 26px rgba(48,56,47,.12);
-}
-
-.yarn-ball--one{
-  width:162px;
-  height:162px;
-  top:88px;
-  right:48px;
-  background-color:#C4D0B2;
-}
-
-.yarn-ball--two{
-  width:115px;
-  height:115px;
-  top:205px;
-  left:50px;
-  background-color:#DFC5C2;
-}
-
-.yarn-ball--three{
-  width:84px;
-  height:84px;
-  right:100px;
-  bottom:40px;
-  background-color:#DED8C9;
-}
-
-.knitting-needle{
-  position:absolute;
-  z-index:3;
-  height:2px;
-  border-radius:20px;
-  background:linear-gradient(90deg, #9B9386, #F7F1E9 48%, #928A7C);
-  box-shadow:0 2px 5px rgba(48,56,47,.18);
-  transform-origin:left center;
-}
-
-.knitting-needle::after{
-  content:"";
-  position:absolute;
-  right:-8px;
-  top:-3px;
-  width:0;
-  height:0;
-  border-top:4px solid transparent;
-  border-bottom:4px solid transparent;
-  border-left:9px solid #8D857A;
-}
-
-.needle-one{
-  top:158px;
-  left:62px;
-  width:252px;
-  transform:rotate(22deg);
-}
-
-.needle-two{
-  bottom:116px;
-  right:44px;
-  width:248px;
-  transform:rotate(-38deg);
-}
-
-.card-caption{
-  position:absolute;
-  z-index:4;
-  left:28px;
-  right:28px;
-  bottom:24px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:18px;
-}
-
-.card-caption b{
-  display:block;
-  max-width:210px;
-  font-family:var(--font-display);
-  font-size:22px;
-  line-height:1.1;
-  font-weight:500;
-}
-
-.card-caption span{
-  color:var(--muted);
-  font:400 10px/1.4 var(--font-mono);
-  letter-spacing:.09em;
-  text-align:right;
-}
-
-/* ===== Thread divider ===== */
-
-.thread-divider{
-  overflow:hidden;
-  padding:0;
-  background:var(--panel-solid);
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.thread-track{
-  display:flex;
-  align-items:center;
-  min-width:max-content;
-  padding:16px 0;
-  color:var(--muted);
-  font:400 10px/1 var(--font-mono);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  animation:marquee 26s linear infinite;
-}
-
-.thread-track span{
-  display:inline-flex;
-  align-items:center;
-  gap:24px;
-  padding-right:24px;
-}
-
-.thread-track span::after{
-  content:"";
-  width:14px;
-  height:14px;
-  border:1px solid var(--accent);
-  border-radius:50%;
-  box-shadow:inset 0 0 0 4px var(--panel-solid);
-}
-
-@keyframes marquee{
-  to{
-    transform:translateX(-50%);
-  }
-}
-
-/* ===== Story ===== */
-
-.story{
-  position:relative;
-  overflow:hidden;
-  background:rgba(255,253,247,.44);
-}
-
-.story-grid{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:.92fr 1.08fr;
-  gap:76px;
-  align-items:center;
-}
-
-.story-copy p{
-  max-width:490px;
-  margin-top:17px;
-  color:var(--muted);
-  font-size:16px;
-}
-
-.facts{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:0;
-  margin-top:34px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.facts div{
-  padding:17px 14px 17px 0;
-  border-right:1px solid var(--line);
-}
-
-.facts div:not(:first-child){
-  padding-left:14px;
-}
-
-.facts div:last-child{
-  border:0;
-}
-
-.facts b{
-  display:block;
-  color:var(--accent-dark);
-  font:500 21px/1.1 var(--font-display);
-}
-
-.facts span{
-  display:block;
-  margin-top:4px;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.workbench{
-  position:relative;
-  min-height:430px;
-  overflow:hidden;
-  border:1px solid var(--line);
-  background:
-    linear-gradient(145deg, rgba(255,255,255,.56), rgba(231,233,220,.80)),
-    var(--soft);
-}
-
-.workbench::before{
-  content:"";
-  position:absolute;
-  width:330px;
-  height:330px;
-  left:50%;
-  top:55%;
-  border-radius:50%;
-  background:
-    repeating-radial-gradient(
-      ellipse at 45% 50%,
-      transparent 0 8px,
-      rgba(255,255,255,.82) 9px 10px,
-      rgba(122,139,104,.22) 11px 12px,
-      transparent 13px 19px
-    ),
-    #B7C6A5;
-  box-shadow:inset -22px -25px 35px rgba(48,56,47,.12), 22px 30px 38px rgba(48,56,47,.15);
-  transform:translate(-50%, -50%);
-}
-
-.workbench::after{
-  content:"";
-  position:absolute;
-  width:170%;
-  height:1px;
-  left:-25%;
-  top:49%;
-  background:rgba(48,56,47,.24);
-  transform:rotate(-35deg);
-  box-shadow:0 82px 0 rgba(48,56,47,.18);
-}
-
-.workbench-needle{
-  position:absolute;
-  z-index:3;
-  width:360px;
-  height:3px;
-  left:49%;
-  top:42%;
-  border-radius:20px;
-  background:linear-gradient(90deg, #887F73, #FBF7EF 50%, #8A8174);
-  box-shadow:0 4px 9px rgba(48,56,47,.20);
-  transform:rotate(24deg);
-}
-
-.workbench-needle::after{
-  content:"";
-  position:absolute;
-  right:-12px;
-  top:-4px;
-  width:0;
-  height:0;
-  border-top:5px solid transparent;
-  border-bottom:5px solid transparent;
-  border-left:13px solid #8A8174;
-}
-
-.workbench-label{
-  position:absolute;
-  z-index:4;
-  left:22px;
-  bottom:20px;
-  padding:9px 11px;
-  border:1px solid rgba(255,255,255,.75);
-  background:rgba(255,253,247,.73);
-  color:var(--accent-dark);
-  font:500 10px/1.4 var(--font-mono);
-  letter-spacing:.10em;
-  text-transform:uppercase;
-}
-
-/* ===== Collection ===== */
-
-.collection-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:36px;
-  flex-wrap:wrap;
-}
-
-.collection-head .lead{
-  max-width:450px;
-}
-
-.collection-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:15px;
-  margin-top:46px;
-}
-
-.collection-card{
-  min-height:272px;
-  padding:22px;
-  overflow:hidden;
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  border:1px solid var(--line);
-  background:var(--panel);
-  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-
-.collection-card:hover{
-  z-index:2;
-  border-color:var(--accent);
-  transform:translateY(-6px);
-  box-shadow:0 18px 34px rgba(62,78,55,.12);
-}
-
-.collection-card::before{
-  content:"";
-  position:absolute;
-  z-index:0;
-  width:180px;
-  height:180px;
-  top:-46px;
-  right:-46px;
-  border-radius:50%;
-  opacity:.68;
-}
-
-.collection-card:nth-child(1)::before{
-  background:
-    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.65) 9px 10px, transparent 11px 16px),
-    #BDCBAF;
-}
-
-.collection-card:nth-child(2)::before{
-  background:
-    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.66) 9px 10px, transparent 11px 16px),
-    #DFC4C1;
-}
-
-.collection-card:nth-child(3)::before{
-  background:
-    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.66) 9px 10px, transparent 11px 16px),
-    #D8D4C4;
-}
-
-.collection-card:nth-child(4)::before{
-  background:
-    repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(255,255,255,.66) 9px 10px, transparent 11px 16px),
-    #CCD7D1;
-}
-
-.collection-card::after{
-  content:"";
-  position:absolute;
-  z-index:1;
-  width:170px;
-  height:1px;
-  top:95px;
-  right:18px;
-  background:rgba(48,56,47,.26);
-  transform:rotate(-37deg);
-}
-
-.collection-card > *{
-  position:relative;
-  z-index:2;
-}
-
-.collection-card .num{
-  margin-bottom:auto;
-  color:var(--accent-dark);
-  font:500 11px/1 var(--font-mono);
-  letter-spacing:.14em;
-}
-
-.collection-card h3{
-  font-size:25px;
-}
-
-.collection-card p{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:13.5px;
-  line-height:1.5;
-}
-
-.collection-card .tag{
-  width:max-content;
-  margin-top:17px;
-  color:var(--accent-dark);
-  font:500 9px/1 var(--font-mono);
-  letter-spacing:.12em;
-  padding:7px 8px;
-  border:1px solid rgba(122,139,104,.42);
-  text-transform:uppercase;
-}
-
-/* ===== Values ===== */
-
-.values{
-  padding-top:0;
-}
-
-.values-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:15px;
-  margin-top:44px;
-}
-
-.value{
-  position:relative;
-  overflow:hidden;
-  padding:30px 28px;
-  border:1px solid var(--line);
-  background:rgba(255,253,247,.63);
-}
-
-.value::after{
-  content:"";
-  position:absolute;
-  width:110px;
-  height:110px;
-  right:-48px;
-  bottom:-48px;
-  border:1px solid rgba(122,139,104,.19);
-  border-radius:50%;
-  box-shadow:0 0 0 18px rgba(122,139,104,.05), 0 0 0 36px rgba(122,139,104,.03);
-}
-
-.value-icon{
-  position:relative;
-  z-index:1;
-  display:grid;
-  place-items:center;
-  width:46px;
-  height:46px;
-  margin-bottom:20px;
-  border-radius:50%;
-  color:var(--accent-dark);
-  background:var(--soft);
-}
-
-.value-icon svg{
-  width:20px;
-  height:20px;
-}
-
-.value h3{
-  position:relative;
-  z-index:1;
-  font-size:21px;
-}
-
-.value p{
-  position:relative;
-  z-index:1;
-  margin-top:8px;
-  color:var(--muted);
-  font-size:14.5px;
-}
-
-/* ===== Closing ===== */
-
-.closing{
-  padding-top:0;
-}
-
-.closing-panel{
-  position:relative;
-  overflow:hidden;
-  padding:70px 56px;
-  color:#F4F5EE;
-  background:var(--ink);
-}
-
-.closing-panel::before{
-  content:"";
-  position:absolute;
-  width:420px;
-  height:420px;
-  top:-220px;
-  right:-85px;
-  border:1px solid rgba(203,218,185,.22);
-  border-radius:50%;
-  box-shadow:
-    0 0 0 28px rgba(203,218,185,.05),
-    0 0 0 57px rgba(203,218,185,.04),
-    0 0 0 86px rgba(203,218,185,.03);
-}
-
-.closing-panel::after{
-  content:"";
-  position:absolute;
-  left:-100px;
-  bottom:-66px;
-  width:460px;
-  height:160px;
-  border:1px dashed rgba(225,203,200,.45);
-  border-radius:50%;
-  transform:rotate(-12deg);
-}
-
-.closing-content{
-  position:relative;
-  z-index:2;
-  max-width:590px;
-}
-
-.closing .kicker{
-  color:#C9D7B9;
-}
-
-.closing h2{
-  margin-top:18px;
-  color:#fff;
-}
-
-.closing .lead{
-  max-width:510px;
-  color:#C8CEC0;
-}
-
-.signup{
-  display:flex;
-  gap:10px;
-  max-width:510px;
-  margin-top:32px;
-}
-
-.signup input{
-  min-width:0;
-  flex:1;
-  min-height:51px;
-  border:1px solid rgba(255,255,255,.26);
-  border-radius:0;
-  outline:0;
-  background:rgba(255,255,255,.06);
-  color:#fff;
-  padding:0 16px;
-  font-size:15px;
-  transition:border-color .2s ease, background .2s ease;
-}
-
-.signup input::placeholder{
-  color:#ABB5A5;
-}
-
-.signup input:focus{
-  border-color:#C9D7B9;
-  background:rgba(255,255,255,.10);
-}
-
-.signup input.err{
-  border-color:#E3A2A0;
-}
-
-.signup .btn{
-  background:#C9D7B9;
-  color:#31402E;
-  box-shadow:none;
-}
-
-.signup .btn:hover{
-  background:#fff;
-}
-
-.tiny{
-  margin-top:13px;
-  color:#AEB8A8;
-  font-size:12.5px;
-}
-
-.ok-box{
-  max-width:510px;
-  margin-top:30px;
-  padding:23px;
-  border:1px solid rgba(201,215,185,.50);
-  background:rgba(255,255,255,.06);
-}
-
-.ok-box b{
-  display:block;
-  color:#fff;
-  font:500 22px/1.2 var(--font-display);
-}
-
-.ok-box p{
-  margin-top:7px;
-  color:#C8CEC0;
-  font-size:14px;
-}
-
-/* ===== Footer ===== */
-
-footer{
-  border-top:1px solid var(--line);
-  padding:38px 0;
-}
-
-.foot{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-  color:var(--muted);
-  font-size:12.5px;
-}
-
-.foot-brand{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:var(--ink);
-  font-family:var(--font-display);
-  font-style:italic;
-  font-size:19px;
-}
-
-.foot a{
-  color:var(--accent-dark);
-  font-weight:700;
-}
-
-.foot a:hover{
-  text-decoration:underline;
-}
-
-/* ===== Responsive ===== */
-
-@media(max-width:960px){
-  .hero-grid,
-  .story-grid{
-    grid-template-columns:1fr;
-    gap:46px;
-  }
-
-  .hero{
-    padding-top:80px;
-  }
-
-  .hero-card{
-    max-width:650px;
-  }
-
-  .collection-grid{
-    grid-template-columns:repeat(2, 1fr);
-  }
-}
-
-@media(max-width:700px){
-  .wrap{
-    width:min(100% - 32px, 1120px);
-  }
-
-  section{
-    padding:72px 0;
-  }
-
-  .nav-note{
-    display:none;
-  }
-
-  .brand{
-    font-size:24px;
-  }
-
-  .ig span{
-    display:none;
-  }
-
-  .ig{
-    padding:10px;
-  }
-
-  .hero{
-    min-height:auto;
-    padding:66px 0 68px;
-  }
-
-  .hero h1{
-    font-size:clamp(42px, 13vw, 59px);
-  }
-
-  .hero-actions,
-  .signup{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .hero-actions .btn,
-  .signup .btn{
-    width:100%;
-  }
-
-  .hero-meta{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:8px;
-  }
-
-  .hero-card{
-    min-height:360px;
-    padding:20px;
-  }
-
-  .card-caption{
-    left:20px;
-    right:20px;
-  }
-
-  .card-caption b{
-    font-size:19px;
-  }
-
-  .card-caption span{
-    display:none;
-  }
-
-  .yarn-ball--one{
-    width:135px;
-    height:135px;
-    right:28px;
-  }
-
-  .yarn-ball--two{
-    width:92px;
-    height:92px;
-    left:34px;
-  }
-
-  .facts,
-  .collection-grid,
-  .values-grid{
-    grid-template-columns:1fr;
-  }
-
-  .facts div,
-  .facts div:not(:first-child){
-    padding:15px 0;
-    border-right:0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .facts div:last-child{
-    border-bottom:0;
-  }
-
-  .workbench{
-    min-height:330px;
-  }
-
-  .workbench::before{
-    width:250px;
-    height:250px;
-  }
-
-  .workbench-needle{
-    width:270px;
-  }
-
-  .collection-head{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:0;
-  }
-
-  .closing-panel{
-    padding:46px 22px;
-  }
-
-  .thread-art--top{
-    width:290px;
-    right:-150px;
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms !important;
-    transition-duration:.01ms !important;
-    scroll-behavior:auto !important;
-  }
-
-  .reveal{
-    opacity:1;
-    transform:none;
-  }
+  --oat:#F3EDE4; --cream:#FAF6EF; --moss:#5E6B4E; --moss-dk:#48533B; --rose:#C98B7B; --rose-lt:#EBCFC6;
+  --ink:#2E2A27; --muted:#6F675F; --line:rgba(46,42,39,.12);
+  --serif:"Newsreader", Georgia, serif; --sans:"Mulish", system-ui, sans-serif;
+  --wrap:1180px; --gutter:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--oat);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+h1 em,h2 em{font-style:italic;color:var(--moss)}
+h2{font-size:clamp(36px,5vw,62px)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+section{scroll-margin-top:80px}
+.over{display:inline-flex;align-items:center;gap:12px;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);margin-bottom:18px}
+.over::before{content:"";width:28px;height:1px;background:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:999px;border:1.5px solid transparent;font-weight:700;font-size:15px;text-decoration:none;cursor:pointer;transition:transform .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-moss{background:var(--moss);color:var(--cream)}
+.btn-moss:hover{background:var(--moss-dk)}
+.btn-line{border-color:var(--ink)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+
+/* Duyuru ve menü */
+.notice{background:var(--moss);color:var(--cream);font-size:13px;letter-spacing:.06em;text-align:center;padding:8px var(--gutter)}
+header{position:sticky;top:0;z-index:40;background:rgba(243,237,228,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:74px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:40px;height:40px}
+.brand b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;line-height:1}
+.brand small{display:block;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.links{display:flex;gap:30px;list-style:none}
+.links a{text-decoration:none;font-weight:600;font-size:15px;color:var(--muted);transition:color .2s ease}
+.links a:hover{color:var(--ink)}
+.burger{display:none;width:44px;height:44px;border:1.5px solid var(--line);border-radius:50%;background:none;cursor:pointer}
+.burger span{display:block;width:16px;height:1.5px;margin:4px auto;background:var(--ink)}
+
+/* Hero */
+.hero{position:relative;min-height:min(86vh,800px);display:grid;align-items:center;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;object-position:60% 50%;transform:scale(1.07);transition:transform 2.6s cubic-bezier(.2,.7,.2,1)}
+.hero.ready .hero-bg{transform:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(243,237,228,.97) 0%,rgba(243,237,228,.88) 40%,rgba(243,237,228,.2) 75%,transparent 100%)}
+.thread{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}
+.thread path{fill:none;stroke:var(--rose);stroke-width:2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3.2s .4s cubic-bezier(.45,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero .wrap{padding-block:80px;width:100%}
+.hero h1{font-size:clamp(50px,7.6vw,100px);max-width:640px}
+.hero p{max-width:470px;margin:24px 0 34px;font-size:18.5px;color:var(--muted)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.chips span{padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(250,246,239,.7);font-size:13px;font-weight:600;color:var(--muted)}
+
+/* Hikâye */
+.story{padding:120px 0}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.st-grid figure{position:relative}
+.st-grid figure img{border-radius:200px 200px 24px 24px}
+.st-grid figcaption{margin-top:12px;font-size:13px;color:var(--muted);font-style:italic}
+.story p{margin-top:18px;font-size:17.5px;color:var(--muted)}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px}
+.principle{padding:28px;border-radius:22px;background:var(--cream);border:1px solid var(--line);transition:transform .35s ease,background-color .35s ease}
+.principle:hover{transform:translateY(-6px);background:#fff}
+.principle b{display:block;font-family:var(--serif);font-style:italic;font-size:40px;color:var(--rose);line-height:1}
+.principle h3{font-size:26px;margin:12px 0 8px}
+.principle p{margin:0;font-size:15.5px}
+
+/* Koleksiyon */
+.collection{padding:120px 0;background:var(--cream);border-block:1px solid var(--line)}
+.c-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+.c-head p{max-width:420px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.filter{padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:none;cursor:pointer;font-weight:700;font-size:14.5px;color:var(--muted);transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.filter:hover{border-color:var(--ink);color:var(--ink)}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.filter small{font-weight:600;opacity:.65;margin-inline-start:4px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{display:flex;flex-direction:column;text-align:start;padding:0;border:0;background:none;cursor:pointer}
+.product[hidden]{display:none}
+.product.in{animation:pop .4s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.tile{position:relative;display:block;aspect-ratio:1;border-radius:22px;overflow:hidden;background:var(--c, var(--oat))}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.product:hover .tile img{transform:scale(1.06)}
+/* Fotoğrafı olmayan ürün: kendi renginde örgü dokusu */
+.tile.knit{background-color:var(--c);background-image:repeating-linear-gradient(60deg,rgba(255,255,255,.16) 0 7px,transparent 7px 14px),repeating-linear-gradient(-60deg,rgba(0,0,0,.08) 0 7px,transparent 7px 14px);display:grid;place-items:center}
+.tile.knit .ini{font-family:var(--serif);font-style:italic;font-size:64px;color:rgba(255,255,255,.88);transition:transform .5s ease}
+.product:hover .tile.knit .ini{transform:scale(1.12) rotate(-4deg)}
+.badge{position:absolute;left:12px;top:12px;padding:4px 11px;border-radius:999px;background:rgba(250,246,239,.92);font-size:12px;font-weight:700}
+.product .p-name{display:block;font-family:var(--serif);font-size:23px;line-height:1.1;margin:14px 0 4px}
+.dots{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+.dots i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+.product:focus-visible{outline-offset:6px;border-radius:24px}
+
+/* Ürün penceresi */
+dialog{margin:auto;width:min(880px,calc(100% - 32px));max-height:calc(100% - 32px);border:0;border-radius:28px;padding:0;background:var(--cream);color:var(--ink);box-shadow:0 40px 90px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(46,42,39,.55);backdrop-filter:blur(3px)}
+dialog[open]{animation:dlg .3s ease}
+@keyframes dlg{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.dlg{display:grid;grid-template-columns:1fr 1fr}
+.dlg .tile{border-radius:0;aspect-ratio:auto;min-height:100%}
+.dlg-body{padding:38px 34px;position:relative}
+.dlg-body h3{font-size:38px;margin-bottom:10px}
+.dlg-body > p{color:var(--muted)}
+.dlg-body dl{margin:22px 0}
+.dlg-body dl div{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.dlg-body dt{font-weight:700;color:var(--muted)}
+.dlg-note{font-size:14px;padding:14px 16px;border-radius:14px;background:var(--rose-lt)}
+.close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--cream);cursor:pointer;font-size:20px;line-height:1}
+
+/* Süreç */
+.process{padding:120px 0}
+.timeline{position:relative;margin-top:54px;padding-inline-start:56px}
+.timeline::before,.timeline .bar{content:"";position:absolute;left:18px;top:0;bottom:0;width:2px;background:var(--line)}
+.timeline .bar{background:var(--rose);height:var(--p,0%);bottom:auto;transition:height .1s linear}
+.stage{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:30px 0}
+.stage::before{content:attr(data-n);position:absolute;left:-56px;top:50%;width:38px;height:38px;margin-top:-19px;border-radius:50%;background:var(--oat);border:2px solid var(--rose);display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--rose)}
+.stage img{border-radius:22px;aspect-ratio:9/7;object-fit:cover}
+.stage h3{font-size:34px;margin-bottom:10px}
+.stage p{color:var(--muted);font-size:17px;max-width:430px}
+
+/* Bakım */
+.care{padding:0 0 120px}
+.care-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+.care-grid > div:first-child p{color:var(--muted);margin-top:16px}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border:0;background:none;cursor:pointer;text-align:start;font-family:var(--serif);font-size:27px}
+.acc-q::after{content:"+";font-family:var(--sans);font-size:24px;color:var(--moss);transition:transform .3s ease}
+.acc-q[aria-expanded="true"]::after{transform:rotate(45deg)}
+.acc-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.acc-a > div{overflow:hidden}
+.acc-a p{padding-bottom:22px;color:var(--muted)}
+.acc-q[aria-expanded="true"] + .acc-a{grid-template-rows:1fr}
+.acc{border-top:1px solid var(--line)}
+
+/* Instagram */
+.ig{padding:110px 0;background:var(--moss);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+.ig h2 em{color:var(--rose-lt)}
+.ig p{max-width:560px;margin:20px auto 34px;color:rgba(250,246,239,.82);font-size:17.5px}
+.ig .over{color:var(--rose-lt)}
+.ig-cta{background:var(--cream);color:var(--moss-dk)}
+.ig-cta[aria-disabled="true"]{background:transparent;color:var(--cream);border-color:rgba(250,246,239,.5);cursor:default}
+.ig-cta[aria-disabled="true"]:hover{transform:none}
+.ig small{display:block;margin-top:18px;color:rgba(250,246,239,.7)}
+.rings{position:absolute;right:-120px;bottom:-160px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(250,246,239,.15);box-shadow:0 0 0 40px rgba(250,246,239,.04),0 0 0 80px rgba(250,246,239,.03)}
+footer{padding:36px 0;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  .links{display:none}
+  .burger{display:block}
+  .links.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;gap:0;background:var(--cream);border-bottom:1px solid var(--line);padding:8px var(--gutter) 16px}
+  .links.open a{display:block;padding:14px 0;font-size:18px;color:var(--ink)}
+  .st-grid,.care-grid{grid-template-columns:1fr;gap:40px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .principles{grid-template-columns:1fr}
+  .c-head{flex-direction:column;align-items:flex-start}
+  .stage{grid-template-columns:1fr;gap:18px}
+  .hero::after{background:linear-gradient(180deg,rgba(243,237,228,.92) 0%,rgba(243,237,228,.8) 60%,rgba(243,237,228,.45) 100%)}
+}
+@media (max-width:640px){
+  :root{--gutter:18px}
+  .dlg{grid-template-columns:1fr}
+  .dlg .tile{aspect-ratio:4/3;min-height:0}
+  .dlg-body{padding:28px 22px}
+  .story,.collection,.process,.ig{padding:80px 0}
+  .care{padding-bottom:80px}
+  .grid{gap:12px}
+  .product .p-name{font-size:19px}
+  .tile.knit .ini{font-size:46px}
+  .timeline{padding-inline-start:44px}
+  .stage::before{left:-44px;width:32px;height:32px;margin-top:-16px;font-size:16px}
+  .timeline::before,.timeline .bar{left:15px}
+  .acc-q{font-size:23px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .hero-bg{transform:none}
+  .thread path{stroke-dashoffset:0}
 }
 </style>
 </head>
-
 <body>
 
-<div class="thread-layer" aria-hidden="true">
-<svg class="thread-art thread-art--top" viewBox="0 0 370 190" aria-hidden="true">
-  <path d="M4 165 C45 25, 92 190, 134 70 S215 42, 252 128 S327 165, 365 20"></path>
-  <path class="needle" d="M252 128 L348 38"></path>
-  <ellipse class="eye" cx="344" cy="42" rx="6" ry="3"></ellipse>
-</svg>
-
-<svg class="thread-art thread-art--bottom" viewBox="0 0 440 220" aria-hidden="true">
-  <path d="M8 194 C67 38, 112 212, 168 78 S260 42, 308 147 S378 190, 432 24"></path>
-  <path class="needle" d="M304 145 L413 35"></path>
-  <ellipse class="eye" cx="408" cy="40" rx="6" ry="3"></ellipse>
-</svg>
-</div>
-
-<div class="announce">
-  <span>NESMINA · <b>small-batch knitwear, made by hand</b></span>
-</div>
+<div class="notice">Küçük seriler · Elde örülür · Siparişler Instagram'dan mesajla alınır</div>
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Nesmina home">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-copy">
-        Nesmina
-        <small>HANDKNIT OBJECTS</small>
-      </span>
+    <a class="brand" href="#top" aria-label="Nesmina, ana sayfa">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#5E6B4E"/><circle cx="20" cy="20" r="11" fill="none" stroke="#F3EDE4" stroke-width="1.6"/><path d="M11 16c5 2 13 2 18 0M10 21.5c6 2 14 2 20 0M12.5 27c4.5 1.5 10.5 1.5 15 0" fill="none" stroke="#F3EDE4" stroke-width="1.3"/><path d="M29 12c3-3 6-3 8-1" fill="none" stroke="#EBCFC6" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span><b>Nesmina</b><small>El örgüsü</small></span>
     </a>
-
-    <div class="nav-right">
-      <span class="nav-note">fibre / form / patience</span>
-      <a class="ig" id="igLink" href="#" target="_blank" rel="noopener" aria-label="Nesmina Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        <span id="igHandle">@nesmina.studio</span>
-      </a>
-    </div>
+    <ul class="links" id="links">
+      <li><a href="#hikaye">Hikâye</a></li>
+      <li><a href="#koleksiyon">Koleksiyon</a></li>
+      <li><a href="#surec">Nasıl örüyoruz?</a></li>
+      <li><a href="#bakim">Bakım</a></li>
+      <li><a href="#instagram">Sipariş</a></li>
+    </ul>
+    <button class="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<main>
-
-  <section class="hero" id="top">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <div class="kicker">Handknit Objects</div>
-
-        <h1>
-          Made by hand.<br>
-          Held <em>for years.</em>
-        </h1>
-
-        <p class="lead">
-          Nesmina makes knit objects by hand: hats, wraps, throws and small things for the home. Natural fibres, honest textures and small releases, shaped one stitch at a time.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#collection">
-            See the collection
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
-          </a>
-
-          <a class="btn btn-ghost" href="#process">
-            Our process
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 18L12 22L16 18"/><path d="M12 2V22"/></svg>
-          </a>
-        </div>
-
-        <div class="hero-meta">
-          <span>small-run pieces</span>
-          <span>natural fibres</span>
-          <span>made to order</span>
-        </div>
-      </div>
-
-      <div class="hero-card reveal" aria-label="Abstract yarn and knitting needle illustration">
-        <div class="card-top">
-          <span>ATELIER NOTES / 001</span>
-          <span class="card-live"><i></i> IN PROGRESS</span>
-        </div>
-
-        <div class="yarn-ball yarn-ball--one"></div>
-        <div class="yarn-ball yarn-ball--two"></div>
-        <div class="yarn-ball yarn-ball--three"></div>
-
-        <span class="knitting-needle needle-one"></span>
-        <span class="knitting-needle needle-two"></span>
-
-        <div class="card-caption">
-          <b>Every object begins with a thread.</b>
-          <span>KNIT / REPEAT / HOLD</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="thread-divider" aria-label="Nesmina studio values">
-    <div class="thread-track">
-      <span>natural fibres</span>
-      <span>small runs</span>
-      <span>considered colour</span>
-      <span>quiet texture</span>
-      <span>made slowly</span>
-      <span>natural fibres</span>
-      <span>small runs</span>
-      <span>considered colour</span>
-      <span>quiet texture</span>
-      <span>made slowly</span>
-    </div>
-  </section>
-
-  <section class="story" id="process">
-    <div class="wrap story-grid">
-      <div class="story-copy reveal">
-        <div class="kicker">The Practice</div>
-        <h2>Not fast fashion. Not factory-perfect.</h2>
-
-        <p>
-          At Nesmina, everyday objects are given more time. A hat, wrap or blanket begins with a material choice, a test swatch and the rhythm of repeated stitches.
-        </p>
-
-        <p>
-          The result is intentionally human: subtle variation, tactile surfaces and pieces that feel more personal the longer they are used.
-        </p>
-
-        <div class="facts">
-          <div>
-            <b>01</b>
-            <span>maker-led process</span>
-          </div>
-          <div>
-            <b>Small</b>
-            <span>considered releases</span>
-          </div>
-          <div>
-            <b>Slow</b>
-            <span>by design, not delay</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="workbench reveal" aria-label="Abstract yarn ball and knitting needle artwork">
-        <span class="workbench-needle"></span>
-        <span class="workbench-label">swatch notes / 2026</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="collection">
+<main id="top">
+  <section class="hero" aria-label="Nesmina">
+    <img class="hero-bg" src="img/demo/nesmina/hero.webp" alt="Bir kâsede yün yumakları ve örülmüş parçalar" width="1920" height="1100" fetchpriority="high">
+    <svg class="thread" viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M-20 640 C 180 560, 260 720, 420 650 S 640 470, 760 560 S 980 760, 1100 600 S 1300 420, 1460 470"/></svg>
     <div class="wrap">
-      <div class="collection-head reveal">
-        <div>
-          <div class="kicker">The Collection</div>
-          <h2>Objects for cold days<br>and quiet corners.</h2>
-        </div>
-
-        <p class="lead">
-          Four kinds of objects, all made in small numbers. Each one starts with the yarn, the proportions and how it will be used.
-        </p>
+      <span class="over">El örgüsü · Küçük seriler</span>
+      <h1>Elde örüldü.<br>Yıllarca <em>kullanılsın.</em></h1>
+      <p>Nesmina bere, şal, battaniye ve ev için küçük eşyaları elde, tek tek örüyor. Doğal lifler, dürüst dokular ve her biri bir ilmekle başlayan parçalar.</p>
+      <div class="hero-cta">
+        <a class="btn btn-moss" href="#koleksiyon">Koleksiyonu gör</a>
+        <a class="btn btn-line" href="#surec">Nasıl örüyoruz?</a>
       </div>
-
-      <div class="collection-grid">
-        <article class="collection-card reveal">
-          <span class="num">01 / WEAR</span>
-          <h3>Headwear</h3>
-          <p>Structured beanies and soft hats, built around warmth and repeat wear.</p>
-          <span class="tag">Made to order</span>
-        </article>
-
-        <article class="collection-card reveal" style="transition-delay:.08s">
-          <span class="num">02 / LAYER</span>
-          <h3>Wraps</h3>
-          <p>Generous scarves and wraps with texture that becomes softer over time.</p>
-          <span class="tag">Made to order</span>
-        </article>
-
-        <article class="collection-card reveal" style="transition-delay:.16s">
-          <span class="num">03 / HOME</span>
-          <h3>Throws</h3>
-          <p>Heavy, tactile layers for sofas, beds and the spaces we return to.</p>
-          <span class="tag">Small batches</span>
-        </article>
-
-        <article class="collection-card reveal" style="transition-delay:.24s">
-          <span class="num">04 / SMALL</span>
-          <h3>Useful Things</h3>
-          <p>Small knit forms for desks, shelves and thoughtful gifting.</p>
-          <span class="tag">Coming soon</span>
-        </article>
-      </div>
+      <div class="chips"><span>Doğal lifler</span><span>Siparişe göre</span><span>Her parça tek tek</span></div>
     </div>
   </section>
 
-  <section class="values">
+  <section class="story" id="hikaye">
     <div class="wrap">
-      <div class="kicker reveal">Studio Principles</div>
-      <h2 class="reveal">A quieter way to make things.</h2>
-
-      <div class="values-grid">
-        <article class="value reveal">
-          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg></div>
-          <h3>Material first</h3>
-          <p>Natural-feeling fibre, selected for texture, comfort and a life beyond one season.</p>
-        </article>
-
-        <article class="value reveal" style="transition-delay:.08s">
-          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg></div>
-          <h3>Visible process</h3>
-          <p>Swatches, trial pieces and gradual refinement are part of the object, not hidden from it.</p>
-        </article>
-
-        <article class="value reveal" style="transition-delay:.16s">
-          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/></svg></div>
-          <h3>Made to stay</h3>
-          <p>Objects made for daily use, easy to care for and mend, and familiar enough to keep for years.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="closing">
-    <div class="wrap">
-      <div class="closing-panel reveal">
-        <div class="closing-content">
-          <div class="kicker">Studio Notes</div>
-          <h2>New pieces appear on Instagram first.</h2>
-
-          <p class="lead">
-            Every release is small, so pieces often go quickly. Follow along to see new work, ask about custom colours or order a piece.
-          </p>
-
-          <div class="signup">
-            <a class="btn" id="closingIg" href="#" target="_blank" rel="noopener">
-              Follow on Instagram
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-          </div>
-
-          <p class="tiny">Orders and custom colours by direct message.</p>
+      <div class="st-grid">
+        <figure class="reveal">
+          <img src="img/demo/nesmina/story.webp" alt="Berthe Morisot, Örgü ören genç kadın" width="1100" height="1000" loading="lazy">
+          <figcaption>Berthe Morisot, Örgü Ören Genç Kadın, 1883 · The Met</figcaption>
+        </figure>
+        <div class="reveal">
+          <span class="over">Hikâye</span>
+          <h2>Hızlı moda değil.<br><em>Fabrika kusursuzluğu da.</em></h2>
+          <p>Nesmina'da gündelik eşyalara biraz daha fazla zaman ayrılır. Bir bere, şal ya da battaniye önce malzeme seçimiyle, sonra küçük bir deneme örgüsüyle ve tekrarlanan ilmeklerin ritmiyle başlar.</p>
+          <p>Sonuç bilerek insanidir: küçük farklılıklar, dokunmak isteyeceğiniz yüzeyler ve kullandıkça size daha çok ait olan parçalar.</p>
         </div>
       </div>
+      <div class="principles">
+        <article class="principle reveal"><b>i.</b><h3>Önce malzeme</h3><p>Dokusu, sıcaklığı ve bir mevsimden uzun ömrü için seçilmiş doğal lifler.</p></article>
+        <article class="principle reveal"><b>ii.</b><h3>Görünür süreç</h3><p>Deneme örgüleri ve küçük düzeltmeler ürünün bir parçasıdır, saklanmaz.</p></article>
+        <article class="principle reveal"><b>iii.</b><h3>Kalıcı olsun</h3><p>Her gün kullanılacak, bakımı ve onarımı kolay, yıllarca saklanacak eşyalar.</p></article>
+      </div>
     </div>
   </section>
 
+  <section class="collection" id="koleksiyon">
+    <div class="wrap">
+      <div class="c-head reveal">
+        <div><span class="over">Koleksiyon</span><h2>Soğuk günler ve<br><em>sakin köşeler</em> için.</h2></div>
+        <p>Dört tür eşya, hepsi küçük sayılarda örülür. Bir parçanın ayrıntılarını görmek için üzerine tıklayın; fiyat ve sipariş için Instagram'dan yazabilirsiniz.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Koleksiyonu süz" id="filters"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="process" id="surec">
+    <div class="wrap">
+      <div class="reveal"><span class="over">Nasıl örüyoruz?</span><h2>İplikten <em>ürüne.</em></h2></div>
+      <div class="timeline" id="timeline">
+        <span class="bar" aria-hidden="true"></span>
+        <div class="stage reveal" data-n="1"><img src="img/demo/nesmina/yarn.webp" alt="Bir yumak pembe iplik" width="900" height="700" loading="lazy"><div><h3>İplik seçimi</h3><p>Her parça iplikle başlar: lifin yumuşaklığı, rengi ve yıllar içinde nasıl yaşlanacağı.</p></div></div>
+        <div class="stage reveal" data-n="2"><img src="img/demo/nesmina/swatch.webp" alt="Şişlerde küçük bir deneme örgüsü" width="900" height="700" loading="lazy"><div><h3>Deneme örgüsü</h3><p>Küçük bir örnek parça örülür; ilmek sıklığı ve ölçüler bunun üzerinden hesaplanır.</p></div></div>
+        <div class="stage reveal" data-n="3"><img src="img/demo/nesmina/needles.webp" alt="Şişlere sarılmış bir yumak" width="900" height="700" loading="lazy"><div><h3>Örme</h3><p>Parça sıra sıra, elde örülür. Bir bere birkaç akşam, bir battaniye haftalar sürer.</p></div></div>
+        <div class="stage reveal" data-n="4"><img src="img/demo/nesmina/finish.webp" alt="Masada iplikler, şişler ve bitmiş bir parça" width="900" height="700" loading="lazy"><div><h3>Bitiriş</h3><p>Uçlar gizlenir, parça yıkanıp şekline oturtulur ve özenle paketlenir.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="care" id="bakim">
+    <div class="wrap care-grid">
+      <div class="reveal">
+        <span class="over">Bakım rehberi</span>
+        <h2>Yün, iyi bakılınca <em>yıllarca</em> yaşar.</h2>
+        <p>El örgüsü parçalar makinede yıkanan giysilerden biraz daha fazla ilgi ister, karşılığında da yıllarca dayanır.</p>
+      </div>
+      <div class="acc reveal" id="acc"></div>
+    </div>
+  </section>
+
+  <section class="ig" id="instagram">
+    <div class="rings" aria-hidden="true"></div>
+    <div class="wrap reveal">
+      <span class="over">Sipariş ve yeni parçalar</span>
+      <h2>Yeni parçalar önce <em>Instagram'da.</em></h2>
+      <p>Her seri küçük olduğu için parçalar çoğu zaman çabuk biter. Yeni işleri görmek, özel renk sormak ya da sipariş vermek için Instagram'dan takip edin.</p>
+      <a class="btn ig-cta" id="ig-cta" href="#">Instagram</a>
+      <small>Sipariş ve özel renk talepleri Instagram'dan mesajla alınır.</small>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="wrap foot">
-    <span class="foot-brand">
-      <span class="brand-mark" aria-hidden="true"></span>
-      Nesmina
-    </span>
-
-    <span>Handknit in small batches</span>
-
-    <span>Website by <a id="apexCredit" href="index.html">OptiCodeStudio</a></span>
-  </div>
+  <div class="wrap"><span>© 2026 Nesmina · Elde örülür</span><span>Doğal lifler · Küçük seriler</span></div>
 </footer>
 
-<script>
-// Instagram adresi gelince yalnız instagramUrl değişir
-const CONFIG = {
-  instagramUrl: "#",
-  instagramHandle: "@nesmina.studio",
-  apexUrl: "index.html"
-};
-
-const $ = selector => document.querySelector(selector);
-
-const igLink = $('#igLink');
-const igHandle = $('#igHandle');
-const apexCredit = $('#apexCredit');
-
-igLink.href = CONFIG.instagramUrl;
-$('#closingIg').href = CONFIG.instagramUrl;
-igHandle.textContent = CONFIG.instagramHandle;
-apexCredit.href = CONFIG.apexUrl;
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold:.12 });
-
-document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
-
-</script>
+<dialog id="product-dialog" aria-labelledby="dlg-title">
+  <div class="dlg">
+    <div class="tile" id="dlg-tile"></div>
+    <div class="dlg-body">
+      <button class="close" type="button" id="dlg-close" aria-label="Kapat">×</button>
+      <h3 id="dlg-title" data-p-name></h3>
+      <p id="dlg-note"></p>
+      <dl>
+        <div><dt>Malzeme</dt><dd id="dlg-material"></dd></div>
+        <div><dt>Renkler</dt><dd id="dlg-colors"></dd></div>
+        <div><dt>Ölçü</dt><dd id="dlg-size"></dd></div>
+        <div><dt>Bakım</dt><dd id="dlg-care"></dd></div>
+      </dl>
+      <p class="dlg-note">Bu parçayı sormak ya da kendi renginizde sipariş vermek için Instagram'dan yazın.</p>
+    </div>
+  </div>
+</dialog>
 
 <a class="ocs-demo-badge" href="index.html"><img src="img/logo-mark.svg" alt="" width="22" height="17">Demo · OptiCodeStudio</a>
+
+<script>
+(function () {
+  'use strict';
+
+  // Instagram adresi gelince yalnız bu satır değişir (örnek: 'https://www.instagram.com/nesmina/').
+  var NESMINA = { instagramUrl: '#' };
+
+  var CATS = { bere: 'Bereler', sal: 'Şallar', battaniye: 'Battaniyeler', kucuk: 'Küçük eşyalar' };
+  var CARE = 'Elde, soğuk suda yün şampuanıyla yıkayın; sıkmadan, düz serip kurutun.';
+  // Ürünler örnektir; gerçekleri gelince bu liste değişir. photo yoksa kart kendi renginde örgü dokusuyla çizilir.
+  var PRODUCTS = [
+    { id: 'kar-beresi', cat: 'bere', name: 'Kar Beresi', photo: 'beanie', tag: 'Siparişe göre', material: '%100 merinos yünü', colors: [['Kömür', '#3A3633'], ['Krem', '#EFE6D6']], size: 'Tek beden, 56–60 cm', note: 'Kalın, çift kat kenarlı; uzun kış yürüyüşleri için.' },
+    { id: 'balikci-bere', cat: 'bere', name: 'Balıkçı Bere', color: '#5E6B4E', tag: 'Küçük seri', material: 'Yün ve alpaka karışımı', colors: [['Yosun', '#5E6B4E'], ['Lacivert', '#2F3B55'], ['Hardal', '#C59A3C']], size: 'Tek beden', note: 'Kıvrık kenarlı, kulakları tam örten klasik bere.' },
+    { id: 'ponponlu-bere', cat: 'bere', name: 'Ponponlu Bere', color: '#C98B7B', tag: 'Siparişe göre', material: 'Merinos yünü, yün ponpon', colors: [['Gül kurusu', '#C98B7B'], ['Bej', '#D9C8AE']], size: 'Çocuk ve yetişkin', note: 'Çocuklar için de örülür; ponpon çıkarılabilir.' },
+    { id: 'deniz-sali', cat: 'sal', name: 'Deniz Şalı', photo: 'wrap', tag: 'Küçük seri', material: 'Pamuk ve keten', colors: [['Deniz mavisi', '#7FA7C9'], ['Kırık beyaz', '#F1ECE2']], size: '180 × 60 cm', note: 'Serin yaz akşamları için hafif, delikli örgü.' },
+    { id: 'gezgin-atki', cat: 'sal', name: 'Gezgin Atkı', photo: 'scarf', tag: 'Siparişe göre', material: 'Yün karışımı', colors: [['Füme', '#5B5956'], ['Toprak', '#8C6A50']], size: '200 × 30 cm', note: 'Uzun, sıcak ve iki kez dolanacak kadar bol.' },
+    { id: 'benekli-boyunluk', cat: 'sal', name: 'Benekli Boyunluk', photo: 'cowl', tag: 'Küçük seri', material: 'Merinos yünü', colors: [['Lacivert benekli', '#2F3B55'], ['Gri benekli', '#9A9893']], size: 'Çevre 60 cm', note: 'Başa geçirilen, dolanmayan pratik boyunluk.' },
+    { id: 'renk-renk-battaniye', cat: 'battaniye', name: 'Renk Renk Battaniye', photo: 'blanket', tag: 'Tek parça', material: 'Artan yünlerden, akrilik içermez', colors: [['Karışık', 'linear-gradient(90deg,#C98B7B,#7FA7C9,#C59A3C)']], size: '130 × 170 cm', note: 'Her biri tektir; kalan iplerden örülen parçalar birleştirilir.' },
+    { id: 'yulaf-koltuk-sali', cat: 'battaniye', name: 'Yulaf Koltuk Şalı', color: '#CDBB9C', tag: 'Siparişe göre', material: 'Kalın pamuk', colors: [['Yulaf', '#CDBB9C'], ['Krem', '#EFE6D6']], size: '120 × 150 cm', note: 'Kanepe ve yatak ucu için ağır, dokulu örgü.' },
+    { id: 'desenli-eldiven', cat: 'kucuk', name: 'Desenli Eldiven', photo: 'mittens', tag: 'Küçük seri', material: 'Yün', colors: [['Bej, kırmızı desen', '#C9B48E']], size: 'S / M', note: 'Eski bir desenden uyarlandı; avuç içi çift kat.' },
+    { id: 'bardak-altligi', cat: 'kucuk', name: 'Bardak Altlığı Seti', color: '#8C9A78', tag: 'Hazır', material: 'Pamuk', colors: [['Adaçayı', '#8C9A78'], ['Krem', '#EFE6D6']], size: '4 adet, 11 cm', note: 'Sıcak bardaklar için kalın, yıkanabilir altlık.' },
+    { id: 'kitap-ayraci', cat: 'kucuk', name: 'Kitap Ayracı', color: '#B9715F', tag: 'Hazır', material: 'Pamuk, püsküllü', colors: [['Tarçın', '#B9715F'], ['Yosun', '#5E6B4E']], size: '20 × 4 cm', note: 'Kitap seven birine küçük bir hediye.' },
+    { id: 'orgu-sepet', cat: 'kucuk', name: 'Örgü Sepet', color: '#9A8F80', tag: 'Siparişe göre', material: 'Kalın penye ip', colors: [['Taş', '#9A8F80'], ['Kömür', '#3A3633']], size: '20 × 15 cm', note: 'Masa, raf ve banyo için yumuşak saklama sepeti.' }
+  ];
+  var CARE_GUIDE = [
+    ['Yıkama', 'Elde, soğuk ya da ılık suda ve yün şampuanıyla yıkayın. Ovalamayın; suyun içinde nazikçe bastırın.'],
+    ['Kurutma', 'Sıkmayın. Havluya sarıp suyunu alın, düz bir yüzeye serip şekline getirerek kurutun. Güneşe ve kaloriferin üstüne koymayın.'],
+    ['Saklama', 'Askıya asmayın, katlayıp saklayın. Uzun süre kullanmayacaksanız bir bez torbaya lavanta keseciğiyle koyun.'],
+    ['Tüylenme', 'Doğal yünde kullandıkça küçük tüy topları oluşabilir. Bu bir kusur değildir; tüy toplama tarağıyla kolayca alınır.']
+  ];
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+
+  function tileHtml(p, eager) {
+    if (p.photo) return '<img src="img/demo/nesmina/' + p.photo + '.webp" alt="' + esc(p.name) + '" width="800" height="800"' + (eager ? '' : ' loading="lazy"') + '>';
+    return '<span class="ini" aria-hidden="true">' + esc(p.name.charAt(0)) + '</span>';
+  }
+
+  /* ---------- Koleksiyon ---------- */
+  var current = 'hepsi';
+  $('#grid').innerHTML = PRODUCTS.map(function (p) {
+    return '<button class="product" type="button" data-id="' + p.id + '" data-cat="' + p.cat + '" data-name="' + esc(p.name) + '" aria-haspopup="dialog">' +
+      '<span class="tile' + (p.photo ? '' : ' knit') + '" style="--c:' + (p.color || '#E6DDCF') + '">' + tileHtml(p) + '<span class="badge">' + esc(p.tag) + '</span></span>' +
+      '<span class="p-name">' + esc(p.name) + '</span><span class="dots">' + p.colors.map(function (c) { return '<i style="background:' + c[1] + '"></i>'; }).join('') +
+      ' ' + p.colors.length + ' renk</span></button>';
+  }).join('');
+  $('#filters').innerHTML = [['hepsi', 'Hepsi', PRODUCTS.length]].concat(Object.keys(CATS).map(function (k) {
+    return [k, CATS[k], PRODUCTS.filter(function (p) { return p.cat === k; }).length];
+  })).map(function (f) {
+    return '<button class="filter" type="button" data-cat="' + f[0] + '" aria-pressed="' + (f[0] === current) + '">' + f[1] + '<small>' + f[2] + '</small></button>';
+  }).join('');
+  function applyFilter() {
+    var n = 0;
+    $$('#grid .product').forEach(function (p) {
+      var on = current === 'hepsi' || p.dataset.cat === current;
+      p.hidden = !on;
+      p.classList.remove('in');
+      if (on) { p.style.animationDelay = (n++) * 35 + 'ms'; void p.offsetWidth; p.classList.add('in'); }
+    });
+    $$('#filters .filter').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cat === current)); });
+  }
+  $('#filters').addEventListener('click', function (e) {
+    var b = e.target.closest('.filter');
+    if (!b) return;
+    current = b.dataset.cat;
+    applyFilter();
+  });
+
+  /* ---------- Ürün penceresi ---------- */
+  var dlg = $('#product-dialog');
+  var opener = null;
+  $('#grid').addEventListener('click', function (e) {
+    var card = e.target.closest('.product');
+    if (!card) return;
+    var p = PRODUCTS.filter(function (x) { return x.id === card.dataset.id; })[0];
+    opener = card;
+    var tile = $('#dlg-tile');
+    tile.className = 'tile' + (p.photo ? '' : ' knit');
+    tile.style.setProperty('--c', p.color || '#E6DDCF');
+    tile.innerHTML = tileHtml(p, true);
+    $('#dlg-title').textContent = p.name;
+    $('#dlg-note').textContent = p.note;
+    $('#dlg-material').textContent = p.material;
+    $('#dlg-colors').textContent = p.colors.map(function (c) { return c[0]; }).join(', ');
+    $('#dlg-size').textContent = p.size;
+    $('#dlg-care').textContent = CARE;
+    dlg.showModal();
+    $('#dlg-close').focus();
+  });
+  $('#dlg-close').addEventListener('click', function () { dlg.close(); });
+  // Pencerenin dışına (arka plana) tıklanınca kapanır
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', function () { if (opener) opener.focus(); });
+
+  /* ---------- Bakım rehberi ---------- */
+  $('#acc').innerHTML = CARE_GUIDE.map(function (c, i) {
+    return '<div class="acc-item"><button class="acc-q" type="button" id="acc-q' + i + '" aria-expanded="' + (i === 0) + '" aria-controls="acc-a' + i + '">' + c[0] + '</button>' +
+      '<div class="acc-a" id="acc-a' + i + '" role="region" aria-labelledby="acc-q' + i + '"><div><p>' + c[1] + '</p></div></div></div>';
+  }).join('');
+  $('#acc').addEventListener('click', function (e) {
+    var q = e.target.closest('.acc-q');
+    if (!q) return;
+    var open = q.getAttribute('aria-expanded') !== 'true';
+    $$('.acc-q').forEach(function (x) { x.setAttribute('aria-expanded', 'false'); });
+    q.setAttribute('aria-expanded', String(open));
+  });
+
+  /* ---------- Instagram ---------- */
+  var ig = $('#ig-cta');
+  if (NESMINA.instagramUrl && NESMINA.instagramUrl !== '#') {
+    ig.href = NESMINA.instagramUrl;
+    ig.target = '_blank';
+    ig.rel = 'noopener';
+    ig.textContent = "Instagram'da takip et";
+  } else {
+    // Adres gelene kadar düğme bir yere gitmez
+    ig.setAttribute('aria-disabled', 'true');
+    ig.removeAttribute('href');
+    ig.setAttribute('role', 'link');
+    ig.textContent = 'Instagram · Yakında';
+    ig.addEventListener('click', function (e) { e.preventDefault(); });
+  }
+
+  /* ---------- Süreç çizgisi, menü, belirme ---------- */
+  var timeline = $('#timeline');
+  function progress() {
+    var r = timeline.getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, (innerHeight * 0.6 - r.top) / r.height));
+    timeline.style.setProperty('--p', (p * 100).toFixed(1) + '%');
+  }
+  addEventListener('scroll', progress, { passive: true });
+  addEventListener('resize', progress);
+  progress();
+
+  var burger = $('.burger');
+  burger.addEventListener('click', function () {
+    var open = $('#links').classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  $$('#links a').forEach(function (a) { a.addEventListener('click', function () { $('#links').classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
+
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    $$('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+  requestAnimationFrame(function () { $('.hero').classList.add('ready'); });
+})();
+</script>
 </body>
 </html>
