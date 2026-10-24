@@ -103,3 +103,25 @@ test('ikon kullanan sayfalarda gömülü sprite güncel ve kullanılan her ikonu
     assert.deepEqual(missing, [], page);
   }
 });
+
+// Sekmedeki simge eskiden yazılı, beyaz zeminli 1080 px'lik eski logoydu; 16 px'te seçilmiyordu.
+test('favicon sitedeki logo işaretiyle aynı çizim; png 48 px, iPhone simgesi 180 px', async () => {
+  const sharp = (await import('sharp')).default;
+  const ds = src => [...src.matchAll(/\sd="([^"]+)"/g)].map(m => m[1]);
+  const mark = ds(read('img/logo-mark.svg'));
+  assert.ok(existsSync(path.join(REPO_ROOT, 'favicon.svg')), 'favicon.svg yok');
+  assert.deepEqual(ds(read('favicon.svg')), mark);
+  const box = read('favicon.svg').match(/viewBox="[\d.-]+ [\d.-]+ ([\d.]+) ([\d.]+)"/);
+  assert.ok(box && box[1] === box[2], 'favicon.svg kare değil');
+  for (const [file, size, maxKb] of [['favicon.png', 48, 6], ['apple-touch-icon.png', 180, 24]]) {
+    const meta = await sharp(path.join(REPO_ROOT, file)).metadata();
+    assert.deepEqual([meta.format, meta.width, meta.height], ['png', size, size], file);
+    assert.ok(statSync(path.join(REPO_ROOT, file)).size <= maxKb * 1024, `${file} ${statSync(path.join(REPO_ROOT, file)).size} bayt`);
+  }
+  for (const page of ICON_PAGES) {
+    const head = read(page).match(/<head>[\s\S]*?<\/head>/)[0];
+    assert.match(head, /<link rel="icon" type="image\/svg\+xml" href="favicon\.svg">/, page);
+    assert.match(head, /<link rel="icon" type="image\/png" sizes="48x48" href="favicon\.png">/, page);
+    assert.match(head, /<link rel="apple-touch-icon" href="apple-touch-icon\.png">/, page);
+  }
+});
