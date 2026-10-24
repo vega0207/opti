@@ -32,9 +32,10 @@ test('consent ve skipSplash varsayılanları tohumlanır', async () => {
   const consent = await page.evaluate(() => JSON.parse(localStorage.getItem('ocs.consent')));
   assert.equal(consent.choice, 'accepted');
   assert.equal(await page.evaluate(() => sessionStorage.getItem('ocs.splash')), '1');
-  const fresh = await openPage(ctx, '/', { consent: null, skipSplash: false });
+  // Tohum yoksa: onay kaydı yok ve açılış animasyonu oynar (site ocs.splash'i kendisi yazar)
+  const fresh = await openPage(ctx, '/', { consent: null, skipSplash: false, wait: 'domcontentloaded' });
   assert.equal(await fresh.page.evaluate(() => localStorage.getItem('ocs.consent')), null);
-  assert.equal(await fresh.page.evaluate(() => sessionStorage.getItem('ocs.splash')), null);
+  assert.equal(await fresh.page.evaluate(() => document.documentElement.classList.contains('splash')), true);
 });
 
 test('blockStorage depolamayı fırlatır yapar', async () => {
