@@ -151,3 +151,14 @@ test('taşma yok: dolu bölümlerle 6 genişlik × 2 tema', async () => {
     }
   }
 });
+
+// Site sahibi telefonda da bilgisayardaki gibi üç demoyu görmek istedi.
+test('hero kolajı telefonda da üç demo gösterir ve taşmaz', async () => {
+  for (const width of [360, 390]) {
+    const { page, close } = await openPage(ctx, '/?lang=tr', { width, height: 800 });
+    const shown = await page.$$eval('#heroCollage .shot', ss => ss.filter(s => s.checkVisibility()).length);
+    assert.equal(shown, 3, `${width}px`);
+    assert.deepEqual(await overflowReport(page), [], `${width}px`);
+    await close();
+  }
+});

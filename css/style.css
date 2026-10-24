@@ -854,10 +854,11 @@ html.no-motion [data-anim] { opacity: 1; transform: none; transition: none; }
   .steps { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
-  .hero-collage { height: 250px; }
-  .shot:nth-child(1) { width: 60%; inset-inline-start: 4%; rotate: -2deg; }
-  .shot:nth-child(2) { width: 58%; inset-inline-end: 4%; rotate: 2deg; }
-  .shot:nth-child(3) { display: none; }
+  /* Telefonda da üç demo: bilgisayardaki diziliş, ekrana sığacak kadar küçültülmüş */
+  .hero-collage { height: 290px; }
+  .shot:nth-child(1) { width: 60%; inset-inline-start: 2%; rotate: -3deg; }
+  .shot:nth-child(2) { width: 56%; top: 22%; inset-inline-end: 2%; rotate: 2.5deg; }
+  .shot:nth-child(3) { width: 52%; inset-inline-start: 14%; rotate: -1.5deg; }
   .tabs { display: grid; width: 100%; }
   .tab { padding: 0 8px; font-size: 13px; }
   .consent { flex-wrap: wrap; padding-block: 10px; }
