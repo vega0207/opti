@@ -86,3 +86,56 @@ test('Golden Crust: menü sekmeleri', async () => {
   assert.equal(await page.$eval('button[data-tab="pastries"]', b => b.getAttribute('aria-selected')), 'true');
   await close();
 });
+
+/* ---------------- Luma Dental Studio ---------------- */
+const LUMA = '/meridian-law.html';
+const slotFree = (page, hhmm) => page.$eval(`#booking button[data-slot="${hhmm}"]`, b => !b.disabled);
+
+test('Luma: randevu adımları, pazar kapalı, geçmiş ve dolu saatler seçilemez, özet doğru', async () => {
+  const { page, close } = await at(LUMA, [2026, 10, 26, 10, 0]);
+  await page.click('#booking [data-step="1"] [data-next]');
+  assert.equal(await visible(page, '#booking [data-step="1"]'), true, 'tedavi seçmeden ilerlememeli');
+  await page.click('#booking input[name="treatment"][value="checkup"]');
+  await page.click('#booking [data-step="1"] [data-next]');
+  assert.equal(await page.$eval('#booking button[data-day="2026-11-01"]', b => b.disabled), true, 'pazar');
+  await page.click('#booking button[data-day="2026-10-26"]');
+  assert.equal(await slotFree(page, '10:00'), false, 'geçmiş saat');
+  assert.equal(await slotFree(page, '10:30'), true);
+  assert.equal(await slotFree(page, '11:00'), false, 'dolu saat');
+  await page.click('#booking [data-step="3"] [data-back]');
+  await page.click('#booking button[data-day="2026-10-27"]');
+  const busy = await page.$$eval('#booking button[data-slot]', bs => bs.filter(b => b.disabled).map(b => b.dataset.slot));
+  assert.deepEqual(busy, ['09:00', '11:30', '14:00', '16:30']);
+  await page.click('#booking button[data-slot="10:00"]');
+  await page.click('#booking [data-step="3"] [data-next]');
+  await page.type('#bk-name', 'Maya Chen');
+  await page.type('#bk-email', 'maya@example.com');
+  await page.type('#bk-phone', '416 555 0199');
+  await page.click('#booking [data-step="4"] [type="submit"]');
+  await page.waitForSelector('#bk-done', { visible: true, timeout: 2000 });
+  const done = await text(page, '#bk-done');
+  assert.match(done, /Check-up/);
+  assert.match(done, /Tue 27 Oct/);
+  assert.match(done, /10:00/);
+  await close();
+});
+
+test('Luma: aylık ödeme hesaplayıcı', async () => {
+  const { page, close } = await at(LUMA, [2026, 10, 26, 10, 0]);
+  await page.select('#calc-treat', 'aligners');
+  await setValue(page, '#calc-months', '12');
+  assert.equal(await text(page, '#calc-monthly'), '$400/mo');
+  await page.select('#calc-treat', 'whitening');
+  assert.equal(await text(page, '#calc-monthly'), '$55/mo');
+  await page.select('#calc-treat', 'aligners');
+  await setValue(page, '#calc-months', '24');
+  assert.equal(await text(page, '#calc-monthly'), '$200/mo');
+  await close();
+});
+
+test('Luma: tedavi kartındaki düğme randevuda o tedaviyi seçer', async () => {
+  const { page, close } = await at(LUMA, [2026, 10, 26, 10, 0]);
+  await page.click('.treat[data-treat="whitening"] [data-book]');
+  assert.equal(await page.$eval('#booking input[name="treatment"][value="whitening"]', i => i.checked), true);
+  await close();
+});

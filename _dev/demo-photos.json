@@ -113,12 +113,6 @@
   "license": "Public domain",
   "artist": "User:Mattes"
  },
- "img/demo/golden-crust/hero.jpg": {
-  "title": "Bread (Unsplash).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Bread_(Unsplash).jpg",
-  "license": "CC0",
-  "artist": "Kim Cruickshanks helloimkim"
- },
  "img/demo/golden-crust/hero.webp": {
   "title": "Bread at a Bakery (Unsplash).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Bread_at_a_Bakery_(Unsplash).jpg",
@@ -142,12 +136,6 @@
   "page": "https://commons.wikimedia.org/wiki/File:Loaf_of_sourdough_bread_cooling.jpg",
   "license": "CC0",
   "artist": "Nutrition, Food Safety &amp; Health"
- },
- "img/demo/golden-crust/story.jpg": {
-  "title": "Man holding bread (Unsplash).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Man_holding_bread_(Unsplash).jpg",
-  "license": "CC0",
-  "artist": "Kate Remmer studioktr"
  },
  "img/demo/harbor-homes/bikes.jpg": {
   "title": "Two bicycles near a house (Unsplash).jpg",
@@ -196,6 +184,36 @@
   "page": "https://commons.wikimedia.org/wiki/File:White_house_(Unsplash).jpg",
   "license": "CC0",
   "artist": "Frøy Hamstad froel"
+ },
+ "img/demo/luma/clinic.webp": {
+  "title": "Dentist (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Dentist_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Daniel Frank fr3nks"
+ },
+ "img/demo/luma/hero.webp": {
+  "title": "Happy daughter (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Happy_daughter_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Michael Dam michaeldam"
+ },
+ "img/demo/luma/patient.webp": {
+  "title": "Thomas Hafeneth 2017-04-22 (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Thomas_Hafeneth_2017-04-22_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Thomas Hafeneth thomashafeneth"
+ },
+ "img/demo/luma/smile.webp": {
+  "title": "I Love Portraits (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:I_Love_Portraits_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Clarisse Meyer clarissemeyer"
+ },
+ "img/demo/luma/tools.webp": {
+  "title": "Dentist tools and window (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Dentist_tools_and_window_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Jon Tyson jontyson"
  },
  "img/demo/olive-and-ember/burrata.jpg": {
   "title": "Italian Dish for High-End Resturant (Unsplash).jpg",
