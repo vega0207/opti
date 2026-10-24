@@ -81,7 +81,8 @@ test('dil dosyası uygulanır: metin, başlık, lang ve bekleme sınıfı', asyn
 });
 
 test('dil dosyası bulunamazsa İngilizceye düşer ve sayfa görünür', async () => {
-  const { page, close } = await openPage(ctx, '/?lang=ru'); // ru.js henüz yok → 404
+  // Dil dosyası yüklenemiyor (ağ hatası ya da silinmiş dosya)
+  const { page, close } = await openPage(ctx, '/?lang=ru', { block: ['/js/lang/ru.js'] });
   await page.waitForFunction(() => !document.documentElement.classList.contains('i18n-pending'), { timeout: 3000 });
   assert.equal(await page.$eval('.page', el => getComputedStyle(el).visibility), 'visible');
   assert.equal(await page.$eval('.nav-links a[href="#work"]', el => el.textContent), EN.ui['nav.work']);
