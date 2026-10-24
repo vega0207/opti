@@ -18,9 +18,30 @@
 <script src="js/config.js" defer></script>
 <script src="js/core.js" defer></script>
 <script src="js/site.js" defer></script>
+<script src="js/splash.js" defer></script>
 </head>
 <body>
 <div class="bg-layer" aria-hidden="true"><div class="bg-night"></div><div class="bg-day"></div></div>
+
+<!-- ================= AÇILIŞ ANİMASYONU (ziyaret başına bir kez) =================
+     Yollar img/logo-mark.svg ile aynıdır; birini değiştirirseniz diğerini de değiştirin. -->
+<div class="splash-screen" aria-hidden="true">
+  <div class="splash-inner">
+    <svg class="splash-mark" viewBox="50 55 832 628" width="832" height="628">
+      <defs>
+        <linearGradient id="g-frame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36BEFF"/><stop offset=".42" stop-color="#0B74F2"/><stop offset=".78" stop-color="#0A7DB8"/><stop offset="1" stop-color="#03557A"/></linearGradient>
+        <linearGradient id="g-teal" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2EE4E5"/><stop offset=".55" stop-color="#07B3C8"/><stop offset="1" stop-color="#03557A"/></linearGradient>
+        <linearGradient id="g-pink" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FA70AA"/><stop offset=".5" stop-color="#E5469A"/><stop offset="1" stop-color="#8C1E70"/></linearGradient>
+      </defs>
+      <g id="frame"><path class="draw" pathLength="1" d="M296 63H615L537 163H338L177 369L345 588L343 677H292L56 371Z" fill="url(#g-frame)"/><path class="after" d="M550 139H326L147 369L343 625L345 588L177 369L338 163H537Z" fill="#001B3A" opacity=".2"/><path class="after" d="M550 139H326L147 369L343 625" fill="none" stroke="#6FE3FF" stroke-width="6" opacity=".85"/></g>
+      <g id="chevron"><path class="draw" pathLength="1" d="M361 217L459 223L349 368L422 462L368 524L243 368Z" fill="url(#g-teal)"/><path class="after" d="M410 220L459 223L349 368L422 462L395 493L296 368Z" fill="#00203F" opacity=".28"/></g>
+      <g id="arrow"><path d="M343 677L345 588L704 177L647 117L877 62L838 293L777 238L393 677Z" fill="url(#g-teal)"/><path d="M343 663L877 62L838 293L777 238L393 677H343Z" fill="#00243F" opacity=".22"/></g>
+      <path id="chip" d="M616 107L657 193L596 263L555 181Z" fill="url(#g-teal)"/>
+      <g id="pink"><path d="M752 437H863L676 677H425L508 583H629Z" fill="url(#g-pink)"/><path d="M505 597H635L759 451" fill="none" stroke="#FFA3CF" stroke-width="5" opacity=".7"/></g>
+    </svg>
+    <span class="splash-word">OptiCodeStudio</span>
+  </div>
+</div>
 
 <div class="page">
 

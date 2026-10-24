@@ -73,6 +73,16 @@ test('çalışma kartı görselleri: 720×1125 ve ≤ 120 KB', async () => {
   }
 });
 
+test('açılış animasyonundaki logo, logo dosyasıyla aynı çizim', () => {
+  const ds = src => [...src.matchAll(/\sd="([^"]+)"/g)].map(m => m[1]);
+  const fileD = ds(read('img/logo-mark.svg'));
+  const html = read('index.html');
+  const block = html.match(/<svg class="splash-mark"[\s\S]*?<\/svg>/);
+  assert.ok(block, 'index.html içinde splash-mark SVG yok');
+  assert.ok(fileD.length >= 8);
+  assert.deepEqual(ds(block[0]), fileD);
+});
+
 test('kodda kullanılan her ikon sprite içinde', () => {
   const svg = read('img/icons.svg');
   const used = new Set();

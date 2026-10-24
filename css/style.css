@@ -672,7 +672,40 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 .toast .i { color: var(--accent); }
 
 /* ============================================================
-   12. Ekran kırılımları
+   12. Açılış animasyonu (logo: çerçeve çizilir, ok dönerek gelir)
+   ============================================================ */
+.splash-screen { display: none; position: fixed; inset: 0; z-index: 1000; place-items: center; }
+html.splash .splash-screen { display: grid; }
+html.splash body { overflow: hidden; }
+html.splash nav .logo-mark { opacity: 0; }
+.splash-screen::before { content: ""; position: absolute; inset: 0; background: var(--bg); transition: transform .42s cubic-bezier(.7, 0, .3, 1); }
+.splash-inner { position: relative; display: grid; justify-items: center; gap: 22px; }
+.splash-mark { width: min(260px, 56vw); height: auto; overflow: visible; transition: transform .4s cubic-bezier(.4, 0, .2, 1); }
+.splash-word { color: var(--text); font-weight: 800; font-size: clamp(22px, 4vw, 30px); letter-spacing: -.01em; opacity: 0; animation: splash-word .4s ease 1.3s forwards; }
+.splash-screen .draw { stroke: var(--accent); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; animation: splash-draw .6s ease forwards, splash-fill .35s ease .45s forwards; }
+.splash-screen .after { visibility: hidden; animation: splash-show .3s ease .55s forwards; }
+.splash-screen #arrow { transform-box: fill-box; transform-origin: center; animation: splash-arrow .9s cubic-bezier(.34, 1.56, .64, 1) .4s both; }
+.splash-screen #chip { transform-box: fill-box; transform-origin: center; animation: splash-pop .4s ease 1s both; }
+.splash-screen #pink { animation: splash-slide .4s ease 1.1s both; }
+@keyframes splash-draw { to { stroke-dashoffset: 0; } }
+@keyframes splash-fill { to { fill-opacity: 1; stroke-opacity: 0; } }
+@keyframes splash-show { to { visibility: visible; } }
+@keyframes splash-arrow {
+  from { opacity: 0; transform: translate(-150px, 0) rotate(-540deg) scale(.2); }
+  50% { opacity: 1; }
+  to { opacity: 1; transform: none; }
+}
+@keyframes splash-pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
+@keyframes splash-slide { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+@keyframes splash-word { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.splash-skip *,
+.splash-skip *::before { animation-delay: 0s !important; animation-duration: .01ms !important; }
+.splash-out::before { transform: translateY(-100%); }
+.splash-out .splash-word { opacity: 0 !important; transition: opacity .15s ease; }
+.splash-fade { opacity: 0; transition: opacity .3s ease; }
+
+/* ============================================================
+   13. Ekran kırılımları
    ============================================================ */
 @media (max-width: 1024px) {
   .nav-links { display: none; }
