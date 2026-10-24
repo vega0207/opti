@@ -8,12 +8,6 @@ import { REPO_ROOT } from './serve.mjs';
 
 // [Google Fonts css2 aile tanımı, google/fonts deposundaki lisans klasörü, alt kümeler (varsayılan latin)]
 const FAMILIES = [
-  ['Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700', 'fraunces'],
-  ['Karla:wght@400..700', 'karla'],
-  ['DM+Mono:wght@400;500', 'dmmono'],
-  ['DM+Sans:opsz,wght@9..40,400..700', 'dmsans'],
-  ['Libre+Baskerville:ital,wght@0,400;0,700;1,400', 'librebaskerville'],
-  ['Archivo+Black', 'archivoblack'],
   ['Cormorant+Garamond:ital,wght@0,400..700;1,400..700', 'cormorantgaramond'],
   ['Jost:wght@300..600', 'jost'],
   ['Plus+Jakarta+Sans:wght@400..800', 'plusjakartasans'],

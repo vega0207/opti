@@ -275,3 +275,14 @@ test('Nesmina: Instagram adresi gelene kadar düğme "Yakında" der ve gezinmez'
   assert.equal(await page.evaluate(() => location.href), before);
   await close();
 });
+
+// Hareketi azalt açıkken kaydırınca belirme beklenmez: bütün bölümler baştan görünür (Review Focus 5).
+test('yeniden tasarlanan dört sayfa hareketi azalt açıkken tamamen görünür', async () => {
+  for (const p of [GC, LUMA, NF, NES]) {
+    const { page, close } = await at(p, [2026, 10, 27, 9, 0], { reducedMotion: true });
+    const hidden = await page.$$eval('.reveal', els => els.filter(e => getComputedStyle(e).opacity !== '1').length);
+    assert.equal(hidden, 0, p);
+    assert.ok(await page.$$eval('.reveal', els => els.length) >= 5, p);
+    await close();
+  }
+});

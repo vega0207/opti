@@ -3,7 +3,7 @@
 // ya da kırık görsel gösterir.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { REPO_ROOT } from './load.mjs';
 
@@ -53,4 +53,21 @@ test('yeniden tasarlanan sayfaların fotoğrafları WebP, ≤ 260 KB ve kaynakla
       assert.match(sources[ref].license, /^(CC0|Public domain|PD)/i, `${ref} lisansı ${sources[ref].license}`);
     }
   }
+});
+
+// Kaynak listesi elle tutulmaz, demo-photos.json'dan üretilir: yeni fotoğraf eksik ya da silinmiş dosya kalmış olmasın.
+test('CREDITS.md her demo fotoğrafını ve yeni yazı tiplerini listeliyor, olmayan dosya listelemiyor', () => {
+  const credits = read('_dev/CREDITS.md');
+  const sources = JSON.parse(read('_dev/demo-photos.json'));
+  for (const file of Object.keys(sources)) assert.ok(credits.includes(`\`${file}\``), `${file} CREDITS.md'de yok`);
+  for (const m of credits.matchAll(/`(img\/demo\/[^`]+)`/g)) assert.ok(existsSync(path.join(REPO_ROOT, m[1])), `${m[1]} listede ama dosya yok`);
+  for (const family of FAMILIES) assert.ok(credits.includes(family), `${family} CREDITS.md'de yok`);
+});
+
+// Kullanılmayan yazı tipi sitede boşuna yer tutar (ve bir gün yanlışlıkla yüklenir).
+test('fonts/demo içindeki her aile en az bir sayfada kullanılıyor', () => {
+  const css = read('fonts/demo/fonts.css');
+  const families = [...new Set([...css.matchAll(/font-family:\s*"([^"]+)"/g)].map(m => m[1]))];
+  const pages = readdirSync(REPO_ROOT).filter(f => f.endsWith('.html')).map(read).join('\n');
+  assert.deepEqual(families.filter(f => !pages.includes(`"${f}"`)), []);
 });
