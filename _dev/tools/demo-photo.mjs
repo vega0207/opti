@@ -1,7 +1,7 @@
 // Demo fotoğrafı hazırlar: photo-candidates.mjs listesinden seçilen fotoğrafı Commons'tan indirir,
 // istenen boyuta kırpar, sıkıştırır ve kaynağını _dev/demo-photos.json'a yazar (CC0 / kamu malı,
 // atıf gerekmez ama kaynak kayıtlı kalsın).
-// Kullanım: node _dev/tools/demo-photo.mjs <liste> <no> <çıktı.jpg> <genişlik>x<yükseklik> [--focus=0.5,0.5] [--q=76]
+// Kullanım: node _dev/tools/demo-photo.mjs <liste> <no> <çıktı.webp|.jpg> <genişlik>x<yükseklik> [--focus=0.5,0.5] [--q=76]
 //   --focus: kırpımın merkezi (0,0 = sol üst; 1,1 = sağ alt)
 import path from 'node:path';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -39,8 +39,11 @@ const left = Math.max(0, Math.min(rw - W, Math.round(rw * fx - W / 2)));
 const top = Math.max(0, Math.min(rh - H, Math.round(rh * fy - H / 2)));
 const file = path.join(REPO_ROOT, out);
 await mkdir(path.dirname(file), { recursive: true });
-await input.resize(rw, rh).extract({ left, top, width: W, height: H })
-  .jpeg({ quality, mozjpeg: true, progressive: true }).toFile(file);
+// Çıktı .webp ise WebP (yeni demolar; aynı kalitede ~%30 küçük), değilse JPG
+const cropped = input.resize(rw, rh).extract({ left, top, width: W, height: H });
+await (file.endsWith('.webp')
+  ? cropped.webp({ quality, effort: 6 })
+  : cropped.jpeg({ quality, mozjpeg: true, progressive: true })).toFile(file);
 
 const manifestFile = path.join(REPO_ROOT, '_dev', 'demo-photos.json');
 const manifest = existsSync(manifestFile) ? JSON.parse(await readFile(manifestFile, 'utf8')) : {};

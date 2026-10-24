@@ -148,6 +148,20 @@ export async function hasHorizontalOverflow(page) {
   return (await overflowReport(page)).length > 0;
 }
 
+// Saate bağlı demo parçaları için: sayfanın "şimdi"si yerel saatle sabitlenir (ay 1–12).
+// Argümanlı new Date(...) ve zamanlayıcılar olduğu gibi çalışır. page.goto'dan önce çağrılır.
+export async function fixedClock(page, [y, m, d, h = 0, min = 0]) {
+  await page.evaluateOnNewDocument((y, m, d, h, min) => {
+    const Real = Date;
+    const now = new Real(y, m - 1, d, h, min).getTime();
+    class Fixed extends Real {
+      constructor(...args) { super(...(args.length ? args : [now])); }
+      static now() { return now; }
+    }
+    window.Date = Fixed;
+  }, y, m, d, h, min);
+}
+
 // Dil/para menüsünden seçim: menüyü açar ve seçeneğe tıklar. scope: '#navControls', '#navMobileControls', '#legalControls'
 export async function choose(page, scope, kind, value) {
   await page.click(`${scope} [data-ctl="${kind}"] .ctl-btn`);

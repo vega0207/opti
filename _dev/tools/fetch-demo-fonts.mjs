@@ -6,7 +6,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { REPO_ROOT } from './serve.mjs';
 
-// [Google Fonts css2 aile tanımı, google/fonts deposundaki lisans klasörü]
+// [Google Fonts css2 aile tanımı, google/fonts deposundaki lisans klasörü, alt kümeler (varsayılan latin)]
 const FAMILIES = [
   ['Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700', 'fraunces'],
   ['Karla:wght@400..700', 'karla'],
@@ -25,7 +25,16 @@ const FAMILIES = [
   ['Barlow+Condensed:wght@500;600;700', 'barlowcondensed'],
   ['Barlow:wght@400;500;600', 'barlow'],
   ['Fredoka:wght@400..700', 'fredoka'],
-  ['Nunito:wght@400..800', 'nunito']
+  ['Nunito:wght@400..800', 'nunito'],
+  ['Young+Serif', 'youngserif'],
+  ['Figtree:wght@400..700', 'figtree'],
+  ['Instrument+Serif:ital@0;1', 'instrumentserif'],
+  ['Hanken+Grotesk:wght@400..700', 'hankengrotesk'],
+  ['Unbounded:wght@500..800', 'unbounded'],
+  ['Chivo:wght@400..700', 'chivo'],
+  // Nesmina Türkçe: ğ, ş, ı, İ latin-ext alt kümesinde
+  ['Newsreader:ital,wght@0,400..600;1,400..600', 'newsreader', ['latin', 'latin-ext']],
+  ['Mulish:wght@400..700', 'mulish', ['latin', 'latin-ext']]
 ];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36';
 
@@ -48,12 +57,14 @@ const rules = ['/* Demo sayfalarının yazı tipleri. Kaynak: Google Fonts (SIL 
 const licenses = [];
 const seen = new Map();
 let total = 0;
-for (const [spec, licenseDir] of FAMILIES) {
+for (const [spec, licenseDir, subsets = ['latin']] of FAMILIES) {
   const css = await get(`https://fonts.googleapis.com/css2?family=${spec}&display=swap`);
   const blocks = [...css.matchAll(/\/\*\s*([a-z-]+)\s*\*\/\s*(@font-face\s*\{[^}]*\})/g)]
-    .filter(([, subset]) => subset === 'latin').map(m => m[2]);
-  if (!blocks.length) throw new Error(`${spec}: latin alt kümesi yok`);
-  for (const block of blocks) {
+    .filter(([, subset]) => subsets.includes(subset)).map(m => ({ subset: m[1], block: m[2] }));
+  for (const want of subsets) {
+    if (!blocks.some(b => b.subset === want)) throw new Error(`${spec}: ${want} alt kümesi yok`);
+  }
+  for (const { subset, block } of blocks) {
     const family = field(block, /font-family:\s*'([^']+)'/, spec);
     const style = field(block, /font-style:\s*(\w+)/, spec);
     const weight = field(block, /font-weight:\s*([0-9 ]+)/, spec);
@@ -62,7 +73,7 @@ for (const [spec, licenseDir] of FAMILIES) {
     // Değişken yazı tiplerinde aynı dosya birden çok ağırlıkla gelir: bir kez indirilir
     let file = seen.get(url);
     if (!file) {
-      file = `${slug(family)}-${style === 'italic' ? 'italic-' : ''}${weight.replace(' ', '-')}.woff2`;
+      file = `${slug(family)}-${style === 'italic' ? 'italic-' : ''}${weight.replace(' ', '-')}${subset === 'latin' ? '' : `-${subset}`}.woff2`;
       const data = await get(url, 'buffer');
       total += data.length;
       await writeFile(path.join(dir, file), data);
