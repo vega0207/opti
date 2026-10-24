@@ -125,6 +125,14 @@ OCS.addLang({
     "footer.privacy": "Privacy",
     "footer.terms": "Terms",
     "footer.rights": "© 2026 OptiCodeStudio. All rights reserved.",
+    "footer.cookies": "Cookie Policy",
+    "footer.cookiePrefs": "Cookie preferences",
+
+    "consent.label": "Cookie notice",
+    "consent.text": "This site uses no advertising or tracking cookies. We keep a small record in your browser to remember your language, theme and currency.",
+    "consent.accept": "Accept",
+    "consent.reject": "Reject",
+    "consent.policy": "Cookie Policy",
 
     "modal.close": "Close"
   },

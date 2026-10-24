@@ -147,3 +147,13 @@ export function overflowReport(page) {
 export async function hasHorizontalOverflow(page) {
   return (await overflowReport(page)).length > 0;
 }
+
+// Aynı tarayıcı bağlamında (aynı localStorage, yeni sessionStorage) yeni sekme; açılış animasyonu atlanır.
+export async function openTab(ctx, context, path, { scheme = 'dark', width = 1440, height = 900 } = {}) {
+  const page = await context.newPage();
+  await page.setViewport({ width, height });
+  await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
+  await page.evaluateOnNewDocument(() => { try { sessionStorage.setItem('ocs.splash', '1'); } catch (e) { /* yok */ } });
+  await page.goto(ctx.base + path, { waitUntil: 'networkidle0' });
+  return page;
+}

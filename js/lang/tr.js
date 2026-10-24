@@ -126,6 +126,14 @@ OCS.addLang({
     "footer.privacy": "Gizlilik",
     "footer.terms": "Şartlar",
     "footer.rights": "© 2026 OptiCodeStudio. Tüm hakları saklıdır.",
+    "footer.cookies": "Çerez Politikası",
+    "footer.cookiePrefs": "Çerez tercihleri",
+
+    "consent.label": "Çerez bildirimi",
+    "consent.text": "Bu sitede reklam veya takip çerezi yok. Dil, tema ve para seçiminizi hatırlamak için tarayıcınıza küçük bir kayıt bırakıyoruz.",
+    "consent.accept": "Kabul et",
+    "consent.reject": "Reddet",
+    "consent.policy": "Çerez Politikası",
 
     "modal.close": "Kapat"
   },

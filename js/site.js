@@ -464,6 +464,7 @@
     $$('[data-open-audit]').forEach(b => b.addEventListener('click', () => openModal($('#auditModal'))));
     d.addEventListener('ocs:lang', renderAll);
     d.addEventListener('ocs:currency', renderPrices);
+    OCS.consentBanner.init(OCS.splashDone || Promise.resolve());
     OCS.i18n.init();
   }
 

@@ -362,6 +362,55 @@
     syncControls();
   };
 
+  /* ---------- Çerez bildirimi ----------
+     Sitede takip çerezi yok; bildirim yalnız tercihlerin kalıcı saklanıp saklanmayacağını sorar. */
+  OCS.consentBanner = (() => {
+    let el = null;
+    let bound = false;
+    const render = () => {
+      if (!el) return;
+      el.setAttribute('aria-label', t('consent.label'));
+      el.innerHTML = `<p>${escHtml(t('consent.text'))} <a href="cookies.html">${escHtml(t('consent.policy'))}</a></p>
+        <div class="consent-actions">
+          <button type="button" class="btn btn-ghost btn-sm" data-consent="rejected">${escHtml(t('consent.reject'))}</button>
+          <button type="button" class="btn btn-primary btn-sm" data-consent="accepted">${escHtml(t('consent.accept'))}</button>
+        </div>`;
+    };
+    const close = () => {
+      if (el) el.remove();
+      el = null;
+    };
+    const open = () => {
+      if (el) return;
+      el = d.createElement('div');
+      el.id = 'consentBanner';
+      el.className = 'consent';
+      el.setAttribute('role', 'region');
+      render();
+      el.addEventListener('click', e => {
+        const btn = e.target.closest('[data-consent]');
+        if (!btn) return;
+        OCS.store.setConsent(btn.dataset.consent);
+        close();
+      });
+      d.body.appendChild(el);
+    };
+    const init = (after = Promise.resolve()) => {
+      if (!bound) {
+        bound = true;
+        d.addEventListener('ocs:lang', render);
+        d.addEventListener('click', e => {
+          if (!e.target.closest('[data-open-consent]')) return;
+          e.preventDefault();
+          open();
+        });
+      }
+      if (OCS.store.consent()) return;
+      Promise.resolve(after).then(() => OCS.i18n.ready).then(open);
+    };
+    return { init, open, close };
+  })();
+
   // Etkin olmayan temanın fotoğrafı, sayfa yüklendikten sonra boşta yüklenir (geçiş anında hazır olsun).
   OCS.ui.lazyBackground = () => {
     const layer = d.querySelector('.bg-layer');
