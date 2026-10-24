@@ -210,6 +210,11 @@
           <textarea id="f-msg" name="details" data-i18n-attr="placeholder:form.detailsPh" placeholder="What does your business do, and what should the website do for you?"></textarea>
           <span class="f-msg" data-i18n="form.err.details">Please tell us a little about your project.</span>
         </div>
+        <div class="f-checks">
+          <label class="f-check"><input type="checkbox" name="kvkk"> <span data-i18n-html="form.kvkk1">I have read the <a href="privacy.html" data-legal="privacy">Privacy Notice</a>.</span></label>
+          <label class="f-check"><input type="checkbox" name="transfer"> <span data-i18n-html="form.kvkk2">I give my <a href="privacy.html#consent" data-legal="consent">explicit consent</a> to my personal data being transferred to form and email services abroad so that my request can be answered.</span></label>
+          <p class="f-msg" data-i18n="form.err.kvkk">Please tick both boxes to send the form.</p>
+        </div>
         <button type="submit" class="btn btn-primary btn-block"><span data-i18n="form.submit">Send</span><svg class="i flip" aria-hidden="true"><use href="img/icons.svg#i-send"></use></svg></button>
         <p class="form-hint" data-i18n="form.hint">Your message goes straight to our inbox.</p>
       </form>
@@ -309,10 +314,27 @@
           <label for="a-note" data-i18n="audit.note">Anything in particular? (optional)</label>
           <textarea id="a-note" name="notes" class="short" data-i18n-attr="placeholder:audit.notePh" placeholder="For example: it looks old on phones"></textarea>
         </div>
+        <div class="f-checks">
+          <label class="f-check"><input type="checkbox" name="kvkk"> <span data-i18n-html="form.kvkk1">I have read the <a href="privacy.html" data-legal="privacy">Privacy Notice</a>.</span></label>
+          <label class="f-check"><input type="checkbox" name="transfer"> <span data-i18n-html="form.kvkk2">I give my <a href="privacy.html#consent" data-legal="consent">explicit consent</a> to my personal data being transferred to form and email services abroad so that my request can be answered.</span></label>
+          <p class="f-msg" data-i18n="form.err.kvkk">Please tick both boxes to send the form.</p>
+        </div>
         <button type="submit" class="btn btn-primary btn-block"><span data-i18n="audit.submit">Request a review</span><svg class="i flip" aria-hidden="true"><use href="img/icons.svg#i-send"></use></svg></button>
         <p class="form-hint" data-i18n="audit.hint">Free, no obligation.</p>
       </form>
     </div>
+  </div>
+</div>
+
+<!-- ================= HUKUKİ METİN PENCERESİ ================= -->
+<div class="modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+  <div class="modal-bg" data-close="legalModal"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div><h3 id="legalTitle"></h3></div>
+      <button class="modal-x" type="button" data-close="legalModal" data-i18n-attr="aria-label:modal.close" aria-label="Close"><svg class="i" aria-hidden="true"><use href="img/icons.svg#i-x"></use></svg></button>
+    </div>
+    <div class="modal-body legal-text" id="legalBody"></div>
   </div>
 </div>
 

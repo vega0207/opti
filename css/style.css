@@ -548,6 +548,30 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 .f-msg { display: none; margin-top: 6px; color: var(--bad); font-size: 13px; }
 .f-group.err .f-msg { display: block; }
 .form-hint { margin-top: 14px; color: var(--muted); font-size: 13.5px; }
+.f-checks { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 20px; }
+.f-check { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; cursor: pointer; }
+.f-check input { flex: none; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); cursor: pointer; }
+.f-check a { color: var(--accent); font-weight: 600; }
+.f-check.err { color: var(--bad); }
+.f-check.err input { outline: 2px solid var(--bad); outline-offset: 2px; }
+.f-checks.err > .f-msg { display: block; }
+
+.audit-ok { padding: 22px 6px; text-align: center; }
+.ok-ico { display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto 18px; border: 1px solid var(--accent); border-radius: 50%; color: var(--accent); }
+.ok-ico .i { width: 30px; height: 30px; }
+.audit-ok h4 { margin-bottom: 8px; font-size: 21px; }
+.audit-ok p { color: var(--muted); font-size: 14.5px; }
+
+/* Hukuki metinler (pencere ve sayfalar) */
+.legal-text h3 { margin: 24px 0 8px; font-size: 17px; }
+.legal-text h3:first-child { margin-top: 0; }
+.legal-text p,
+.legal-text li { color: var(--muted); font-size: 15px; }
+.legal-text p + p { margin-top: 10px; }
+.legal-text ul { display: grid; gap: 6px; margin-top: 8px; padding-inline-start: 20px; }
+.legal-text li::marker { color: var(--accent); }
+.legal-text a { color: var(--accent); font-weight: 600; }
+.legal-text .legal-updated { margin-top: 22px; font-size: 13px; }
 
 .side { display: flex; flex-direction: column; gap: 18px; }
 .side-card { padding: 26px; }

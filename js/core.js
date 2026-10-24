@@ -197,6 +197,17 @@
 
   OCS.i18n = { lang: () => currentLang, dict, locale, t, fmt, load, apply, init, ready, set };
 
+  /* ---------- Hukuki metinler ----------
+     Metin dil dosyasında, şirket bilgileri config.js'te: {company}, {address}, {email}, {updated} */
+  const escHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const LEGAL_FIELDS = { company: 'companyTitle', address: 'address', email: 'email', updated: 'updated' };
+  OCS.legalText = doc => {
+    const entry = (dict().legal || {})[doc];
+    if (!entry) return '';
+    const info = (typeof CONFIG !== 'undefined' && CONFIG.legal) || {};
+    return entry.html.replace(/\{(company|address|email|updated)\}/g, (token, key) => escHtml(info[LEGAL_FIELDS[key]] || ''));
+  };
+
   /* ---------- Para birimi ----------
      Fiyatlar config.js'teki tablodan gelir; kur hesabı yapılmaz. */
   const cfg = () => (typeof CONFIG !== 'undefined' ? CONFIG : null);

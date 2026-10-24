@@ -88,6 +88,9 @@ OCS.addLang({
     "form.err.email": "Lütfen geçerli bir e-posta adresi yazın.",
     "form.err.details": "Lütfen projenizden biraz bahsedin.",
     "form.err.site": "Lütfen web sitenizi ya da işletme adınızı yazın.",
+    "form.kvkk1": "<a href=\"privacy.html\" data-legal=\"privacy\">Aydınlatma Metni</a>'ni okudum.",
+    "form.kvkk2": "Talebimin yanıtlanması için kişisel verilerimin yurt dışındaki form ve e-posta hizmetlerine aktarılmasına <a href=\"privacy.html#consent\" data-legal=\"consent\">açık rıza</a> veriyorum.",
+    "form.err.kvkk": "Formu göndermek için iki kutucuğu da işaretleyin.",
 
     "side.email.title": "E-postayı mı tercih edersiniz?",
     "side.email.text": "Bize doğrudan yazın.",
@@ -353,5 +356,52 @@ OCS.addLang({
       q: "Yayından sonra ne oluyor?",
       a: "Her projede 7 günlük düzeltme süresi ve 30 gün teknik destek vardır. Sonrasında bir bakım planı ekleyebilir ya da siteyi kendiniz yönetebilirsiniz."
     }
-  ]
+  ],
+
+  legal: {
+    privacy: {
+      title: "KVKK Aydınlatma Metni",
+      html: `
+<p>Bu metin, bu web sitesindeki formlar aracılığıyla gönderdiğiniz kişisel verilerin 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği ile Birleşik Krallık'taki ziyaretçiler için GDPR ve UK GDPR kapsamında nasıl işlendiğini açıklar.</p>
+<h3>Veri sorumlusu</h3>
+<p>Veri sorumlusu: {company}, {address}. İletişim: <a href="mailto:{email}">{email}</a>. OptiCodeStudio, veri sorumlusunun marka adıdır.</p>
+<h3>Hangi verileri işliyoruz</h3>
+<ul>
+<li>Adınız ve e-posta adresiniz</li>
+<li>Yazdıysanız işletme adınız ya da web siteniz</li>
+<li>Seçtiyseniz ilgilendiğiniz paket ve bütçe aralığınız</li>
+<li>Mesajınız</li>
+<li>Sitede kullandığınız dil ve para birimi, formdaki onayları verdiğiniz tarih ve saat</li>
+</ul>
+<h3>Hangi amaçla işliyoruz</h3>
+<ul>
+<li>Talebinize cevap vermek ve projenizi konuşmak</li>
+<li>Öneri, kapsam ya da fiyat teklifi hazırlamak</li>
+<li>İstediğiniz ücretsiz site incelemesini yapmak</li>
+</ul>
+<p>Form verilerini reklam için kullanmıyor ve hiçbir şekilde satmıyoruz.</p>
+<h3>Hukuki sebep</h3>
+<p>Verileriniz, talebiniz üzerine olası bir sözleşme öncesinde gerekli adımların atılması ve taleplere cevap vermedeki meşru menfaatimiz sebebiyle işlenir (KVKK m.5/2-c ve f; GDPR m.6/1-b ve f). Form mesajları yurt dışındaki hizmet sağlayıcılar aracılığıyla iletildiğinden yurt dışına aktarım, formdaki ikinci kutucukla verdiğiniz açık rızaya dayanır (KVKK m.9).</p>
+<h3>Veriler kimlere aktarılır</h3>
+<ul>
+<li>Form mesajlarını e-posta kutumuza ileten FormSubmit (ABD)</li>
+<li>E-postalarımızın barındırıldığı Google (Gmail)</li>
+<li>Bu siteyi barındıran ve her web sunucusu gibi IP adresinizi teknik kayıtlarda tutabilen GitHub Pages (ABD)</li>
+</ul>
+<p>Verileri yalnızca kanunun gerektirdiği durumlarda yetkili kamu kurumlarıyla paylaşırız.</p>
+<h3>Ne kadar süre saklıyoruz</h3>
+<p>Talebiniz projeye dönüşmezse son yazışmamızdan bir yıl sonra sileriz. Birlikte çalışırsak proje kayıtlarını ticaret ve vergi mevzuatının gerektirdiği süre boyunca saklarız.</p>
+<h3>Haklarınız</h3>
+<p>KVKK m.11 ve GDPR m.15–22 kapsamında verilerinizin işlenip işlenmediğini öğrenme, bilgi ve kopya isteme, düzeltilmesini ya da silinmesini isteme, işlemeye itiraz etme veya kısıtlanmasını isteme, uygulanabildiği durumlarda veri taşınabilirliği ve verdiğiniz rızayı her zaman geri alma haklarına sahipsiniz. Başvurunuzu <a href="mailto:{email}">{email}</a> adresine gönderebilirsiniz; en geç 30 gün içinde cevaplıyoruz.</p>
+<p>Ayrıca Kişisel Verileri Koruma Kurulu'na ya da AB veya Birleşik Krallık'ta yaşıyorsanız bulunduğunuz yerdeki veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
+<p class="legal-updated">Son güncelleme: {updated}</p>`
+    },
+    consent: {
+      title: "Açık Rıza Metni",
+      html: `
+<p>Bu sitedeki formlarla gönderdiğiniz mesaja cevap verebilmemiz için adınız, e-posta adresiniz, işletme ya da web sitesi bilginiz, bütçe aralığınız ve mesajınız FormSubmit (ABD) aracılığıyla Google (Gmail) üzerinde barındırılan e-posta kutumuza iletilir ve orada saklanır.</p>
+<p>Kutucuğu işaretleyerek, kişisel verilerinizin yalnızca talebinize cevap verilmesi amacıyla bu şekilde yurt dışına aktarılmasına açık rıza vermiş olursunuz (KVKK m.9). Türkiye dışındaki ülkeler aynı düzeyde veri koruması sağlamayabilir.</p>
+<p>Rızanızı istediğiniz zaman <a href="mailto:{email}">{email}</a> adresine yazarak geri alabilirsiniz. Geri almanız, öncesinde yapılmış aktarımları etkilemez. Bu rıza olmadan form gönderilemez.</p>`
+    }
+  }
 });

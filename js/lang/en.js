@@ -87,6 +87,9 @@ OCS.addLang({
     "form.err.email": "Please enter a valid email.",
     "form.err.details": "Please tell us a little about your project.",
     "form.err.site": "Please enter your website or business name.",
+    "form.kvkk1": "I have read the <a href=\"privacy.html\" data-legal=\"privacy\">Privacy Notice</a>.",
+    "form.kvkk2": "I give my <a href=\"privacy.html#consent\" data-legal=\"consent\">explicit consent</a> to my personal data being transferred to form and email services abroad so that my request can be answered.",
+    "form.err.kvkk": "Please tick both boxes to send the form.",
 
     "side.email.title": "Prefer email?",
     "side.email.text": "Write to us directly.",
@@ -352,5 +355,52 @@ OCS.addLang({
       q: "What happens after launch?",
       a: "Every project includes a 7-day adjustment window and 30 days of technical support. After that you can add a care plan or manage the site yourself."
     }
-  ]
+  ],
+
+  legal: {
+    privacy: {
+      title: "Privacy Notice",
+      html: `
+<p>This notice explains how personal data sent through the forms on this website is processed under Turkey's Personal Data Protection Law No. 6698 (KVKK) and, for visitors in the European Union and the United Kingdom, under the GDPR and UK GDPR.</p>
+<h3>Who is responsible</h3>
+<p>Data controller: {company}, {address}. Contact: <a href="mailto:{email}">{email}</a>. OptiCodeStudio is the brand name of the data controller.</p>
+<h3>What we collect</h3>
+<ul>
+<li>Your name and email address</li>
+<li>Your business name or website, if you enter it</li>
+<li>The package you are interested in and your budget range, if you choose them</li>
+<li>Your message</li>
+<li>The language and currency you used on the site, and the date and time you gave the consents on the form</li>
+</ul>
+<h3>Why we use it</h3>
+<ul>
+<li>To answer your enquiry and discuss your project</li>
+<li>To prepare a recommendation, scope or quote</li>
+<li>To carry out the free website review you asked for</li>
+</ul>
+<p>We do not use form data for advertising and we never sell it.</p>
+<h3>Legal basis</h3>
+<p>Processing is necessary to take steps at your request before a possible contract, and for our legitimate interest in answering enquiries (KVKK Art. 5(2)(c) and (f); GDPR Art. 6(1)(b) and (f)). Form messages are delivered by service providers abroad, so the transfer abroad is based on the explicit consent you give with the second box on the form (KVKK Art. 9).</p>
+<h3>Who receives it</h3>
+<ul>
+<li>FormSubmit (USA), which delivers form messages to our inbox</li>
+<li>Google (Gmail), where our email is hosted</li>
+<li>GitHub Pages (USA), which hosts this website and, like any web server, may record your IP address in technical logs</li>
+</ul>
+<p>We share data with public authorities only where the law requires it.</p>
+<h3>How long we keep it</h3>
+<p>If your enquiry does not turn into a project, we delete it one year after our last correspondence. If we work together, we keep project records for as long as commercial and tax law requires.</p>
+<h3>Your rights</h3>
+<p>Under KVKK Article 11 and GDPR Articles 15–22 you can ask whether we process your data, get information and a copy, have it corrected or deleted, object to or restrict processing, ask for data portability where it applies, and withdraw your consent at any time. Send your request to <a href="mailto:{email}">{email}</a>. We reply within 30 days at the latest.</p>
+<p>You can also complain to the Turkish Personal Data Protection Authority (KVKK) or, if you live in the EU or the UK, to your local data protection authority.</p>
+<p class="legal-updated">Last updated: {updated}</p>`
+    },
+    consent: {
+      title: "Explicit Consent",
+      html: `
+<p>To answer the message you send through the forms on this website, your name, email address, business or website details, budget range and message are delivered by FormSubmit (USA) to our email inbox hosted by Google (Gmail), and stored there.</p>
+<p>By ticking the box, you give your explicit consent to this transfer of your personal data abroad, only for the purpose of answering your request (KVKK Art. 9). Countries outside Turkey may not offer the same level of data protection.</p>
+<p>You can withdraw your consent at any time by writing to <a href="mailto:{email}">{email}</a>. Withdrawing does not affect transfers made before. Without this consent the form cannot be sent.</p>`
+    }
+  }
 });

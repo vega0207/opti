@@ -231,6 +231,198 @@
     renderPrices();
   }
 
+  /* ---------- Formlar (FormSubmit ile sahibinin e-postasına) ---------- */
+  const validators = {
+    name: v => String(v).trim().length > 1,
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim()),
+    details: v => String(v).trim().length > 9,
+    site: v => String(v).trim().length > 3
+  };
+
+  // Sahibin mailindeki alan adları İngilizce kalır (eski formlarla aynı); ek olarak dil, para ve onaylar.
+  function buildPayload(kind, values, ctx) {
+    const clean = v => String(v == null ? '' : v).trim();
+    const orDash = v => clean(v) || '—';
+    const tag = `[${String(ctx.lang).toUpperCase()}]`;
+    const common = {
+      'Language': ctx.lang,
+      'Currency': ctx.currency,
+      'Privacy notice': 'Acknowledged',
+      'Transfer consent': 'Given',
+      'Consent time': ctx.now.toISOString()
+    };
+    if (kind === 'audit') {
+      return {
+        _subject: `${tag} Free Audit Request — ${clean(values.website)}`,
+        _template: 'table',
+        _captcha: 'false',
+        'Name': clean(values.name),
+        'Email': clean(values.email),
+        'Website': clean(values.website),
+        'Notes': orDash(values.notes),
+        ...common
+      };
+    }
+    return {
+      _subject: `${tag} Quote Request — ${clean(values.pkgLabel)} — ${clean(values.name)}`,
+      _template: 'table',
+      _captcha: 'false',
+      'Name': clean(values.name),
+      'Email': clean(values.email),
+      'Business / website': orDash(values.business),
+      'Interested in': clean(values.pkgLabel),
+      'Budget': clean(values.budgetLabel),
+      'Project details': clean(values.details),
+      ...common
+    };
+  }
+
+  async function send(payload) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 10000);
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${CONFIG.email}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: ctrl.signal
+      });
+      const data = await res.json().catch(() => ({}));
+      return Boolean(data && (data.success === true || data.success === 'true'));
+    } catch (e) {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  // Alanlar ve iki zorunlu kutucuk; hatalı olanlar işaretlenir.
+  function validate(form, fields) {
+    let ok = true;
+    for (const [selector, test] of fields) {
+      const input = $(selector, form);
+      const good = test(input.value);
+      input.closest('.f-group').classList.toggle('err', !good);
+      if (!good) ok = false;
+    }
+    let checked = true;
+    $$('.f-check', form).forEach(label => {
+      const on = $('input[type="checkbox"]', label).checked;
+      label.classList.toggle('err', !on);
+      if (!on) checked = false;
+    });
+    $('.f-checks', form).classList.toggle('err', !checked);
+    return ok && checked;
+  }
+
+  function clearErrorsOnInput(form) {
+    form.addEventListener('input', e => {
+      const group = e.target.closest('.f-group');
+      if (group) group.classList.remove('err');
+      const check = e.target.closest('.f-check');
+      if (check) {
+        check.classList.remove('err');
+        if (!$('.f-check.err', form)) $('.f-checks', form).classList.remove('err');
+      }
+    });
+  }
+
+  const sendContext = () => ({ lang: OCS.i18n.lang(), currency: OCS.money.current(), now: new Date() });
+
+  function initQuoteForm() {
+    const form = $('#quoteForm');
+    clearErrorsOnInput(form);
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = $('[type="submit"]', form);
+      if (btn.disabled) return;
+      if (!validate(form, [['#f-name', validators.name], ['#f-email', validators.email], ['#f-msg', validators.details]])) {
+        showToast(t('toast.fix'));
+        return;
+      }
+      const select = $('#f-pkg');
+      const pkgId = select.value || 'notsure';
+      const pkgLabel = pkgId === 'notsure' ? `${t('form.packageNotSure')} (notsure)` : `${pkgText(pkgId).name} (${pkgId})`;
+      const budget = $('#f-budget');
+      const payload = buildPayload('quote', {
+        name: $('#f-name').value,
+        email: $('#f-email').value,
+        business: $('#f-site').value,
+        pkgLabel,
+        budgetLabel: budget.options[budget.selectedIndex] ? budget.options[budget.selectedIndex].textContent : '',
+        details: $('#f-msg').value
+      }, sendContext());
+
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = t('form.sending');
+      if (await send(payload)) {
+        showToast(t('toast.sent'));
+        form.reset();
+        btn.textContent = t('form.sent');
+        setTimeout(() => { btn.innerHTML = original; btn.disabled = false; OCS.i18n.apply(btn); }, 2400);
+      } else {
+        btn.innerHTML = original;
+        btn.disabled = false;
+        OCS.i18n.apply(btn);
+        showToast(t('toast.fail'));
+      }
+    });
+  }
+
+  function initAuditForm() {
+    const form = $('#auditForm');
+    clearErrorsOnInput(form);
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = $('[type="submit"]', form);
+      if (btn.disabled) return;
+      if (!validate(form, [['#a-name', validators.name], ['#a-email', validators.email], ['#a-site', validators.site]])) {
+        showToast(t('toast.fix'));
+        return;
+      }
+      const payload = buildPayload('audit', {
+        name: $('#a-name').value,
+        email: $('#a-email').value,
+        website: $('#a-site').value,
+        notes: $('#a-note').value
+      }, sendContext());
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = t('form.sending');
+      if (await send(payload)) {
+        form.innerHTML = `<div class="audit-ok">
+          <div class="ok-ico">${OCS.ui.icon('circle-check')}</div>
+          <h4 data-i18n="audit.ok.title">${esc(t('audit.ok.title'))}</h4>
+          <p data-i18n="audit.ok.text">${esc(t('audit.ok.text'))}</p>
+        </div>`;
+        showToast(t('toast.auditSent'));
+      } else {
+        btn.innerHTML = original;
+        btn.disabled = false;
+        OCS.i18n.apply(btn);
+        showToast(t('toast.auditFail'));
+      }
+    });
+  }
+
+  /* ---------- Hukuki metin penceresi (formdaki bağlantılar) ---------- */
+  function openLegal(doc) {
+    const entry = (OCS.i18n.dict().legal || {})[doc];
+    if (!entry) return false;
+    $('#legalTitle').textContent = entry.title;
+    $('#legalBody').innerHTML = OCS.legalText(doc);
+    openModal($('#legalModal'));
+    return true;
+  }
+
+  function initLegalLinks() {
+    d.addEventListener('click', e => {
+      const link = e.target.closest('a[data-legal]');
+      if (link && openLegal(link.dataset.legal)) e.preventDefault();
+    });
+  }
+
   /* ---------- İletişim bağlantıları ve e-posta kopyalama ---------- */
   function initContact() {
     $('#igLink').href = CONFIG.instagramUrl;
@@ -265,6 +457,9 @@
     initContact();
     initPackages();
     initFaq();
+    initQuoteForm();
+    initAuditForm();
+    initLegalLinks();
     $$('[data-work-filter]').forEach(b => b.addEventListener('click', () => renderPortfolio(b.dataset.workFilter)));
     $$('[data-open-audit]').forEach(b => b.addEventListener('click', () => openModal($('#auditModal'))));
     d.addEventListener('ocs:lang', renderAll);
@@ -272,7 +467,7 @@
     OCS.i18n.init();
   }
 
-  OCS.site = { showToast, openModal, closeModal, openPkgModal };
+  OCS.site = { showToast, openModal, closeModal, openPkgModal, validators, buildPayload };
 
   // Tüm "defer" betikler çalıştıktan sonra başlar (açılış animasyonu dahil).
   if (d.readyState === 'complete') init();
