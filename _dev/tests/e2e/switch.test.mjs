@@ -189,3 +189,16 @@ test('menü klavyeyle: aşağı ok açar ve seçili dile gider, ok gezer, Enter 
   assert.equal(await page.evaluate(() => document.activeElement.matches('#navControls [data-ctl="lang"] .ctl-btn')), true);
   await close();
 });
+
+// Site sahibi ☰ düğmesini menü olarak fark etmedi: telefonda yanında dilin "Menü" yazısı görünür ve sığar.
+test('telefonda menü düğmesinde "Menü" yazısı görünür, bar taşmaz', async () => {
+  const LANGS = loadScripts(['js/boot.js', 'js/lang/en.js', 'js/lang/tr.js', 'js/lang/de.js', 'js/lang/ru.js', 'js/lang/ar.js']).run('OCS.langs');
+  for (const [lang, width] of [['tr', 390], ['tr', 360], ['de', 360], ['ru', 360], ['ar', 360], ['en', 1024]]) {
+    const { page, close } = await openPage(ctx, `/?lang=${lang}`, { width, height: 800 });
+    const text = await page.$eval('#burger', b => b.innerText.trim());
+    assert.equal(text, LANGS[lang].ui['nav.menu'], `${lang} ${width}px`);
+    assert.deepEqual(await overflowReport(page), [], `${lang} ${width}px`);
+    assert.equal(await page.$eval('nav .nav-in', el => el.scrollWidth <= el.clientWidth), true, `${lang} ${width}px bar sığmıyor`);
+    await close();
+  }
+});

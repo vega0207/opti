@@ -361,7 +361,8 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 .nav-burger:hover { border-color: var(--accent); color: var(--accent); }
 [data-theme="dark"] .theme-toggle .i-moon,
 [data-theme="light"] .theme-toggle .i-sun { display: none; }
-.nav-burger { display: none; }
+/* Telefonda ☰ yanında "Menü" yazar: yalnız simge, menü olarak fark edilmiyordu */
+.nav-burger { display: none; width: auto; padding-inline: 12px 14px; grid-auto-flow: column; gap: 8px; font-size: 14px; font-weight: 700; }
 
 .nav-mobile {
   display: none;
@@ -813,6 +814,8 @@ html.no-motion [data-anim] { opacity: 1; transform: none; transition: none; }
 @media (max-width: 1024px) {
   .nav-links { display: none; }
   .nav-burger { display: grid; }
+  /* Üst barda yer açmak için dil düğmesinde yalnız bayrak; dil adları açılan listede ve ekran okuyucu adında kalır */
+  .nav-tools [data-ctl="lang"] .ctl-val { display: none; }
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 40px); }
   .hero::before,
   [dir="rtl"] .hero::before { background: linear-gradient(180deg, rgba(var(--bg-rgb), .80) 0%, rgba(var(--bg-rgb), .55) 55%, rgba(var(--bg-rgb), .15) 100%); }
@@ -834,6 +837,13 @@ html.no-motion [data-anim] { opacity: 1; transform: none; transition: none; }
   .modal-body { padding: 20px 18px; }
   .modal-foot { padding: 0 18px 20px; }
   .toast { inset-inline: 14px; bottom: 14px; max-width: none; }
+}
+/* Dar telefonlar: "Menü" yazısı ile bar sığsın diye logo ve aralıklar biraz küçülür */
+@media (max-width: 400px) {
+  .logo { gap: 8px; font-size: 15px; }
+  .logo-mark { width: 36px; height: 27px; }
+  .nav-tools { gap: 6px; }
+  .nav-burger { padding-inline: 10px 12px; gap: 6px; }
 }
 @media (max-width: 560px) {
   :root { --gutter: 16px; }
