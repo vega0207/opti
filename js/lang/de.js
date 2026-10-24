@@ -128,6 +128,7 @@ OCS.addLang({
     "footer.rights": "© 2026 OptiCodeStudio. Alle Rechte vorbehalten.",
     "footer.cookies": "Cookie-Richtlinie",
     "footer.cookiePrefs": "Cookie-Einstellungen",
+    "footer.photos": "Hintergrundfotos",
     "legal.back": "Zurück zur Website",
 
     "consent.label": "Cookie-Hinweis",

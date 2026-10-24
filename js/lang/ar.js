@@ -127,6 +127,7 @@ OCS.addLang({
     "footer.rights": "© 2026 OptiCodeStudio. جميع الحقوق محفوظة.",
     "footer.cookies": "سياسة ملفات تعريف الارتباط",
     "footer.cookiePrefs": "تفضيلات ملفات تعريف الارتباط",
+    "footer.photos": "صور الخلفية",
     "legal.back": "العودة إلى الموقع",
 
     "consent.label": "إشعار ملفات تعريف الارتباط",

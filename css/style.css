@@ -619,6 +619,8 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 .foot { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
 .foot-brand p { margin-top: 12px; color: var(--muted); font-size: 14px; }
 .foot-brand small { display: block; margin-top: 6px; color: var(--muted); font-size: 12.5px; }
+.foot-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.foot-credit a:hover { color: var(--accent); }
 .foot-links { display: flex; flex-wrap: wrap; gap: 10px 24px; list-style: none; }
 .foot-links a { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 14px; text-decoration: none; }
 .foot-links a:hover { color: var(--accent); }

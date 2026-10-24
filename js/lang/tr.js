@@ -128,6 +128,7 @@ OCS.addLang({
     "footer.rights": "© 2026 OptiCodeStudio. Tüm hakları saklıdır.",
     "footer.cookies": "Çerez Politikası",
     "footer.cookiePrefs": "Çerez tercihleri",
+    "footer.photos": "Arka plan fotoğrafları",
     "legal.back": "Siteye dön",
 
     "consent.label": "Çerez bildirimi",
