@@ -148,6 +148,17 @@ export async function hasHorizontalOverflow(page) {
   return (await overflowReport(page)).length > 0;
 }
 
+// Dil/para menüsünden seçim: menüyü açar ve seçeneğe tıklar. scope: '#navControls', '#navMobileControls', '#legalControls'
+export async function choose(page, scope, kind, value) {
+  await page.click(`${scope} [data-ctl="${kind}"] .ctl-btn`);
+  const opt = `${scope} [data-ctl="${kind}"] .ctl-opt[data-value="${value}"]`;
+  await page.waitForSelector(opt, { visible: true, timeout: 3000 });
+  await page.click(opt);
+}
+
+export const ctlValue = (page, scope, kind) =>
+  page.$eval(`${scope} [data-ctl="${kind}"]`, el => el.dataset.value);
+
 // Aynı tarayıcı bağlamında (aynı localStorage, yeni sessionStorage) yeni sekme; açılış animasyonu atlanır.
 export async function openTab(ctx, context, path, { scheme = 'dark', width = 1440, height = 900 } = {}) {
   const page = await context.newPage();

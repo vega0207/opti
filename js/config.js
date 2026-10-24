@@ -25,17 +25,19 @@ const CONFIG = {
 
   // ---- DİLLER ---------------------------------------------------
   // Menüde bu sırayla görünür. Kodlara (tr, en, ...) dokunma.
+  // flag: menüdeki bayrak (tr, gb, de, kw, ru, us, eu; çizimler _dev/flags.svg içinde)
   languages: [
-    { code: "tr", name: "Türkçe" },
-    { code: "en", name: "English" },
-    { code: "de", name: "Deutsch" },
-    { code: "ar", name: "العربية" },
-    { code: "ru", name: "Русский" }
+    { code: "tr", name: "Türkçe", flag: "tr" },
+    { code: "en", name: "English", flag: "gb" },
+    { code: "de", name: "Deutsch", flag: "de" },
+    { code: "ar", name: "العربية", flag: "kw" },
+    { code: "ru", name: "Русский", flag: "ru" }
   ],
 
   // ---- PARA BİRİMLERİ -------------------------------------------
   currencies: ["USD", "TRY", "EUR", "RUB", "KWD"],
   currencySymbols: { USD: "$", TRY: "₺", EUR: "€", RUB: "₽", KWD: "د.ك" },
+  currencyFlags: { USD: "us", TRY: "tr", EUR: "eu", RUB: "ru", KWD: "kw" },
   // Ziyaretçi bir dil seçince otomatik gelen para birimi:
   langCurrency: { en: "USD", tr: "TRY", de: "EUR", ru: "RUB", ar: "KWD" },
 

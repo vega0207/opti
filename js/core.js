@@ -329,42 +329,104 @@
     d.addEventListener('ocs:lang', sync);
   };
 
-  // Dil ve para menüleri: aynı sayfadaki tüm kopyalar (üst bar + mobil menü) birlikte güncellenir.
+  // Dil ve para menüleri: bayraklı açılır liste (tarayıcının <select> kutusu resim gösteremez).
+  // Aynı sayfadaki tüm kopyalar (üst bar + mobil menü) birlikte güncellenir; aynı anda tek liste açık kalır.
   const escAttr = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const flag = code => `<svg class="flag" aria-hidden="true"><use href="#f-${escAttr(code)}"></use></svg>`;
+  const CTL = {
+    lang: {
+      items: () => CONFIG.languages.map(l => ({ value: l.code, flag: l.flag, label: l.name, lang: l.code })),
+      current: () => currentLang,
+      set: v => OCS.i18n.set(v),
+      name: () => t('controls.lang')
+    },
+    currency: {
+      items: () => CONFIG.currencies.map(c => ({ value: c, flag: CONFIG.currencyFlags[c], label: `${CONFIG.currencySymbols[c] || ''} ${c}`.trim() })),
+      current: () => OCS.money.current(),
+      set: v => OCS.money.set(v),
+      name: () => t('controls.currency')
+    }
+  };
   const syncControls = () => {
-    d.querySelectorAll('select[data-ctl="lang"]').forEach(s => {
-      s.value = currentLang;
-      s.setAttribute('aria-label', t('controls.lang'));
-    });
-    d.querySelectorAll('select[data-ctl="currency"]').forEach(s => {
-      s.value = OCS.money.current();
-      s.setAttribute('aria-label', t('controls.currency'));
+    d.querySelectorAll('.ctl[data-ctl]').forEach(el => {
+      const kind = CTL[el.dataset.ctl];
+      const items = kind.items();
+      const item = items.find(i => i.value === kind.current()) || items[0];
+      const btn = el.querySelector('.ctl-btn');
+      el.dataset.value = item.value;
+      btn.querySelector('use').setAttribute('href', `#f-${item.flag}`);
+      btn.querySelector('.ctl-val').textContent = item.label;
+      btn.setAttribute('aria-label', `${kind.name()}: ${item.label}`);
+      el.querySelectorAll('.ctl-opt').forEach(o => o.setAttribute('aria-current', String(o.dataset.value === item.value)));
     });
   };
+
+  let openCtl = null;
+  const closeCtl = (focusButton = false) => {
+    if (!openCtl) return;
+    const el = openCtl;
+    openCtl = null;
+    el.querySelector('.ctl-pop').hidden = true;
+    el.querySelector('.ctl-btn').setAttribute('aria-expanded', 'false');
+    if (focusButton) el.querySelector('.ctl-btn').focus();
+  };
+  const openMenu = (el, focusCurrent) => {
+    if (openCtl !== el) closeCtl();
+    openCtl = el;
+    el.querySelector('.ctl-pop').hidden = false;
+    el.querySelector('.ctl-btn').setAttribute('aria-expanded', 'true');
+    if (focusCurrent) (el.querySelector('.ctl-opt[aria-current="true"]') || el.querySelector('.ctl-opt')).focus();
+  };
+  // Ok tuşları seçenekler arasında gezer, sondan başa sarar; Home/End uçlara gider.
+  const moveFocus = (el, key) => {
+    const opts = [...el.querySelectorAll('.ctl-opt')];
+    const i = opts.indexOf(d.activeElement);
+    const next = { ArrowDown: i + 1, ArrowUp: i - 1, Home: 0, End: opts.length - 1 }[key];
+    opts[(next + opts.length) % opts.length].focus();
+  };
+
   let controlsBound = false;
+  const bindControlsOnce = () => {
+    controlsBound = true;
+    d.addEventListener('ocs:lang', syncControls);
+    d.addEventListener('ocs:currency', syncControls);
+    d.addEventListener('click', e => { if (openCtl && !openCtl.contains(e.target)) closeCtl(); });
+    d.addEventListener('focusin', e => { if (openCtl && !openCtl.contains(e.target)) closeCtl(); });
+    d.addEventListener('keydown', e => { if (e.key === 'Escape' && openCtl) closeCtl(true); });
+  };
+
   OCS.ui.renderControls = (container, { lang = true, currency = true } = {}) => {
     if (!container) return;
-    const parts = [];
-    if (lang) {
-      parts.push(`<label class="ctl ctl-lang">${OCS.ui.icon('globe')}<select data-ctl="lang">` +
-        CONFIG.languages.map(l => `<option value="${escAttr(l.code)}" lang="${escAttr(l.code)}">${escAttr(l.name)}</option>`).join('') +
-        '</select></label>');
-    }
-    if (currency) {
-      parts.push('<label class="ctl ctl-cur"><select data-ctl="currency">' +
-        CONFIG.currencies.map(c => `<option value="${escAttr(c)}">${escAttr(CONFIG.currencySymbols[c] || '')} ${escAttr(c)}</option>`).join('') +
-        '</select></label>');
-    }
-    container.innerHTML = parts.join('');
-    const langSelect = container.querySelector('select[data-ctl="lang"]');
-    const curSelect = container.querySelector('select[data-ctl="currency"]');
-    if (langSelect) langSelect.addEventListener('change', () => OCS.i18n.set(langSelect.value));
-    if (curSelect) curSelect.addEventListener('change', () => OCS.money.set(curSelect.value));
-    if (!controlsBound) {
-      controlsBound = true;
-      d.addEventListener('ocs:lang', syncControls);
-      d.addEventListener('ocs:currency', syncControls);
-    }
+    const kinds = [lang && 'lang', currency && 'currency'].filter(Boolean);
+    container.innerHTML = kinds.map(k => {
+      const id = `${container.id || 'ctl'}-${k}`;
+      const opts = CTL[k].items().map(i =>
+        `<button type="button" class="ctl-opt" data-value="${escAttr(i.value)}"${i.lang ? ` lang="${escAttr(i.lang)}"` : ''}>${flag(i.flag)}<span>${escAttr(i.label)}</span></button>`
+      ).join('');
+      return `<div class="ctl" data-ctl="${k}">` +
+        `<button type="button" class="ctl-btn" aria-expanded="false" aria-controls="${id}">${flag('')}<span class="ctl-val"></span></button>` +
+        `<div class="ctl-pop" id="${id}" hidden>${opts}</div></div>`;
+    }).join('');
+    container.querySelectorAll('.ctl').forEach(el => {
+      const kind = CTL[el.dataset.ctl];
+      const btn = el.querySelector('.ctl-btn');
+      btn.addEventListener('click', () => (openCtl === el ? closeCtl() : openMenu(el, false)));
+      btn.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        openMenu(el, true);
+      });
+      el.querySelector('.ctl-pop').addEventListener('keydown', e => {
+        if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(e.key)) return;
+        e.preventDefault();
+        moveFocus(el, e.key);
+      });
+      el.querySelectorAll('.ctl-opt').forEach(o => o.addEventListener('click', () => {
+        closeCtl(true);
+        if (o.dataset.value !== kind.current()) kind.set(o.dataset.value);
+      }));
+    });
+    if (!controlsBound) bindControlsOnce();
     syncControls();
   };
 

@@ -1,6 +1,6 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { setup, openPage, openTab } from './helpers.mjs';
+import { setup, openPage, openTab, choose } from './helpers.mjs';
 import { loadScripts } from '../unit/load.mjs';
 
 let ctx;
@@ -76,7 +76,7 @@ test('mobilde bildirim ekranın %40ından küçük', async () => {
 test('depolama kapalıyken site çalışır, bildirim çıkar ve kapanır (Review Focus 2)', async () => {
   const { page, errors, close } = await openPage(ctx, '/?lang=en', { blockStorage: true });
   await page.waitForSelector('#consentBanner', { timeout: 3000 });
-  await page.select('#navControls select[data-ctl="lang"]', 'tr');
+  await choose(page, '#navControls', 'lang', 'tr');
   await page.waitForFunction(() => document.documentElement.lang === 'tr', { timeout: 4000 });
   await page.click('#consentBanner [data-consent="accepted"]');
   assert.equal(await bannerVisible(page), false);

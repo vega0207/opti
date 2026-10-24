@@ -179,3 +179,14 @@ test('hiçbir dilde metin hedef kitleyi küçük işletmelerle sınırlamıyor',
   const head = readFileSync(path.join(REPO_ROOT, 'index.html'), 'utf8').match(/<head>[\s\S]*?<\/head>/)[0];
   assert.doesNotMatch(head, SMALL_BIZ.en, 'index.html başlık/açıklama');
 });
+
+// Ayarlarda bir bayrak kodu yanlış yazılırsa menüde bayrağın yeri boş kalır.
+test('her dilin ve para biriminin bayrağı çizimler arasında var', () => {
+  const flags = readFileSync(path.join(REPO_ROOT, '_dev', 'flags.svg'), 'utf8');
+  const has = code => flags.includes(`<symbol id="f-${code}"`);
+  for (const l of CONFIG.languages) assert.ok(l.flag && has(l.flag), `${l.code}: bayrak "${l.flag}"`);
+  for (const c of CONFIG.currencies) {
+    const f = CONFIG.currencyFlags && CONFIG.currencyFlags[c];
+    assert.ok(f && has(f), `${c}: bayrak "${f}"`);
+  }
+});

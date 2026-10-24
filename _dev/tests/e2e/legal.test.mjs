@@ -1,6 +1,6 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { setup, openPage, overflowReport } from './helpers.mjs';
+import { setup, openPage, overflowReport, choose } from './helpers.mjs';
 import { loadScripts } from '../unit/load.mjs';
 
 let ctx;
@@ -55,10 +55,10 @@ test('hizmet şartlarında para birimi maddesi', async () => {
 
 test('hukuki sayfada dil değişimi içeriği ve adresi günceller', async () => {
   const { page, close } = await openPage(ctx, '/cookies.html?lang=en');
-  await page.select('#legalControls select[data-ctl="lang"]', 'tr');
+  await choose(page, '#legalControls', 'lang', 'tr');
   await page.waitForFunction(t => document.querySelector('[data-legal-title]').textContent === t, { timeout: 4000 }, LANGS.tr.legal.cookies.title);
   assert.match(await page.evaluate(() => location.search), /lang=tr/);
-  assert.equal(await page.$('#legalControls select[data-ctl="currency"]'), null, 'hukuki sayfada para menüsü yok');
+  assert.equal(await page.$('#legalControls [data-ctl="currency"]'), null, 'hukuki sayfada para menüsü yok');
   await close();
 });
 
