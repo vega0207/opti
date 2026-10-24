@@ -18,7 +18,7 @@
     });
     const main = d.querySelector('main[data-doc]');
     const own = main && legal[main.dataset.doc];
-    if (own) d.title = `${own.title} | OptiCodeStudio`;
+    if (own) d.title = `${own.title.replace(/\u00AD/g, '')} | OptiCodeStudio`;
 
     // privacy.html#consent gibi bağlantılar: metin yazıldıktan sonra doğru yere kaydırılır.
     if (!scrolledToHash && w.location.hash) {
