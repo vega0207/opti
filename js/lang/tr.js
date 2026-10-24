@@ -132,7 +132,7 @@ OCS.addLang({
     "legal.back": "Siteye dön",
 
     "consent.label": "Çerez bildirimi",
-    "consent.text": "Bu sitede reklam veya takip çerezi yok. Dil, tema ve para seçiminizi hatırlamak için tarayıcınıza küçük bir kayıt bırakıyoruz.",
+    "consent.text": "Takip çerezi yok; yalnızca dil, tema ve para seçiminizi hatırlıyoruz.",
     "consent.accept": "Kabul et",
     "consent.reject": "Reddet",
     "consent.policy": "Çerez Politikası",

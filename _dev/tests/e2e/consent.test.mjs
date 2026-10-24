@@ -65,12 +65,28 @@ test('alt bilgideki "Çerez tercihleri" bildirimi yeniden açar', async () => {
   await close();
 });
 
-test('mobilde bildirim ekranın %40ından küçük', async () => {
-  const { page, close } = await openPage(ctx, '/?lang=tr', { consent: null, width: 390, height: 844 });
-  await page.waitForSelector('#consentBanner');
-  const h = await page.$eval('#consentBanner', el => el.getBoundingClientRect().height);
-  assert.ok(h <= 844 * 0.4, `${h}px`);
-  await close();
+// Site sahibi büyük kutu yerine ince bir şerit istedi: masaüstünde altta tek satır, telefonda ekranın ≤ %15'i.
+test('bildirim ince şerit: masaüstünde altta tam genişlik tek satır, telefonda ekranın %15ini aşmaz', async () => {
+  const sizes = [[1025, 800, 'desktop'], [1440, 900, 'desktop'], [360, 740, 'phone'], [390, 844, 'phone']];
+  for (const lang of ['tr', 'en', 'de', 'ru', 'ar']) {
+    for (const [width, height, kind] of sizes) {
+      const label = `${lang} ${width}px`;
+      const { page, close } = await openPage(ctx, `/?lang=${lang}`, { consent: null, width, height });
+      await page.waitForSelector('#consentBanner');
+      const r = await page.$eval('#consentBanner', el => {
+        const b = el.getBoundingClientRect();
+        return { top: b.top, left: b.left, right: b.right, bottom: b.bottom, h: b.height };
+      });
+      assert.ok(Math.abs(r.bottom - height) <= 1, `${label}: altta değil (${r.bottom})`);
+      if (kind === 'desktop') {
+        assert.ok(r.left <= 0 && r.right >= width, `${label}: tam genişlik değil`);
+        assert.ok(r.h <= 72, `${label}: ${r.h}px`);
+      } else {
+        assert.ok(r.h <= height * 0.15, `${label}: ${r.h}px > ${height * 0.15}`);
+      }
+      await close();
+    }
+  }
 });
 
 test('depolama kapalıyken site çalışır, bildirim çıkar ve kapanır (Review Focus 2)', async () => {

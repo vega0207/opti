@@ -131,7 +131,7 @@ OCS.addLang({
     "legal.back": "Back to the website",
 
     "consent.label": "Cookie notice",
-    "consent.text": "This site uses no advertising or tracking cookies. We keep a small record in your browser to remember your language, theme and currency.",
+    "consent.text": "No tracking cookies; we only remember your language, theme and currency.",
     "consent.accept": "Accept",
     "consent.reject": "Reject",
     "consent.policy": "Cookie Policy",

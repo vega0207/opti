@@ -132,7 +132,7 @@ OCS.addLang({
     "legal.back": "Zurück zur Website",
 
     "consent.label": "Cookie-Hinweis",
-    "consent.text": "Diese Website verwendet keine Werbe- oder Tracking-Cookies. Ein kleiner Eintrag in Ihrem Browser merkt sich Sprache, Darstellung und Währung.",
+    "consent.text": "Keine Tracking-Cookies; wir merken uns nur Sprache, Darstellung und Währung.",
     "consent.accept": "Akzeptieren",
     "consent.reject": "Ablehnen",
     "consent.policy": "Cookie-Richtlinie",
