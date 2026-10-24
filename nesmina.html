@@ -4,16 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nesmina — Objects Made Slowly</title>
-<meta name="description" content="Nesmina is a fictional handknit concept label exploring slow-made objects, natural fibers and small-batch craft.">
+<title>Nesmina | Handknit objects, made slowly</title>
+<meta name="description" content="Nesmina makes handknit hats, wraps, throws and small objects for the home in natural fibres and small batches.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%23374133'/><path d='M5 17c3-8 7-10 14-11' stroke='%23DCE6CF' stroke-width='1.5' fill='none'/><circle cx='7' cy='14' r='2.4' fill='%23869D72'/></svg>">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="fonts/demo/fonts.css">
+<link rel="stylesheet" href="css/demo.css">
 
 <style>
 :root{
@@ -205,6 +202,15 @@ h2{
 }
 
 /* ===== Decorative yarn / needles ===== */
+
+/* Süs çizgileri ekrandan taşabilir; katman onları kırpar, sayfa yana kaymaz */
+.thread-layer{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
 
 .thread-art{
   position:absolute;
@@ -1327,6 +1333,7 @@ footer{
 
 <body>
 
+<div class="thread-layer" aria-hidden="true">
 <svg class="thread-art thread-art--top" viewBox="0 0 370 190" aria-hidden="true">
   <path d="M4 165 C45 25, 92 190, 134 70 S215 42, 252 128 S327 165, 365 20"></path>
   <path class="needle" d="M252 128 L348 38"></path>
@@ -1338,9 +1345,10 @@ footer{
   <path class="needle" d="M304 145 L413 35"></path>
   <ellipse class="eye" cx="408" cy="40" rx="6" ry="3"></ellipse>
 </svg>
+</div>
 
 <div class="announce">
-  <span>NESMINA / STUDY 001 — <b>small-batch objects, made by hand</b></span>
+  <span>NESMINA · <b>small-batch knitwear, made by hand</b></span>
 </div>
 
 <header>
@@ -1356,7 +1364,7 @@ footer{
     <div class="nav-right">
       <span class="nav-note">fibre / form / patience</span>
       <a class="ig" id="igLink" href="#" target="_blank" rel="noopener" aria-label="Nesmina Instagram">
-        <i data-lucide="instagram"></i>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         <span id="igHandle">@nesmina.studio</span>
       </a>
     </div>
@@ -1376,25 +1384,25 @@ footer{
         </h1>
 
         <p class="lead">
-          Nesmina is a fictional concept label for slow-made knit objects. Natural fibres, deliberate textures and small releases — shaped one stitch at a time.
+          Nesmina makes knit objects by hand: hats, wraps, throws and small things for the home. Natural fibres, honest textures and small releases, shaped one stitch at a time.
         </p>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#collection">
-            Explore the first study
-            <i data-lucide="arrow-down-right"></i>
+            See the collection
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
           </a>
 
           <a class="btn btn-ghost" href="#process">
             Our process
-            <i data-lucide="move-down"></i>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 18L12 22L16 18"/><path d="M12 2V22"/></svg>
           </a>
         </div>
 
         <div class="hero-meta">
           <span>small-run pieces</span>
-          <span>natural fibre focus</span>
-          <span>fictional concept site</span>
+          <span>natural fibres</span>
+          <span>made to order</span>
         </div>
       </div>
 
@@ -1441,7 +1449,7 @@ footer{
         <h2>Not fast fashion. Not factory-perfect.</h2>
 
         <p>
-          Nesmina explores what happens when everyday objects are given more time. A hat, wrap or blanket begins with a material choice, a test swatch and the rhythm of repeated stitches.
+          At Nesmina, everyday objects are given more time. A hat, wrap or blanket begins with a material choice, a test swatch and the rhythm of repeated stitches.
         </p>
 
         <p>
@@ -1466,7 +1474,7 @@ footer{
 
       <div class="workbench reveal" aria-label="Abstract yarn ball and knitting needle artwork">
         <span class="workbench-needle"></span>
-        <span class="workbench-label">material study / 2026</span>
+        <span class="workbench-label">swatch notes / 2026</span>
       </div>
     </div>
   </section>
@@ -1475,12 +1483,12 @@ footer{
     <div class="wrap">
       <div class="collection-head reveal">
         <div>
-          <div class="kicker">First Study</div>
+          <div class="kicker">The Collection</div>
           <h2>Objects for cold days<br>and quiet corners.</h2>
         </div>
 
         <p class="lead">
-          A future collection imagined around useful, lasting knit objects. Each category begins with material, proportion and a purpose.
+          Four kinds of objects, all made in small numbers. Each one starts with the yarn, the proportions and how it will be used.
         </p>
       </div>
 
@@ -1489,28 +1497,28 @@ footer{
           <span class="num">01 / WEAR</span>
           <h3>Headwear</h3>
           <p>Structured beanies and soft hats, built around warmth and repeat wear.</p>
-          <span class="tag">In development</span>
+          <span class="tag">Made to order</span>
         </article>
 
         <article class="collection-card reveal" style="transition-delay:.08s">
           <span class="num">02 / LAYER</span>
           <h3>Wraps</h3>
           <p>Generous scarves and wraps with texture that becomes softer over time.</p>
-          <span class="tag">In development</span>
+          <span class="tag">Made to order</span>
         </article>
 
         <article class="collection-card reveal" style="transition-delay:.16s">
           <span class="num">03 / HOME</span>
           <h3>Throws</h3>
           <p>Heavy, tactile layers for sofas, beds and the spaces we return to.</p>
-          <span class="tag">In development</span>
+          <span class="tag">Small batches</span>
         </article>
 
         <article class="collection-card reveal" style="transition-delay:.24s">
           <span class="num">04 / SMALL</span>
           <h3>Useful Things</h3>
           <p>Small knit forms for desks, shelves and thoughtful gifting.</p>
-          <span class="tag">In development</span>
+          <span class="tag">Coming soon</span>
         </article>
       </div>
     </div>
@@ -1523,21 +1531,21 @@ footer{
 
       <div class="values-grid">
         <article class="value reveal">
-          <div class="value-icon"><i data-lucide="leaf"></i></div>
+          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg></div>
           <h3>Material first</h3>
           <p>Natural-feeling fibre, selected for texture, comfort and a life beyond one season.</p>
         </article>
 
         <article class="value reveal" style="transition-delay:.08s">
-          <div class="value-icon"><i data-lucide="workflow"></i></div>
+          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg></div>
           <h3>Visible process</h3>
           <p>Swatches, trial pieces and gradual refinement are part of the object, not hidden from it.</p>
         </article>
 
         <article class="value reveal" style="transition-delay:.16s">
-          <div class="value-icon"><i data-lucide="heart-handshake"></i></div>
+          <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/></svg></div>
           <h3>Made to stay</h3>
-          <p>Objects imagined for regular use, repairable care and the comfort of familiarity.</p>
+          <p>Objects made for daily use, easy to care for and mend, and familiar enough to keep for years.</p>
         </article>
       </div>
     </div>
@@ -1548,23 +1556,20 @@ footer{
       <div class="closing-panel reveal">
         <div class="closing-content">
           <div class="kicker">Studio Notes</div>
-          <h2>The first collection is still taking shape.</h2>
+          <h2>New pieces appear on Instagram first.</h2>
 
           <p class="lead">
-            This is a fictional concept page created as a design study. Join the list to see the intended interaction and confirmation state.
+            Every release is small, so pieces often go quickly. Follow along to see new work, ask about custom colours or order a piece.
           </p>
 
-          <div id="signupWrap">
-            <form class="signup" id="launchForm" novalidate>
-              <input type="email" id="l-email" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
-              <button class="btn" type="submit">
-                Join the concept list
-                <i data-lucide="arrow-right"></i>
-              </button>
-            </form>
-
-            <p class="tiny">Demo form only — it does not send or store your email address.</p>
+          <div class="signup">
+            <a class="btn" id="closingIg" href="#" target="_blank" rel="noopener">
+              Follow on Instagram
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
           </div>
+
+          <p class="tiny">Orders and custom colours by direct message.</p>
         </div>
       </div>
     </div>
@@ -1579,13 +1584,14 @@ footer{
       Nesmina
     </span>
 
-    <span>Fictional concept website · Not a real shop or brand</span>
+    <span>Handknit in small batches</span>
 
-    <span>Website concept by <a id="apexCredit" href="index.html">OptiCodeStudio</a></span>
+    <span>Website by <a id="apexCredit" href="index.html">OptiCodeStudio</a></span>
   </div>
 </footer>
 
 <script>
+// Instagram adresi gelince yalnız instagramUrl değişir
 const CONFIG = {
   instagramUrl: "#",
   instagramHandle: "@nesmina.studio",
@@ -1599,34 +1605,9 @@ const igHandle = $('#igHandle');
 const apexCredit = $('#apexCredit');
 
 igLink.href = CONFIG.instagramUrl;
+$('#closingIg').href = CONFIG.instagramUrl;
 igHandle.textContent = CONFIG.instagramHandle;
 apexCredit.href = CONFIG.apexUrl;
-
-$('#launchForm').addEventListener('submit', event => {
-  event.preventDefault();
-
-  const input = $('#l-email');
-  const email = input.value.trim();
-  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  input.classList.toggle('err', !valid);
-
-  if(!valid){
-    input.focus();
-    return;
-  }
-
-  $('#signupWrap').innerHTML = `
-    <div class="ok-box">
-      <b>You're on the concept list.</b>
-      <p>This is a demo confirmation state. No email was sent and no information was stored.</p>
-    </div>
-  `;
-});
-
-$('#l-email').addEventListener('input', event => {
-  event.target.classList.remove('err');
-});
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -1639,10 +1620,8 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 
-if(window.lucide){
-  window.lucide.createIcons();
-}
 </script>
 
+<a class="ocs-demo-badge" href="index.html"><img src="img/logo-mark.svg" alt="" width="22" height="17">Demo · OptiCodeStudio</a>
 </body>
 </html>

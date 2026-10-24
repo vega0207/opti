@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Golden Crust Bakery — Fresh Bread Daily | Portland, OR</title>
+<title>Golden Crust Bakery | Fresh bread daily in Portland, OR</title>
 <meta name="description" content="Family bakery in Southeast Portland. Sourdough, pastries and celebration cakes baked fresh every morning since 1987. Open Tue–Sun.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🥐</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/demo/fonts.css">
+<link rel="stylesheet" href="css/demo.css">
 <style>
 :root{--bg:#FBF6EE;--panel:#FFFDF9;--ink:#33261A;--muted:#8B7460;--accent:#B4691E;--accent-dk:#8F5216;--soft:#F4E8D5;--line:#EBDFCB;--star:#E8A33D}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -48,7 +47,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.94);backdro
 .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
 .trust{display:flex;align-items:center;gap:10px;margin-top:26px;color:var(--muted);font-size:14.5px}
 .stars{color:var(--star);letter-spacing:2px;font-size:16px}
-.hero-img{border-radius:18px;background:linear-gradient(160deg,#E8D5BC,#D9B98F);background-image:url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop');background-size:cover;background-position:center;min-height:430px;position:relative;box-shadow:0 24px 50px rgba(51,38,26,.18)}
+.hero-img{border-radius:18px;background:linear-gradient(160deg,#E8D5BC,#D9B98F);background-image:url('img/demo/golden-crust/hero.jpg');background-size:cover;background-position:center;min-height:430px;position:relative;box-shadow:0 24px 50px rgba(51,38,26,.18)}
 .special{position:absolute;left:-18px;bottom:26px;background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 14px 34px rgba(51,38,26,.22);max-width:230px}
 .special b{font-family:'Fraunces',serif;font-size:17px;display:block}
 .special span{color:var(--accent-dk);font-weight:700}
@@ -69,7 +68,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.94);backdro
 .mi-note{color:var(--muted);font-size:13px;display:block}
 .story{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .story-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:60px;align-items:center}
-.story-img{border-radius:18px;background:linear-gradient(160deg,#E8D5BC,#D9B98F);background-image:url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000&auto=format&fit=crop');background-size:cover;background-position:center;min-height:380px;box-shadow:0 20px 44px rgba(51,38,26,.16)}
+.story-img{border-radius:18px;background:linear-gradient(160deg,#E8D5BC,#D9B98F);background-image:url('img/demo/golden-crust/story.jpg');background-size:cover;background-position:center;min-height:380px;box-shadow:0 20px 44px rgba(51,38,26,.16)}
 .story p{color:var(--muted);margin-top:16px;font-size:16px}
 .mini-stats{display:flex;gap:0;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
 .mini-stats div{padding-right:30px;margin-right:30px;border-right:1px solid var(--line)}
@@ -135,14 +134,14 @@ footer{padding:44px 0;border-top:1px solid var(--line);margin-top:88px}
     <div class="trust"><span class="stars">★★★★★</span> 4.9 on Google · 800+ reviews</div>
   </div>
   <div class="hero-img">
-    <div class="special"><b>Today's Special</b>Cardamom Buns<span> $4</span><small>Out around 11 AM — seriously.</small></div>
+    <div class="special"><b>Today's Special</b>Cardamom Buns<span> $4</span><small>Usually out around 11 AM.</small></div>
   </div>
 </div></section>
 
 <div class="strip"><div class="wrap strip-grid">
   <div class="strip-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4691E" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><div><b>Hours</b><span>Tue–Fri 7–7 · Sat 8–7 · Sun 8–4 · Mon closed</span></div></div>
   <div class="strip-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4691E" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Find Us</b><span>214 SE Maple Street, Portland, OR 97214</span></div></div>
-  <div class="strip-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4691E" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><b>Call to Order</b><span>(503) 555-0148 — cakes need 48h notice</span></div></div>
+  <div class="strip-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4691E" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><b>Call to Order</b><span>(503) 555-0148 · cakes need 48h notice</span></div></div>
 </div></div>
 
 <section id="menu"><div class="wrap">
@@ -186,7 +185,7 @@ footer{padding:44px 0;border-top:1px solid var(--line);margin-top:88px}
   <div>
     <div class="kicker">Since 1987</div>
     <h2>A smaller bakery, on purpose.</h2>
-    <p>Marta and Johan Keller opened Golden Crust with one oven, a wooden table and a sourdough starter they carried over from home. Three decades later, their daughter Anna runs the counter every morning — with the very same starter.</p>
+    <p>Marta and Johan Keller opened Golden Crust with one oven, a wooden table and a sourdough starter they carried over from home. Three decades later, their daughter Anna runs the counter every morning, with the very same starter.</p>
     <p>We still believe bread should have four ingredients, pastry should be eaten the day it's made, and regulars should be greeted by name. If that sounds like your kind of place, come by. The coffee's hot by 6:45.</p>
     <div class="mini-stats">
       <div><b>1987</b><span>opened on Division</span></div>
@@ -200,9 +199,9 @@ footer{padding:44px 0;border-top:1px solid var(--line);margin-top:88px}
   <div class="kicker">Word of Mouth</div>
   <h2>What the neighborhood says.</h2>
   <div class="reviews-grid">
-    <div class="review"><span class="stars">★★★★★</span><p>"The sourdough here ruined every other bread for me. Worth the trip across town."</p><span>— Marcus T., Sellwood</span></div>
-    <div class="review"><span class="stars">★★★★★</span><p>"Cardamom buns on Saturday mornings are a Portland institution. Get there early."</p><span>— Priya R., Division</span></div>
-    <div class="review"><span class="stars">★★★★★</span><p>"They made our wedding cake. Three tiers, not a crumb left. Genuinely lovely people."</p><span>— Dan &amp; Alex, Laurelhurst</span></div>
+    <div class="review"><span class="stars">★★★★★</span><p>"The sourdough here ruined every other bread for me. Worth the trip across town."</p><span>Marcus T., Sellwood</span></div>
+    <div class="review"><span class="stars">★★★★★</span><p>"Cardamom buns on Saturday mornings are a Portland institution. Get there early."</p><span>Priya R., Division</span></div>
+    <div class="review"><span class="stars">★★★★★</span><p>"They made our wedding cake. Three tiers, not a crumb left. Genuinely lovely people."</p><span>Dan &amp; Alex, Laurelhurst</span></div>
   </div>
 </div></section>
 
@@ -210,7 +209,7 @@ footer{padding:44px 0;border-top:1px solid var(--line);margin-top:88px}
   <div>
     <div class="kicker">Visit Us</div>
     <h2>Come smell the bread.</h2>
-    <p class="lead">214 SE Maple Street, Portland, OR 97214 — two blocks off Division. Street parking, bike racks out front, dogs welcome on the patio.</p>
+    <p class="lead">214 SE Maple Street, Portland, OR 97214, two blocks off Division. Street parking, bike racks out front, dogs welcome on the patio.</p>
     <a class="btn btn-solid" href="https://maps.google.com/?q=214+SE+Maple+St+Portland+OR">Get Directions</a>
     <a class="btn btn-line" href="tel:+15035550148">Call (503) 555-0148</a>
   </div>
@@ -223,7 +222,7 @@ footer{padding:44px 0;border-top:1px solid var(--line);margin-top:88px}
 </div></div></section>
 
 <footer><div class="wrap foot">
-  <span>© 2025 Golden Crust Bakery. Baked with love in SE Portland.</span>
+  <span>© 2026 Golden Crust Bakery. Baked with love in SE Portland.</span>
   <span><a href="#">Instagram</a> · <a href="#">@goldencrustpdx</a></span>
 </div></footer>
 
@@ -232,5 +231,6 @@ const b=document.getElementById('burger'),m=document.getElementById('mMenu');
 b.addEventListener('click',()=>m.classList.toggle('open'));
 m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>m.classList.remove('open')));
 </script>
+<a class="ocs-demo-badge" href="index.html"><img src="img/logo-mark.svg" alt="" width="22" height="17">Demo · OptiCodeStudio</a>
 </body>
 </html>
