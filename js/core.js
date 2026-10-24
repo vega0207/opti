@@ -315,7 +315,7 @@
   OCS.ui = OCS.ui || {};
 
   OCS.ui.icon = (name, cls = '') =>
-    `<svg class="i${cls ? ' ' + cls : ''}" aria-hidden="true"><use href="img/icons.svg#i-${name}"></use></svg>`;
+    `<svg class="i${cls ? ' ' + cls : ''}" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
 
   OCS.ui.bindThemeToggles = () => {
     const buttons = () => d.querySelectorAll('.theme-toggle');

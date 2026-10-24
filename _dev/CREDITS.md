@@ -80,7 +80,7 @@ Liste `_dev/tools/demo-photo.mjs` ile her eklemede `_dev/demo-photos.json`'a yaz
 
 ## Simgeler
 
-- Lucide (`img/icons.svg`): ISC License; lisans metni dosyanın içinde.
+- Lucide (`_dev/icons.svg`, sayfalara gömülü): ISC License; lisans metni sprite ile birlikte her sayfada.
 - Instagram simgesi Lucide'de olmadığı için basit bir çizimle yeniden yapıldı.
 
 ## Logo

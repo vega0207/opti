@@ -6,6 +6,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { REPO_ROOT } from './load.mjs';
 import { REQUIRED_ICONS } from '../../tools/icons-list.mjs';
+import { ICON_PAGES, inlineSprite } from '../../tools/inline-icons.mjs';
 
 const read = rel => readFileSync(path.join(REPO_ROOT, rel), 'utf8');
 
@@ -25,7 +26,7 @@ test('css içindeki yazı tipleri diskte, 60 KB altında ve font-display: swap',
 });
 
 test('gerekli ikonlar sprite içinde ve her biri çizim içeriyor', () => {
-  const svg = read('img/icons.svg');
+  const svg = read('_dev/icons.svg');
   for (const name of REQUIRED_ICONS) {
     const m = svg.match(new RegExp(`<symbol id="i-${name}" viewBox="0 0 24 24"[^>]*>([\\s\\S]*?)</symbol>`));
     assert.ok(m, `i-${name} yok`);
@@ -83,18 +84,22 @@ test('açılış animasyonundaki logo, logo dosyasıyla aynı çizim', () => {
   assert.deepEqual(ds(block[0]), fileD);
 });
 
-test('kodda kullanılan her ikon sprite içinde', () => {
-  const svg = read('img/icons.svg');
-  const used = new Set();
-  const files = [
-    ...readdirSync(REPO_ROOT).filter(f => f.endsWith('.html')),
-    ...(existsSync(path.join(REPO_ROOT, 'js')) ? readdirSync(path.join(REPO_ROOT, 'js')).filter(f => f.endsWith('.js')).map(f => `js/${f}`) : [])
-  ];
-  for (const f of files) {
-    const src = read(f);
-    for (const m of src.matchAll(/icons\.svg#i-([a-z0-9-]+)/g)) used.add(m[1]);
-    for (const m of src.matchAll(/ui\.icon\('([a-z0-9-]+)'/g)) used.add(m[1]);
+// Sayfalar ikonları gömülü sprite'tan alır (file:// açılışında dış dosya engellenir). Sprite değişip
+// inline-icons.mjs çalıştırılmazsa sayfa eski ikonlarla kalır; bir ikon eksikse yerinde boşluk görünür.
+test('ikon kullanan sayfalarda gömülü sprite güncel ve kullanılan her ikonu içeriyor', () => {
+  const sprite = read('_dev/icons.svg');
+  const jsUsed = new Set();
+  for (const f of readdirSync(path.join(REPO_ROOT, 'js')).filter(f => f.endsWith('.js'))) {
+    for (const m of read(`js/${f}`).matchAll(/ui\.icon\('([a-z0-9-]+)'/g)) jsUsed.add(m[1]);
   }
-  const missing = [...used].filter(n => !svg.includes(`id="i-${n}"`));
-  assert.deepEqual(missing, []);
+  assert.ok(jsUsed.size >= 4, `js içinde ${jsUsed.size} ikon`);
+  for (const page of ICON_PAGES) {
+    const html = read(page);
+    assert.equal(html, inlineSprite(html, sprite), `${page}: node _dev/tools/inline-icons.mjs çalıştırılmalı`);
+    const used = new Set([...html.matchAll(/<use href="#i-([a-z0-9-]+)"/g)].map(m => m[1]));
+    assert.ok(used.size >= 4, `${page}: ${used.size} ikon`);
+    for (const n of jsUsed) used.add(n);
+    const missing = [...used].filter(n => !html.includes(`<symbol id="i-${n}"`));
+    assert.deepEqual(missing, [], page);
+  }
 });

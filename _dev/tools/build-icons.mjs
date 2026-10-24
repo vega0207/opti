@@ -1,6 +1,7 @@
-// Kullanılan Lucide ikonlarını tek bir SVG sprite dosyasında toplar: img/icons.svg
+// Kullanılan Lucide ikonlarını tek bir SVG sprite dosyasında toplar: _dev/icons.svg
+// Sonra node _dev/tools/inline-icons.mjs ile sayfalara gömülür.
 // Kullanım: node _dev/tools/build-icons.mjs
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { REPO_ROOT } from './serve.mjs';
 import { REQUIRED_ICONS } from './icons-list.mjs';
@@ -35,6 +36,5 @@ for (const name of REQUIRED_ICONS) {
 // XML yorumunda "--" geçemez: art arda gelen her tirenin arasına boşluk konur ("---" → "- - -").
 const comment = `<!-- Icons from Lucide v${VERSION} (https://lucide.dev)\n${license.trim().replace(/-(?=-)/g, '- ')}\n-->`;
 const out = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">\n${comment}\n${symbols.join('\n')}\n</svg>\n`;
-await mkdir(path.join(REPO_ROOT, 'img'), { recursive: true });
-await writeFile(path.join(REPO_ROOT, 'img', 'icons.svg'), out);
-console.log(`img/icons.svg: ${symbols.length} ikon`);
+await writeFile(path.join(REPO_ROOT, '_dev', 'icons.svg'), out);
+console.log(`_dev/icons.svg: ${symbols.length} ikon`);

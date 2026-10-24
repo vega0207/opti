@@ -1,31 +1,60 @@
-// Dosyaların tarayıcıda gerçekten çalıştığını dener: geçersiz bir SVG sprite tüm ikonları siler,
-// metin araması bunu göremez.
+// Dosyaların tarayıcıda gerçekten çalıştığını dener: bozuk bir sprite ya da dış dosyaya başvuru
+// ikonları siler, metin araması bunu göremez.
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { setup, openPage } from './helpers.mjs';
 import { REQUIRED_ICONS } from '../../tools/icons-list.mjs';
+import { REPO_ROOT } from '../../tools/serve.mjs';
 
 let ctx;
 before(async () => { ctx = await setup(); });
 after(async () => { await ctx?.close(); });
 
-test('icons.svg geçerli XML ve her ikon çiziliyor', async () => {
+test('gömülü sprite içindeki her ikon çiziliyor', async () => {
   const { page } = await openPage(ctx, '/');
   const sizes = await page.evaluate(async names => {
-    const xml = await (await fetch('img/icons.svg')).text();
-    const parsed = new DOMParser().parseFromString(xml, 'image/svg+xml');
-    if (parsed.querySelector('parsererror')) return { error: parsed.querySelector('parsererror').textContent };
     const box = document.createElement('div');
-    box.innerHTML = names.map(n => `<svg width="24" height="24" data-n="${n}"><use href="img/icons.svg#i-${n}"></use></svg>`).join('');
+    box.innerHTML = names.map(n => `<svg width="24" height="24" data-n="${n}"><use href="#i-${n}"></use></svg>`).join('');
     document.body.appendChild(box);
-    await new Promise(r => setTimeout(r, 800));
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
     return Object.fromEntries([...box.querySelectorAll('svg')].map(s => {
       const b = s.querySelector('use').getBBox();
       return [s.dataset.n, b.width * b.height];
     }));
   }, REQUIRED_ICONS);
-  assert.equal(sizes.error, undefined, sizes.error);
   for (const n of REQUIRED_ICONS) assert.ok(sizes[n] > 0, `i-${n} çizilmedi`);
+});
+
+// Site sahibi sayfaları dosyaya çift tıklayarak açıyor. Chrome file:// adresinde dış dosyadaki
+// <use href="img/icons.svg#..."> başvurularını engeller; ikonlar sayfanın içinde olmalı.
+test('dosyadan açılınca (file://) görünen her ikon çiziliyor', async () => {
+  for (const file of ['index.html', 'privacy.html', 'terms.html', 'cookies.html']) {
+    const context = await ctx.browser.createBrowserContext();
+    const page = await context.newPage();
+    try {
+      await page.setViewport({ width: 1440, height: 900 });
+      await page.evaluateOnNewDocument(() => {
+        sessionStorage.setItem('ocs.splash', '1');
+        localStorage.setItem('ocs.consent', JSON.stringify({ choice: 'accepted', at: '2026-10-24T00:00:00.000Z' }));
+      });
+      await page.goto(pathToFileURL(path.join(REPO_ROOT, file)).href, { waitUntil: 'load' });
+      await page.waitForFunction(() => !document.documentElement.classList.contains('i18n-pending'));
+      await new Promise(r => setTimeout(r, 400));
+      const report = await page.evaluate(() => {
+        const shown = [...document.querySelectorAll('svg use')].filter(u =>
+          u.closest('svg').checkVisibility({ checkVisibilityCSS: true }));
+        const blank = shown.filter(u => { const b = u.getBBox(); return b.width * b.height === 0; })
+          .map(u => u.getAttribute('href'));
+        return { shown: shown.length, blank };
+      });
+      assert.ok(report.shown >= 4, `${file}: yalnız ${report.shown} görünür ikon`);
+      assert.deepEqual(report.blank, [], file);
+    } finally {
+      await context.close();
+    }
+  }
 });
 
 test('logo işareti tarayıcıda görüntü olarak açılıyor', async () => {
