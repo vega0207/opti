@@ -5,8 +5,8 @@ OCS.addLang({
   meta: { code: "tr", dir: "ltr", locale: "tr-TR", name: "Türkçe" },
 
   ui: {
-    "meta.title": "OptiCodeStudio | Küçük işletmeler için web siteleri",
-    "meta.description": "Küçük işletmeler için hızlı, mobil uyumlu web siteleri tasarlıyor ve kuruyoruz; mevcut sitenizi de yeniliyoruz. Fiyatlar kendi para biriminizde.",
+    "meta.title": "OptiCodeStudio | Web sitesi tasarımı ve geliştirme",
+    "meta.description": "Hızlı, mobil uyumlu web siteleri tasarlıyor ve kuruyoruz; mevcut sitenizi de yeniliyoruz. Fiyatlar kendi para biriminizde.",
 
     "nav.work": "Çalışmalar",
     "nav.packages": "Paketler",
@@ -22,7 +22,7 @@ OCS.addLang({
 
     "hero.title": "Daha iyi bir web sitesi,",
     "hero.accent": "sıfırdan ya da yenileyerek.",
-    "hero.lead": "Küçük işletmeler için hızlı ve mobil uyumlu web siteleri tasarlıyor, kuruyoruz. İsterseniz mevcut sitenizi de yeniliyoruz.",
+    "hero.lead": "Hızlı ve mobil uyumlu web siteleri tasarlıyor, kuruyoruz. İsterseniz mevcut sitenizi de yeniliyoruz.",
     "hero.ctaQuote": "Teklif al",
     "hero.ctaReview": "Ücretsiz site incelemesi",
 
@@ -120,7 +120,7 @@ OCS.addLang({
     "toast.copied": "E-posta adresi kopyalandı.",
     "toast.copyFail": "Kopyalanamadı; adres hemen yanda yazıyor.",
 
-    "footer.tagline": "Küçük işletmeler için web sitesi tasarımı ve geliştirme.",
+    "footer.tagline": "Web sitesi tasarımı ve geliştirme.",
     "footer.email": "E-posta",
     "footer.instagram": "Instagram",
     "footer.privacy": "Gizlilik",
@@ -155,7 +155,7 @@ OCS.addLang({
     "essential": {
       name: "Yeni Web Sitesi",
       tagline: "Profesyonel bir dijital vitrin",
-      bestFor: "İlk web sitesine ya da sıfırdan bir başlangıca ihtiyacı olan küçük işletmeler için.",
+      bestFor: "İlk web sitesine ya da sıfırdan bir başlangıca ihtiyacı olan herkes için.",
       priceLabel: "{p} ve üzeri",
       short: [
         "Özel tasarım, genellikle 1–5 sayfa",
@@ -252,7 +252,7 @@ OCS.addLang({
     "monthly-starter": {
       name: "Başlangıç Aylık",
       tagline: "Web sitesi ve sürekli bakım",
-      bestFor: "Basit bir web sitesi ve temel destek isteyen küçük işletmeler için.",
+      bestFor: "Basit bir web sitesi ve temel destek isteyenler için.",
       priceLabel: "Aylık {p}",
       short: [
         "Basit 3–5 sayfalık site",

@@ -161,3 +161,21 @@ test('portföy: 10 demo (concept) ve Nesmina (client)', () => {
   assert.equal(new Set(CONFIG.portfolio.map(w => w.url)).size, CONFIG.portfolio.length, 'aynı sayfa iki kez');
   for (const w of CONFIG.portfolio) assert.ok(existsSync(path.join(REPO_ROOT, w.thumb)), `${w.thumb} yok`);
 });
+
+// Site herkese hitap ediyor: metinler yalnız "küçük işletmeleri" hedef almasın (sahibinin isteği).
+test('hiçbir dilde metin hedef kitleyi küçük işletmelerle sınırlamıyor', () => {
+  const SMALL_BIZ = {
+    en: /small business/i,
+    tr: /küçük işletme/i,
+    de: /kleine[nm]? Unternehmen/i,
+    ru: /мал(ого|ый|ому|ым) бизнес/i,
+    ar: /الشركات الصغيرة/
+  };
+  const strings = v => typeof v === 'string' ? [v] : v && typeof v === 'object' ? Object.values(v).flatMap(strings) : [];
+  for (const [code, re] of Object.entries(SMALL_BIZ)) {
+    assert.ok(LANGS[code], `${code} yüklenmedi`);
+    assert.deepEqual(strings(LANGS[code]).filter(s => re.test(s)), [], code);
+  }
+  const head = readFileSync(path.join(REPO_ROOT, 'index.html'), 'utf8').match(/<head>[\s\S]*?<\/head>/)[0];
+  assert.doesNotMatch(head, SMALL_BIZ.en, 'index.html başlık/açıklama');
+});

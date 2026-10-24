@@ -4,8 +4,8 @@ OCS.addLang({
   meta: { code: "en", dir: "ltr", locale: "en-US", name: "English" },
 
   ui: {
-    "meta.title": "OptiCodeStudio | Websites for small businesses",
-    "meta.description": "We design and build fast, mobile-friendly websites for small businesses, and redesign existing ones. Clear prices in your currency.",
+    "meta.title": "OptiCodeStudio | Website design and development",
+    "meta.description": "We design and build fast, mobile-friendly websites and redesign existing ones. Clear prices in your currency.",
 
     "nav.work": "Work",
     "nav.packages": "Packages",
@@ -21,7 +21,7 @@ OCS.addLang({
 
     "hero.title": "A better website,",
     "hero.accent": "built or improved for you.",
-    "hero.lead": "We design and build fast, mobile-friendly websites for small businesses, or redesign the one you already have.",
+    "hero.lead": "We design and build fast, mobile-friendly websites, or redesign the one you already have.",
     "hero.ctaQuote": "Get a quote",
     "hero.ctaReview": "Free website review",
 
@@ -119,7 +119,7 @@ OCS.addLang({
     "toast.copied": "Email address copied.",
     "toast.copyFail": "Couldn't copy. The address is right there.",
 
-    "footer.tagline": "Website design and development for small businesses.",
+    "footer.tagline": "Website design and development.",
     "footer.email": "Email",
     "footer.instagram": "Instagram",
     "footer.privacy": "Privacy",
@@ -154,7 +154,7 @@ OCS.addLang({
     "essential": {
       name: "New Website",
       tagline: "A professional online presence",
-      bestFor: "For small businesses that need their first website or a fresh start.",
+      bestFor: "For anyone who needs a first website or a fresh start.",
       priceLabel: "From {p}",
       short: [
         "Custom design, usually 1–5 pages",
@@ -251,7 +251,7 @@ OCS.addLang({
     "monthly-starter": {
       name: "Starter Monthly",
       tagline: "Website plus ongoing care",
-      bestFor: "For small businesses that want a simple website with essential support.",
+      bestFor: "For anyone who wants a simple website with essential support.",
       priceLabel: "{p} / month",
       short: [
         "Simple 3–5 page website",

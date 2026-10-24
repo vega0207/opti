@@ -5,8 +5,8 @@ OCS.addLang({
   meta: { code: "de", dir: "ltr", locale: "de-DE", name: "Deutsch" },
 
   ui: {
-    "meta.title": "OptiCodeStudio | Websites für kleine Unternehmen",
-    "meta.description": "Wir gestalten und programmieren schnelle, mobilfreundliche Websites für kleine Unternehmen und überarbeiten bestehende. Klare Preise in Ihrer Währung.",
+    "meta.title": "OptiCodeStudio | Webdesign und Webentwicklung",
+    "meta.description": "Wir gestalten und programmieren schnelle, mobilfreundliche Websites und überarbeiten bestehende. Klare Preise in Ihrer Währung.",
 
     "nav.work": "Projekte",
     "nav.packages": "Pakete",
@@ -22,7 +22,7 @@ OCS.addLang({
 
     "hero.title": "Eine bessere Website,",
     "hero.accent": "neu gebaut oder überarbeitet.",
-    "hero.lead": "Wir gestalten und programmieren schnelle, mobilfreundliche Websites für kleine Unternehmen oder überarbeiten Ihre bestehende Seite.",
+    "hero.lead": "Wir gestalten und programmieren schnelle, mobilfreundliche Websites oder überarbeiten Ihre bestehende Seite.",
     "hero.ctaQuote": "Angebot anfragen",
     "hero.ctaReview": "Kostenloser Website-Check",
 
@@ -120,7 +120,7 @@ OCS.addLang({
     "toast.copied": "E-Mail-Adresse kopiert.",
     "toast.copyFail": "Kopieren hat nicht geklappt. Die Adresse steht direkt daneben.",
 
-    "footer.tagline": "Webdesign und Webentwicklung für kleine Unternehmen.",
+    "footer.tagline": "Webdesign und Webentwicklung.",
     "footer.email": "E-Mail",
     "footer.instagram": "Instagram",
     "footer.privacy": "Datenschutz",
@@ -155,7 +155,7 @@ OCS.addLang({
     "essential": {
       name: "Neue Website",
       tagline: "Ein professioneller Auftritt im Netz",
-      bestFor: "Für kleine Unternehmen, die ihre erste Website oder einen Neuanfang brauchen.",
+      bestFor: "Für alle, die ihre erste Website oder einen Neuanfang brauchen.",
       priceLabel: "Ab {p}",
       short: [
         "Individuelles Design, meist 1–5 Seiten",
@@ -252,7 +252,7 @@ OCS.addLang({
     "monthly-starter": {
       name: "Starter monatlich",
       tagline: "Website plus laufende Betreuung",
-      bestFor: "Für kleine Unternehmen, die eine einfache Website mit dem nötigen Support möchten.",
+      bestFor: "Für alle, die eine einfache Website mit dem nötigen Support möchten.",
       priceLabel: "{p} / Monat",
       short: [
         "Einfache Website mit 3–5 Seiten",
