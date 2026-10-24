@@ -10,7 +10,7 @@ import { REPO_ROOT } from './load.mjs';
 const read = rel => readFileSync(path.join(REPO_ROOT, rel), 'utf8');
 
 // Her görev kendi sayfasını bu listeye ekler.
-const REDESIGNED = [];
+const REDESIGNED = ['golden-crust.html'];
 
 const FAMILIES = ['Young Serif', 'Figtree', 'Instrument Serif', 'Hanken Grotesk', 'Unbounded', 'Chivo', 'Newsreader', 'Mulish'];
 

@@ -89,11 +89,59 @@
   "license": "CC0",
   "artist": "JOHN TOWNER heytowner"
  },
+ "img/demo/golden-crust/buns.webp": {
+  "title": "IKEA cinnamon bun.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:IKEA_cinnamon_bun.jpg",
+  "license": "CC0",
+  "artist": "Fumikas Sagisavas"
+ },
+ "img/demo/golden-crust/coffee.webp": {
+  "title": "StBalmainCoffee(byCarliJeen).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:StBalmainCoffee(byCarliJeen).jpg",
+  "license": "CC0",
+  "artist": "Carli Jean Miller"
+ },
+ "img/demo/golden-crust/croissants.webp": {
+  "title": "Rivne, Ukraine (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Rivne,_Ukraine_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Olia Gozha olia"
+ },
+ "img/demo/golden-crust/display.webp": {
+  "title": "Israeli pastries.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Israeli_pastries.jpg",
+  "license": "Public domain",
+  "artist": "User:Mattes"
+ },
  "img/demo/golden-crust/hero.jpg": {
   "title": "Bread (Unsplash).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Bread_(Unsplash).jpg",
   "license": "CC0",
   "artist": "Kim Cruickshanks helloimkim"
+ },
+ "img/demo/golden-crust/hero.webp": {
+  "title": "Bread at a Bakery (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bread_at_a_Bakery_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Roman Kraft romankraft"
+ },
+ "img/demo/golden-crust/loaves.webp": {
+  "title": "Bread (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bread_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Kim Cruickshanks helloimkim"
+ },
+ "img/demo/golden-crust/shelf.webp": {
+  "title": "Artisan Loaves of Bread (Unsplash).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Artisan_Loaves_of_Bread_(Unsplash).jpg",
+  "license": "CC0",
+  "artist": "Drew Coffman drewcoffman"
+ },
+ "img/demo/golden-crust/sourdough.webp": {
+  "title": "Loaf of sourdough bread cooling.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Loaf_of_sourdough_bread_cooling.jpg",
+  "license": "CC0",
+  "artist": "Nutrition, Food Safety &amp; Health"
  },
  "img/demo/golden-crust/story.jpg": {
   "title": "Man holding bread (Unsplash).jpg",
