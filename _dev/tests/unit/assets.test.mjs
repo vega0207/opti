@@ -45,31 +45,33 @@ test('logo işareti: animasyonun kullandığı parçalar, viewBox ve boyut', () 
   assert.ok(statSync(file).size < 4096, `${statSync(file).size} bayt`);
 });
 
-test('gece/gündüz arka planları: masaüstü 1920 px ≤ 260 KB, mobil 900×1600 ≤ 140 KB', async () => {
+// WebP: aynı kalitede JPG'den ~%30 küçük; yavaş bağlantıda fotoğraflar daha erken tamamlanır.
+test('gece/gündüz arka planları WebP: masaüstü 1920 px ≤ 170 KB, mobil 900×1600 ≤ 100 KB', async () => {
   const sharp = (await import('sharp')).default;
   for (const name of ['bg-night', 'bg-day']) {
-    for (const [suffix, w, h, max] of [['', 1920, null, 260], ['-m', 900, 1600, 140]]) {
-      const rel = `img/${name}${suffix}.jpg`;
+    for (const [suffix, w, h, max] of [['', 1920, null, 170], ['-m', 900, 1600, 100]]) {
+      const rel = `img/${name}${suffix}.webp`;
       const file = path.join(REPO_ROOT, rel);
       assert.ok(existsSync(file), `${rel} yok`);
       assert.ok(statSync(file).size <= max * 1024, `${rel} ${Math.round(statSync(file).size / 1024)} KB`);
       const meta = await sharp(file).metadata();
-      assert.equal(meta.format, 'jpeg', rel);
+      assert.equal(meta.format, 'webp', rel);
       assert.equal(meta.width, w, `${rel} genişlik`);
       if (h) assert.equal(meta.height, h, `${rel} yükseklik`);
     }
   }
 });
 
-test('çalışma kartı görselleri: 720×1125 ve ≤ 120 KB', async () => {
+test('çalışma kartı görselleri WebP: 720×1125 ve ≤ 85 KB', async () => {
   const sharp = (await import('sharp')).default;
   const { loadScripts } = await import('./load.mjs');
   const CONFIG = loadScripts(['js/boot.js', 'js/config.js']).run('CONFIG');
   for (const w of CONFIG.portfolio) {
     const file = path.join(REPO_ROOT, w.thumb);
     assert.ok(existsSync(file), `${w.thumb} yok`);
-    assert.ok(statSync(file).size <= 120 * 1024, `${w.thumb} ${Math.round(statSync(file).size / 1024)} KB`);
+    assert.ok(statSync(file).size <= 85 * 1024, `${w.thumb} ${Math.round(statSync(file).size / 1024)} KB`);
     const meta = await sharp(file).metadata();
+    assert.equal(meta.format, 'webp', w.thumb);
     assert.deepEqual([meta.width, meta.height], [720, 1125], w.thumb);
   }
 });

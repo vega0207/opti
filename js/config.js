@@ -85,16 +85,16 @@ const CONFIG = {
   // thumb: kartta görünen ekran görüntüsü
   // hero: true olan ilk 3 tanesi ana sayfanın en üstündeki görsellerde kullanılır
   portfolio: [
-    { type: "concept", name: "Golden Crust Bakery",     url: "golden-crust.html",    thumb: "img/work/golden-crust.jpg", hero: true },
-    { type: "concept", name: "Luma Dental Studio",      url: "meridian-law.html",    thumb: "img/work/luma-dental.jpg",  hero: true },
-    { type: "concept", name: "Northform Training Club", url: "forge-athletics.html", thumb: "img/work/northform.jpg",    hero: true },
-    { type: "concept", name: "Olive & Ember",           url: "olive-and-ember.html", thumb: "img/work/olive-and-ember.jpg", hero: false },
-    { type: "concept", name: "Harbor & Hill Realty",    url: "harbor-homes.html",    thumb: "img/work/harbor-homes.jpg", hero: false },
-    { type: "concept", name: "Sharp & Co. Barbers",     url: "sharp-and-co.html",    thumb: "img/work/sharp-and-co.jpg", hero: false },
-    { type: "concept", name: "Atelier Linea",           url: "atelier-linea.html",   thumb: "img/work/atelier-linea.jpg", hero: false },
-    { type: "concept", name: "Casa Olivo",              url: "casa-olivo.html",      thumb: "img/work/casa-olivo.jpg",   hero: false },
-    { type: "concept", name: "Pitline Auto Care",       url: "pitline-auto.html",    thumb: "img/work/pitline-auto.jpg", hero: false },
-    { type: "concept", name: "Willow Veterinary Clinic", url: "willow-vet.html",     thumb: "img/work/willow-vet.jpg",   hero: false },
-    { type: "client",  name: "Nesmina",                 url: "nesmina.html",         thumb: "img/work/nesmina.jpg",      hero: false }
+    { type: "concept", name: "Golden Crust Bakery",     url: "golden-crust.html",    thumb: "img/work/golden-crust.webp", hero: true },
+    { type: "concept", name: "Luma Dental Studio",      url: "meridian-law.html",    thumb: "img/work/luma-dental.webp",  hero: true },
+    { type: "concept", name: "Northform Training Club", url: "forge-athletics.html", thumb: "img/work/northform.webp",    hero: true },
+    { type: "concept", name: "Olive & Ember",           url: "olive-and-ember.html", thumb: "img/work/olive-and-ember.webp", hero: false },
+    { type: "concept", name: "Harbor & Hill Realty",    url: "harbor-homes.html",    thumb: "img/work/harbor-homes.webp", hero: false },
+    { type: "concept", name: "Sharp & Co. Barbers",     url: "sharp-and-co.html",    thumb: "img/work/sharp-and-co.webp", hero: false },
+    { type: "concept", name: "Atelier Linea",           url: "atelier-linea.html",   thumb: "img/work/atelier-linea.webp", hero: false },
+    { type: "concept", name: "Casa Olivo",              url: "casa-olivo.html",      thumb: "img/work/casa-olivo.webp",   hero: false },
+    { type: "concept", name: "Pitline Auto Care",       url: "pitline-auto.html",    thumb: "img/work/pitline-auto.webp", hero: false },
+    { type: "concept", name: "Willow Veterinary Clinic", url: "willow-vet.html",     thumb: "img/work/willow-vet.webp",   hero: false },
+    { type: "client",  name: "Nesmina",                 url: "nesmina.html",         thumb: "img/work/nesmina.webp",      hero: false }
   ]
 };

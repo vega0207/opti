@@ -1,4 +1,4 @@
-// Arka plan fotoğrafını site için hazırlar: masaüstü (1920 px genişlik) ve mobil (900×1600 dik kırpım).
+// Arka plan fotoğrafını site için hazırlar (WebP): masaüstü (1920 px genişlik) ve mobil (900×1600 dik kırpım).
 // Kullanım: node _dev/tools/images.mjs <kaynak> <ad> [--focus=0..1] [--out=klasör]
 //   --focus: dik kırpımın yatay merkezi (0 = sol kenar, 1 = sağ kenar; varsayılan 0.5)
 //   --out:   çıktı klasörü (varsayılan img/)
@@ -10,17 +10,17 @@ import { REPO_ROOT } from './serve.mjs';
 export async function processBackground(src, name, { focus = 0.5, out = path.join(REPO_ROOT, 'img') } = {}) {
   await mkdir(out, { recursive: true });
   const meta = await sharp(src).metadata();
-  const jpeg = { quality: 78, mozjpeg: true, progressive: true };
+  const webp = { quality: 70, effort: 6 };
 
-  const desktop = path.join(out, `${name}.jpg`);
-  await sharp(src).rotate().resize({ width: 1920, withoutEnlargement: false }).jpeg(jpeg).toFile(desktop);
+  const desktop = path.join(out, `${name}.webp`);
+  await sharp(src).rotate().resize({ width: 1920, withoutEnlargement: false }).webp(webp).toFile(desktop);
 
   // Dik kırpım: tam yükseklik, genişlik 9/16 oranında, merkez "focus" noktasında
   const cropW = Math.min(meta.width, Math.round(meta.height * 900 / 1600));
   const left = Math.max(0, Math.min(meta.width - cropW, Math.round(meta.width * focus - cropW / 2)));
-  const mobile = path.join(out, `${name}-m.jpg`);
+  const mobile = path.join(out, `${name}-m.webp`);
   await sharp(src).rotate().extract({ left, top: 0, width: cropW, height: meta.height })
-    .resize(900, 1600, { fit: 'cover' }).jpeg(jpeg).toFile(mobile);
+    .resize(900, 1600, { fit: 'cover' }).webp(webp).toFile(mobile);
   return { desktop, mobile };
 }
 

@@ -84,7 +84,7 @@
 
   function renderHeroCollage() {
     $('#heroCollage').innerHTML = CONFIG.portfolio.filter(w => w.hero).slice(0, 3).map(w =>
-      `<span class="shot"><span class="shot-bar"><i></i><i></i><i></i></span><img src="${esc(w.thumb)}" alt="" width="720" height="1125"></span>`
+      `<span class="shot"><span class="shot-bar"><i></i><i></i><i></i></span><img src="${esc(w.thumb)}" alt="" width="720" height="1125" fetchpriority="high"></span>`
     ).join('');
   }
 
@@ -228,7 +228,6 @@
 
   function renderAll() {
     renderMarquee();
-    renderHeroCollage();
     renderPortfolio();
     renderPackageSelect();
     renderPrices();
@@ -450,6 +449,8 @@
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     w.addEventListener('load', () => w.scrollTo(0, 0));
 
+    // Kolaj metin içermez: dil dosyasını beklemeden çizilir, görseller hemen inmeye başlar.
+    renderHeroCollage();
     OCS.ui.renderControls($('#navControls'));
     OCS.ui.renderControls($('#navMobileControls'));
     OCS.ui.bindThemeToggles();

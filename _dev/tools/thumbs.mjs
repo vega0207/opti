@@ -29,7 +29,7 @@ try {
     const png = await page.screenshot({ clip: { x: 0, y: 0, width: 1440, height: 2250 }, captureBeyondViewport: true });
     const out = path.join(REPO_ROOT, w.thumb);
     await mkdir(path.dirname(out), { recursive: true });
-    await sharp(png).resize({ width: 720 }).jpeg({ quality: 78, mozjpeg: true, progressive: true }).toFile(out);
+    await sharp(png).resize({ width: 720 }).webp({ quality: 72, effort: 6 }).toFile(out);
     await page.close();
     console.log(w.thumb);
   }

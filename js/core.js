@@ -480,8 +480,8 @@
   })();
 
   /* ---------- Kaydırma animasyonları ----------
-     data-anim="up|left|right|zoom|fade": öğe görünür olunca belirir, ekrandan tamamen çıkınca kaybolur.
-     data-anim-stagger="...": kapsayıcının çocukları sırayla (80 ms arayla) gelir. */
+     data-anim="up|left|right|zoom|fade": öğe görünür olunca bir kez belirir ve öyle kalır.
+     data-anim-stagger="...": kapsayıcının çocukları sırayla (40 ms arayla) gelir. */
   OCS.motion = (() => {
     let observer = null;
     const prepare = root => {
@@ -513,8 +513,9 @@
       }
       observer = new IntersectionObserver(entries => {
         for (const entry of entries) {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.15) entry.target.classList.add('in');
-          else if (entry.intersectionRatio === 0) entry.target.classList.remove('in');
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.15) continue;
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
         }
       }, { threshold: [0, 0.15] });
       observe(prepare(d));

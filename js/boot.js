@@ -59,6 +59,23 @@
   if (lang !== 'en') html.classList.add('i18n-pending');
   if (splash) html.classList.add('splash');
 
+  // Ön yükleme: sayfanın beklediği dil dosyası (core.js'in yükleyeceği adresle aynı) ve etkin temanın
+  // arka plan fotoğrafı, betikleri ve CSS'i beklemeden istenir. Fotoğrafın adı ve 720 px sınırı
+  // css/style.css'teki .bg-night / .bg-day kurallarıyla aynı olmalı, yoksa fotoğraf iki kez iner.
+  const preload = (as, href) => {
+    try {
+      const link = d.createElement('link');
+      link.rel = 'preload';
+      link.as = as;
+      link.href = href;
+      d.head.appendChild(link);
+    } catch (e) { /* ön yükleme yalnız hız içindir; olmazsa dosya yine normal yolla yüklenir */ }
+  };
+  preload('script', `js/lang/${lang}.js`);
+  let mobile = false;
+  try { mobile = w.matchMedia('(max-width: 720px)').matches; } catch (e) { mobile = false; }
+  preload('image', `img/bg-${theme === 'dark' ? 'night' : 'day'}${mobile ? '-m' : ''}.webp`);
+
   OCS.boot = {
     lang,
     theme,

@@ -9,16 +9,21 @@ after(async () => { await ctx?.close(); });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const translateX = page => page.$eval('#faq .sec-head[data-anim="left"]', el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m41);
 
-test('görünür olunca belirir, ekrandan tamamen çıkınca kaybolur', async () => {
+// Site sahibi bölümlerin geç belirdiğini söyledi: kısa sürede tam görünür olmalı ve geri kaydırınca kaybolmamalı.
+test('görünür olunca 0,7 sn içinde tam belirir, ekrandan çıkınca kaybolmaz', async () => {
   const { page, close } = await openPage(ctx, '/?lang=en');
   const faqHead = '#faq .sec-head[data-anim]';
+  const shown = () => page.$$eval('#faq .sec-head[data-anim], #faqList > *', els => els.slice(0, 5).map(e => getComputedStyle(e).opacity));
   assert.equal(await page.$eval(faqHead, el => el.classList.contains('in')), false);
   await page.$eval('#faq', el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
-  await page.waitForFunction(s => document.querySelector(s).classList.contains('in'), { timeout: 1500 }, faqHead);
-  // Kart ızgaraları sırayla gelir: çocuklara sıra numarası yazılır
+  await sleep(700);
+  // Kart ızgaraları sırayla gelir: çocuklara sıra numarası yazılır; dördüncü kart da bu sürede tamamlanır
   assert.deepEqual(await page.$$eval('#faqList > *', els => els.slice(0, 3).map(e => e.style.getPropertyValue('--i'))), ['0', '1', '2']);
+  assert.deepEqual(await shown(), ['1', '1', '1', '1', '1']);
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-  await page.waitForFunction(s => !document.querySelector(s).classList.contains('in'), { timeout: 1500 }, faqHead);
+  await sleep(400);
+  await page.$eval('#faq', el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
+  assert.deepEqual(await shown(), ['1', '1', '1', '1', '1'], 'geri dönünce yeniden belirmemeli');
   await close();
 });
 

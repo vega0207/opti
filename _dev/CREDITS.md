@@ -7,8 +7,8 @@ alt bilgideki fotoğraf satırını (`index.html`, `privacy.html`, `terms.html`,
 
 | Dosya | Eser | Yazar | Lisans | Değişiklik |
 |---|---|---|---|---|
-| `img/bg-night.jpg`, `img/bg-night-m.jpg` | [Thunersee Sonnenuntergang (48141634611).jpg](https://commons.wikimedia.org/wiki/File:Thunersee_Sonnenuntergang_(48141634611).jpg) | Thomas Woodtli | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | Kırpıldı, küçültüldü, sıkıştırıldı |
-| `img/bg-day.jpg`, `img/bg-day-m.jpg` | [Mountain Niesen - View from Merligen Thunersee.jpg](https://commons.wikimedia.org/wiki/File:Mountain_Niesen_-_View_from_Merligen_Thunersee.jpg) | Marco Ghinolfi | CC0 | Kırpıldı, küçültüldü, sıkıştırıldı |
+| `img/bg-night.webp`, `img/bg-night-m.webp` | [Thunersee Sonnenuntergang (48141634611).jpg](https://commons.wikimedia.org/wiki/File:Thunersee_Sonnenuntergang_(48141634611).jpg) | Thomas Woodtli | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) | Kırpıldı, küçültüldü, sıkıştırıldı |
+| `img/bg-day.webp`, `img/bg-day-m.webp` | [Mountain Niesen - View from Merligen Thunersee.jpg](https://commons.wikimedia.org/wiki/File:Mountain_Niesen_-_View_from_Merligen_Thunersee.jpg) | Marco Ghinolfi | CC0 | Kırpıldı, küçültüldü, sıkıştırıldı |
 
 CC BY-SA 2.0 şartları: yazar, kaynak ve lisans bağlantısı sitede görünür olmalı (alt bilgide var) ve
 bu fotoğraftan türetilen dosyalar da aynı lisansla paylaşılır. Gece fotoğrafı CC0 bir fotoğrafla

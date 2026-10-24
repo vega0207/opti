@@ -41,7 +41,7 @@ test('çalışma sekmeleri: kartlar demoyu yeni sekmede açar', async () => {
     assert.match(c.rel, /noopener/);
   }
   assert.equal(concept[0].label, 'Open Golden Crust Bakery in a new tab');
-  assert.equal(concept[0].img, 'img/work/golden-crust.jpg');
+  assert.equal(concept[0].img, 'img/work/golden-crust.webp');
   await page.click('[data-work-filter="client"]');
   const client = await cards();
   assert.deepEqual(client.map(c => [c.name, c.href]), [['Nesmina', 'nesmina.html']]);

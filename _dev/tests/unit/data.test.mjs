@@ -68,7 +68,7 @@ test('portföy: tür geçerli, demo dosyası var, tam 3 hero', () => {
     assert.ok(['concept', 'client'].includes(w.type), w.name);
     assert.ok(w.name && w.name.trim());
     assert.ok(existsSync(path.join(REPO_ROOT, w.url)), `${w.url} yok`);
-    assert.match(w.thumb, /^img\/work\/[a-z0-9-]+\.jpg$/);
+    assert.match(w.thumb, /^img\/work\/[a-z0-9-]+\.webp$/);
     assert.equal(typeof w.hero, 'boolean');
   }
   assert.equal(CONFIG.portfolio.filter(w => w.hero).length, 3);

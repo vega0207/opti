@@ -188,16 +188,16 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
 .bg-night { background-image: var(--ov-dark); }
 .bg-day { background-image: var(--ov-light); }
 [data-theme="dark"] .bg-night,
-.bg-layer.both .bg-night { background-image: var(--ov-dark), url("../img/bg-night.jpg"); }
+.bg-layer.both .bg-night { background-image: var(--ov-dark), url("../img/bg-night.webp"); }
 [data-theme="light"] .bg-day,
-.bg-layer.both .bg-day { background-image: var(--ov-light), url("../img/bg-day.jpg"); }
+.bg-layer.both .bg-day { background-image: var(--ov-light), url("../img/bg-day.webp"); }
 [data-theme="dark"] .bg-night,
 [data-theme="light"] .bg-day { opacity: 1; }
 @media (max-width: 720px) {
   [data-theme="dark"] .bg-night,
-  .bg-layer.both .bg-night { background-image: var(--ov-dark), url("../img/bg-night-m.jpg"); }
+  .bg-layer.both .bg-night { background-image: var(--ov-dark), url("../img/bg-night-m.webp"); }
   [data-theme="light"] .bg-day,
-  .bg-layer.both .bg-day { background-image: var(--ov-light), url("../img/bg-day-m.jpg"); }
+  .bg-layer.both .bg-day { background-image: var(--ov-light), url("../img/bg-day-m.webp"); }
 }
 
 /* ============================================================
@@ -771,7 +771,7 @@ html.splash nav .logo-mark { opacity: 0; }
    13. Kaydırma animasyonları (yalnız opaklık ve transform)
    Kayma mesafesi ekran kenar boşluğunu aşmaz: sayfa yana kaymaz.
    ============================================================ */
-[data-anim] { opacity: 0; transition: opacity .6s ease, transform .6s ease; transition-delay: calc(var(--i, 0) * 80ms); }
+[data-anim] { opacity: 0; transition: opacity .35s ease, transform .35s ease; transition-delay: calc(var(--i, 0) * 40ms); }
 [data-anim="up"] { transform: translateY(32px); }
 [data-anim="left"] { transform: translateX(-48px); }
 [data-anim="right"] { transform: translateX(48px); }

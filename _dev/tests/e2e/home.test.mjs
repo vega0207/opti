@@ -117,19 +117,19 @@ test('tema: sistem ayarı, düğme, kayıt ve sistem değişimi', async () => {
 
 test('arka plan: temaya göre görsel, mobilde dik kırpım, diğer tema sonradan yüklenir', async () => {
   const desk = await openPage(ctx, '/?lang=en', { scheme: 'dark' });
-  assert.match(await desk.page.$eval('.bg-night', el => getComputedStyle(el).backgroundImage), /bg-night\.jpg/);
+  assert.match(await desk.page.$eval('.bg-night', el => getComputedStyle(el).backgroundImage), /bg-night\.webp/);
   await new Promise(r => setTimeout(r, 1500));
   const timing = await desk.page.evaluate(() => {
     const nav = performance.getEntriesByType('navigation')[0];
     const res = performance.getEntriesByType('resource');
     const find = n => res.find(e => e.name.includes(n));
-    return { load: nav.loadEventStart, night: find('bg-night.jpg')?.startTime, day: find('bg-day.jpg')?.startTime };
+    return { load: nav.loadEventStart, night: find('bg-night.webp')?.startTime, day: find('bg-day.webp')?.startTime };
   });
   assert.ok(timing.night !== undefined && timing.night < timing.load, JSON.stringify(timing));
   assert.ok(timing.day !== undefined && timing.day >= timing.load, JSON.stringify(timing));
   await desk.close();
   const mob = await openPage(ctx, '/?lang=en', { scheme: 'dark', width: 390, height: 844 });
-  assert.match(await mob.page.$eval('.bg-night', el => getComputedStyle(el).backgroundImage), /bg-night-m\.jpg/);
+  assert.match(await mob.page.$eval('.bg-night', el => getComputedStyle(el).backgroundImage), /bg-night-m\.webp/);
   await mob.close();
 });
 
