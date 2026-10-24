@@ -34,7 +34,8 @@ test('çalışma sekmeleri: kartlar demoyu yeni sekmede açar', async () => {
     name: a.querySelector('.work-name').textContent, img: a.querySelector('img').getAttribute('src')
   })));
   const concept = await cards();
-  assert.deepEqual(concept.map(c => c.href), ['golden-crust.html', 'meridian-law.html', 'forge-athletics.html']);
+  assert.deepEqual(concept.map(c => c.href), CFG.portfolio.filter(w => w.type === 'concept').map(w => w.url));
+  assert.equal(concept.length, 10);
   for (const c of concept) {
     assert.equal(c.target, '_blank');
     assert.match(c.rel, /noopener/);
