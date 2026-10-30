@@ -21,7 +21,8 @@
     return value !== null ? value : read('localStorage', key);
   };
 
-  OCS.detectLang = (search, stored, navLangs) => {
+  // Tarayıcının diline bakılmaz: hedef kitle yurt dışı, ilk açılış İngilizce (para birimi de dile bağlı: USD)
+  OCS.detectLang = (search, stored) => {
     let param = null;
     try { param = new URLSearchParams(search || '').get('lang'); } catch (e) { param = null; }
     if (param) {
@@ -29,10 +30,6 @@
       if (/^[a-z]{2}(-[a-z]{2})?$/.test(param) && isSupported(param.slice(0, 2))) return param.slice(0, 2);
     }
     if (stored && isSupported(stored)) return stored;
-    for (const tag of navLangs || []) {
-      const code = String(tag || '').slice(0, 2).toLowerCase();
-      if (isSupported(code)) return code;
-    }
     return 'en';
   };
 
@@ -47,8 +44,7 @@
   try { prefersDark = w.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { prefersDark = false; }
 
   const storedTheme = OCS.readPref('ocs.theme');
-  const nav = w.navigator || {};
-  const lang = OCS.detectLang(w.location.search, OCS.readPref('ocs.lang'), nav.languages || [nav.language]);
+  const lang = OCS.detectLang(w.location.search, OCS.readPref('ocs.lang'));
   const theme = OCS.detectTheme(storedTheme, prefersDark);
   // Oynadığı oturumda hatırlanamıyorsa (depolama kapalı) açılış hiç oynamaz.
   const splash = html.getAttribute('data-page') === 'home' && sessionWorks() && read('sessionStorage', 'ocs.splash') === null;

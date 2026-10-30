@@ -28,6 +28,10 @@ test('current: kayıtlı geçerli seçim, yoksa dilin parası', () => {
   assert.equal(loadWithFixture({ url: 'https://x/?lang=tr', session: { 'ocs.currency': 'XYZ' } }).run(`OCS.money.current()`), 'TRY');
 });
 
+test('current: Türkçe tarayıcıda da ilk açılışta USD', () => {
+  assert.equal(loadWithFixture({ languages: ['tr-TR'] }).run(`OCS.money.current()`), 'USD');
+});
+
 test('set: seçimi kaydeder ve ocs:currency yayınlar; geçersiz kod yok sayılır', () => {
   const { run, session } = loadWithFixture({ url: 'https://x/?lang=tr' });
   run(`OCS.money.set('EUR')`);

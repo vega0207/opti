@@ -4,23 +4,29 @@ import { loadScripts } from './load.mjs';
 
 const boot = (opts = {}) => loadScripts(['js/boot.js'], opts);
 
-test('detectLang: parametre, kayıt, tarayıcı dili ve varsayılan sırası', () => {
-  const langCases = [ // [url, stored, navLangs, expected]
-    ['https://x/?lang=de', 'tr', ['ru-RU'], 'de'],
-    ['https://x/?lang=TR', null, ['en'], 'tr'],
-    ['https://x/?lang=de-DE', null, ['ar-KW'], 'de'],
-    ['https://x/?lang=xx', 'ru', ['en'], 'ru'],
-    ['https://x/?lang=%22%3E%3Cscript%3E', null, ['pt-BR'], 'en'],
-    ['https://x/', null, ['tr-TR', 'en'], 'tr'],
-    ['https://x/', null, ['pt-BR', 'de-AT'], 'de'],
-    ['https://x/', 'zz', ['AR'], 'ar'],
-    ['https://x/', null, [], 'en']
+test('detectLang: parametre, kayıt, yoksa İngilizce', () => {
+  const langCases = [ // [url, stored, expected]
+    ['https://x/?lang=de', 'tr', 'de'],
+    ['https://x/?lang=TR', null, 'tr'],
+    ['https://x/?lang=de-DE', null, 'de'],
+    ['https://x/?lang=xx', 'ru', 'ru'],
+    ['https://x/?lang=%22%3E%3Cscript%3E', null, 'en'],
+    ['https://x/', 'zz', 'en'],
+    ['https://x/', null, 'en']
   ];
   const { run } = boot();
-  for (const [url, stored, langs, expected] of langCases) {
+  for (const [url, stored, expected] of langCases) {
     const search = new URL(url).search;
-    const got = run(`OCS.detectLang(${JSON.stringify(search)}, ${JSON.stringify(stored)}, ${JSON.stringify(langs)})`);
-    assert.equal(got, expected, `${url} stored=${stored} nav=${langs}`);
+    const got = run(`OCS.detectLang(${JSON.stringify(search)}, ${JSON.stringify(stored)})`);
+    assert.equal(got, expected, `${url} stored=${stored}`);
+  }
+});
+
+test('ilk açılış tarayıcı dili ne olursa olsun İngilizce', () => {
+  for (const languages of [['tr-TR', 'tr'], ['de-DE'], ['ar-KW'], ['ru-RU'], ['pt-BR']]) {
+    const { document, run } = boot({ languages });
+    assert.equal(run('OCS.boot.lang'), 'en', languages.join(','));
+    assert.equal(document.documentElement.lang, 'en', languages.join(','));
   }
 });
 
@@ -81,7 +87,7 @@ test('kayıtlı dil: oturumdaki kalıcıdan önce gelir', () => {
 });
 
 test('depolama fırlatsa da boot çalışır', () => {
-  const { document, run } = boot({ throwingStorage: true, languages: ['tr-TR'], prefersDark: true });
+  const { document, run } = boot({ url: 'https://opticodestudio.com/?lang=tr', throwingStorage: true, prefersDark: true });
   assert.equal(run('OCS.boot.lang'), 'tr');
   assert.equal(document.documentElement.getAttribute('data-theme'), 'dark');
   assert.equal(run('OCS.readPref("ocs.lang")'), null);
