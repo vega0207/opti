@@ -167,6 +167,12 @@ SOFTWARE.
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
+  <!-- Kampanya şeridi: js/config.js → campaign: false olunca gizlenir -->
+  <a class="promo" id="promo" href="#offer">
+    <span class="promo-long" data-i18n="promo.text">Founding offer: 50% off a new website for our first 3 clients. Free preview first.</span>
+    <span class="promo-short" data-i18n="promo.short">First 3 clients: 50% off · Free preview</span>
+    <svg class="i flip" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+  </a>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1><span data-i18n="hero.title">A better website,</span> <em data-i18n="hero.accent">built or improved for you.</em></h1>
@@ -204,6 +210,23 @@ SOFTWARE.
     <div class="sec-head" data-anim="left">
       <h2 data-i18n="pkg.title">Packages</h2>
       <p data-i18n="pkg.lead">One-time projects, monthly plans or ongoing care. We confirm the exact scope and price before we start.</p>
+    </div>
+    <!-- Teklif kartı: js/config.js → campaign: false olunca gizlenir -->
+    <div class="offer" id="offer" data-anim="up">
+      <div class="offer-copy">
+        <span class="offer-kicker" data-i18n="offer.kicker">Founding offer · first 3 clients</span>
+        <h3 data-i18n="offer.title">See your new website before you pay anything.</h3>
+        <p data-i18n="offer.text">We build a free preview of your new site. Love it? You get 50% off. Not for you? You pay nothing.</p>
+      </div>
+      <ol class="offer-steps">
+        <li><b>1</b><span data-i18n="offer.s1">Send us your business name</span></li>
+        <li><b>2</b><span data-i18n="offer.s2">Get your free preview within 48 hours</span></li>
+        <li><b>3</b><span data-i18n="offer.s3">Love it? Launch it at 50% off</span></li>
+      </ol>
+      <div class="offer-actions">
+        <a href="#contact" class="btn btn-primary"><span data-i18n="offer.cta">Get my free preview</span><svg class="i flip" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+        <a class="offer-dm" id="offerDm" href="https://www.instagram.com/opticodestudio/" target="_blank" rel="noopener" data-i18n="offer.dm">or message us on Instagram</a>
+      </div>
     </div>
     <div class="tabs pkg-tabs" role="tablist" data-active="new">
       <button class="tab active" type="button" role="tab" aria-selected="true" data-pkg-tab="new" data-i18n="pkg.tab.new">New website</button>

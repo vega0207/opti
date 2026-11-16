@@ -26,6 +26,17 @@ OCS.addLang({
     "hero.ctaQuote": "Teklif al",
     "hero.ctaReview": "Ücretsiz site incelemesi",
 
+    "promo.text": "Kuruluş kampanyası: ilk 3 müşterimize yeni web sitesinde %50 indirim. Önce ücretsiz önizleme.",
+    "promo.short": "İlk 3 müşteriye %50 · Ücretsiz önizleme",
+    "offer.kicker": "Kuruluş kampanyası · ilk 3 müşteri",
+    "offer.title": "Yeni sitenizi ödeme yapmadan önce görün.",
+    "offer.text": "Yeni sitenizin ücretsiz önizlemesini hazırlıyoruz. Beğenirseniz %50 indirim. Beğenmezseniz hiçbir şey ödemezsiniz.",
+    "offer.s1": "İşletmenizin adını gönderin",
+    "offer.s2": "48 saat içinde ücretsiz önizlemenizi alın",
+    "offer.s3": "Beğendiyseniz %50 indirimle yayına alalım",
+    "offer.cta": "Ücretsiz önizlememi iste",
+    "offer.dm": "ya da Instagram'dan yazın",
+
     "work.title": "Son çalışmalar",
     "work.tab.concept": "Konseptler",
     "work.tab.client": "Müşteri projeleri",

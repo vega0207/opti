@@ -26,6 +26,17 @@ OCS.addLang({
     "hero.ctaQuote": "Angebot anfragen",
     "hero.ctaReview": "Kostenloser Website-Check",
 
+    "promo.text": "Gründungsangebot: 50 % Rabatt auf eine neue Website für unsere ersten 3 Kunden. Zuerst eine kostenlose Vorschau.",
+    "promo.short": "Erste 3 Kunden: −50 % · Gratis-Vorschau",
+    "offer.kicker": "Gründungsangebot · erste 3 Kunden",
+    "offer.title": "Sehen Sie Ihre neue Website, bevor Sie etwas bezahlen.",
+    "offer.text": "Wir erstellen eine kostenlose Vorschau Ihrer neuen Website. Gefällt sie Ihnen? Dann erhalten Sie 50 % Rabatt. Wenn nicht, zahlen Sie nichts.",
+    "offer.s1": "Senden Sie uns den Namen Ihres Unternehmens",
+    "offer.s2": "Ihre kostenlose Vorschau innerhalb von 48 Stunden",
+    "offer.s3": "Gefällt sie Ihnen? Start mit 50 % Rabatt",
+    "offer.cta": "Kostenlose Vorschau anfordern",
+    "offer.dm": "oder schreiben Sie uns auf Instagram",
+
     "work.title": "Aktuelle Projekte",
     "work.tab.concept": "Konzepte",
     "work.tab.client": "Kundenprojekte",

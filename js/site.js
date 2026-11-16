@@ -443,6 +443,14 @@
     });
   }
 
+  // Kampanya şeridi ve teklif kartı: CONFIG.campaign false ise ikisi de gizlenir
+  function initCampaign() {
+    const on = CONFIG.campaign === true;
+    ['#promo', '#offer'].forEach(sel => { const el = $(sel); if (el) el.hidden = !on; });
+    const dm = $('#offerDm');
+    if (dm && CONFIG.instagramUrl) dm.href = CONFIG.instagramUrl;
+  }
+
   function init() {
     if (d.documentElement.dataset.page !== 'home') return;
     // Sayfa yenilenince en üstten başlar (eski sitedeki davranış)
@@ -460,6 +468,7 @@
     initNav();
     initModals();
     initContact();
+    initCampaign();
     initPackages();
     initFaq();
     initQuoteForm();

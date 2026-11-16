@@ -25,6 +25,17 @@ OCS.addLang({
     "hero.ctaQuote": "Get a quote",
     "hero.ctaReview": "Free website review",
 
+    "promo.text": "Founding offer: 50% off a new website for our first 3 clients. Free preview first.",
+    "promo.short": "First 3 clients: 50% off · Free preview",
+    "offer.kicker": "Founding offer · first 3 clients",
+    "offer.title": "See your new website before you pay anything.",
+    "offer.text": "We build a free preview of your new site. Love it? You get 50% off. Not for you? You pay nothing.",
+    "offer.s1": "Send us your business name",
+    "offer.s2": "Get your free preview within 48 hours",
+    "offer.s3": "Love it? Launch it at 50% off",
+    "offer.cta": "Get my free preview",
+    "offer.dm": "or message us on Instagram",
+
     "work.title": "Recent work",
     "work.tab.concept": "Concepts",
     "work.tab.client": "Client projects",

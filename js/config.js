@@ -14,6 +14,11 @@ const CONFIG = {
   instagramUrl: "https://www.instagram.com/opticodestudio/",
   instagramHandle: "@opticodestudio",
 
+  // ---- KAMPANYA -------------------------------------------------
+  // true: sayfanın en üstünde kampanya şeridi ve paketlerin üstünde teklif kartı görünür
+  // ("ilk 3 müşteriye %50 indirim, önce ücretsiz önizleme"). 3 müşteri dolunca false yap.
+  campaign: true,
+
   // ---- KVKK / GİZLİLİK METNİNDEKİ ŞİRKET BİLGİLERİ -------------
   // Yayına almadan önce ilk iki alanı doldur; tüm dillerdeki metinlerde otomatik görünür.
   legal: {
