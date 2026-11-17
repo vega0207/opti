@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kor-Pan | Restaurant in Brighton</title>
+<meta name="description" content="Kor-Pan, Korean restaurant in Brighton. See the menu and book a table online.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2313110F'/><path d='M12 4c3 4 5 6 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 0-5 1-8z' fill='%23E0703F'/></svg>">
+<link rel="stylesheet" href="https://opticodestudio.com/fonts/demo/fonts.css">
+<link rel="stylesheet" href="https://opticodestudio.com/css/demo.css">
+<style>
+:root{
+  --bg:#13110F; --panel:#1C1916; --panel-2:#24201C; --ink:#F3EDE4; --muted:#B5AA9A;
+  --ember:#E0703F; --ember-dk:#C2582A; --olive:#9AA866; --line:rgba(243,237,228,.13);
+  --serif:"Cormorant Garamond", Georgia, serif; --sans:"Jost", system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px, 100% - 48px);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(38px,5vw,60px)}
+h2 em,h1 em{font-style:italic;color:var(--ember)}
+.kicker{display:inline-block;margin-bottom:16px;color:var(--olive);font-size:12.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase}
+.lead{color:var(--muted);font-size:17.5px;max-width:560px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border:1px solid transparent;border-radius:999px;font:500 15px/1 var(--sans);letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.btn-fire{background:var(--ember);color:#1A0F08}
+.btn-fire:hover{background:#EE844F;transform:translateY(-1px)}
+.btn-line{border-color:rgba(243,237,228,.4);color:var(--ink);background:transparent}
+.btn-line:hover{border-color:var(--ink)}
+section{padding:110px 0}
+
+/* Menü */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background-color .3s ease,border-color .3s ease;border-bottom:1px solid transparent}
+header.solid{background:rgba(19,17,15,.94);border-color:var(--line)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{text-decoration:none;line-height:1}
+.brand b{display:block;font:italic 600 29px/1 var(--serif)}
+.brand small{display:block;margin-top:5px;color:var(--muted);font-size:10.5px;letter-spacing:.26em}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:var(--muted);font-size:15px;text-decoration:none;transition:color .2s ease}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 20px}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:none;color:var(--ink);cursor:pointer}
+.burger svg{width:20px;height:20px;margin:auto}
+.m-menu{display:none;flex-direction:column;padding:8px 24px 24px;background:rgba(19,17,15,.97);border-bottom:1px solid var(--line)}
+.m-menu.open{display:flex}
+.m-menu a{padding:14px 0;border-bottom:1px solid var(--line);font:500 24px/1.2 var(--serif);text-decoration:none}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:150px 0 70px;background:#0B0A09 url("https://opticodestudio.com/img/demo/olive-and-ember/grill.jpg") 62% center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,11,10,.94) 0%,rgba(13,11,10,.7) 42%,rgba(13,11,10,.1) 75%),linear-gradient(0deg,rgba(13,11,10,.85) 0%,rgba(13,11,10,0) 40%)}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(54px,8.4vw,118px);font-weight:400;max-width:760px}
+.hero .lead{margin-top:26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero-info{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:54px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.hero-info b{color:var(--ink);font-weight:500}
+
+/* Üç ilke */
+.pillars{padding:0;border-bottom:1px solid var(--line);background:var(--panel)}
+.pillars .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.pillar{padding:44px 34px 44px 0}
+.pillar + .pillar{padding-left:34px;border-left:1px solid var(--line)}
+.pillar svg{width:26px;height:26px;color:var(--ember)}
+.pillar h3{margin:14px 0 8px;font-size:27px}
+.pillar p{color:var(--muted);font-size:15px}
+
+/* Menü sekmeleri */
+.menu-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+.tab{min-height:44px;padding:0 20px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--muted);font:500 14.5px/1 var(--sans);cursor:pointer;transition:all .2s ease}
+.tab:hover{color:var(--ink);border-color:rgba(243,237,228,.35)}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
+.panel[hidden]{display:none}
+.dish{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.dish h3{font-size:25px}
+.dish .price{font:500 22px/1.2 var(--serif);color:var(--ember)}
+.dish p{grid-column:1/-1;color:var(--muted);font-size:14.5px}
+.tag{display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--olive);border-radius:4px;color:var(--olive);font:500 10.5px/1.4 var(--sans);letter-spacing:.08em;vertical-align:middle}
+.menu-note{margin-top:26px;color:var(--muted);font-size:14px}
+
+/* Galeri */
+.gallery{padding:0 0 110px}
+.gallery .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.gallery figure{position:relative;overflow:hidden;border-radius:14px;background:var(--panel)}
+.gallery figure:first-child{grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:14px;bottom:12px;padding:6px 12px;border-radius:999px;background:rgba(19,17,15,.78);font-size:13px}
+
+/* Özel yemek */
+.room{background:var(--panel)}
+.room .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+.room img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:16px}
+.room ul{list-style:none;margin:26px 0 32px;display:grid;gap:10px}
+.room li{display:flex;gap:12px;color:var(--muted)}
+.room li::before{content:"";flex:none;width:7px;height:7px;margin-top:10px;border-radius:50%;background:var(--ember)}
+
+/* Ateş bandı */
+.fire{position:relative;padding:150px 0;background:#0B0A09 url("https://opticodestudio.com/img/demo/olive-and-ember/hero.jpg") center/cover no-repeat;text-align:center}
+.fire::before{content:"";position:absolute;inset:0;background:rgba(13,11,10,.72)}
+.fire .wrap{position:relative}
+.fire blockquote{max-width:820px;margin:0 auto;font:italic 400 clamp(32px,4.4vw,54px)/1.15 var(--serif)}
+.fire cite{display:block;margin-top:22px;color:var(--muted);font:500 13px/1 var(--sans);font-style:normal;letter-spacing:.2em;text-transform:uppercase}
+
+/* Yorumlar */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.review{padding:30px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.stars{color:var(--ember);letter-spacing:.18em;font-size:14px}
+.review p{margin:14px 0 18px;font:italic 400 22px/1.35 var(--serif)}
+.review span{color:var(--muted);font-size:13.5px}
+
+/* Rezervasyon */
+.book{background:var(--panel)}
+.book .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:start}
+.book-info{display:grid;gap:22px;margin-top:34px}
+.book-info div{padding-top:18px;border-top:1px solid var(--line)}
+.book-info b{display:block;margin-bottom:4px;color:var(--olive);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.book-info span{color:var(--muted)}
+.form{padding:36px;border:1px solid var(--line);border-radius:18px;background:var(--panel-2)}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.row.two{grid-template-columns:1fr 1fr}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;min-width:0}
+.field label{color:var(--muted);font-size:13px;letter-spacing:.04em}
+.field input,.field select,.field textarea{width:100%;min-height:50px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:400 15px/1.4 var(--sans);color-scheme:dark}
+.field textarea{min-height:90px;padding:12px 14px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ember)}
+.field.err input{border-color:#E57373}
+.field .msg{display:none;color:#F09A8A;font-size:12.5px}
+.field.err .msg{display:block}
+.form .btn{width:100%;margin-top:6px}
+.form-note{margin-top:14px;color:var(--muted);font-size:13px;text-align:center}
+.done{text-align:center;padding:30px 10px}
+.done svg{width:52px;height:52px;margin:0 auto 16px;color:var(--ember)}
+.done h3{font-size:36px}
+.done p{margin-top:10px;color:var(--muted)}
+.done .summary{display:inline-block;margin-top:18px;padding:12px 20px;border:1px solid var(--line);border-radius:999px;color:var(--ink)}
+
+/* Ziyaret */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px}
+.visit h3{font-size:30px;margin-bottom:14px}
+.visit p,.visit li{color:var(--muted)}
+.visit ul{list-style:none;display:grid;gap:8px}
+.visit li{display:flex;justify-content:space-between;gap:16px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.visit li b{color:var(--ink);font-weight:400}
+.visit a.link{display:inline-block;margin-top:16px;color:var(--ember);text-underline-offset:4px}
+
+footer{padding:34px 0 90px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink)}
+
+/* Kaydırınca belirme */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  .nav-links,.nav .btn{display:none}
+  .burger{display:grid}
+  .room .wrap,.book .wrap{grid-template-columns:1fr;gap:44px}
+  .reviews{grid-template-columns:1fr}
+  .visit .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .wrap{width:min(1180px, 100% - 32px)}
+  section{padding:80px 0}
+  .hero{padding:130px 0 48px;background-position:68% center}
+  .hero::before{background:linear-gradient(0deg,rgba(13,11,10,.96) 0%,rgba(13,11,10,.72) 55%,rgba(13,11,10,.35) 100%)}
+  .pillars .wrap{grid-template-columns:1fr}
+  .pillar,.pillar + .pillar{padding:30px 0;border-left:0}
+  .pillar + .pillar{border-top:1px solid var(--line)}
+  .panel{grid-template-columns:1fr}
+  .gallery{padding-bottom:80px}
+  .gallery .wrap{grid-template-columns:1fr 1fr}
+  .gallery figure:first-child{grid-column:1/-1;grid-row:auto}
+  .gallery figure{aspect-ratio:4/3}
+  .fire{padding:100px 0}
+  .form{padding:24px 18px}
+  .row,.row.two{grid-template-columns:1fr;gap:0}
+  .visit .wrap{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .gallery img{transition:none}
+}
+</style>
+<style id="ocs-theme">:root{--ember:#86B892;--ember-dk:#669A73;--olive:#D9B36C;--bg:#0F1311;--panel:#171C19;--panel-2:#1F2622;--serif:"Marcellus", Georgia, serif;--sans:"Mulish", system-ui, sans-serif}</style>
+<meta name="robots" content="noindex, nofollow">
+<style>
+.ocs-preview{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;align-items:center;gap:10px;padding:10px 16px;border-top:1px solid rgba(145,215,225,.28);background:rgba(6,19,28,.95);color:#ECF9FA;font:500 13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.ocs-preview img{flex:none}.ocs-preview span{flex:1}.ocs-preview a{color:#66E3E5;font-weight:700;white-space:nowrap}
+body{padding-bottom:60px}
+@media(max-width:640px){.ocs-preview{padding:8px 12px;font-size:12px}.ocs-preview a{display:none}body{padding-bottom:80px}}
+@media print{.ocs-preview{display:none}}
+.brand b{font-size:29px}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><b>Kor-Pan</b><small>KOREAN RESTAURANT · BRIGHTON</small></a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#room">Private dining</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="btn btn-fire" href="#book">Book a table</a>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <nav class="m-menu" id="mMenu">
+    <a href="#menu">Menu</a><a href="#room">Private dining</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a><a href="#book">Book a table</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Marshalls Row, Brighton</span>
+    <h1>Good food.<br><em>Served with care.</em></h1>
+    <p class="lead">A warm welcome and a table that is easy to book. See the menu, book online and plan your next celebration with us.</p>
+    <div class="hero-cta">
+      <a class="btn btn-fire" href="#book">Book a table</a>
+      <a class="btn btn-line" href="#menu">See the menu</a>
+    </div>
+    <div class="hero-info">
+      <span><b>Book online</b> in under a minute</span>
+      <span><b>Full menu</b> on your phone</span>
+      <span><b>Groups</b> and private events</span>
+    </div>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="wrap">
+    <div class="pillar reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.5 6 7.2 6 11a6 6 0 0 1-12 0c0-2.4 1.2-3.9 2.4-5 0 2.3 1.2 3.6 2.4 3.6 0-3.6 0-6 1.2-9.6z"/></svg>
+      <h3>The kitchen</h3>
+      <p>Everything made fresh in our kitchen, every day.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 1 8a8 8 0 0 1-9 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></svg>
+      <h3>The produce</h3>
+      <p>Good ingredients from suppliers we know and trust.</p>
+    </div>
+    <div class="pillar reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8M12 15v7M7 3h10l-1 7a4 4 0 0 1-8 0z"/></svg>
+      <h3>The drinks</h3>
+      <p>A short list of drinks chosen to go with the food.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-head reveal">
+      <div>
+        <span class="kicker">Sample menu</span>
+        <h2>Our <em>menu.</em></h2>
+      </div>
+      <p class="lead">These dishes are placeholders. We add your own menu, prices and photos.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Menu sections">
+      <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="p-small" id="t-small">Starters</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="p-fire" id="t-fire">Mains</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="p-sides" id="t-sides">Sides</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="p-sweet" id="t-sweet">Desserts</button>
+    </div>
+
+    <div class="panel" id="p-small" role="tabpanel" aria-labelledby="t-small">
+      <div class="dish"><h3>Flatbread, smoked butter <span class="tag">V</span></h3><span class="price">£6</span><p>Baked in the wood oven, served warm with whipped butter and sea salt.</p></div>
+      <div class="dish"><h3>Burrata, charred peppers <span class="tag">V</span></h3><span class="price">£12</span><p>Puglian burrata, peppers blistered on the grill, basil oil.</p></div>
+      <div class="dish"><h3>Grilled octopus</h3><span class="price">£15</span><p>Smoked paprika, crushed potatoes, lemon and parsley.</p></div>
+      <div class="dish"><h3>Beef tartare</h3><span class="price">£13</span><p>Hand-cut sirloin, capers, cured yolk and grilled sourdough.</p></div>
+      <div class="dish"><h3>Ember-roasted beetroot <span class="tag">VG</span></h3><span class="price">£9</span><p>Roasted in the coals, with walnut, orange and dill.</p></div>
+      <div class="dish"><h3>Anchovy toast</h3><span class="price">£8</span><p>Cantabrian anchovies, tomato and garlic on toasted bread.</p></div>
+    </div>
+
+    <div class="panel" id="p-fire" role="tabpanel" aria-labelledby="t-fire" hidden>
+      <div class="dish"><h3>Whole sea bream</h3><span class="price">£26</span><p>Grilled over olive wood, salsa verde and charred lemon.</p></div>
+      <div class="dish"><h3>Bavette steak, 250 g</h3><span class="price">£28</span><p>Dry-aged for 35 days, with bone marrow butter.</p></div>
+      <div class="dish"><h3>Côte de boeuf for two</h3><span class="price">£78</span><p>About 1 kg on the bone, carved at the table, with two sides.</p></div>
+      <div class="dish"><h3>Lamb chops</h3><span class="price">£27</span><p>Three chops, anchovy and rosemary dressing, white beans.</p></div>
+      <div class="dish"><h3>Half chicken</h3><span class="price">£21</span><p>Brined overnight, grilled with chilli, garlic and honey.</p></div>
+      <div class="dish"><h3>Hispi cabbage <span class="tag">VG</span></h3><span class="price">£16</span><p>Charred whole, miso butter, toasted seeds and chives.</p></div>
+    </div>
+
+    <div class="panel" id="p-sides" role="tabpanel" aria-labelledby="t-sides" hidden>
+      <div class="dish"><h3>Fire-roasted potatoes <span class="tag">VG</span></h3><span class="price">£6</span><p>Crisp in beef fat, or olive oil if you prefer.</p></div>
+      <div class="dish"><h3>Green leaves <span class="tag">VG</span></h3><span class="price">£5</span><p>Little gem, herbs and a sharp mustard dressing.</p></div>
+      <div class="dish"><h3>Tenderstem broccoli <span class="tag">V</span></h3><span class="price">£7</span><p>Grilled, with chilli, lemon and parmesan.</p></div>
+      <div class="dish"><h3>Hand-cut chips</h3><span class="price">£5</span><p>Twice cooked, rosemary salt and aioli.</p></div>
+    </div>
+
+    <div class="panel" id="p-sweet" role="tabpanel" aria-labelledby="t-sweet" hidden>
+      <div class="dish"><h3>Burnt Basque cheesecake <span class="tag">V</span></h3><span class="price">£9</span><p>Baked in the wood oven until the top caramelises.</p></div>
+      <div class="dish"><h3>Grilled peaches <span class="tag">V</span></h3><span class="price">£8</span><p>Honey, thyme and crème fraîche.</p></div>
+      <div class="dish"><h3>Dark chocolate mousse</h3><span class="price">£8</span><p>Olive oil, sea salt and toasted hazelnuts.</p></div>
+      <div class="dish"><h3>Cheese plate</h3><span class="price">£12</span><p>Three British cheeses, quince and oatcakes.</p></div>
+    </div>
+
+    <p class="menu-note">V vegetarian · VG vegan. Please tell us about any allergies when you book.</p>
+  </div>
+</section>
+
+<div class="gallery">
+  <div class="wrap">
+    <figure class="reveal"><img src="https://opticodestudio.com/img/demo/olive-and-ember/steak.jpg" alt="Steak with roasted vegetables" width="800" height="600" loading="lazy"><figcaption>Bavette, bone marrow butter</figcaption></figure>
+    <figure class="reveal"><img src="https://opticodestudio.com/img/demo/olive-and-ember/pasta.jpg" alt="Plate of pappardelle with sage" width="800" height="600" loading="lazy"><figcaption>Sunday pasta</figcaption></figure>
+    <figure class="reveal"><img src="https://opticodestudio.com/img/demo/olive-and-ember/burrata.jpg" alt="Burrata with tomatoes and cured ham" width="800" height="600" loading="lazy"><figcaption>Burrata, tomatoes</figcaption></figure>
+    <figure class="reveal" style="grid-column:span 2"><img src="https://opticodestudio.com/img/demo/olive-and-ember/wine.jpg" alt="Glass of red wine on a candlelit table" width="800" height="600" loading="lazy"><figcaption>Wine by the glass</figcaption></figure>
+  </div>
+</div>
+
+<section class="room" id="room">
+  <div class="wrap">
+    <img class="reveal" src="https://opticodestudio.com/img/demo/olive-and-ember/room.jpg" alt="Dark wood dining room with candles on the tables" width="1200" height="800" loading="lazy">
+    <div class="reveal">
+      <span class="kicker">Private dining</span>
+      <h2>Private <em>events.</em></h2>
+      <p class="lead">Birthdays, team dinners and family get-togethers. Tell us the date and the number of guests and we plan it with you.</p>
+      <ul>
+        <li>Set menus planned with you</li>
+        <li>Drinks packages for groups</li>
+        <li>Birthdays, wedding dinners, long Sunday lunches</li>
+      </ul>
+      <a class="btn btn-line" href="#book" data-occasion="private">Ask about private dining</a>
+    </div>
+  </div>
+</section>
+
+<section class="fire">
+  <div class="wrap reveal">
+    <blockquote>"A line from your chef or owner goes here."</blockquote>
+    <cite>Sample quote</cite>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <span class="kicker reveal">From our guests</span>
+    <h2 class="reveal">People <em>come back.</em></h2>
+    <div class="reviews">
+      <div class="review reveal"><span class="stars">★★★★★</span><p>"Your best Google reviews go here."</p><span>Sample review</span></div>
+      <div class="review reveal"><span class="stars">★★★★★</span><p>"Your best Google reviews go here."</p><span>Sample review</span></div>
+      <div class="review reveal"><span class="stars">★★★★★</span><p>"Your best Google reviews go here."</p><span>Sample review</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Reservations</span>
+      <h2>Book a <em>table.</em></h2>
+      <p class="lead">Book a table in under a minute. For eight or more, or for a private event, choose "Private event" and we will call you.</p>
+      <div class="book-info">
+        <div><b>Online</b><span>Book any time, day or night</span></div>
+        <div><b>Groups</b><span>Tables up to 8 online, larger groups by phone</span></div>
+        <div><b>Cancellations</b><span>Free up to 24 hours before your booking</span></div>
+      </div>
+    </div>
+
+    <div class="form reveal" id="bookWrap">
+      <form id="bookForm" novalidate>
+        <div class="row">
+          <div class="field"><label for="b-date">Date</label><input id="b-date" type="date" required><span class="msg">Choose a date.</span></div>
+          <div class="field"><label for="b-time">Time</label><select id="b-time"></select></div>
+          <div class="field"><label for="b-guests">Guests</label><select id="b-guests"></select></div>
+        </div>
+        <div class="row two">
+          <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" autocomplete="name"><span class="msg">Please add your name.</span></div>
+          <div class="field"><label for="b-phone">Phone or email</label><input id="b-phone" type="text" autocomplete="tel"><span class="msg">We need a way to confirm.</span></div>
+        </div>
+        <div class="field">
+          <label for="b-occasion">Occasion</label>
+          <select id="b-occasion">
+            <option value="">No special occasion</option>
+            <option value="birthday">Birthday</option>
+            <option value="anniversary">Anniversary</option>
+            <option value="private">Private event</option>
+          </select>
+        </div>
+        <div class="field"><label for="b-notes">Allergies or requests</label><textarea id="b-notes" placeholder="Anything we should know?"></textarea></div>
+        <button class="btn btn-fire" type="submit">Request booking</button>
+        <p class="form-note">We confirm every booking by email within two hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="reveal">
+      <h3>Find us</h3>
+      <p>Marshalls Row<br>Brighton BN1 4JU</p>
+      
+      <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Kor-Pan%2C%20Marshalls%20Row%2C%20Brighton%20BN1%204JU" target="_blank" rel="noopener">Get directions →</a>
+    </div>
+    <div class="reveal">
+      <h3>Opening hours (sample)</h3>
+      <ul>
+        <li><span>Monday</span><b>Closed</b></li>
+        <li><span>Tue–Thu</span><b>5:30–11 pm</b></li>
+        <li><span>Fri–Sat</span><b>5:30 pm–midnight</b></li>
+        <li><span>Sunday</span><b>12–4 pm</b></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <h3>Say hello</h3>
+      <p><a href="https://instagram.com/korpan_official" target="_blank" rel="noopener">Instagram @korpan_official</a></p>
+      
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Kor-Pan, Brighton</span>
+    <span>Website by <a href="https://opticodestudio.com/">OptiCodeStudio</a></span>
+  </div>
+</footer>
+
+<div class="ocs-preview" role="note"><img src="https://opticodestudio.com/img/logo-mark.svg" alt="" width="22" height="17"><span><b>Preview by OptiCodeStudio</b> for Kor-Pan, not the official website. Photos, prices and text are placeholders.</span><a href="https://opticodestudio.com/">opticodestudio.com</a></div>
+
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var header = $('header');
+  var onScroll = function(){ header.classList.toggle('solid', window.scrollY > 40); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var burger = $('#burger'), menu = $('#mMenu');
+  burger.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
+
+  // Menü sekmeleri
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    });
+  });
+
+  // Rezervasyon formu: tarih, saat ve kişi seçenekleri
+  var date = $('#b-date'), time = $('#b-time'), guests = $('#b-guests');
+  var iso = function(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  var today = new Date();
+  var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+  date.min = iso(today);
+  date.value = iso(tomorrow);
+  for (var m = 17 * 60 + 30; m <= 21 * 60 + 30; m += 30) {
+    var label = Math.floor(m / 60) + ':' + String(m % 60).padStart(2, '0');
+    time.add(new Option(label, label, false, label === '19:30'));
+  }
+  for (var g = 1; g <= 8; g++) guests.add(new Option(g + (g === 1 ? ' guest' : ' guests'), g, false, g === 2));
+
+  document.querySelectorAll('[data-occasion]').forEach(function(a){
+    a.addEventListener('click', function(){ $('#b-occasion').value = a.dataset.occasion; });
+  });
+
+  $('#bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    [['#b-date', function(v){ return v && v >= date.min; }], ['#b-name', function(v){ return v.trim().length > 1; }], ['#b-phone', function(v){ return v.trim().length > 5; }]].forEach(function(c){
+      var input = $(c[0]), valid = c[1](input.value);
+      input.parentElement.classList.toggle('err', !valid);
+      if (!valid) ok = false;
+    });
+    if (!ok) return;
+    var d = new Date(date.value + 'T12:00:00');
+    var when = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    var n = guests.value;
+    var esc = function(s){ return String(s).replace(/[&<>"']/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+    $('#bookWrap').innerHTML = '<div class="done" role="status">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>' +
+      '<h3>Thank you, ' + esc($('#b-name').value.trim().split(' ')[0]) + '.</h3>' +
+      '<span class="summary">Table for ' + n + ' · ' + when + ' · ' + time.value + '</span>' +
+      '<p>On the live site you would get a confirmation email. This preview does not send bookings anywhere.</p></div>';
+  });
+  document.querySelectorAll('#bookForm input').forEach(function(i){ i.addEventListener('input', function(){ i.parentElement.classList.remove('err'); }); });
+
+  // Kaydırınca belirme
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
