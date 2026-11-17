@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D A Taylor Transport Services | MOT, servicing and repairs in St Georges</title>
+<meta name="description" content="D A Taylor Transport Services, independent garage in St Georges. MOT, servicing and repairs. Get a price in seconds and book online.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='4' fill='%23121417'/><path d='M4 16h16M6 16l2-6h8l2 6' stroke='%23FFC629' stroke-width='2' fill='none'/></svg>">
+<link rel="stylesheet" href="https://opticodestudio.com/fonts/demo/fonts.css">
+<link rel="stylesheet" href="https://opticodestudio.com/css/demo.css">
+<style>
+:root{
+  --bg:#121417; --panel:#1B1E22; --panel-2:#23272C; --ink:#F2F2EE; --muted:#A3A8AE; --yellow:#FFC629; --yellow-dk:#E5AE12;
+  --line:rgba(242,242,238,.12); --green:#4CC38A;
+  --head:"Barlow Condensed", "Arial Narrow", sans-serif; --body:"Barlow", system-ui, sans-serif;
+  --hazard:repeating-linear-gradient(-45deg,var(--yellow) 0 16px,#121417 16px 32px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px, 100% - 48px);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+h2{font-size:clamp(40px,5vw,64px)}
+.tag{display:inline-block;margin-bottom:14px;padding:5px 10px;background:var(--yellow);color:#121417;font:700 13px/1 var(--head);letter-spacing:.14em;text-transform:uppercase}
+.lead{color:var(--muted);font-size:18px;max-width:560px}
+section{padding:96px 0}
+.hazard{height:10px;background:var(--hazard)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border:2px solid transparent;font:700 17px/1 var(--head);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.btn-y{background:var(--yellow);color:#121417}
+.btn-y:hover{background:var(--yellow-dk)}
+.btn-o{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-o:hover{background:var(--ink);color:#121417}
+
+.topbar{border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
+.topbar .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:9px 0}
+.topbar b{color:var(--ink);font-weight:600}
+
+/* Menü */
+header{position:sticky;top:0;z-index:40;background:rgba(18,20,23,.95);border-bottom:1px solid var(--line)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo i{width:38px;height:38px;background:var(--hazard);display:block;flex:none}
+.logo b{display:block;font:800 26px/1 var(--head);letter-spacing:.06em}
+.logo small{display:block;color:var(--muted);font:600 11px/1.2 var(--body);letter-spacing:.2em}
+.links{display:flex;gap:28px;list-style:none}
+.links a{font:600 17px/1 var(--head);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+.burger{display:none;width:46px;height:46px;border:2px solid var(--line);background:none;color:var(--ink);cursor:pointer}
+.burger svg{width:22px;height:22px;margin:auto}
+.m-menu{display:none;flex-direction:column;padding:4px 24px 20px}
+.m-menu.open{display:flex}
+.m-menu a{padding:12px 0;border-bottom:1px solid var(--line);font:700 26px/1 var(--head);text-transform:uppercase;text-decoration:none}
+
+/* Hero ve fiyat aracı */
+.hero{position:relative;padding:90px 0 100px;background:#0C0D0F url("https://opticodestudio.com/img/demo/pitline-auto/hero.jpg") 70% center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,13,15,.96) 0%,rgba(12,13,15,.85) 45%,rgba(12,13,15,.35) 100%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(56px,8vw,104px)}
+.hero h1 span{color:var(--yellow)}
+.hero .lead{margin-top:20px;color:#C8CCD0}
+.hero-points{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;font-weight:600}
+.hero-points span{display:flex;align-items:center;gap:8px}
+.hero-points svg{width:18px;height:18px;color:var(--yellow)}
+.quote{padding:28px;background:var(--panel);border:2px solid var(--line)}
+.quote h3{font-size:30px;margin-bottom:18px}
+.plate{display:flex;align-items:stretch;border:3px solid #121417;border-radius:6px;overflow:hidden;background:var(--yellow);margin-bottom:16px}
+.plate span{display:grid;place-items:center;padding:0 10px;background:#1F4FB8;color:#fff;font:700 13px/1 var(--head)}
+.plate input{flex:1;min-width:0;min-height:58px;padding:0 14px;border:0;background:transparent;color:#121417;font:700 30px/1 var(--head);letter-spacing:.12em;text-transform:uppercase}
+.plate input::placeholder{color:rgba(18,20,23,.4)}
+.plate input:focus{outline:none}
+.qrow{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}
+label{display:block;margin-bottom:6px;color:var(--muted);font:600 13px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase}
+select,.field input,.field textarea{width:100%;min-height:50px;padding:0 12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:500 16px/1.3 var(--body);border-radius:0}
+select:focus,.field input:focus,.field textarea:focus{outline:none;border-color:var(--yellow)}
+.quote .btn{width:100%;margin-top:16px}
+.result{display:none;margin-top:18px;padding:18px;border:2px solid var(--yellow);background:rgba(255,198,41,.07)}
+.result.show{display:block}
+.result b{display:block;font:700 44px/1 var(--head);color:var(--yellow)}
+.result p{color:#D5D8DB;margin-top:6px;font-size:15px}
+.result a{display:inline-block;margin-top:10px;font-weight:700;color:var(--yellow)}
+.result .warn{color:#FF8F7A}
+
+/* Güven şeridi */
+.trust{padding:0;background:var(--panel)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust div{padding:28px 22px;border-left:1px solid var(--line)}
+.trust div:first-child{border-left:0;padding-left:0}
+.trust b{display:block;font:700 22px/1.1 var(--head);text-transform:uppercase}
+.trust span{color:var(--muted);font-size:14.5px}
+
+/* Fiyat tablosu */
+.prices table{width:100%;border-collapse:collapse;margin-top:36px}
+.prices th,.prices td{padding:16px 12px;border-bottom:1px solid var(--line);text-align:left}
+.prices th{color:var(--muted);font:600 14px/1 var(--head);letter-spacing:.12em;text-transform:uppercase}
+.prices td:first-child{font-weight:600}
+.prices td small{display:block;color:var(--muted);font-weight:400;font-size:14px}
+.prices td.p{font:700 24px/1 var(--head);white-space:nowrap}
+.prices .note{margin-top:18px;color:var(--muted);font-size:14.5px}
+.table-wrap{overflow-x:auto}
+
+/* İş takibi */
+.track{background:var(--panel)}
+.track .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.track form{display:flex;gap:10px;margin-top:26px}
+.track form input{flex:1;min-width:0;min-height:52px;padding:0 14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:700 20px/1 var(--head);letter-spacing:.12em;text-transform:uppercase}
+.track form input:focus{outline:none;border-color:var(--yellow)}
+.track .hint{margin-top:10px;color:var(--muted);font-size:14px}
+.timeline{list-style:none;padding:26px;border:2px solid var(--line);background:var(--bg);min-height:280px}
+.timeline .car{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.timeline .car b{font:700 24px/1 var(--head)}
+.timeline li{position:relative;padding:0 0 22px 34px}
+.timeline li::before{content:"";position:absolute;left:8px;top:6px;width:14px;height:14px;border-radius:50%;border:3px solid var(--muted);background:var(--bg)}
+.timeline li::after{content:"";position:absolute;left:14px;top:22px;bottom:2px;width:2px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+.timeline li.done::before{border-color:var(--green);background:var(--green)}
+.timeline li.now::before{border-color:var(--yellow);background:var(--yellow);box-shadow:0 0 0 5px rgba(255,198,41,.18)}
+.timeline li b{display:block;font:700 19px/1.2 var(--head);text-transform:uppercase}
+.timeline li span{color:var(--muted);font-size:14.5px}
+.timeline .empty{color:var(--muted)}
+
+/* Atölye */
+.gallery{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:40px}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery img:first-child{grid-row:span 2}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.review{padding:24px;border:2px solid var(--line)}
+.review .stars{color:var(--yellow);letter-spacing:.14em}
+.review p{margin:12px 0;font-size:16.5px}
+.review span{color:var(--muted);font-size:14px}
+
+/* Randevu */
+.book .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:start}
+.form{padding:30px;background:var(--panel);border:2px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:16px;min-width:0}
+.field textarea{min-height:90px;padding:12px;resize:vertical}
+.field.err input{border-color:#FF6B57}
+.check{display:flex;gap:10px;align-items:center;margin:4px 0 18px;color:#D5D8DB}
+.check input{width:20px;height:20px;accent-color:var(--yellow)}
+.form .btn{width:100%}
+.done h3{font-size:44px;color:var(--yellow)}
+.done p{margin-top:12px;color:#D5D8DB}
+.done .job{display:inline-block;margin-top:14px;padding:10px 16px;border:2px dashed var(--yellow);font:700 22px/1 var(--head);letter-spacing:.1em}
+.visit{display:grid;gap:18px;margin-top:30px}
+.visit div{padding:16px 18px;border-left:4px solid var(--yellow);background:var(--panel)}
+.visit b{display:block;font:700 18px/1.2 var(--head);text-transform:uppercase}
+.visit span,.visit a{color:var(--muted)}
+
+footer{padding:26px 0 90px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  .links,.nav .btn{display:none}
+  .burger{display:grid}
+  .hero .wrap,.track .wrap,.book .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .trust div:nth-child(3){border-left:0;padding-left:0}
+  .reviews{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wrap{width:min(1200px, 100% - 32px)}
+  section{padding:72px 0}
+  .hero{padding:60px 0 70px;background-position:78% center}
+  .hero::before{background:linear-gradient(180deg,rgba(12,13,15,.94) 0%,rgba(12,13,15,.88) 100%)}
+  .quote,.form{padding:20px 16px}
+  .qrow,.row{grid-template-columns:1fr}
+  .row{gap:0}
+  .trust .wrap{grid-template-columns:1fr}
+  .trust div{border-left:0;padding:18px 0;border-top:1px solid var(--line)}
+  .gallery{grid-template-columns:1fr}
+  .gallery img:first-child{grid-row:auto}
+  .prices th:nth-child(3),.prices td:nth-child(3),.prices th:nth-child(4),.prices td:nth-child(4){display:none}
+  .track form{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+<meta name="robots" content="noindex, nofollow">
+<style>
+.ocs-preview{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;align-items:center;gap:10px;padding:10px 16px;border-top:1px solid rgba(145,215,225,.28);background:rgba(6,19,28,.95);color:#ECF9FA;font:500 13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.ocs-preview img{flex:none}.ocs-preview span{flex:1}.ocs-preview a{color:#66E3E5;font-weight:700;white-space:nowrap}
+body{padding-bottom:60px}
+@media(max-width:640px){.ocs-preview{padding:8px 12px;font-size:12px}.ocs-preview a{display:none}body{padding-bottom:80px}}
+@media print{.ocs-preview{display:none}}
+.logo b{font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap"><span><b>Book online</b> any time</span><span>Call the workshop: <b>+44 7402 714791</b></span></div></div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><i aria-hidden="true"></i><span><b>D A TAYLOR TRANSPORT SERVICES</b><small>GARAGE · ST GEORGES</small></span></a>
+    <ul class="links"><li><a href="#prices">Prices</a></li><li><a href="#track">Track my car</a></li><li><a href="#workshop">Workshop</a></li><li><a href="#book">Contact</a></li></ul>
+    <a class="btn btn-y" href="#book">Book a service</a>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <nav class="m-menu" id="mMenu"><a href="#prices">Prices</a><a href="#track">Track my car</a><a href="#workshop">Workshop</a><a href="#book">Book a service</a></nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">Independent garage · St Georges</span>
+      <h1>Honest repairs.<br><span>Fixed prices.</span></h1>
+      <p class="lead">MOTs, servicing and repairs for every make. You get the price before we start and a text with photos if we find anything else.</p>
+      <div class="hero-points">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg>Prices up front</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg>Book online</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4 10-10"/></svg>Track your car online</span>
+      </div>
+    </div>
+    <form class="quote" id="quote" novalidate>
+      <h3>Get your price</h3>
+      <label for="q-reg">Registration</label>
+      <div class="plate"><span>UK</span><input id="q-reg" type="text" placeholder="AB12 CDE" maxlength="8" size="9" autocomplete="off"></div>
+      <div class="qrow">
+        <div><label for="q-service">Service</label><select id="q-service"></select></div>
+        <div><label for="q-size">Car size</label><select id="q-size"><option value="0">Small (Fiesta, Polo)</option><option value="1" selected>Medium (Golf, Focus)</option><option value="2">Large / SUV</option></select></div>
+      </div>
+      <button class="btn btn-y" type="submit">Show my price</button>
+      <div class="result" id="result" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+<div class="hazard" aria-hidden="true"></div>
+
+<div class="trust">
+  <div class="wrap">
+    <div><b>Prices up front</b><span>See the price for your car before you book.</span></div>
+    <div><b>Book online</b><span>Pick a day and a drop-off time in a minute.</span></div>
+    <div><b>Photos by text</b><span>See worn parts before you agree to any extra work.</span></div>
+    <div><b>Track your car</b><span>Check progress online with your job number.</span></div>
+  </div>
+</div>
+
+<section class="prices" id="prices">
+  <div class="wrap">
+    <span class="tag reveal">Prices</span>
+    <h2 class="reveal">What you will pay</h2>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>Service</th><th>Small</th><th>Medium</th><th>Large / SUV</th></tr></thead>
+        <tbody id="priceRows"></tbody>
+      </table>
+    </div>
+    <p class="note">Sample prices. We put in your own services and prices before the site goes live.</p>
+  </div>
+</section>
+
+<section class="track" id="track">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">Track my car</span>
+      <h2>Where is my car?</h2>
+      <p class="lead" style="margin-top:14px">Your job number is on the text we send when you drop the car off. Check progress here any time.</p>
+      <form id="trackForm"><label for="t-job" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Job number</label><input id="t-job" type="text" placeholder="DA-2041" size="9" autocomplete="off"><button class="btn btn-y" type="submit">Check</button></form>
+      <p class="hint">Example jobs: DA-2041 and DA-2042</p>
+    </div>
+    <div class="timeline reveal" id="timeline" aria-live="polite"><p class="empty">Enter a job number to see its progress.</p></div>
+  </div>
+</section>
+
+<section id="workshop">
+  <div class="wrap">
+    <span class="tag reveal">The workshop</span>
+    <h2 class="reveal">One simple rule</h2>
+    <p class="lead reveal" style="margin-top:14px">No work without your OK. If we spot something on the ramp, you get a photo and a price by text, and you decide.</p>
+    <div class="gallery">
+      <img class="reveal" src="https://opticodestudio.com/img/demo/pitline-auto/workshop.jpg" alt="Mechanic working under the bonnet of a car in a busy workshop" width="1200" height="800" loading="lazy">
+      <img class="reveal" src="https://opticodestudio.com/img/demo/pitline-auto/bench.jpg" alt="Workbench with tools on the wall" width="800" height="600" loading="lazy">
+      <img class="reveal" src="https://opticodestudio.com/img/demo/pitline-auto/garage.jpg" alt="Classic car in a garage with its door open" width="800" height="600" loading="lazy">
+    </div>
+    <div class="reviews">
+      <div class="review reveal"><span class="stars">★★★★★</span><p>"Your best Google reviews go here."</p><span>Sample review</span></div>
+      <div class="review reveal"><span class="stars">★★★★★</span><p>"Your best Google reviews go here."</p><span>Sample review</span></div>
+      <div class="review reveal"><span class="stars">★★★★★</span><p>"Your best Google reviews go here."</p><span>Sample review</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="tag">Book</span>
+      <h2>Book a service</h2>
+      <p class="lead" style="margin-top:14px">Choose a day and drop the car off between 8 and 10 am. Most jobs are ready the same afternoon.</p>
+      <div class="visit">
+        <div><b>Find us</b><span>Noel&#39;s Sidings, St Georges BS22 7AE</span><br><a href="https://www.google.com/maps/search/?api=1&amp;query=D%20A%20Taylor%20Transport%20Services%2C%20Noel&#39;s%20Sidings%2C%20St%20Georges%20BS22%207AE" target="_blank" rel="noopener">Get directions →</a></div>
+        <div><b>Phone</b><span><a href="tel:+447402714791">+44 7402 714791</a></span></div>
+      </div>
+    </div>
+    <div class="form reveal" id="formWrap">
+      <form id="bookForm" novalidate>
+        <div class="row">
+          <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" autocomplete="name"></div>
+          <div class="field"><label for="b-phone">Mobile</label><input id="b-phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="b-reg">Registration</label><input id="b-reg" type="text" placeholder="AB12 CDE" maxlength="8"></div>
+          <div class="field"><label for="b-service">Service</label><select id="b-service"></select></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="b-date">Day</label><input id="b-date" type="date"></div>
+          <div class="field"><label for="b-time">Drop-off</label><select id="b-time"><option>8:00</option><option>8:30</option><option>9:00</option><option>9:30</option><option>10:00</option></select></div>
+        </div>
+        <label class="check"><input id="b-car" type="checkbox"> Please call me before any extra work</label>
+        <div class="field"><label for="b-notes">Anything we should know?</label><textarea id="b-notes" placeholder="Warning lights, noises, last service date."></textarea></div>
+        <button class="btn btn-y" type="submit">Request booking</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 D A Taylor Transport Services, St Georges</span><span>Website by <a href="https://opticodestudio.com/">OptiCodeStudio</a></span></div>
+</footer>
+
+<div class="ocs-preview" role="note"><img src="https://opticodestudio.com/img/logo-mark.svg" alt="" width="22" height="17"><span><b>Preview by OptiCodeStudio</b> for D A Taylor Transport Services, not the official website. Photos, prices and text are placeholders.</span><a href="https://opticodestudio.com/">opticodestudio.com</a></div>
+
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  // Fiyatlar: küçük / orta / büyük araç (MOT tek fiyat, yasal üst sınır)
+  var SERVICES = [
+    { name: 'MOT test', note: 'While you wait, about 45 minutes', price: [54.85, 54.85, 54.85], hours: 1 },
+    { name: 'Interim service', note: 'Oil, filter and 40 checks', price: [119, 129, 149], hours: 2 },
+    { name: 'Full service', note: 'All filters, plugs and 70 checks', price: [189, 209, 239], hours: 4 },
+    { name: 'Front brake pads', note: 'Fitted, with a brake test', price: [139, 149, 169], hours: 2 },
+    { name: 'Air-con regas', note: 'Leak test included', price: [79, 79, 89], hours: 1 },
+    { name: 'Diagnostic check', note: 'Warning lights read and explained', price: [45, 45, 45], hours: 1 }
+  ];
+  var gbp = function(n){ return '£' + (n % 1 ? n.toFixed(2) : n); };
+  $('#priceRows').innerHTML = SERVICES.map(function(s){
+    return '<tr><td>' + s.name + '<small>' + s.note + '</small></td>' + s.price.map(function(p){ return '<td class="p">' + gbp(p) + '</td>'; }).join('') + '</tr>';
+  }).join('');
+  var options = SERVICES.map(function(s, i){ return '<option value="' + i + '">' + s.name + '</option>'; }).join('');
+  $('#q-service').innerHTML = options;
+  $('#b-service').innerHTML = options;
+
+  var iso = function(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  // Bir sonraki iş günü (pazar ve cumartesi öğleden sonra kapalı)
+  var nextSlot = function(){
+    var d = new Date();
+    d.setDate(d.getDate() + 1);
+    while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+    return d;
+  };
+  var plateOk = function(v){ return /^[A-Z]{2}[0-9]{2}\s?[A-Z]{3}$/.test(v.trim().toUpperCase()); };
+  ['#q-reg', '#b-reg'].forEach(function(s){ $(s).addEventListener('input', function(e){ e.target.value = e.target.value.toUpperCase(); }); });
+
+  $('#quote').addEventListener('submit', function(e){
+    e.preventDefault();
+    var reg = $('#q-reg').value.trim().toUpperCase();
+    var box = $('#result');
+    box.classList.add('show');
+    if (!plateOk(reg)) {
+      box.innerHTML = '<p class="warn">Please enter a UK registration like AB12 CDE.</p>';
+      return;
+    }
+    var s = SERVICES[Number($('#q-service').value)];
+    var price = s.price[Number($('#q-size').value)];
+    var slot = nextSlot();
+    box.innerHTML = '<b>' + gbp(price) + '</b><p>' + s.name + ' for ' + reg + '. Next free slot: ' +
+      slot.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' }) + ', drop off from 8 am.</p>' +
+      '<a href="#book" id="useQuote">Book this slot →</a>';
+    $('#useQuote').addEventListener('click', function(){
+      $('#b-reg').value = reg;
+      $('#b-service').value = $('#q-service').value;
+      $('#b-date').value = iso(slot);
+    });
+  });
+
+  // İş takibi örnek verisi
+  var JOBS = {
+    'DA-2041': { car: 'VW Golf · KM19 RTX', steps: [['Checked in', '08:12'], ['Inspection done', '09:05, photos sent'], ['Repair in progress', 'Front pads and discs'], ['Ready to collect', 'Expected by 15:30']], now: 2 },
+    'DA-2042': { car: 'Ford Fiesta · YH68 BNZ', steps: [['Checked in', '08:30'], ['MOT test', 'Passed, no advisories'], ['Ready to collect', 'Since 10:05']], now: 3 }
+  };
+  $('#trackForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var id = $('#t-job').value.trim().toUpperCase().replace(/\s/g, '');
+    var job = JOBS[id];
+    var t = $('#timeline');
+    if (!job) { t.innerHTML = '<p class="empty">We could not find job ' + id.replace(/[<>&"']/g, '') + '. Check the number in your text, or call +44 7402 714791.</p>'; return; }
+    t.innerHTML = '<div class="car"><b>' + id + '</b><span>' + job.car + '</span></div><ol style="list-style:none">' + job.steps.map(function(s, i){
+      var cls = i < job.now ? 'done' : (i === job.now ? 'now' : '');
+      return '<li class="' + cls + '"><b>' + s[0] + '</b><span>' + s[1] + '</span></li>';
+    }).join('') + '</ol>';
+  });
+
+  var d = nextSlot();
+  $('#b-date').value = iso(d);
+  $('#b-date').min = iso(new Date());
+  $('#bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('#b-name'), phone = $('#b-phone'), reg = $('#b-reg');
+    var checks = [[name, name.value.trim().length > 1], [phone, phone.value.replace(/\D/g, '').length >= 10], [reg, plateOk(reg.value)]];
+    var ok = true;
+    checks.forEach(function(c){ c[0].parentElement.classList.toggle('err', !c[1]); if (!c[1]) ok = false; });
+    if (!ok) return;
+    var when = new Date($('#b-date').value + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    $('#formWrap').innerHTML = '<div class="done" role="status"><h3>Booked in</h3><span class="job">' + reg.value.trim().toUpperCase() + ' · ' + when + ' · ' + $('#b-time').value + '</span>' +
+      '<p>' + SERVICES[Number($('#b-service').value)].name + ($('#b-car').checked ? ', call before extra work' : '') + '. On the live site you would get a confirmation text. This preview does not send bookings anywhere.</p></div>';
+  });
+
+  var burger = $('#burger'), menu = $('#mMenu');
+  burger.addEventListener('click', function(){ var open = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', String(open)); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
+
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1+4 Brothers Barbers | Barbers in High Peak</title>
+<meta name="description" content="1+4 Brothers Barbers, barbers in High Peak. Skin fades, scissor cuts, hot towel shaves and beard work. Book a chair online.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%23151413'/><path d='M6 3l12 18M12 3l6 9M6 12l6 9' stroke='%23B8322E' stroke-width='2.4'/></svg>">
+<link rel="stylesheet" href="https://opticodestudio.com/fonts/demo/fonts.css">
+<link rel="stylesheet" href="https://opticodestudio.com/css/demo.css">
+<style>
+:root{
+  --cream:#F2EBDD; --paper:#FAF6EE; --ink:#151413; --muted:#6C655B; --red:#B8322E; --blue:#1F3B66;
+  --line:rgba(21,20,19,.14); --line-dk:rgba(242,235,221,.16);
+  --display:"Bebas Neue", Impact, sans-serif; --body:"Work Sans", system-ui, sans-serif;
+  --stripes:repeating-linear-gradient(-45deg,var(--red) 0 14px,var(--paper) 14px 28px,var(--blue) 28px 42px,var(--paper) 42px 56px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px, 100% - 48px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.95;letter-spacing:.01em}
+h2{font-size:clamp(48px,6vw,84px)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
+section{padding:100px 0}
+.stripe{height:12px;background:var(--stripes)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:2px solid transparent;font:700 15px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.btn-red{background:var(--red);color:var(--paper)}
+.btn-red:hover{background:#9C2925;transform:translateY(-1px)}
+.btn-line{border-color:currentColor;background:transparent}
+.btn-line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+/* Menü */
+header{position:sticky;top:0;z-index:40;background:var(--ink);color:var(--paper)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{text-decoration:none;line-height:.9}
+.logo b{display:block;font:400 34px/1 var(--display);letter-spacing:.03em}
+.logo small{display:block;margin-top:2px;color:#C9BFAE;font-size:10.5px;letter-spacing:.3em}
+.links{display:flex;gap:30px;list-style:none}
+.links a{font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#D8CFC0}
+.links a:hover{color:var(--paper)}
+.nav .btn{min-height:44px;padding:0 20px}
+.burger{display:none;width:46px;height:46px;border:2px solid var(--line-dk);background:none;color:var(--paper);cursor:pointer}
+.burger svg{width:22px;height:22px;margin:auto}
+.m-menu{display:none;flex-direction:column;padding:4px 24px 22px}
+.m-menu.open{display:flex}
+.m-menu a{padding:12px 0;border-bottom:1px solid var(--line-dk);font:400 30px/1 var(--display);text-decoration:none}
+
+/* Hero */
+.hero{padding:0;background:var(--ink);color:var(--paper)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:stretch}
+.hero-copy{padding:90px 0 80px;display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(76px,10.5vw,150px)}
+.hero h1 span{color:var(--red)}
+.hero p{max-width:470px;margin-top:22px;color:#D8CFC0;font-size:18px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-cta .btn-line{color:var(--paper)}
+.hero-cta .btn-line:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.walkin{display:flex;gap:10px;align-items:center;margin-top:30px;color:#C9BFAE;font-size:14px}
+.walkin i{width:10px;height:10px;border-radius:50%;background:#5DBB63;box-shadow:0 0 0 4px rgba(93,187,99,.2)}
+.hero-photo{position:relative;min-height:560px;margin:40px 0;border:8px solid var(--paper);background:#222 url("https://opticodestudio.com/img/demo/sharp-and-co/hero.jpg") center/cover no-repeat}
+.stamp{position:absolute;left:-46px;bottom:-40px;width:150px;height:150px;border-radius:50%;background:var(--red);color:var(--paper);display:grid;place-items:center}
+.stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
+.stamp b{font:400 38px/1 var(--display)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Fiyat listesi */
+.prices .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px 70px}
+.prices-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+.prices-head p{max-width:420px;color:var(--muted)}
+.group h3{font-size:34px;margin:18px 0 6px;color:var(--blue)}
+.item{display:flex;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.item b{font-weight:600}
+.item small{display:block;color:var(--muted);font-size:13.5px}
+.item .dots{flex:1}
+.item .p{font:400 28px/1 var(--display)}
+
+/* Randevu */
+.book{background:var(--ink);color:var(--paper)}
+.book .eyebrow{color:#E26A63}
+.book-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;margin-top:40px}
+.step{margin-bottom:34px}
+.step h3{display:flex;align-items:center;gap:12px;font-size:30px;margin-bottom:14px}
+.step h3 span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);font-size:22px}
+.options{display:flex;flex-wrap:wrap;gap:10px}
+.opt{min-height:46px;padding:10px 16px;border:2px solid var(--line-dk);background:transparent;color:var(--paper);font:600 14.5px/1.25 var(--body);text-align:left;cursor:pointer;transition:border-color .15s ease,background-color .15s ease}
+.opt small{display:block;color:#BDB3A3;font-weight:500;font-size:12.5px}
+.opt:hover:not([disabled]){border-color:var(--paper)}
+.opt[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.opt[aria-pressed="true"] small{color:var(--muted)}
+.opt[disabled]{opacity:.32;text-decoration:line-through;cursor:not-allowed}
+.barber{display:flex;align-items:center;gap:10px}
+.barber i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--blue);font-style:normal;font-size:12px;font-weight:700;color:var(--paper)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.slots .opt{text-align:center;padding:10px 6px}
+.summary{position:sticky;top:100px;align-self:start;padding:28px;border:2px solid var(--paper);background:#1D1B19}
+.summary h3{font-size:34px}
+.summary dl{display:grid;gap:10px;margin:18px 0 20px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--line-dk);font-size:15px}
+.summary dt{color:#BDB3A3}
+.summary dd{font-weight:600;text-align:right}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field label{color:#BDB3A3;font-size:13px}
+.field input{min-height:48px;padding:0 12px;border:2px solid var(--line-dk);background:var(--ink);color:var(--paper);font:500 15px/1 var(--body)}
+.field input:focus{outline:none;border-color:var(--paper)}
+.field.err input{border-color:#E26A63}
+.summary .btn{width:100%;margin-top:6px}
+.hint{margin-top:12px;color:#BDB3A3;font-size:13px}
+.booked{text-align:center;padding:30px 0}
+.booked h3{font-size:46px}
+.booked p{margin-top:10px;color:#D8CFC0}
+.booked .ticket{display:inline-block;margin-top:18px;padding:14px 22px;border:2px dashed var(--paper);font-weight:600}
+
+/* Dükkân */
+.shop img{width:100%;aspect-ratio:7/4;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-top:40px}
+.shop-grid p{color:var(--muted);font-size:17px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fact{padding:20px;border:2px solid var(--ink)}
+.fact b{display:block;font:400 40px/1 var(--display);color:var(--red)}
+.fact span{font-size:14px;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:1.2fr .8fr 1.2fr;gap:14px;margin-top:56px}
+.gallery img{width:100%;height:100%;min-height:260px;object-fit:cover}
+
+/* Ziyaret */
+.visit{background:var(--paper);border-top:2px solid var(--ink)}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px}
+.visit h3{font-size:36px;margin-bottom:12px}
+.visit p{color:var(--muted)}
+.visit ul{list-style:none;display:grid;gap:6px}
+.visit li{display:flex;justify-content:space-between;gap:12px;padding-bottom:6px;border-bottom:1px dashed var(--line)}
+.visit a.link{display:inline-block;margin-top:14px;color:var(--red);font-weight:600}
+
+footer{padding:26px 0 90px;background:var(--ink);color:#BDB3A3;font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--paper)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .links,.nav .btn{display:none}
+  .burger{display:grid}
+  .hero .wrap{grid-template-columns:1fr;gap:0}
+  .hero-copy{padding:64px 0 30px}
+  .hero-photo{min-height:420px;margin:10px 0 70px}
+  .stamp{left:auto;right:16px;bottom:-50px;width:120px;height:120px}
+  .stamp b{font-size:30px}
+  .prices .wrap,.book-grid,.shop-grid{grid-template-columns:1fr}
+  .summary{position:static}
+  .visit .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .wrap{width:min(1180px, 100% - 32px)}
+  section{padding:72px 0}
+  .facts{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery img:first-child{grid-column:1/-1}
+  .visit .wrap{grid-template-columns:1fr}
+  .summary{padding:20px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .stamp svg{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+<style id="ocs-theme">:root{--red:#2E6A4E;--blue:#7A5A1E;--cream:#ECEAE2;--paper:#F7F6F1;--ink:#121512;--display:"Bebas Neue", Impact, sans-serif;--body:"Hanken Grotesk", system-ui, sans-serif}</style>
+<meta name="robots" content="noindex, nofollow">
+<style>
+.ocs-preview{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;align-items:center;gap:10px;padding:10px 16px;border-top:1px solid rgba(145,215,225,.28);background:rgba(6,19,28,.95);color:#ECF9FA;font:500 13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.ocs-preview img{flex:none}.ocs-preview span{flex:1}.ocs-preview a{color:#66E3E5;font-weight:700;white-space:nowrap}
+body{padding-bottom:60px}
+@media(max-width:640px){.ocs-preview{padding:8px 12px;font-size:12px}.ocs-preview a{display:none}body{padding-bottom:80px}}
+@media print{.ocs-preview{display:none}}
+.logo b{font-size:22px}
+</style>
+</head>
+<body>
+
+<div class="stripe" aria-hidden="true"></div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><b>1+4 BROTHERS BARBERS</b><small>BARBERS · HIGH PEAK</small></a>
+    <ul class="links">
+      <li><a href="#prices">Prices</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#shop">The shop</a></li>
+      <li><a href="#visit">Find us</a></li>
+    </ul>
+    <a class="btn btn-red" href="#book">Book a chair</a>
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <nav class="m-menu" id="mMenu"><a href="#prices">Prices</a><a href="#book">Book a chair</a><a href="#shop">The shop</a><a href="#visit">Find us</a></nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Cuts, shaves <span>&amp;</span> beards.</h1>
+      <p>A proper barbershop in High Peak. Fresh fades, sharp beards and barbers who listen before they pick up the clippers.</p>
+      <div class="hero-cta">
+        <a class="btn btn-red" href="#book">Book a chair</a>
+        <a class="btn btn-line" href="#prices">See prices</a>
+      </div>
+      <div class="walkin"><i aria-hidden="true"></i><span>Book a chair online in under a minute</span></div>
+    </div>
+    <div class="hero-photo" role="img" aria-label="Barber fading a client's hair with clippers">
+      <div class="stamp" aria-hidden="true">
+        <svg viewBox="0 0 150 150"><defs><path id="ring" d="M75 75m-56 0a56 56 0 1 1 112 0a56 56 0 1 1-112 0"/></defs><text fill="#FAF6EE" font-family="Work Sans, sans-serif" font-size="12.5" font-weight="700" letter-spacing="3.4"><textPath href="#ring">FRESH CUTS · HOT TOWEL SHAVES · </textPath></text></svg>
+        <b>14</b>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="stripe" aria-hidden="true"></div>
+
+<section class="prices" id="prices">
+  <div class="wrap">
+    <div class="prices-head reveal">
+      <div><span class="eyebrow">Prices</span><h2>What it costs</h2></div>
+      <p>Sample prices. We put in your own services and prices before the site goes live.</p>
+    </div>
+    <div class="group reveal">
+      <h3>Haircuts</h3>
+      <div class="item"><div><b>Classic cut</b><small>Clippers and scissors, 30 min</small></div><span class="dots"></span><span class="p">£24</span></div>
+      <div class="item"><div><b>Skin fade</b><small>Down to the skin, 45 min</small></div><span class="dots"></span><span class="p">£28</span></div>
+      <div class="item"><div><b>Scissor cut</b><small>For longer styles, 45 min</small></div><span class="dots"></span><span class="p">£30</span></div>
+      <div class="item"><div><b>Buzz cut</b><small>One grade all over, 15 min</small></div><span class="dots"></span><span class="p">£16</span></div>
+      <div class="item"><div><b>Kids' cut</b><small>Under 12, 30 min</small></div><span class="dots"></span><span class="p">£16</span></div>
+    </div>
+    <div class="group reveal">
+      <h3>Beard &amp; shave</h3>
+      <div class="item"><div><b>Beard trim</b><small>Shape and line-up, 20 min</small></div><span class="dots"></span><span class="p">£15</span></div>
+      <div class="item"><div><b>Hot towel shave</b><small>Straight razor, 40 min</small></div><span class="dots"></span><span class="p">£30</span></div>
+      <div class="item"><div><b>Beard sculpt</b><small>Full reshape with hot towel, 30 min</small></div><span class="dots"></span><span class="p">£20</span></div>
+      <h3>Together</h3>
+      <div class="item"><div><b>Cut + beard</b><small>60 min</small></div><span class="dots"></span><span class="p">£36</span></div>
+      <div class="item"><div><b>The full works</b><small>Cut, hot towel shave and face massage, 90 min</small></div><span class="dots"></span><span class="p">£52</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div class="wrap">
+    <span class="eyebrow">Book online</span>
+    <h2>Grab a chair</h2>
+    <div class="book-grid" id="bookArea">
+      <div>
+        <div class="step"><h3><span>1</span> Service</h3><div class="options" id="services"></div></div>
+        <div class="step"><h3><span>2</span> Barber</h3><div class="options" id="barbers"></div></div>
+        <div class="step"><h3><span>3</span> Day</h3><div class="options" id="days"></div></div>
+        <div class="step"><h3><span>4</span> Time</h3><div class="slots" id="slots"><p class="hint">Pick a day to see free times.</p></div></div>
+      </div>
+      <aside class="summary" aria-live="polite">
+        <h3>Your booking</h3>
+        <dl>
+          <div><dt>Service</dt><dd id="sumService">Choose a service</dd></div>
+          <div><dt>Barber</dt><dd id="sumBarber">Any barber</dd></div>
+          <div><dt>When</dt><dd id="sumWhen">Choose a time</dd></div>
+          <div><dt>Price</dt><dd id="sumPrice">£0</dd></div>
+        </dl>
+        <div class="field"><label for="k-name">Name</label><input id="k-name" type="text" autocomplete="name"></div>
+        <div class="field"><label for="k-phone">Mobile (for your reminder)</label><input id="k-phone" type="tel" autocomplete="tel"></div>
+        <button class="btn btn-red" id="confirm" type="button" disabled>Confirm booking</button>
+        <p class="hint">Free to cancel up to two hours before.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="shop" id="shop">
+  <div class="wrap">
+    <img class="reveal" src="https://opticodestudio.com/img/demo/sharp-and-co/shop.jpg" alt="Row of classic barber chairs and mirrors, black and white" width="1400" height="800" loading="lazy">
+    <div class="shop-grid">
+      <div class="reveal">
+        <span class="eyebrow">The shop</span>
+        <h2>Your shop, your story</h2>
+        <p style="margin-top:18px">This is where the story of 1+4 Brothers Barbers goes: how it started, who is behind the chairs and what makes a visit different. We write it together with you.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><b>24/7</b><span>online booking</span></div>
+        <div class="fact"><b>1 min</b><span>to book a chair</span></div>
+        <div class="fact"><b>0</b><span>rushed haircuts</span></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="https://opticodestudio.com/img/demo/sharp-and-co/shave.jpg" alt="Barber giving a straight razor shave" width="800" height="600" loading="lazy">
+      <img class="reveal" src="https://opticodestudio.com/img/demo/sharp-and-co/pole.jpg" alt="Red, white and blue barber's pole" width="600" height="800" loading="lazy">
+      <img class="reveal" src="https://opticodestudio.com/img/demo/sharp-and-co/street.jpg" alt="Old street barber at work, black and white" width="800" height="600" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="reveal"><h3>Find us</h3><p>8 Market Street<br>High Peak SK23 7LP</p><a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=1%2B4%20Brothers%20Barbers%2C%208%20Market%20Street%2C%20High%20Peak%20SK23%207LP" target="_blank" rel="noopener">Get directions →</a></div>
+    <div class="reveal"><h3>Opening hours</h3><ul><li><span>Mon–Sat</span><span>9:00–18:00</span></li><li><span>Sun</span><span>10:00–17:00</span></li></ul></div>
+    <div class="reveal"><h3>Get in touch</h3><p><a href="https://instagram.com/5brothers_barbers_whaleybridge" target="_blank" rel="noopener">Instagram @5brothers_barbers_whaleybridge</a></p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 1+4 Brothers Barbers</span><span>Website by <a href="https://opticodestudio.com/">OptiCodeStudio</a></span></div>
+</footer>
+
+<div class="ocs-preview" role="note"><img src="https://opticodestudio.com/img/logo-mark.svg" alt="" width="22" height="17"><span><b>Preview by OptiCodeStudio</b> for 1+4 Brothers Barbers, not the official website. Photos, prices and text are placeholders.</span><a href="https://opticodestudio.com/">opticodestudio.com</a></div>
+
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+  var SERVICES = [
+    { name: 'Classic cut', mins: 30, price: 24 }, { name: 'Skin fade', mins: 45, price: 28 },
+    { name: 'Beard trim', mins: 20, price: 15 }, { name: 'Cut + beard', mins: 60, price: 36 },
+    { name: 'Hot towel shave', mins: 40, price: 30 }
+  ];
+  var BARBERS = [{ name: 'Any barber', short: '?' }, { name: 'Barber 1', short: '1' }, { name: 'Barber 2', short: '2' }, { name: 'Barber 3', short: '3' }];
+  var pick = { service: null, barber: 0, day: null, time: null };
+
+  // Önümüzdeki 7 gün, pazar kapalı
+  var days = [];
+  var now = new Date();
+  for (var i = 0; days.length < 6 && i < 10; i++) {
+    var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    if (d.getDay() !== 0) days.push(d);
+  }
+
+  var button = function(label, small, attrs){
+    return '<button class="opt" type="button" aria-pressed="false" ' + attrs + '>' + label + (small ? '<small>' + small + '</small>' : '') + '</button>';
+  };
+  $('#services').innerHTML = SERVICES.map(function(s, i){ return button(s.name, s.mins + ' min · £' + s.price, 'data-service="' + i + '"'); }).join('');
+  $('#barbers').innerHTML = BARBERS.map(function(b, i){ return '<button class="opt barber" type="button" aria-pressed="' + (i === 0) + '" data-barber="' + i + '"><i>' + b.short + '</i>' + b.name + '</button>'; }).join('');
+  $('#days').innerHTML = days.map(function(d, i){
+    return button(i === 0 && d.toDateString() === now.toDateString() ? 'Today' : d.toLocaleDateString('en-GB', { weekday: 'short' }), d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }), 'data-day="' + i + '"');
+  }).join('');
+
+  // Dolu saatler gün ve berbere göre sabit görünür (her yenilemede aynı)
+  var taken = function(dayIndex, barber, slot){ return ((dayIndex + 3) * 7 + (barber + 1) * 5 + slot * 3) % 4 === 0; };
+  function renderSlots(){
+    if (pick.day === null) return;
+    var d = days[pick.day];
+    var last = d.getDay() === 6 ? 16 * 60 : (d.getDay() === 4 || d.getDay() === 5 ? 19 * 60 + 30 : 17 * 60 + 30);
+    var html = '';
+    for (var m = 9 * 60, s = 0; m <= last; m += 30, s++) {
+      var label = Math.floor(m / 60) + ':' + String(m % 60).padStart(2, '0');
+      var past = d.toDateString() === now.toDateString() && m < now.getHours() * 60 + now.getMinutes() + 60;
+      var off = past || taken(pick.day, pick.barber, s);
+      html += '<button class="opt" type="button" aria-pressed="' + (pick.time === label) + '" data-time="' + label + '"' + (off ? ' disabled' : '') + '>' + label + '</button>';
+    }
+    $('#slots').innerHTML = html;
+  }
+  function press(container, attr, value){
+    container.querySelectorAll('[' + attr + ']').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute(attr) === String(value))); });
+  }
+  function summary(){
+    var s = pick.service === null ? null : SERVICES[pick.service];
+    $('#sumService').textContent = s ? s.name : 'Choose a service';
+    $('#sumBarber').textContent = BARBERS[pick.barber].name;
+    $('#sumWhen').textContent = pick.day !== null && pick.time ? days[pick.day].toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }) + ', ' + pick.time : 'Choose a time';
+    $('#sumPrice').textContent = '£' + (s ? s.price : 0);
+    $('#confirm').disabled = !(s && pick.day !== null && pick.time);
+  }
+  $('#bookArea').addEventListener('click', function(e){
+    var b = e.target.closest('.opt');
+    if (!b || b.disabled) return;
+    if (b.dataset.service !== undefined) { pick.service = Number(b.dataset.service); press($('#services'), 'data-service', pick.service); }
+    if (b.dataset.barber !== undefined) { pick.barber = Number(b.dataset.barber); pick.time = null; press($('#barbers'), 'data-barber', pick.barber); renderSlots(); }
+    if (b.dataset.day !== undefined) { pick.day = Number(b.dataset.day); pick.time = null; press($('#days'), 'data-day', pick.day); renderSlots(); }
+    if (b.dataset.time !== undefined) { pick.time = b.dataset.time; press($('#slots'), 'data-time', pick.time); }
+    summary();
+  });
+  $('#confirm').addEventListener('click', function(){
+    var name = $('#k-name'), phone = $('#k-phone');
+    var okName = name.value.trim().length > 1, okPhone = phone.value.replace(/\D/g, '').length >= 10;
+    name.parentElement.classList.toggle('err', !okName);
+    phone.parentElement.classList.toggle('err', !okPhone);
+    if (!okName || !okPhone) return;
+    var first = name.value.trim().split(' ')[0].replace(/[<>&"']/g, '');
+    $('#bookArea').innerHTML = '<div class="booked" role="status" style="grid-column:1/-1"><h3>You\'re in, ' + first + '.</h3>' +
+      '<span class="ticket">' + $('#sumService').textContent + ' · ' + BARBERS[pick.barber].name + ' · ' + $('#sumWhen').textContent + ' · ' + $('#sumPrice').textContent + '</span>' +
+      '<p>On the live site you would get a text reminder the day before. This preview does not book anything.</p></div>';
+  });
+  summary();
+
+  var burger = $('#burger'), menu = $('#mMenu');
+  burger.addEventListener('click', function(){ var open = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', String(open)); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
+
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
